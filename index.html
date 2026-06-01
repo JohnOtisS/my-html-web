@@ -187,20 +187,23 @@
   .alts-head{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.18rem;font-weight:500;color:var(--sea-deep);margin-bottom:.2rem}
   .alts-sub{font-size:.85rem;color:#6b8581;margin-bottom:1.1rem}
   .alt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:.85rem}
-  .alt{background:var(--cream);border:1px solid var(--line);border-radius:15px;padding:1rem;display:flex;flex-direction:column;gap:.55rem;transition:transform .25s,box-shadow .25s,border-color .25s}
-  @media(hover:hover){.alt:hover{transform:translateY(-4px);box-shadow:0 14px 30px -20px var(--shadow);border-color:var(--coral-soft)}}
-  .alt-top{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
-  .alt-ic{font-size:1.5rem;line-height:1}
-  .alt-tag{font-size:.62rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#fff;background:var(--sea-mid);padding:.28rem .55rem;border-radius:7px;white-space:nowrap}
+  .alt{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:0;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s,border-color .25s}
+  @media(hover:hover){.alt:hover{transform:translateY(-5px);box-shadow:0 18px 36px -22px var(--shadow);border-color:var(--coral-soft)}}
+  .alt .ph{aspect-ratio:16/9;border-radius:0}
+  .alt .ph .alt-tag{position:absolute;top:.55rem;right:.55rem;z-index:3;box-shadow:0 4px 12px -5px rgba(0,0,0,.5)}
+  .alt-tag{font-size:.62rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#fff;background:var(--sea-mid);padding:.3rem .58rem;border-radius:100px;white-space:nowrap}
   .alt-tag.allday{background:var(--gold)} .alt-tag.night{background:var(--sea-deep)} .alt-tag.eat{background:var(--coral)}
-  .alt-name{font-weight:700;font-size:.98rem;color:var(--sea-deep);line-height:1.3}
+  .alt-body{padding:.9rem 1rem 1.1rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+  .alt-name{font-weight:700;font-size:1rem;color:var(--sea-deep);line-height:1.3}
   .alt-name .r{display:inline-block;font-size:.74rem;color:var(--gold);font-weight:700;margin-left:.35rem;white-space:nowrap}
+  .alt-meta{display:flex;flex-wrap:wrap;gap:.4rem}
+  .alt-meta span{display:inline-flex;align-items:center;gap:.25rem;font-size:.72rem;font-weight:700;color:var(--sea-deep);background:var(--sand);padding:.3rem .58rem;border-radius:100px}
+  .alt-meta .km{background:rgba(27,163,168,.14);color:var(--sea)}
   .alt-desc{font-size:.84rem;color:#3a5853;flex:1;line-height:1.5}
-  .alt-links{display:flex;flex-wrap:wrap;gap:.45rem}
-  .alt-links a{display:inline-flex;align-items:center;gap:.3rem;font-size:.74rem;font-weight:600;padding:.42rem .7rem;border-radius:100px;border:1px solid var(--line);transition:all .2s}
-  .alt-links a.map{background:var(--sea);color:#fff;border-color:var(--sea)}
-  .alt-links a.tt{background:#000;color:#fff;border-color:#000}
-  @media(hover:hover){.alt-links a.map:hover{background:var(--sea-deep)}.alt-links a.tt:hover{opacity:.85}}
+  .alt-links{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.1rem}
+  .alt-links a{display:inline-flex;align-items:center;gap:.3rem;font-size:.76rem;font-weight:600;padding:.46rem .8rem;border-radius:100px;border:1px solid var(--line);transition:all .2s}
+  .alt-links a.map{background:linear-gradient(135deg,var(--sea),var(--sea-mid));color:#fff;border-color:var(--sea)}
+  @media(hover:hover){.alt-links a.map:hover{filter:brightness(1.08)}}
 
   /* ---------- REVIEWS ---------- */
   .reviews{background:var(--cream)}
@@ -614,11 +617,10 @@
         <div class="place-body"><div class="place-inner">
           <div class="ph" data-album="mykhe"><span class="ph-fallback">🏖️</span><img loading="lazy" alt="Biển Mỹ Khê Đà Nẵng" src="https://loremflickr.com/720/405/mykhe,beach,danang" data-cap="Biển Mỹ Khê — cát mịn, sóng êm" data-cap-zh="美溪海灘——細沙、浪平"></div>
           <span class="rating" data-zh="★ 4.7 · 4,260則評價">★ 4.7 · 4.260 đánh giá</span>
-          <div class="info-row"><span class="info-pill" data-zh="💸 免費戲水">💸 Tắm miễn phí</span><span class="info-pill" data-zh="🏖️ 躺椅/陽傘 5–10萬₫">🏖️ Ghế/dù 50–100k</span><span class="info-pill" data-zh="🕐 最佳時段：清晨與傍晚">🕐 Đẹp nhất: sáng sớm &amp; chiều</span></div>
+          <div class="info-row"><span class="info-pill" data-zh="💸 免費戲水">💸 Tắm miễn phí</span><span class="info-pill" data-zh="🏖️ 躺椅/陽傘 5–10萬₫">🏖️ Ghế/dù 50–100k</span><span class="info-pill" data-zh="🕐 最佳時段：清晨與傍晚">🕐 Đẹp nhất: sáng sớm &amp; chiều</span><span class="info-pill" data-zh="📍 就在美溪住宿區">📍 Ngay khu Mỹ Khê</span></div>
           <p data-zh="海灘細沙綿密、寬廣開闊，夜晚涼爽，適合全家散步。之後在附近的家庭式餐館享用海鮮——挑人多的店，點菜前先問價。">Bãi biển cát rất mịn, dài và thoáng, buổi tối mát mẻ để cả nhà đi dạo. Sau đó ăn hải sản tại quán gia đình gần đó — chọn quán đông khách, hỏi giá trước khi gọi.</p>
           <div class="links">
             <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=My%20Khe%20Beach%20Danang&query_place_id=ChIJ4w7694IXQjERrFXucqKL--o" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
-            <a class="lnk tt" href="https://www.tiktok.com/search?q=bien%20My%20Khe%20Da%20Nang" target="_blank">🎬 TikTok</a>
             <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=My%20Khe%20Beach%20Danang&query_place_id=ChIJ4w7694IXQjERrFXucqKL--o" target="_blank" data-zh="★ 評論">★ Review</a>
             <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=B%C3%A9%20M%E1%BA%B7n%20h%E1%BA%A3i%20s%E1%BA%A3n%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">🦐 Bé Mặn</a>
             <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=N%C4%83m%20%C4%90%E1%BA%A3nh%20h%E1%BA%A3i%20s%E1%BA%A3n%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">🦀 Năm Đảnh</a>
@@ -632,12 +634,11 @@
         <div class="place-body"><div class="place-inner">
           <div class="ph" data-album="dragon"><span class="ph-fallback">🐉</span><img loading="lazy" alt="Cầu Rồng Đà Nẵng" src="https://loremflickr.com/720/405/dragon,bridge,danang" data-cap="Cầu Rồng lên đèn về đêm" data-cap-zh="龍橋夜間亮燈"></div>
           <span class="rating" data-zh="★ 4.5 · 8,300則評價">★ 4.5 · 8.300 đánh giá</span>
-          <div class="info-row"><span class="info-pill" data-zh="💸 免費">💸 Miễn phí</span><span class="info-pill">🕐 24/7</span><span class="info-pill" data-zh="🔥 噴火：週五六日 約21:00">🔥 Phun lửa: T6–T7–CN ~21h</span></div>
+          <div class="info-row"><span class="info-pill" data-zh="💸 免費">💸 Miễn phí</span><span class="info-pill">🕐 24/7</span><span class="info-pill" data-zh="🔥 噴火：週五六日 約21:00">🔥 Phun lửa: T6–T7–CN ~21h</span><span class="info-pill" data-zh="📍 距美溪約3 km">📍 ~3 km từ Mỹ Khê</span></div>
           <p data-zh="龍橋於<strong>週五、週六、週日</strong>約21:00噴火與噴水。6月18日為週四，沒有表演，但夜間亮燈仍非常上鏡。想看噴火可於6/19或6/20晚再來。">Cầu Rồng phun lửa &amp; phun nước ~21h <strong>tối thứ Sáu, thứ Bảy, Chủ Nhật</strong>. Ngày 18/6 là thứ Năm nên không có màn trình diễn, nhưng cầu lên đèn về đêm vẫn rất đẹp để chụp ảnh. Muốn xem phun lửa thì quay lại tối 19 hoặc 20/6.</p>
           <div class="links">
             <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Dragon%20Bridge%20Danang&query_place_id=ChIJL1GKWJYZQjERLrEGqlK2kwQ" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
             <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Dragon%20Bridge%20Danang&query_place_id=ChIJL1GKWJYZQjERLrEGqlK2kwQ" target="_blank" data-zh="★ 評論">★ Review</a>
-            <a class="lnk tt" href="https://www.tiktok.com/search?q=cau%20Rong%20Da%20Nang" target="_blank">🎬 TikTok</a>
           </div>
           <div class="place-tags"><span class="ptag" data-zh="夜間打卡">Check-in đêm</span><span class="ptag" data-zh="週末噴火">Phun lửa cuối tuần</span></div>
         </div></div>
@@ -645,43 +646,61 @@
 
       <div class="alts">
         <div class="alts-head" data-zh="✨ 本日其他夜間選擇">✨ Lựa chọn khác cho tối nay</div>
-        <div class="alts-sub" data-zh="可替換或加入以下夜間好去處（可上 TikTok 參考實況）。">Có thể thay hoặc thêm các điểm chơi đêm dưới đây — xem thêm review thực tế trên TikTok.</div>
+        <div class="alts-sub" data-zh="可替換或加入以下夜間好去處——附照片、價格與距美溪的距離。">Có thể thay hoặc thêm các điểm chơi đêm dưới đây — kèm ảnh, giá &amp; khoảng cách từ Mỹ Khê.</div>
         <div class="alt-grid">
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🛥️</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
-            <div class="alt-name" data-zh="韓江遊船<span class='r'>★ 4.3</span>">Du thuyền sông Hàn<span class="r">★ 4.3</span></div>
-            <div class="alt-desc" data-zh="從江上欣賞龍橋與城市夜景。">Ngắm cầu Rồng &amp; thành phố lung linh từ trên sông.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=du%20thuyen%20song%20Han%20Da%20Nang" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=du%20thuyen%20song%20Han%20Da%20Nang">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="cruise"><span class="ph-fallback">🛥️</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="韓江遊船<span class='r'>★ 4.3</span>">Du thuyền sông Hàn<span class="r">★ 4.3</span></div>
+              <div class="alt-meta"><span data-zh="💰 約15–30萬₫/人">💰 ~150–300k/người</span><span class="km" data-zh="📍 距美溪約3 km">📍 ~3 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="從江上欣賞龍橋與城市夜景。">Ngắm cầu Rồng &amp; thành phố lung linh từ trên sông.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=du%20thuyen%20song%20Han%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🌉</span><span class="alt-tag night" data-zh="深夜">Khuya</span></div>
-            <div class="alt-name" data-zh="韓江旋轉橋<span class='r'>★ 4.6</span>">Cầu quay Sông Hàn<span class="r">★ 4.6</span></div>
-            <div class="alt-desc" data-zh="週六、日約23:00旋轉90度，獨特一景。">Cầu quay 90° lúc ~23h tối thứ Bảy &amp; Chủ Nhật.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=cau%20quay%20song%20Han%20Da%20Nang" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=cau%20quay%20song%20Han%20Da%20Nang">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="swing"><span class="ph-fallback">🌉</span><span class="alt-tag night" data-zh="深夜">Khuya</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="韓江旋轉橋<span class='r'>★ 4.6</span>">Cầu quay Sông Hàn<span class="r">★ 4.6</span></div>
+              <div class="alt-meta"><span data-zh="💰 免費">💰 Miễn phí</span><span class="km" data-zh="📍 距美溪約3 km">📍 ~3 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="週六、日約23:00旋轉90度，獨特一景。">Cầu quay 90° lúc ~23h tối thứ Bảy &amp; Chủ Nhật.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=cau%20quay%20song%20Han%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🎪</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
-            <div class="alt-name" data-zh="Helio 夜市與中心<span class='r'>★ 4.2</span>">Chợ đêm &amp; Helio Center<span class="r">★ 4.2</span></div>
-            <div class="alt-desc" data-zh="美食與遊樂，很適合全家。">Khu ăn uống &amp; trò chơi, rất hợp gia đình.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Helio%20Center%20Da%20Nang" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=Helio%20Center%20Da%20Nang">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="helio"><span class="ph-fallback">🎪</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="Helio 夜市與中心<span class='r'>★ 4.2</span>">Chợ đêm &amp; Helio Center<span class="r">★ 4.2</span></div>
+              <div class="alt-meta"><span data-zh="💰 入場免費 · 遊樂30–150k">💰 Vào cửa free · trò chơi 30–150k</span><span class="km" data-zh="📍 距美溪約4 km">📍 ~4 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="美食與遊樂，很適合全家。">Khu ăn uống &amp; trò chơi, rất hợp gia đình.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Helio%20Center%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🍹</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
-            <div class="alt-name" data-zh="An Thượng 夜街<span class='r'>★ 4.3</span>">Phố đêm An Thượng<span class="r">★ 4.3</span></div>
-            <div class="alt-desc" data-zh="緊鄰美溪的酒吧與小吃街。">Quán xá, ăn vặt sôi động ngay sát biển Mỹ Khê.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=An%20Thuong%20Tourist%20Street%20Da%20Nang" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=pho%20An%20Thuong%20Da%20Nang">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="anthuong"><span class="ph-fallback">🍹</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="An Thượng 夜街<span class='r'>★ 4.3</span>">Phố đêm An Thượng<span class="r">★ 4.3</span></div>
+              <div class="alt-meta"><span data-zh="💰 免費（餐飲另計）">💰 Miễn phí (ăn theo món)</span><span class="km" data-zh="📍 距美溪約1 km">📍 ~1 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="緊鄰美溪的酒吧與小吃街。">Quán xá, ăn vặt sôi động ngay sát biển Mỹ Khê.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=An%20Thuong%20Tourist%20Street%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">⛵</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
-            <div class="alt-name" data-zh="APEC 公園<span class='r'>★ 4.5</span>">Công viên APEC<span class="r">★ 4.5</span></div>
-            <div class="alt-desc" data-zh="帆形屋頂建築，韓江畔散步拍照。">Mái vòm cánh buồm độc đáo, dạo &amp; chụp ảnh ven sông.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=APEC%20Park%20Da%20Nang" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=cong%20vien%20APEC%20Da%20Nang">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="apec"><span class="ph-fallback">⛵</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="APEC 公園<span class='r'>★ 4.5</span>">Công viên APEC<span class="r">★ 4.5</span></div>
+              <div class="alt-meta"><span data-zh="💰 免費">💰 Miễn phí</span><span class="km" data-zh="📍 距美溪約3.5 km">📍 ~3,5 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="帆形屋頂建築，韓江畔散步拍照。">Mái vòm cánh buồm độc đáo, dạo &amp; chụp ảnh ven sông.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=APEC%20Park%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🌁</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
-            <div class="alt-name" data-zh="順福橋<span class='r'>★ 4.5</span>">Cầu Thuận Phước<span class="r">★ 4.5</span></div>
-            <div class="alt-desc" data-zh="越南最長吊橋，看海口夜景。">Cầu treo dài nhất Việt Nam, view cửa biển về đêm.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Thuan%20Phuoc%20Bridge%20Da%20Nang" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=cau%20Thuan%20Phuoc%20Da%20Nang">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="thuanphuoc"><span class="ph-fallback">🌁</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="順福橋<span class='r'>★ 4.5</span>">Cầu Thuận Phước<span class="r">★ 4.5</span></div>
+              <div class="alt-meta"><span data-zh="💰 免費">💰 Miễn phí</span><span class="km" data-zh="📍 距美溪約6 km">📍 ~6 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="越南最長吊橋，看海口夜景。">Cầu treo dài nhất Việt Nam, view cửa biển về đêm.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Thuan%20Phuoc%20Bridge%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
         </div>
       </div>
@@ -702,12 +721,11 @@
         <div class="place-body"><div class="place-inner">
           <div class="ph" data-album="bana"><span class="ph-fallback">🌉</span><img loading="lazy" alt="Cầu Vàng Bà Nà Hills" src="https://loremflickr.com/720/405/goldenbridge,banahills,vietnam" data-cap="Cầu Vàng (Golden Bridge) — Bà Nà Hills" data-cap-zh="黃金橋（Golden Bridge）——巴拿山"></div>
           <span class="rating" data-zh="★ 4.4 · 近10萬則評價">★ 4.4 · gần 100.000 đánh giá</span>
-          <div class="info-row"><span class="info-pill" data-zh="🎫 成人 約100萬₫">🎫 NL ~1.000.000đ</span><span class="info-pill" data-zh="🧒 兒童1–1.4m 約80萬₫">🧒 Trẻ 1–1m4 ~800.000đ</span><span class="info-pill" data-zh="🍽️ 含自助餐套票 約130萬₫">🍽️ Combo buffet ~1.300.000đ</span><span class="info-pill" data-zh="🧥 山頂微涼">🧥 Trên đỉnh se lạnh</span></div>
+          <div class="info-row"><span class="info-pill" data-zh="🎫 成人 約100萬₫">🎫 NL ~1.000.000đ</span><span class="info-pill" data-zh="🧒 兒童1–1.4m 約80萬₫">🧒 Trẻ 1–1m4 ~800.000đ</span><span class="info-pill" data-zh="🍽️ 含自助餐套票 約130萬₫">🍽️ Combo buffet ~1.300.000đ</span><span class="info-pill" data-zh="🧥 山頂微涼">🧥 Trên đỉnh se lạnh</span><span class="info-pill" data-zh="📍 距美溪約35 km">📍 ~35 km từ Mỹ Khê</span></div>
           <p data-zh="💰 <strong>2026票價（外地遊客）：</strong>成人（&gt;1.4m）約100萬₫ · 兒童（1–1.4m）與長者約80萬₫ · 1m以下免費。含午餐自助餐套票約130萬₫/成人。門票含來回纜車與多數 Fantasy Park 遊樂設施。線上訂通常更便宜。">💰 <strong>Vé 2026 (khách ngoại tỉnh):</strong> Người lớn (&gt;1m4) ~1.000.000đ · trẻ em (1m–1m4) &amp; người cao tuổi ~800.000đ · dưới 1m miễn phí. Combo kèm buffet trưa ~1.300.000đ/người lớn. Vé gồm cáp treo khứ hồi &amp; hầu hết trò chơi Fantasy Park. Đặt online thường rẻ hơn.</p>
           <p data-zh="早上8點搭纜車較涼也較不擁擠。小女兒會喜歡黃金橋、法國村、登山小火車——拍照點超多。☎ Sun World: 0905 766 777 · 7:00–22:00。">Đi cáp treo sớm từ 8h cho mát &amp; ít đông. Cô con gái sẽ thích Cầu Vàng, Làng Pháp, tàu hỏa leo núi — rất nhiều góc chụp ảnh đẹp. ☎ Sun World: 0905 766 777 · 7h–22h.</p>
           <div class="links">
             <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Ba%20Na%20Hills&query_place_id=ChIJyWFmArX3QTERon6tUT6re4Q" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
-            <a class="lnk tt" href="https://www.tiktok.com/search?q=Ba%20Na%20Hills%20Cau%20Vang" target="_blank">🎬 TikTok</a>
             <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Ba%20Na%20Hills&query_place_id=ChIJyWFmArX3QTERon6tUT6re4Q" target="_blank" data-zh="★ 評論">★ Review</a>
           </div>
           <div class="place-tags"><span class="ptag" data-zh="黃金橋">Cầu Vàng</span><span class="ptag" data-zh="法國村">Làng Pháp</span><span class="ptag">Fantasy Park</span><span class="ptag" data-zh="纜車">Cáp treo</span></div>
@@ -724,43 +742,61 @@
 
       <div class="alts">
         <div class="alts-head" data-zh="✨ 整天的其他選擇（替代巴拿山）">✨ Lựa chọn khác cho cả ngày (thay Bà Nà)</div>
-        <div class="alts-sub" data-zh="不想去巴拿山？以下都是適合玩一整天的好去處。">Không đi Bà Nà? Đây là những nơi đáng chơi trọn ngày — tham khảo TikTok để chọn.</div>
+        <div class="alts-sub" data-zh="不想去巴拿山？以下都是適合玩一整天的好去處——附價格與距離。">Không đi Bà Nà? Đây là những nơi đáng chơi trọn ngày — kèm giá &amp; khoảng cách.</div>
         <div class="alt-grid">
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">♨️</span><span class="alt-tag allday" data-zh="整天">Cả ngày</span></div>
-            <div class="alt-name" data-zh="神財山溫泉公園<span class='r'>★ 4.3</span>">Suối khoáng nóng Núi Thần Tài<span class="r">★ 4.3</span></div>
-            <div class="alt-desc" data-zh="溫泉、泥漿浴與水上樂園，老少咸宜。">Tắm khoáng nóng, tắm bùn &amp; công viên nước, hợp mọi lứa tuổi.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Than%20Tai%20Hot%20Springs%20Park%20Da%20Nang" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=Nui%20Than%20Tai%20Da%20Nang">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="thantai"><span class="ph-fallback">♨️</span><span class="alt-tag allday" data-zh="整天">Cả ngày</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="神財山溫泉公園<span class='r'>★ 4.3</span>">Suối khoáng nóng Núi Thần Tài<span class="r">★ 4.3</span></div>
+              <div class="alt-meta"><span data-zh="💰 門票約40–50萬₫/人">💰 Vé ~400–500k/người</span><span class="km" data-zh="📍 距美溪約35 km">📍 ~35 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="溫泉、泥漿浴與水上樂園，老少咸宜。">Tắm khoáng nóng, tắm bùn &amp; công viên nước, hợp mọi lứa tuổi.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Than%20Tai%20Hot%20Springs%20Park%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🌊</span><span class="alt-tag allday" data-zh="整天">Cả ngày</span></div>
-            <div class="alt-name" data-zh="Mikazuki 水樂園 365<span class='r'>★ 4.4</span>">Mikazuki Water Park 365<span class="r">★ 4.4</span></div>
-            <div class="alt-desc" data-zh="日式水樂園與溫泉，就在海邊。">Công viên nước Nhật &amp; onsen trong nhà, ngay sát biển.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Mikazuki%20Water%20Park%20365%20Da%20Nang" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=Mikazuki%20Da%20Nang">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="mikazuki"><span class="ph-fallback">🌊</span><span class="alt-tag allday" data-zh="整天">Cả ngày</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="Mikazuki 水樂園 365<span class='r'>★ 4.4</span>">Mikazuki Water Park 365<span class="r">★ 4.4</span></div>
+              <div class="alt-meta"><span data-zh="💰 門票約40–60萬₫">💰 Vé ~400–600k</span><span class="km" data-zh="📍 距美溪約13 km">📍 ~13 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="日式水樂園與溫泉，就在海邊。">Công viên nước Nhật &amp; onsen trong nhà, ngay sát biển.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Mikazuki%20Water%20Park%20365%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🏍️</span><span class="alt-tag" data-zh="半天">Nửa ngày</span></div>
-            <div class="alt-name" data-zh="海雲關 &amp; 浪歌<span class='r'>★ 4.7</span>">Đèo Hải Vân &amp; Lăng Cô<span class="r">★ 4.7</span></div>
-            <div class="alt-desc" data-zh="傳奇山道，俯瞰海灣絕景。">Cung đèo huyền thoại, view vịnh biển đẹp ngỡ ngàng.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hai%20Van%20Pass" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=deo%20Hai%20Van">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="haivan"><span class="ph-fallback">🏍️</span><span class="alt-tag" data-zh="半天">Nửa ngày</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="海雲關 &amp; 浪歌<span class='r'>★ 4.7</span>">Đèo Hải Vân &amp; Lăng Cô<span class="r">★ 4.7</span></div>
+              <div class="alt-meta"><span data-zh="💰 免費">💰 Miễn phí</span><span class="km" data-zh="📍 距美溪約25 km">📍 ~25 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="傳奇山道，俯瞰海灣絕景。">Cung đèo huyền thoại, view vịnh biển đẹp ngỡ ngàng.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hai%20Van%20Pass" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🐠</span><span class="alt-tag allday" data-zh="整天">Cả ngày</span></div>
-            <div class="alt-name" data-zh="占婆島<span class='r'>★ 4.5</span>">Cù Lao Chàm<span class="r">★ 4.5</span></div>
-            <div class="alt-desc" data-zh="海島浮潛賞珊瑚（從會安出發）。">Đảo biển xanh, lặn ngắm san hô (đi từ Cửa Đại – Hội An).</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Cu%20Lao%20Cham" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=Cu%20Lao%20Cham">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="culaocham"><span class="ph-fallback">🐠</span><span class="alt-tag allday" data-zh="整天">Cả ngày</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="占婆島<span class='r'>★ 4.5</span>">Cù Lao Chàm<span class="r">★ 4.5</span></div>
+              <div class="alt-meta"><span data-zh="💰 行程約40–70萬₫">💰 Tour ~400–700k</span><span class="km" data-zh="📍 距美溪約30 km">📍 ~30 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="海島浮潛賞珊瑚（從會安出發）。">Đảo biển xanh, lặn ngắm san hô (đi từ Cửa Đại – Hội An).</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Cu%20Lao%20Cham" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🎢</span><span class="alt-tag allday" data-zh="整天">Cả ngày</span></div>
-            <div class="alt-name" data-zh="VinWonders 南會安<span class='r'>★ 4.4</span>">VinWonders Nam Hội An<span class="r">★ 4.4</span></div>
-            <div class="alt-desc" data-zh="大型主題樂園，孩子最愛。">Công viên giải trí lớn, cô con gái sẽ mê.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=VinWonders%20Nam%20Hoi%20An" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=VinWonders%20Nam%20Hoi%20An">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="vinwonders"><span class="ph-fallback">🎢</span><span class="alt-tag allday" data-zh="整天">Cả ngày</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="VinWonders 南會安<span class='r'>★ 4.4</span>">VinWonders Nam Hội An<span class="r">★ 4.4</span></div>
+              <div class="alt-meta"><span data-zh="💰 門票約50–60萬₫">💰 Vé ~500–600k</span><span class="km" data-zh="📍 距美溪約45 km">📍 ~45 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="大型主題樂園，孩子最愛。">Công viên giải trí lớn, cô con gái sẽ mê.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=VinWonders%20Nam%20Hoi%20An" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🖼️</span><span class="alt-tag" data-zh="半天">Nửa ngày</span></div>
-            <div class="alt-name" data-zh="3D 立體美術館<span class='r'>★ 4.2</span>">Art in Paradise (tranh 3D)<span class="r">★ 4.2</span></div>
-            <div class="alt-desc" data-zh="3D 錯覺美術館，拍照超有趣。">Bảo tàng tranh 3D, chụp ảnh vui nhộn, hợp ngày nắng.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Art%20in%20Paradise%20Da%20Nang" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=Art%20in%20Paradise%20Da%20Nang">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="artparadise"><span class="ph-fallback">🖼️</span><span class="alt-tag" data-zh="半天">Nửa ngày</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="3D 立體美術館<span class='r'>★ 4.2</span>">Art in Paradise (tranh 3D)<span class="r">★ 4.2</span></div>
+              <div class="alt-meta"><span data-zh="💰 門票約10–15萬₫">💰 Vé ~100–150k</span><span class="km" data-zh="📍 距美溪約3 km">📍 ~3 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="3D 錯覺美術館，拍照超有趣。">Bảo tàng tranh 3D, chụp ảnh vui nhộn, hợp ngày nắng.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Art%20in%20Paradise%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
         </div>
       </div>
@@ -781,11 +817,10 @@
         <div class="place-body"><div class="place-inner">
           <div class="ph" data-album="linhung"><span class="ph-fallback">🛕</span><img loading="lazy" alt="Chùa Linh Ứng Sơn Trà" src="https://loremflickr.com/720/405/buddha,statue,temple,vietnam" data-cap="Tượng Phật Bà 67m — Chùa Linh Ứng Sơn Trà" data-cap-zh="67公尺觀音像——山茶靈應寺"></div>
           <span class="rating" data-zh="★ 4.7 · 7,400則評價">★ 4.7 · 7.400 đánh giá</span>
-          <div class="info-row"><span class="info-pill" data-zh="💸 免費">💸 Miễn phí</span><span class="info-pill" data-zh="🅿️ 停車 1–2萬₫">🅿️ Gửi xe 10–20k</span><span class="info-pill" data-zh="👟 入殿需脫鞋">👟 Bỏ giày khi vào điện</span></div>
+          <div class="info-row"><span class="info-pill" data-zh="💸 免費">💸 Miễn phí</span><span class="info-pill" data-zh="🅿️ 停車 1–2萬₫">🅿️ Gửi xe 10–20k</span><span class="info-pill" data-zh="👟 入殿需脫鞋">👟 Bỏ giày khi vào điện</span><span class="info-pill" data-zh="📍 距美溪約10 km">📍 ~10 km từ Mỹ Khê</span></div>
           <p data-zh="依山而建的寺廟，矗立一尊高67公尺、面海的觀音像，空間開闊寧靜。入寺請著裝端莊。">Ngôi chùa trên sườn núi với tượng Phật Bà khổng lồ cao 67m nhìn ra biển, không gian rộng và yên bình. Mặc đồ lịch sự kín đáo khi vào chùa.</p>
           <div class="links">
             <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Chua%20Linh%20Ung%20Son%20Tra&query_place_id=ChIJHZakNa8ZQjERWNFToM16eB4" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
-            <a class="lnk tt" href="https://www.tiktok.com/search?q=chua%20Linh%20Ung%20Son%20Tra" target="_blank">🎬 TikTok</a>
             <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Chua%20Linh%20Ung%20Son%20Tra&query_place_id=ChIJHZakNa8ZQjERWNFToM16eB4" target="_blank" data-zh="★ 評論">★ Review</a>
           </div>
           <div class="place-tags"><span class="ptag" data-zh="心靈">Tâm linh</span><span class="ptag" data-zh="海景">View biển</span></div>
@@ -797,11 +832,10 @@
         <div class="place-body"><div class="place-inner">
           <div class="ph" data-album="banco"><span class="ph-fallback">⛰️</span><img loading="lazy" alt="Đỉnh Bàn Cờ Sơn Trà" src="https://loremflickr.com/720/405/sontra,mountain,viewpoint" data-cap="Đỉnh Bàn Cờ — view toàn cảnh Đà Nẵng" data-cap-zh="棋盤頂——峴港全景"></div>
           <span class="rating" data-zh="★ 4.7 · 687則評價">★ 4.7 · 687 đánh giá</span>
-          <div class="info-row"><span class="info-pill" data-zh="💸 免費">💸 Miễn phí</span><span class="info-pill" data-zh="🚗 建議租附司機車輛">🚗 Nên thuê xe có tài xế</span><span class="info-pill" data-zh="🐒 有猴子——顧好食物">🐒 Có khỉ — giữ đồ ăn</span></div>
+          <div class="info-row"><span class="info-pill" data-zh="💸 免費">💸 Miễn phí</span><span class="info-pill" data-zh="🚗 建議租附司機車輛">🚗 Nên thuê xe có tài xế</span><span class="info-pill" data-zh="🐒 有猴子——顧好食物">🐒 Có khỉ — giữ đồ ăn</span><span class="info-pill" data-zh="📍 距美溪約13 km">📍 ~13 km từ Mỹ Khê</span></div>
           <p data-zh="海拔約700公尺，可俯瞰整座城市與海岸線，景色絕美。上山路陡且彎多——建議租附司機的車（部分路段禁速克達）。">Khoảng 700m so với mực nước biển, view toàn cảnh thành phố và bờ biển tuyệt đẹp. Đường lên dốc và quanh co — nên thuê xe có tài xế (xe tay ga bị cấm một số đoạn).</p>
           <div class="links">
             <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Dinh%20Ban%20Co%20Son%20Tra&query_place_id=ChIJT6YRonE9QjERIzwY4jOAWrY" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
-            <a class="lnk tt" href="https://www.tiktok.com/search?q=dinh%20Ban%20Co%20Son%20Tra" target="_blank">🎬 TikTok</a>
             <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Dinh%20Ban%20Co%20Son%20Tra&query_place_id=ChIJT6YRonE9QjERIzwY4jOAWrY" target="_blank" data-zh="★ 評論">★ Review</a>
           </div>
           <div class="place-tags"><span class="ptag" data-zh="美景">View đẹp</span><span class="ptag" data-zh="猴子與自然">Khỉ &amp; thiên nhiên</span></div>
@@ -813,11 +847,10 @@
         <div class="place-body"><div class="place-inner">
           <div class="ph" data-album="marble"><span class="ph-fallback">🪨</span><img loading="lazy" alt="Ngũ Hành Sơn" src="https://loremflickr.com/720/405/marble,mountain,cave,vietnam" data-cap="Ngũ Hành Sơn — hang động &amp; chùa cổ" data-cap-zh="五行山——洞窟與古剎"></div>
           <span class="rating" data-zh="★ 4.4 · 41,000則評價">★ 4.4 · 41.000 đánh giá</span>
-          <div class="info-row"><span class="info-pill" data-zh="🎫 水山 約4萬₫">🎫 Thủy Sơn ~40k</span><span class="info-pill" data-zh="🎓 學生 約1萬₫">🎓 HS/SV ~10k</span><span class="info-pill" data-zh="🛗 電梯 約1.5萬₫/趟">🛗 Thang máy ~15k/lượt</span><span class="info-pill" data-zh="🕐 7:00–17:30">🕐 7h–17h30</span></div>
+          <div class="info-row"><span class="info-pill" data-zh="🎫 水山 約4萬₫">🎫 Thủy Sơn ~40k</span><span class="info-pill" data-zh="🎓 學生 約1萬₫">🎓 HS/SV ~10k</span><span class="info-pill" data-zh="🛗 電梯 約1.5萬₫/趟">🛗 Thang máy ~15k/lượt</span><span class="info-pill" data-zh="🕐 7:00–17:30">🕐 7h–17h30</span><span class="info-pill" data-zh="📍 距美溪約8 km">📍 ~8 km từ Mỹ Khê</span></div>
           <p data-zh="💰 陰府洞約2萬₫。從山茶半島回程順道遊五行山——一片石灰岩山群，有洞窟與古剎。請穿防滑鞋、帶水。☎ 管理處: 0236 3961 114。">💰 Động Âm Phủ ~20.000đ. Trên đường về từ Sơn Trà ghé Ngũ Hành Sơn — cụm núi đá với hang động và chùa cổ. Đi giày chống trượt, mang nước. ☎ BQL: 0236 3961 114.</p>
           <div class="links">
             <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Marble%20Mountains%20Danang&query_place_id=ChIJ2y5L4dQNQjERxeSLc68fbrw" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
-            <a class="lnk tt" href="https://www.tiktok.com/search?q=Ngu%20Hanh%20Son%20Da%20Nang" target="_blank">🎬 TikTok</a>
             <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Marble%20Mountains%20Danang&query_place_id=ChIJ2y5L4dQNQjERxeSLc68fbrw" target="_blank" data-zh="★ 評論">★ Review</a>
           </div>
           <div class="place-tags"><span class="ptag" data-zh="洞窟">Hang động</span><span class="ptag" data-zh="古剎">Chùa cổ</span></div>
@@ -833,7 +866,6 @@
           <p data-zh="💰 過去入園/夜市免費；遊樂設施套票約15–30萬₫。若關閉，可改去<strong>山茶夜市</strong>、<strong>愛情橋－鯉魚化龍</strong>或美溪附近的<strong>An Thượng 夜街</strong>。">💰 Trước đây vào cổng/chợ đêm miễn phí; vé trò chơi trọn gói ~150.000–300.000đ. Nếu đóng cửa, có thể thay bằng <strong>chợ đêm Sơn Trà</strong>, <strong>cầu Tình Yêu – Cá Chép Hóa Rồng</strong> hoặc <strong>phố đêm An Thượng</strong> gần Mỹ Khê.</p>
           <div class="links">
             <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Da%20Nang%20Downtown&query_place_id=ChIJF8yRoecZQjERdDBeBdSRD-Y" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
-            <a class="lnk tt" href="https://www.tiktok.com/search?q=Da%20Nang%20Downtown%20Sun%20Wheel" target="_blank">🎬 TikTok</a>
             <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Da%20Nang%20Downtown&query_place_id=ChIJF8yRoecZQjERdDBeBdSRD-Y" target="_blank" data-zh="★ 評論">★ Review</a>
             <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Ch%E1%BB%A3%20%C4%91%C3%AAm%20S%C6%A1n%20Tr%C3%A0%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank" data-zh="🌃 山茶夜市">🌃 Chợ đêm Sơn Trà</a>
           </div>
@@ -843,43 +875,61 @@
 
       <div class="alts">
         <div class="alts-head" data-zh="✨ 本日其他選擇（山茶／市區）">✨ Lựa chọn khác cho ngày này</div>
-        <div class="alts-sub" data-zh="依時段挑選：上午山茶、下午博物館、晚上逛街（可上 TikTok 參考）。">Chọn theo buổi: sáng Sơn Trà, chiều bảo tàng, tối dạo phố — tham khảo TikTok.</div>
+        <div class="alts-sub" data-zh="依時段挑選：上午山茶、下午博物館、晚上逛街——附價格與距離。">Chọn theo buổi: sáng Sơn Trà, chiều bảo tàng, tối dạo phố — kèm giá &amp; khoảng cách.</div>
         <div class="alt-grid">
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🏝️</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
-            <div class="alt-name" data-zh="山茶半島海灘（Bụt／Rạng）<span class='r'>★ 4.5</span>">Bãi Bụt – Bãi Rạng (Sơn Trà)<span class="r">★ 4.5</span></div>
-            <div class="alt-desc" data-zh="原始海灘，海水清澈，可浮潛。">Bãi biển hoang sơ, nước trong, có thể lặn ngắm.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bai%20But%20Son%20Tra%20Da%20Nang" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=Bai%20But%20Son%20Tra">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="baibut"><span class="ph-fallback">🏝️</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="山茶半島海灘<span class='r'>★ 4.5</span>">Bãi Bụt – Bãi Rạng (Sơn Trà)<span class="r">★ 4.5</span></div>
+              <div class="alt-meta"><span data-zh="💰 免費">💰 Miễn phí</span><span class="km" data-zh="📍 距美溪約10 km">📍 ~10 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="原始海灘，海水清澈，可浮潛。">Bãi biển hoang sơ, nước trong, có thể lặn ngắm.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bai%20But%20Son%20Tra%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🌳</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
-            <div class="alt-name" data-zh="千年古榕樹<span class='r'>★ 4.5</span>">Cây đa di sản ngàn năm<span class="r">★ 4.5</span></div>
-            <div class="alt-desc" data-zh="山茶半島上的巨大古榕，氣勢驚人。">Cây đa cổ thụ khổng lồ trên bán đảo Sơn Trà.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ancient%20Banyan%20Tree%20Son%20Tra%20Da%20Nang" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=cay%20da%20ngan%20nam%20Son%20Tra">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="cayda"><span class="ph-fallback">🌳</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="千年古榕樹<span class='r'>★ 4.5</span>">Cây đa di sản ngàn năm<span class="r">★ 4.5</span></div>
+              <div class="alt-meta"><span data-zh="💰 免費">💰 Miễn phí</span><span class="km" data-zh="📍 距美溪約13 km">📍 ~13 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="山茶半島上的巨大古榕，氣勢驚人。">Cây đa cổ thụ khổng lồ trên bán đảo Sơn Trà.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ancient%20Banyan%20Tree%20Son%20Tra%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🗿</span><span class="alt-tag" data-zh="下午">Chiều</span></div>
-            <div class="alt-name" data-zh="占婆雕刻博物館<span class='r'>★ 4.5</span>">Bảo tàng Điêu khắc Chăm<span class="r">★ 4.5</span></div>
-            <div class="alt-desc" data-zh="占婆古文物，室內涼爽避暑。">Cổ vật Chăm Pa quý giá, trong nhà mát mẻ tránh nắng.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Museum%20of%20Cham%20Sculpture%20Da%20Nang" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=Bao%20tang%20Cham%20Da%20Nang">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="cham"><span class="ph-fallback">🗿</span><span class="alt-tag" data-zh="下午">Chiều</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="占婆雕刻博物館<span class='r'>★ 4.5</span>">Bảo tàng Điêu khắc Chăm<span class="r">★ 4.5</span></div>
+              <div class="alt-meta"><span data-zh="💰 門票約6萬₫">💰 Vé ~60k/người</span><span class="km" data-zh="📍 距美溪約4 km">📍 ~4 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="占婆古文物，室內涼爽避暑。">Cổ vật Chăm Pa quý giá, trong nhà mát mẻ tránh nắng.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Museum%20of%20Cham%20Sculpture%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🪚</span><span class="alt-tag" data-zh="下午">Chiều</span></div>
-            <div class="alt-name" data-zh="非水石雕村<span class='r'>★ 4.2</span>">Làng đá mỹ nghệ Non Nước<span class="r">★ 4.2</span></div>
-            <div class="alt-desc" data-zh="五行山腳下的石雕工藝村。">Làng nghề điêu khắc đá ngay dưới chân Ngũ Hành Sơn.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Non%20Nuoc%20Stone%20Carving%20Village%20Da%20Nang" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=lang%20da%20Non%20Nuoc">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="nonnuoc"><span class="ph-fallback">🪚</span><span class="alt-tag" data-zh="下午">Chiều</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="非水石雕村<span class='r'>★ 4.2</span>">Làng đá mỹ nghệ Non Nước<span class="r">★ 4.2</span></div>
+              <div class="alt-meta"><span data-zh="💰 參觀免費">💰 Miễn phí tham quan</span><span class="km" data-zh="📍 距美溪約8 km">📍 ~8 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="五行山腳下的石雕工藝村。">Làng nghề điêu khắc đá ngay dưới chân Ngũ Hành Sơn.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Non%20Nuoc%20Stone%20Carving%20Village%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🌃</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
-            <div class="alt-name" data-zh="山茶夜市<span class='r'>★ 4.0</span>">Chợ đêm Sơn Trà<span class="r">★ 4.0</span></div>
-            <div class="alt-desc" data-zh="龍橋旁熱鬧的小吃夜市。">Khu ăn vặt sôi động ngay gần cầu Rồng.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Son%20Tra%20Night%20Market%20Da%20Nang" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=cho%20dem%20Son%20Tra%20Da%20Nang">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="chodem"><span class="ph-fallback">🌃</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="山茶夜市<span class='r'>★ 4.0</span>">Chợ đêm Sơn Trà<span class="r">★ 4.0</span></div>
+              <div class="alt-meta"><span data-zh="💰 免費入場">💰 Miễn phí vào</span><span class="km" data-zh="📍 距美溪約3.5 km">📍 ~3,5 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="龍橋旁熱鬧的小吃夜市。">Khu ăn vặt sôi động ngay gần cầu Rồng.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Son%20Tra%20Night%20Market%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">💕</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
-            <div class="alt-name" data-zh="愛情橋 &amp; 鯉魚化龍<span class='r'>★ 4.4</span>">Cầu Tình Yêu &amp; Cá Chép Hóa Rồng<span class="r">★ 4.4</span></div>
-            <div class="alt-desc" data-zh="江畔浪漫打卡，燈光閃爍。">Điểm check-in lung linh ven sông Hàn, gần chợ đêm.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Love%20Bridge%20Da%20Nang" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=cau%20Tinh%20Yeu%20Da%20Nang">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="lovebridge"><span class="ph-fallback">💕</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="愛情橋 &amp; 鯉魚化龍<span class='r'>★ 4.4</span>">Cầu Tình Yêu &amp; Cá Chép Hóa Rồng<span class="r">★ 4.4</span></div>
+              <div class="alt-meta"><span data-zh="💰 免費">💰 Miễn phí</span><span class="km" data-zh="📍 距美溪約3.5 km">📍 ~3,5 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="江畔浪漫打卡，燈光閃爍。">Điểm check-in lung linh ven sông Hàn, gần chợ đêm.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Love%20Bridge%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
         </div>
       </div>
@@ -900,11 +950,10 @@
         <div class="place-body"><div class="place-inner">
           <div class="ph" data-album="hoian"><span class="ph-fallback">🏮</span><img loading="lazy" alt="Phố cổ Hội An" src="https://loremflickr.com/720/405/hoian,lantern,ancienttown" data-cap="Phố cổ Hội An — tường vàng, đèn lồng" data-cap-zh="會安古鎮——黃牆、燈籠"></div>
           <span class="rating" data-zh="★ 4.7 · 4,000則評價">★ 4.7 · 4.000 đánh giá</span>
-          <div class="info-row"><span class="info-pill" data-zh="🎫 古鎮門票 約12萬₫">🎫 Vé phố cổ ~120k</span><span class="info-pill" data-zh="🏮 水燈 1–2萬₫">🏮 Hoa đăng 10–20k</span><span class="info-pill" data-zh="🛶 搭船 約5萬₫起">🛶 Thuyền từ ~50k</span><span class="info-pill" data-zh="🚗 距峴港約30分鐘">🚗 Từ ĐN ~30 phút</span></div>
+          <div class="info-row"><span class="info-pill" data-zh="🎫 古鎮門票 約12萬₫">🎫 Vé phố cổ ~120k</span><span class="info-pill" data-zh="🏮 水燈 1–2萬₫">🏮 Hoa đăng 10–20k</span><span class="info-pill" data-zh="🛶 搭船 約5萬₫起">🛶 Thuyền từ ~50k</span><span class="info-pill" data-zh="🚗 距峴港約30分鐘">🚗 Từ ĐN ~30 phút</span><span class="info-pill" data-zh="📍 距美溪約30 km">📍 ~30 km từ Mỹ Khê</span></div>
           <p data-zh="💰 古鎮門票可參觀5處古蹟；兒童多為免/減票。純逛街不一定要買票，僅進古宅／會館時才需要。因下午要退房，今早提早出發以避開烈日與人潮。☎ 0944 104 901。">💰 Vé phố cổ vào 5 điểm di tích; trẻ em thường miễn/giảm. Dạo phố không bắt buộc mua vé, chỉ cần khi vào nhà cổ/hội quán. Vì chiều phải trả phòng, sáng nay đi sớm để tránh nắng &amp; đông. ☎ 0944 104 901.</p>
           <div class="links">
             <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Hoi%20An%20Ancient%20Town&query_place_id=ChIJ897x3ZAPQjER5-xlS8XyP68" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
-            <a class="lnk tt" href="https://www.tiktok.com/search?q=pho%20co%20Hoi%20An" target="_blank">🎬 TikTok</a>
             <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Hoi%20An%20Ancient%20Town&query_place_id=ChIJ897x3ZAPQjER5-xlS8XyP68" target="_blank" data-zh="★ 評論">★ Review</a>
           </div>
           <div class="place-tags"><span class="ptag" data-zh="來遠橋">Chùa Cầu</span><span class="ptag" data-zh="古宅">Nhà cổ</span><span class="ptag" data-zh="秋盆河">Sông Hoài</span></div>
@@ -934,43 +983,61 @@
 
       <div class="alts">
         <div class="alts-head" data-zh="✨ 會安周邊其他選擇">✨ Lựa chọn khác quanh Hội An</div>
-        <div class="alts-sub" data-zh="若上午想換點花樣，可選以下會安周邊景點（TikTok 有很多實拍）。">Muốn đổi gió buổi sáng? Chọn các điểm quanh Hội An dưới đây — TikTok có nhiều clip thực tế.</div>
+        <div class="alts-sub" data-zh="想換個早晨？以下會安周邊景點——附價格與距離。">Muốn đổi gió buổi sáng? Các điểm quanh Hội An dưới đây — kèm giá &amp; khoảng cách.</div>
         <div class="alt-grid">
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🛶</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
-            <div class="alt-name" data-zh="七畝水椰林<span class='r'>★ 4.4</span>">Rừng dừa Bảy Mẫu<span class="r">★ 4.4</span></div>
-            <div class="alt-desc" data-zh="搭籃船遊水椰林，趣味十足。">Chèo thuyền thúng giữa rừng dừa nước, rất vui.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bay%20Mau%20Coconut%20Forest%20Hoi%20An" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=rung%20dua%20Bay%20Mau%20Hoi%20An">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="rungdua"><span class="ph-fallback">🛶</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="七畝水椰林<span class='r'>★ 4.4</span>">Rừng dừa Bảy Mẫu<span class="r">★ 4.4</span></div>
+              <div class="alt-meta"><span data-zh="💰 籃船約15–20萬₫">💰 Thuyền ~150–200k</span><span class="km" data-zh="📍 距美溪約27 km">📍 ~27 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="搭籃船遊水椰林，趣味十足。">Chèo thuyền thúng giữa rừng dừa nước, rất vui.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bay%20Mau%20Coconut%20Forest%20Hoi%20An" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🏖️</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
-            <div class="alt-name" data-zh="安邦海灘<span class='r'>★ 4.5</span>">Biển An Bàng<span class="r">★ 4.5</span></div>
-            <div class="alt-desc" data-zh="會安寧靜美麗的海灘。">Bãi biển đẹp &amp; yên bình bậc nhất Hội An.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=An%20Bang%20Beach%20Hoi%20An" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=An%20Bang%20Beach%20Hoi%20An">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="anbang"><span class="ph-fallback">🏖️</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="安邦海灘<span class='r'>★ 4.5</span>">Biển An Bàng<span class="r">★ 4.5</span></div>
+              <div class="alt-meta"><span data-zh="💰 免費">💰 Miễn phí</span><span class="km" data-zh="📍 距美溪約28 km">📍 ~28 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="會安寧靜美麗的海灘。">Bãi biển đẹp &amp; yên bình bậc nhất Hội An.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=An%20Bang%20Beach%20Hoi%20An" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🏺</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
-            <div class="alt-name" data-zh="清河陶藝村<span class='r'>★ 4.2</span>">Làng gốm Thanh Hà<span class="r">★ 4.2</span></div>
-            <div class="alt-desc" data-zh="約500年歷史的古陶村，可體驗拉坯。">Làng nghề gốm cổ ~500 năm, trải nghiệm nặn gốm.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Thanh%20Ha%20Pottery%20Village%20Hoi%20An" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=lang%20gom%20Thanh%20Ha">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="thanhha"><span class="ph-fallback">🏺</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="清河陶藝村<span class='r'>★ 4.2</span>">Làng gốm Thanh Hà<span class="r">★ 4.2</span></div>
+              <div class="alt-meta"><span data-zh="💰 門票約3.5萬₫">💰 Vé ~35k/người</span><span class="km" data-zh="📍 距美溪約28 km">📍 ~28 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="約500年歷史的古陶村，可體驗拉坯。">Làng nghề gốm cổ ~500 năm, trải nghiệm nặn gốm.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Thanh%20Ha%20Pottery%20Village%20Hoi%20An" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🥬</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
-            <div class="alt-name" data-zh="茶桂菜村<span class='r'>★ 4.4</span>">Làng rau Trà Quế<span class="r">★ 4.4</span></div>
-            <div class="alt-desc" data-zh="傳統菜村，體驗農事與田園風光。">Làng rau truyền thống, trải nghiệm làm nông yên bình.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Tra%20Que%20Vegetable%20Village%20Hoi%20An" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=lang%20rau%20Tra%20Que">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="traque"><span class="ph-fallback">🥬</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="茶桂菜村<span class='r'>★ 4.4</span>">Làng rau Trà Quế<span class="r">★ 4.4</span></div>
+              <div class="alt-meta"><span data-zh="💰 門票約3.5萬₫">💰 Vé ~35k/người</span><span class="km" data-zh="📍 距美溪約26 km">📍 ~26 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="傳統菜村，體驗農事與田園風光。">Làng rau truyền thống, trải nghiệm làm nông yên bình.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Tra%20Que%20Vegetable%20Village%20Hoi%20An" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🎢</span><span class="alt-tag allday" data-zh="整天">Cả ngày</span></div>
-            <div class="alt-name" data-zh="VinWonders 南會安<span class='r'>★ 4.4</span>">VinWonders Nam Hội An<span class="r">★ 4.4</span></div>
-            <div class="alt-desc" data-zh="有時間又想玩樂的話可選。">Nếu còn nhiều thời gian &amp; muốn vui chơi cả ngày.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=VinWonders%20Nam%20Hoi%20An" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=VinWonders%20Nam%20Hoi%20An">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="vinwonders"><span class="ph-fallback">🎢</span><span class="alt-tag allday" data-zh="整天">Cả ngày</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="VinWonders 南會安<span class='r'>★ 4.4</span>">VinWonders Nam Hội An<span class="r">★ 4.4</span></div>
+              <div class="alt-meta"><span data-zh="💰 門票約50–60萬₫">💰 Vé ~500–600k</span><span class="km" data-zh="📍 距美溪約45 km">📍 ~45 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="有時間又想玩樂的話可選。">Nếu còn nhiều thời gian &amp; muốn vui chơi cả ngày.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=VinWonders%20Nam%20Hoi%20An" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
           <div class="alt">
-            <div class="alt-top"><span class="alt-ic">🏛️</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
-            <div class="alt-name" data-zh="會安博物館 &amp; 來遠橋<span class='r'>★ 4.5</span>">Bảo tàng &amp; Chùa Cầu Hội An<span class="r">★ 4.5</span></div>
-            <div class="alt-desc" data-zh="古鎮內的代表性古蹟。">Các di tích tiêu biểu ngay trong lòng phố cổ.</div>
-            <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Chua%20Cau%20Hoi%20An" data-zh="📍 地圖">📍 Bản đồ</a><a class="tt" target="_blank" href="https://www.tiktok.com/search?q=Chua%20Cau%20Hoi%20An">🎬 TikTok</a></div>
+            <div class="ph" data-altimg="chuacau"><span class="ph-fallback">🏛️</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
+            <div class="alt-body">
+              <div class="alt-name" data-zh="會安博物館 &amp; 來遠橋<span class='r'>★ 4.5</span>">Bảo tàng &amp; Chùa Cầu Hội An<span class="r">★ 4.5</span></div>
+              <div class="alt-meta"><span data-zh="💰 含古鎮門票12萬₫">💰 Trong vé phố cổ 120k</span><span class="km" data-zh="📍 距美溪約30 km">📍 ~30 km từ Mỹ Khê</span></div>
+              <div class="alt-desc" data-zh="古鎮內的代表性古蹟。">Các di tích tiêu biểu ngay trong lòng phố cổ.</div>
+              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Chua%20Cau%20Hoi%20An" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
+            </div>
           </div>
         </div>
       </div>
@@ -1276,6 +1343,11 @@
 
   // ---------- GALLERIES (nhiều ảnh / 多張照片) ----------
   const GAL=[];               // mỗi phần tử = mảng {src,cap,capZh}
+  // Wikimedia chỉ phục vụ một số kích thước cố định (1280px, 1920px...); kích thước tùy ý lỗi 400.
+  // Hiển thị dùng 1280px (gốc API, chắc chắn có); lightbox nâng lên 1920px (2K) cho sắc nét.
+  function sizeUrl(u,w){return (typeof u==='string')?u.replace(/\/\d+px-/,'/'+w+'px-'):u;}
+  // Ảnh thật (cảnh quan) cho các "lựa chọn khác"
+  const ALT_IMG={cruise:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Bright_Da_Nang_skyline_%28Unsplash%29.jpg/1280px-Bright_Da_Nang_skyline_%28Unsplash%29.jpg",swing:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/S%C3%B4ng_H%C3%A0n.jpg/1280px-S%C3%B4ng_H%C3%A0n.jpg",helio:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Food_court_at_Helio_Center%2C_Da_Nang_%2849358206972%29.jpg/1280px-Food_court_at_Helio_Center%2C_Da_Nang_%2849358206972%29.jpg",thuanphuoc:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/2024-12-08_Thuan_Phuoc_Bridge_in_Da_Nang.jpg/1280px-2024-12-08_Thuan_Phuoc_Bridge_in_Da_Nang.jpg",thantai:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/CVKSN_N%C3%BAi_Th%E1%BA%A7n_T%C3%A0i.jpg/1280px-CVKSN_N%C3%BAi_Th%E1%BA%A7n_T%C3%A0i.jpg",haivan:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/%C4%90%C3%A0_N%E1%BA%B5ng%2C_H%E1%BA%A3i_V%C3%A2n_Pass%2C_2020-01_CN-01.jpg/1280px-%C4%90%C3%A0_N%E1%BA%B5ng%2C_H%E1%BA%A3i_V%C3%A2n_Pass%2C_2020-01_CN-01.jpg",culaocham:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Cu_Lao_Cham_Marine_Park%2C_Vietnam_%282594704519%29.jpg/1280px-Cu_Lao_Cham_Marine_Park%2C_Vietnam_%282594704519%29.jpg",cham:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/0040323_Nandi%2C_Cham_Hindu_artwork%2C_Museum_of_Cham_Sculpture%2C_Da_Nang_Vietnam.jpg/1280px-0040323_Nandi%2C_Cham_Hindu_artwork%2C_Museum_of_Cham_Sculpture%2C_Da_Nang_Vietnam.jpg",nonnuoc:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Non_Nuoc_Pagoda_Da_Nang_4.jpg/1280px-Non_Nuoc_Pagoda_Da_Nang_4.jpg",lovebridge:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Love_Lock_Bridge_Da_Nang_05.19.jpg/1280px-Love_Lock_Bridge_Da_Nang_05.19.jpg",anbang:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/2024-11-23_An_Bang_Beach_in_Hoi_An_in_November.jpg/1280px-2024-11-23_An_Bang_Beach_in_Hoi_An_in_November.jpg",traque:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Tra_Que_Village%2C_Hoi_An_%2846404317941%29.jpg/1280px-Tra_Que_Village%2C_Hoi_An_%2846404317941%29.jpg",chuacau:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Japanese_Covered_Bridge_in_Hoi_An_%2826312976905%29.jpg/1280px-Japanese_Covered_Bridge_in_Hoi_An_%2826312976905%29.jpg",baibut:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Chua_Linh_Ung_Bai_But_DN.jpg/1280px-Chua_Linh_Ung_Bai_But_DN.jpg",cayda:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Road_on_the_Son_Tra_Mountain.jpg/1280px-Road_on_the_Son_Tra_Mountain.jpg",apec:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Bright_Da_Nang_skyline_%28Unsplash%29.jpg/1280px-Bright_Da_Nang_skyline_%28Unsplash%29.jpg"};
   function recalcOpen(el){const card=el.closest&&el.closest('.place.open');if(card){const b=card.querySelector('.place-body');b.style.maxHeight=b.scrollHeight+'px';}}
   function onImgErr(im,isThumb){im.addEventListener('error',()=>{if(isThumb)im.style.display='none';else im.parentElement.classList.add('noimg');});}
 
@@ -1305,7 +1377,17 @@
     GAL.push(group);
   });
 
-  // Ảnh đơn (khách sạn, món ăn) cũng mở được lightbox
+  // Ảnh thật cho các "lựa chọn khác" (nếu tìm được)
+  document.querySelectorAll('.ph[data-altimg]').forEach(ph=>{
+    const u=ALT_IMG[ph.dataset.altimg]; if(!u) return;
+    const card=ph.closest('.alt'), nameEl=card&&card.querySelector('.alt-name');
+    const cap=nameEl?nameEl.textContent.replace(/★.*$/,'').trim():'';
+    const im=document.createElement('img');
+    im.loading='lazy'; im.alt=cap; im.src=u; im.dataset.cap=cap;
+    onImgErr(im,false); ph.insertBefore(im, ph.firstChild);
+  });
+
+  // Ảnh đơn (khách sạn, món ăn, lựa chọn khác) cũng mở được lightbox
   document.querySelectorAll('.ph img:not([data-g])').forEach(im=>{
     const gi=GAL.length;
     GAL.push([{src:im.src,cap:im.dataset.cap||'',capZh:im.dataset.capZh||''}]);
@@ -1319,7 +1401,7 @@
   let curGroup=null,curIdx=0;
   function showLB(){
     const it=curGroup[curIdx];
-    lbImg.src=it.src;
+    lbImg.src=sizeUrl(it.src,1920);
     lbCap.textContent=(currentLang==='zh')?(it.capZh||it.cap||''):(it.cap||'');
     const multi=curGroup.length>1;
     lbCount.textContent=multi?((curIdx+1)+' / '+curGroup.length):'';
