@@ -445,6 +445,46 @@
   }
   /* nút nổi tôn trọng vùng an toàn iPhone */
   .totop{bottom:calc(18px + env(safe-area-inset-bottom,0px));right:calc(16px + env(safe-area-inset-right,0px))}
+
+  /* ============================================================
+     SỬA TRÀN NGANG & MENU VUỐT — quan trọng cho mobile
+     (đặt cuối cùng để thắng mọi rule trước đó)
+     ============================================================ */
+  html{overflow-x:clip}
+  body{overflow-x:clip;max-width:100%}
+
+  /* Cho phép flex-item CO LẠI đúng khung — gốc rễ của lỗi tràn ngang.
+     Nếu thiếu min-width:0, flex-item nở theo nội dung và đẩy cả trang rộng ra. */
+  .nav,.nav-links,.place-head,.place-title,.place-title .meta,.cost-row,.info-card li,
+  .rev-author,.rev-author>div,.alt-top,.alt-name,.links,.info-row,.place-tags,.alt-links,
+  .map-legend,.check-item,.check-label,.hero-meta,.weather-strip,.day-mark,.check-progress-top,
+  .food-where,.lang-switch{min-width:0}
+
+  /* Thanh menu: cho co lại đúng khung rồi CUỘN NGANG nội bộ -> vuốt được
+     (bề rộng 100% trên mobile do media-query flex-basis:100% xử lý) */
+  .nav-links{min-width:0;max-width:100%;touch-action:pan-x;overscroll-behavior-x:contain}
+
+  /* Thẻ & lưới không bao giờ rộng hơn màn hình */
+  .tier,.alt,.rev-card,.food-card,.info-card,.tip,.check-group,.place,.day,.cost-table,
+  .map-frame,.next-up,.check-progress-wrap{min-width:0;max-width:100%}
+  .hotel-grid,.review-grid,.food-grid,.tip-grid,.info-grid,.check-groups,.alt-grid,
+  .day-body,.day{min-width:0}
+
+  /* Chữ dài (tên/tiêu đề) xuống dòng thay vì đẩy ngang */
+  .place-title,.alt-name,.rev-name,.tier-price,.food-pad h4,.day-body h3,.alts-head,.next-up .nt{overflow-wrap:anywhere;word-break:break-word}
+
+  /* Ảnh & iframe an toàn (không đụng .ph img tuyệt đối) */
+  iframe{max-width:100%}
+  .map-frame iframe{width:100%}
+
+  /* Tinh chỉnh nav cho màn nhỏ */
+  @media(max-width:560px){
+    .nav{padding:.7rem var(--pad);gap:.45rem .5rem}
+    .nav-brand{font-size:1rem}
+    .nav-links{gap:.15rem;margin-top:.1rem}
+    .nav-links a{padding:.46rem .72rem;font-size:.8rem}
+    .lang-switch button{padding:.34rem .7rem}
+  }
 </style>
 </head>
 <body>
