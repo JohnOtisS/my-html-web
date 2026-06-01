@@ -86,9 +86,13 @@
   .cd-lbl{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(251,245,234,.65);margin-top:.35rem}
   .cd-done{font-family:'Fraunces','Noto Serif TC',serif;font-style:italic;font-size:1.4rem;color:var(--gold-soft)}
 
+  .hero-credit{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.7rem;padding:.5rem 1rem;border-radius:100px;
+    background:rgba(242,198,107,.12);border:1px solid rgba(242,198,107,.32);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    font-size:.78rem;font-weight:600;color:var(--gold-soft);letter-spacing:.03em;opacity:0;animation:rise 1s .9s forwards}
+  .hero-credit b{font-family:'Fraunces','Noto Serif TC',serif;font-weight:600;font-style:italic;font-size:1.02rem;color:#fff;letter-spacing:0}
   .scroll-hint{position:absolute;bottom:3vh;left:var(--pad);right:var(--pad);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(251,245,234,.55);animation:bob 2s infinite;z-index:2}
   @keyframes rise{to{opacity:1;transform:translateY(0)}}
-  .hero-tag,.hero h1,.hero-sub,.hero-meta,.countdown{transform:translateY(28px)}
+  .hero-tag,.hero h1,.hero-sub,.hero-meta,.countdown,.hero-credit{transform:translateY(28px)}
   @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 
   section{padding:5rem var(--pad);position:relative}
@@ -282,6 +286,8 @@
 
   footer{background:var(--ink);color:rgba(251,245,234,.55);text-align:center;padding:3rem var(--pad);font-size:.84rem}
   footer b{color:var(--gold-soft)}
+  .foot-credit{margin-top:.9rem;font-family:'Fraunces','Noto Serif TC',serif;font-style:italic;font-size:1rem;color:var(--gold-soft)}
+  .foot-credit b{color:#fff;font-style:normal}
 
   /* ---------- LIGHTBOX ---------- */
   .lightbox{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;padding:5vw;
@@ -337,7 +343,7 @@
 
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <a class="nav-brand" href="#top">🌴 <span class="full" data-zh="峴港">Đà Nẵng</span> ’26</a>
+  <a class="nav-brand" href="#top">🌴 Otis Plan Trip</a>
   <div class="lang-switch" id="langSwitch" role="group" aria-label="Ngôn ngữ / 語言">
     <button type="button" data-lang="vi" class="active">VI</button>
     <button type="button" data-lang="zh">中文</button>
@@ -376,6 +382,7 @@
       <div class="cd-cell"><div class="cd-num" id="cd-m">--</div><div class="cd-lbl" data-zh="分">Phút</div></div>
       <div class="cd-cell"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl" data-zh="秒">Giây</div></div>
     </div>
+    <div class="hero-credit" data-zh="✦ 行程規劃 <b>Otis</b>">✦ Plan by <b>Otis</b></div>
   </div>
   <div class="scroll-hint" data-zh="向下滑動 · 點各景點看照片、地圖、價格與評價 · 頁尾有清單 ↓">Cuộn xuống · bấm điểm đến để xem ảnh, bản đồ, giá &amp; review · cuối trang có checklist ↓</div>
 </header>
@@ -871,8 +878,9 @@
   <p class="check-hint" style="margin-top:1.2rem" data-zh="💡 小撇步：將此檔下載到手機，用 Chrome/Safari 開啟即可長期保存選擇。也可加到主畫面當作 App 使用。">💡 Mẹo: tải file này về máy rồi mở bằng Chrome/Safari trên điện thoại để lưu được lựa chọn lâu dài. Có thể thêm vào màn hình chính như một ứng dụng.</p>
 </section>
 
-<footer data-zh="峴港旅程 · <b>2026年6月18→21日</b> · 4天3夜 · 海灘、山林、古鎮與度假的平衡。">
-  Hành trình Đà Nẵng · <b>18 → 21 tháng 6, 2026</b> · 4 ngày 3 đêm · Cân bằng giữa biển, núi, phố cổ và nghỉ dưỡng.
+<footer>
+  <div data-zh="峴港旅程 · <b>2026年6月18→21日</b> · 4天3夜 · 海灘、山林、古鎮與度假的平衡。">Hành trình Đà Nẵng · <b>18 → 21 tháng 6, 2026</b> · 4 ngày 3 đêm · Cân bằng giữa biển, núi, phố cổ và nghỉ dưỡng.</div>
+  <div class="foot-credit" data-zh="✦ 本行程由 <b>Otis</b> 規劃 ✦">✦ Hành trình được lên kế hoạch bởi <b>Otis</b> ✦</div>
 </footer>
 
 <!-- LIGHTBOX -->
