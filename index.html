@@ -8,7 +8,7 @@
 <title>Đà Nẵng · Hành trình gia đình 18–21.06.2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,400..700&family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,400..700&family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --sea:#0a6b74; --sea-deep:#052f38; --sea-mid:#0d7d85; --sea-light:#1ba3a8;
@@ -22,7 +22,7 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:70px}
-  body{font-family:'Be Vietnam Pro',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;overflow-x:hidden}
+  body{font-family:'Be Vietnam Pro','Noto Sans TC',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;overflow-x:hidden}
   ::selection{background:var(--coral);color:#fff}
   a{color:inherit;text-decoration:none}
   img{max-width:100%}
@@ -30,16 +30,31 @@
   .progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--coral),var(--gold));z-index:1200;transition:width .1s}
 
   /* ---------- NAV ---------- */
-  .nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;gap:1rem;
-    padding:.85rem var(--pad);transition:background .4s,box-shadow .4s,padding .35s}
-  .nav.scrolled{background:rgba(251,245,234,.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 8px 30px -22px var(--shadow);padding-top:.6rem;padding-bottom:.6rem}
-  .nav-brand{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;color:#fff;transition:color .4s;white-space:nowrap;display:flex;align-items:center;gap:.45rem}
+  .nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;flex-wrap:wrap;align-items:center;gap:.55rem .9rem;
+    padding:.8rem var(--pad);transition:background .4s,box-shadow .4s,padding .35s}
+  .nav.scrolled{background:rgba(251,245,234,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 8px 30px -22px var(--shadow);padding-top:.55rem;padding-bottom:.55rem}
+  .nav-brand{order:1;font-family:'Fraunces','Noto Serif TC',serif;font-weight:600;font-size:1.05rem;color:#fff;transition:color .4s;white-space:nowrap;display:flex;align-items:center;gap:.45rem}
   .nav.scrolled .nav-brand{color:var(--sea-deep)}
-  .nav-links{display:flex;gap:.2rem;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+  .nav-links{order:2;display:flex;gap:.2rem;margin-right:auto;margin-left:.6rem;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .nav-links::-webkit-scrollbar{display:none}
   .nav-links a{font-size:.82rem;font-weight:600;padding:.42rem .8rem;border-radius:100px;color:rgba(255,255,255,.88);white-space:nowrap;transition:background .25s,color .25s}
   .nav.scrolled .nav-links a{color:var(--sea-deep)}
   @media(hover:hover){.nav-links a:hover{background:rgba(255,255,255,.18)}.nav.scrolled .nav-links a:hover{background:var(--sand)}}
+  /* language switch */
+  .lang-switch{order:3;display:inline-flex;flex:0 0 auto;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:100px;padding:3px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+  .nav.scrolled .lang-switch{background:#fff;border-color:var(--line)}
+  .lang-switch button{border:none;background:transparent;cursor:pointer;font-family:'Be Vietnam Pro','Noto Sans TC';font-weight:700;font-size:.78rem;color:rgba(255,255,255,.92);padding:.36rem .8rem;border-radius:100px;transition:background .25s,color .25s,box-shadow .25s;line-height:1.05;white-space:nowrap}
+  .nav.scrolled .lang-switch button{color:var(--sea-deep)}
+  .lang-switch button.active{background:var(--coral);color:#fff;box-shadow:0 4px 12px -4px rgba(255,94,58,.6)}
+  .nav.scrolled .lang-switch button.active{color:#fff}
+  @media(max-width:720px){
+    .nav{gap:.5rem .6rem}
+    .nav-brand{order:1}
+    .lang-switch{order:2;margin-left:auto}
+    .nav-links{order:3;flex-basis:100%;margin:0;padding-bottom:.1rem;
+      -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%);
+      mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%)}
+  }
 
   /* ---------- HERO ---------- */
   .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
@@ -57,7 +72,7 @@
   @keyframes pulse{0%,100%{transform:scale(1);opacity:.45}50%{transform:scale(1.08);opacity:.58}}
   .hero-inner{position:relative;z-index:2}
   .hero-tag{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;font-weight:700;color:var(--gold-soft);margin-bottom:1.2rem;opacity:0;animation:rise .9s .1s forwards}
-  .hero h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(3.2rem,16vw,9.5rem);line-height:.9;letter-spacing:-.025em;opacity:0;animation:rise 1s .25s forwards}
+  .hero h1{font-family:'Fraunces','Noto Serif TC',serif;font-weight:300;font-size:clamp(3.2rem,16vw,9.5rem);line-height:.9;letter-spacing:-.025em;opacity:0;animation:rise 1s .25s forwards}
   .hero h1 em{font-style:italic;font-weight:500;color:var(--coral-soft);display:block}
   .hero-sub{margin-top:1.5rem;max-width:50ch;font-size:clamp(.98rem,3.6vw,1.18rem);color:rgba(251,245,234,.88);font-weight:300;opacity:0;animation:rise 1s .45s forwards}
   .hero-meta{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2rem;opacity:0;animation:rise 1s .6s forwards}
@@ -67,9 +82,9 @@
   /* countdown */
   .countdown{display:flex;gap:.7rem;margin-top:2rem;opacity:0;animation:rise 1s .75s forwards}
   .cd-cell{min-width:64px;text-align:center;padding:.7rem .4rem;border-radius:16px;background:rgba(251,245,234,.1);border:1px solid rgba(251,245,234,.2);backdrop-filter:blur(8px)}
-  .cd-num{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:500;line-height:1;color:var(--gold-soft)}
+  .cd-num{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.9rem;font-weight:500;line-height:1;color:var(--gold-soft)}
   .cd-lbl{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(251,245,234,.65);margin-top:.35rem}
-  .cd-done{font-family:'Fraunces',serif;font-style:italic;font-size:1.4rem;color:var(--gold-soft)}
+  .cd-done{font-family:'Fraunces','Noto Serif TC',serif;font-style:italic;font-size:1.4rem;color:var(--gold-soft)}
 
   .scroll-hint{position:absolute;bottom:3vh;left:var(--pad);right:var(--pad);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(251,245,234,.55);animation:bob 2s infinite;z-index:2}
   @keyframes rise{to{opacity:1;transform:translateY(0)}}
@@ -81,7 +96,7 @@
   .reveal.in{opacity:1;transform:none}
   .label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--coral);font-weight:800;margin-bottom:.9rem;display:flex;align-items:center;gap:.7rem}
   .label::before{content:"";width:28px;height:2px;background:var(--coral);flex:0 0 auto}
-  h2{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(2rem,7vw,3.6rem);line-height:1.04;letter-spacing:-.018em;margin-bottom:1rem;color:var(--sea-deep)}
+  h2{font-family:'Fraunces','Noto Serif TC',serif;font-weight:400;font-size:clamp(2rem,7vw,3.6rem);line-height:1.04;letter-spacing:-.018em;margin-bottom:1rem;color:var(--sea-deep)}
   h2 em{font-style:italic;color:var(--coral)}
   .lead{max-width:62ch;color:#3a5853;font-size:clamp(.98rem,3.4vw,1.08rem);margin-bottom:2.6rem}
 
@@ -106,7 +121,7 @@
   .tier-pad::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--accent,var(--sea))}
   .tier.t1{--accent:var(--sea-light)} .tier.t2{--accent:var(--coral)} .tier.t3{--accent:var(--gold)}
   .badge{display:inline-block;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:#fff;background:var(--accent);padding:.28rem .7rem;border-radius:7px;margin:.4rem 0 .9rem}
-  .tier-price{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:500;color:var(--sea-deep)}
+  .tier-price{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.4rem;font-weight:500;color:var(--sea-deep)}
   .tier-note{font-size:.78rem;color:#6b8581;margin-bottom:1.1rem;font-weight:500}
   .tier ul{list-style:none}
   .tier li{padding:.55rem 0;border-bottom:1px dashed var(--line);font-size:.94rem;font-weight:500}
@@ -122,12 +137,12 @@
   .day{display:grid;grid-template-columns:140px 1fr;gap:2.4rem;padding:2.6rem 0;border-top:2px solid var(--line);position:relative}
   .day:last-of-type{border-bottom:2px solid var(--line)}
   .day-mark{position:sticky;top:5rem;align-self:start}
-  .day-num{font-family:'Fraunces',serif;font-size:3.2rem;line-height:1;font-weight:300;color:var(--coral)}
-  .day-num small{font-size:1rem;color:#9bb0ac;font-family:'Be Vietnam Pro';font-weight:600}
+  .day-num{font-family:'Fraunces','Noto Serif TC',serif;font-size:3.2rem;line-height:1;font-weight:300;color:var(--coral)}
+  .day-num small{font-size:1rem;color:#9bb0ac;font-family:'Be Vietnam Pro','Noto Sans TC';font-weight:600}
   .day-date{font-size:.8rem;font-weight:700;color:#6b8581;letter-spacing:.03em;margin-top:.3rem}
   .day-dow{font-size:.7rem;color:#9bb0ac;text-transform:uppercase;letter-spacing:.12em}
   .day-theme{display:inline-block;margin-top:.6rem;font-size:.68rem;font-weight:700;color:var(--sea);background:var(--sand);padding:.3rem .65rem;border-radius:100px}
-  .day-body h3{font-family:'Fraunces',serif;font-size:1.55rem;font-weight:500;color:var(--sea-deep);margin-bottom:1.3rem;line-height:1.2}
+  .day-body h3{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.55rem;font-weight:500;color:var(--sea-deep);margin-bottom:1.3rem;line-height:1.2}
 
   .place{border:1px solid var(--line);border-radius:16px;margin-bottom:.9rem;overflow:hidden;background:var(--paper);transition:box-shadow .3s,border-color .3s}
   @media(hover:hover){.place:hover{border-color:var(--coral-soft);box-shadow:0 10px 26px -16px var(--shadow)}}
@@ -163,7 +178,7 @@
   .rev-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.7rem}
   .rev-place{font-weight:700;font-size:.9rem;color:var(--sea-deep)}
   .rev-stars{color:var(--gold);font-size:.92rem;letter-spacing:.05em}
-  .rev-quote{font-family:'Fraunces',serif;font-style:italic;font-size:1.02rem;color:#34514c;line-height:1.5;flex:1}
+  .rev-quote{font-family:'Fraunces','Noto Serif TC',serif;font-style:italic;font-size:1.02rem;color:#34514c;line-height:1.5;flex:1}
   .rev-author{display:flex;align-items:center;gap:.65rem;margin-top:1.1rem;padding-top:.9rem;border-top:1px solid var(--line)}
   .rev-avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:.95rem;flex:0 0 auto;background:linear-gradient(135deg,var(--coral),var(--gold))}
   .rev-name{font-size:.84rem;font-weight:600;color:var(--ink)}
@@ -176,7 +191,7 @@
   @media(hover:hover){.food-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px -24px var(--shadow)}}
   .food-card .ph{border-radius:0;aspect-ratio:4/3}
   .food-pad{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;flex:1}
-  .food-pad h4{font-family:'Fraunces',serif;font-size:1.18rem;font-weight:500;color:var(--sea-deep);margin-bottom:.2rem}
+  .food-pad h4{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.18rem;font-weight:500;color:var(--sea-deep);margin-bottom:.2rem}
   .food-price{font-size:.8rem;font-weight:700;color:var(--coral);margin-bottom:.5rem}
   .food-pad p{font-size:.85rem;color:#3a5853;margin-bottom:.9rem;flex:1}
   .food-where{font-size:.78rem;color:#6b8581}
@@ -195,7 +210,7 @@
   .info h2{color:var(--cream)} .info .lead{color:rgba(251,245,234,.72)}
   .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.1rem}
   .info-card{background:rgba(251,245,234,.06);border:1px solid rgba(251,245,234,.14);border-radius:18px;padding:1.4rem}
-  .info-card h4{font-family:'Fraunces',serif;font-size:1.12rem;font-weight:500;color:var(--gold-soft);margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}
+  .info-card h4{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.12rem;font-weight:500;color:var(--gold-soft);margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}
   .info-card ul{list-style:none}
   .info-card li{padding:.45rem 0;font-size:.9rem;border-bottom:1px solid rgba(251,245,234,.08);display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
   .info-card li:last-child{border:none}
@@ -203,7 +218,7 @@
   .info-card li a{color:var(--gold-soft);font-weight:600}
   .info-card.sos{background:rgba(255,94,58,.12);border-color:rgba(255,94,58,.3)}
   .info-card.sos h4{color:var(--coral-soft)}
-  .info-card.sos li span:last-child,.info-card.sos li a{color:var(--coral-soft);font-size:1.05rem;font-family:'Fraunces',serif}
+  .info-card.sos li span:last-child,.info-card.sos li a{color:var(--coral-soft);font-size:1.05rem;font-family:'Fraunces','Noto Serif TC',serif}
   .weather-strip{display:flex;flex-wrap:wrap;gap:.7rem;margin-bottom:1.6rem}
   .wx{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1rem;border-radius:100px;background:rgba(251,245,234,.08);border:1px solid rgba(251,245,234,.16);font-size:.85rem;font-weight:500}
   .wx b{color:var(--gold-soft)}
@@ -214,7 +229,7 @@
   .cost-table{max-width:760px;border-radius:20px;overflow:hidden;background:rgba(251,245,234,.05);border:1px solid rgba(251,245,234,.14)}
   .cost-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.05rem 1.3rem;border-bottom:1px solid rgba(251,245,234,.1);font-size:.96rem}
   .cost-row span:first-child{font-weight:500}
-  .cost-row span:last-child{font-family:'Fraunces',serif;font-weight:500;color:var(--gold-soft);white-space:nowrap}
+  .cost-row span:last-child{font-family:'Fraunces','Noto Serif TC',serif;font-weight:500;color:var(--gold-soft);white-space:nowrap}
   .cost-row.total{background:rgba(255,94,58,.18);border:none;font-size:1.15rem}
   .cost-row.total span:last-child{color:var(--coral-soft);font-size:1.35rem}
 
@@ -224,7 +239,7 @@
   .tip{padding:1.6rem;border-radius:18px;background:var(--cream);border-left:4px solid var(--coral);transition:transform .3s}
   @media(hover:hover){.tip:hover{transform:translateY(-5px)}}
   .tip .ic{font-size:1.5rem;margin-bottom:.5rem}
-  .tip h4{font-family:'Fraunces',serif;font-size:1.15rem;color:var(--sea-deep);margin-bottom:.4rem;font-weight:500}
+  .tip h4{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.15rem;color:var(--sea-deep);margin-bottom:.4rem;font-weight:500}
   .tip p{font-size:.9rem;color:#3a5853}
 
   /* ---------- CHECKLIST ---------- */
@@ -233,13 +248,13 @@
   .check-progress-wrap{max-width:820px;margin-bottom:1.8rem}
   .check-progress-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.6rem}
   .check-progress-top span:first-child{font-weight:600;font-size:.95rem}
-  .check-progress-top span:last-child{font-family:'Fraunces',serif;font-size:1.4rem;color:var(--gold-soft)}
+  .check-progress-top span:last-child{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.4rem;color:var(--gold-soft)}
   .check-bar{height:12px;border-radius:100px;background:rgba(251,245,234,.14);overflow:hidden}
   .check-bar i{display:block;height:100%;width:0;border-radius:100px;background:linear-gradient(90deg,var(--gold-soft),var(--coral));transition:width .5s cubic-bezier(.2,.8,.2,1)}
   .check-hint{font-size:.8rem;color:rgba(251,245,234,.55);margin-top:.6rem;font-style:italic}
   .check-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.1rem;max-width:1000px}
   .check-group{background:rgba(251,245,234,.06);border:1px solid rgba(251,245,234,.14);border-radius:18px;padding:1.3rem 1.3rem 1rem}
-  .check-group h4{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:500;color:var(--gold-soft);margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem}
+  .check-group h4{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.05rem;font-weight:500;color:var(--gold-soft);margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem}
   .check-item{display:flex;align-items:flex-start;gap:.8rem;padding:.75rem .2rem;cursor:pointer;border-bottom:1px solid rgba(251,245,234,.08);user-select:none;transition:opacity .25s}
   .check-item:last-child{border-bottom:none}
   .check-box{flex:0 0 auto;width:24px;height:24px;border-radius:8px;border:2px solid rgba(251,245,234,.4);display:grid;place-items:center;margin-top:1px;transition:all .25s;background:transparent}
@@ -250,13 +265,13 @@
   .check-label small{display:block;font-size:.76rem;color:rgba(251,245,234,.5);font-weight:400;margin-top:.1rem}
   .check-item.done .check-label{opacity:.5;text-decoration:line-through;text-decoration-color:rgba(251,245,234,.4)}
   .check-actions{margin-top:1.6rem;display:flex;gap:.8rem;flex-wrap:wrap}
-  .btn{font-family:'Be Vietnam Pro';font-size:.86rem;font-weight:600;padding:.7rem 1.3rem;border-radius:100px;border:1px solid rgba(251,245,234,.3);background:transparent;color:var(--cream);cursor:pointer;transition:all .25s}
+  .btn{font-family:'Be Vietnam Pro','Noto Sans TC';font-size:.86rem;font-weight:600;padding:.7rem 1.3rem;border-radius:100px;border:1px solid rgba(251,245,234,.3);background:transparent;color:var(--cream);cursor:pointer;transition:all .25s}
   @media(hover:hover){.btn:hover{background:rgba(251,245,234,.12)}}
   .btn.primary{background:var(--coral);border-color:var(--coral)}
   @media(hover:hover){.btn.primary:hover{background:var(--coral-soft)}}
   .next-up{max-width:1000px;margin-top:1.8rem;background:rgba(242,198,107,.12);border:1px solid rgba(242,198,107,.3);border-radius:16px;padding:1.2rem 1.4rem}
   .next-up .nl{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--gold-soft);margin-bottom:.4rem}
-  .next-up .nt{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--cream)}
+  .next-up .nt{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.3rem;color:var(--cream)}
   .next-up .ns{font-size:.85rem;color:rgba(251,245,234,.65);margin-top:.2rem}
 
   footer{background:var(--ink);color:rgba(251,245,234,.55);text-align:center;padding:3rem var(--pad);font-size:.84rem}
@@ -280,7 +295,7 @@
   /* ===== MOBILE ===== */
   @media(max-width:680px){
     :root{--pad:5.5vw}
-    html{scroll-padding-top:60px}
+    html{scroll-padding-top:108px}
     section{padding:3.8rem var(--pad)}
     .nav-brand span.full{display:none}
     .day{grid-template-columns:1fr;gap:1rem;padding:2.2rem 0}
@@ -307,16 +322,20 @@
 
 <!-- NAV -->
 <nav class="nav" id="nav">
-  <a class="nav-brand" href="#top">🌴 <span class="full">Đà Nẵng</span> ’26</a>
+  <a class="nav-brand" href="#top">🌴 <span class="full" data-zh="峴港">Đà Nẵng</span> ’26</a>
+  <div class="lang-switch" id="langSwitch" role="group" aria-label="Ngôn ngữ / 語言">
+    <button type="button" data-lang="vi" class="active">VI</button>
+    <button type="button" data-lang="zh">中文</button>
+  </div>
   <div class="nav-links">
-    <a href="#stay">Khách sạn</a>
-    <a href="#plan">Lịch trình</a>
-    <a href="#reviews">Review</a>
-    <a href="#food">Ẩm thực</a>
-    <a href="#map">Bản đồ</a>
-    <a href="#info">Hữu ích</a>
-    <a href="#cost">Chi phí</a>
-    <a href="#checklist">Checklist</a>
+    <a href="#stay" data-zh="飯店">Khách sạn</a>
+    <a href="#plan" data-zh="行程">Lịch trình</a>
+    <a href="#reviews" data-zh="評價">Review</a>
+    <a href="#food" data-zh="美食">Ẩm thực</a>
+    <a href="#map" data-zh="地圖">Bản đồ</a>
+    <a href="#info" data-zh="實用">Hữu ích</a>
+    <a href="#cost" data-zh="費用">Chi phí</a>
+    <a href="#checklist" data-zh="清單">Checklist</a>
   </div>
 </nav>
 
@@ -327,70 +346,70 @@
   <div class="hero-overlay"></div>
   <div class="wave-deco"></div><div class="sun"></div>
   <div class="hero-inner">
-    <div class="hero-tag">Hành trình gia đình · 4 ngày 3 đêm</div>
-    <h1>Đà Nẵng<em>nắng, gió &amp; thảnh thơi</em></h1>
-    <p class="hero-sub">Một chuyến đi cho hai vợ chồng và cô con gái — biển buổi sáng, núi giữa ngày, phố cổ lên đèn buổi tối. Đủ chỗ check-in đẹp, đủ trò để cả nhà cùng vui.</p>
+    <div class="hero-tag" data-zh="家庭旅行 · 4天3夜">Hành trình gia đình · 4 ngày 3 đêm</div>
+    <h1 data-zh="峴港<em>陽光、海風與悠閒</em>">Đà Nẵng<em>nắng, gió &amp; thảnh thơi</em></h1>
+    <p class="hero-sub" data-zh="一趟屬於夫妻倆與小女兒的旅行——清晨的海、午後的山、入夜亮燈的古鎮。有美美的打卡點，也有讓全家同樂的活動。">Một chuyến đi cho hai vợ chồng và cô con gái — biển buổi sáng, núi giữa ngày, phố cổ lên đèn buổi tối. Đủ chỗ check-in đẹp, đủ trò để cả nhà cùng vui.</p>
     <div class="hero-meta">
       <span class="chip">📅 <b>18 → 21.06.2026</b></span>
-      <span class="chip">🛎️ Tối <b>18/6</b> → chiều <b>21/6</b></span>
-      <span class="chip">👨‍👩‍👧 <b>3 người</b></span>
-      <span class="chip">🏖️ <b>Mỹ Khê</b></span>
+      <span class="chip" data-zh="🛎️ <b>6/18</b>晚 → <b>6/21</b>下午">🛎️ Tối <b>18/6</b> → chiều <b>21/6</b></span>
+      <span class="chip" data-zh="👨‍👩‍👧 <b>3人</b>">👨‍👩‍👧 <b>3 người</b></span>
+      <span class="chip" data-zh="🏖️ <b>美溪</b>">🏖️ <b>Mỹ Khê</b></span>
     </div>
     <div class="countdown" id="countdown" aria-label="Đếm ngược ngày khởi hành">
-      <div class="cd-cell"><div class="cd-num" id="cd-d">--</div><div class="cd-lbl">Ngày</div></div>
-      <div class="cd-cell"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl">Giờ</div></div>
-      <div class="cd-cell"><div class="cd-num" id="cd-m">--</div><div class="cd-lbl">Phút</div></div>
-      <div class="cd-cell"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl">Giây</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cd-d">--</div><div class="cd-lbl" data-zh="天">Ngày</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl" data-zh="時">Giờ</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cd-m">--</div><div class="cd-lbl" data-zh="分">Phút</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl" data-zh="秒">Giây</div></div>
     </div>
   </div>
-  <div class="scroll-hint">Cuộn xuống · bấm điểm đến để xem ảnh, bản đồ, giá &amp; review · cuối trang có checklist ↓</div>
+  <div class="scroll-hint" data-zh="向下滑動 · 點各景點看照片、地圖、價格與評價 · 頁尾有清單 ↓">Cuộn xuống · bấm điểm đến để xem ảnh, bản đồ, giá &amp; review · cuối trang có checklist ↓</div>
 </header>
 
 <!-- HOTELS -->
 <section class="stay reveal" id="stay">
-  <div class="label">Nơi lưu trú · 3 đêm</div>
-  <h2>Ở khu biển <em>Mỹ Khê</em></h2>
-  <p class="lead">Đi bộ ra biển buổi sáng và tối, gần trung tâm, đi đâu cũng tiện. Ba mức giá theo ngân sách — đều có phòng gia đình và hồ bơi. Bấm tên khách sạn để mở bản đồ.</p>
+  <div class="label" data-zh="住宿 · 3晚">Nơi lưu trú · 3 đêm</div>
+  <h2 data-zh="入住<em>美溪</em>海灘區">Ở khu biển <em>Mỹ Khê</em></h2>
+  <p class="lead" data-zh="早晚都能散步到海邊，鄰近市中心，去哪都方便。三種價位任選——皆有家庭房與泳池。點飯店名稱開啟地圖。">Đi bộ ra biển buổi sáng và tối, gần trung tâm, đi đâu cũng tiện. Ba mức giá theo ngân sách — đều có phòng gia đình và hồ bơi. Bấm tên khách sạn để mở bản đồ.</p>
   <div class="hotel-grid">
     <div class="tier t1">
-      <div class="ph"><span class="ph-fallback">🏨</span><img loading="lazy" alt="Khách sạn view biển Mỹ Khê" src="https://loremflickr.com/640/360/danang,hotel,beach" data-cap="Khách sạn tiết kiệm gần biển Mỹ Khê"></div>
+      <div class="ph"><span class="ph-fallback">🏨</span><img loading="lazy" alt="Khách sạn view biển Mỹ Khê" src="https://loremflickr.com/640/360/danang,hotel,beach" data-cap="Khách sạn tiết kiệm gần biển Mỹ Khê" data-cap-zh="美溪海灘旁的經濟型飯店"></div>
       <div class="tier-pad">
-        <span class="badge">Tiết kiệm · 1,2–2tr/đêm</span>
-        <div class="tier-price">View biển, hồ bơi</div>
-        <div class="tier-note">Phòng gia đình thoải mái</div>
+        <span class="badge" data-zh="經濟 · 約120–200萬₫/晚">Tiết kiệm · 1,2–2tr/đêm</span>
+        <div class="tier-price" data-zh="海景、泳池">View biển, hồ bơi</div>
+        <div class="tier-note" data-zh="寬敞家庭房">Phòng gia đình thoải mái</div>
         <ul>
           <li><a href="https://www.google.com/maps/search/?api=1&query=Sala%20Danang%20Beach%20Hotel&query_place_id=ChIJMeyhoXgXQjERqCs6CuNR5yI" target="_blank">Sala Danang Beach Hotel <span class="ext">↗</span></a></li>
           <li><a href="https://www.google.com/maps/search/?api=1&query=Mandila%20Beach%20Hotel%20Danang" target="_blank">Mandila Beach Hotel <span class="ext">↗</span></a></li>
           <li><a href="https://www.google.com/maps/search/?api=1&query=Diamond%20Sea%20Hotel%20Danang" target="_blank">Diamond Sea Hotel <span class="ext">↗</span></a></li>
         </ul>
-        <p class="perks">💰 ~1,2–2tr/đêm · ★ 4.6 (gần 3.500 đánh giá) — khen nhiều về bữa sáng &amp; vị trí. ☎ Sala: 0236 3878 999</p>
+        <p class="perks" data-zh="💰 約120–200萬₫/晚 · ★ 4.6（近3,500則評價）——早餐與地點廣受好評。☎ Sala: 0236 3878 999">💰 ~1,2–2tr/đêm · ★ 4.6 (gần 3.500 đánh giá) — khen nhiều về bữa sáng &amp; vị trí. ☎ Sala: 0236 3878 999</p>
       </div>
     </div>
     <div class="tier t2">
-      <div class="ph"><span class="ph-fallback">🏊</span><img loading="lazy" alt="Hồ bơi rooftop khách sạn Đà Nẵng" src="https://loremflickr.com/640/360/rooftop,pool,hotel" data-cap="Hồ bơi rooftop view biển"></div>
+      <div class="ph"><span class="ph-fallback">🏊</span><img loading="lazy" alt="Hồ bơi rooftop khách sạn Đà Nẵng" src="https://loremflickr.com/640/360/rooftop,pool,hotel" data-cap="Hồ bơi rooftop view biển" data-cap-zh="頂樓海景泳池"></div>
       <div class="tier-pad">
-        <span class="badge">Đáng tiền nhất · 2–4tr/đêm</span>
-        <div class="tier-price">Hồ bơi vô cực, rooftop</div>
-        <div class="tier-note">Cân bằng giá &amp; chất lượng</div>
+        <span class="badge" data-zh="最超值 · 約200–400萬₫/晚">Đáng tiền nhất · 2–4tr/đêm</span>
+        <div class="tier-price" data-zh="無邊際泳池、頂樓">Hồ bơi vô cực, rooftop</div>
+        <div class="tier-note" data-zh="價格與品質兼具">Cân bằng giá &amp; chất lượng</div>
         <ul>
           <li><a href="https://www.google.com/maps/search/?api=1&query=TMS%20Hotel%20Da%20Nang%20Beach&query_place_id=ChIJowDc5iUXQjERq0JS82QvKnM" target="_blank">TMS Hotel Da Nang Beach <span class="ext">↗</span></a></li>
           <li><a href="https://www.google.com/maps/search/?api=1&query=Four%20Points%20by%20Sheraton%20Danang" target="_blank">Four Points by Sheraton <span class="ext">↗</span></a></li>
           <li><a href="https://www.google.com/maps/search/?api=1&query=Radisson%20Hotel%20Danang" target="_blank">Radisson Hotel Danang <span class="ext">↗</span></a></li>
         </ul>
-        <p class="perks">💰 ~2–4tr/đêm · ★ 4.7 — bể bơi rooftop view biển, phòng rộng, sát bãi tắm. ☎ TMS: 0236 3782 888</p>
+        <p class="perks" data-zh="💰 約200–400萬₫/晚 · ★ 4.7——頂樓海景泳池、房間寬敞、緊鄰海灘。☎ TMS: 0236 3782 888">💰 ~2–4tr/đêm · ★ 4.7 — bể bơi rooftop view biển, phòng rộng, sát bãi tắm. ☎ TMS: 0236 3782 888</p>
       </div>
     </div>
     <div class="tier t3">
-      <div class="ph"><span class="ph-fallback">🌴</span><img loading="lazy" alt="Resort biển Đà Nẵng" src="https://loremflickr.com/640/360/resort,beach,palm" data-cap="Resort nghỉ dưỡng có bãi riêng"></div>
+      <div class="ph"><span class="ph-fallback">🌴</span><img loading="lazy" alt="Resort biển Đà Nẵng" src="https://loremflickr.com/640/360/resort,beach,palm" data-cap="Resort nghỉ dưỡng có bãi riêng" data-cap-zh="附私人海灘的度假村"></div>
       <div class="tier-pad">
-        <span class="badge">Nghỉ dưỡng · 4tr+/đêm</span>
-        <div class="tier-price">Resort, bãi riêng, spa</div>
-        <div class="tier-note">Khi muốn thật sự thư giãn</div>
+        <span class="badge" data-zh="度假 · 約400萬₫+/晚">Nghỉ dưỡng · 4tr+/đêm</span>
+        <div class="tier-price" data-zh="度假村、私人海灘、SPA">Resort, bãi riêng, spa</div>
+        <div class="tier-note" data-zh="想徹底放鬆時">Khi muốn thật sự thư giãn</div>
         <ul>
           <li><a href="https://www.google.com/maps/search/?api=1&query=Hyatt%20Regency%20Danang%20Resort%20and%20Spa" target="_blank">Hyatt Regency Danang <span class="ext">↗</span></a></li>
           <li><a href="https://www.google.com/maps/search/?api=1&query=Furama%20Resort%20Danang&query_place_id=ChIJ7zjMyNsPQjER0iUSEjE-apo" target="_blank">Furama Resort Danang <span class="ext">↗</span></a></li>
         </ul>
-        <p class="perks">💰 ~4tr+/đêm · ★ 4.5 — Furama có bãi biển riêng, nhiều hồ bơi. ☎ Furama: 0236 3847 333 · Hyatt: 0236 3981 234</p>
+        <p class="perks" data-zh="💰 約400萬₫+/晚 · ★ 4.5——Furama 擁私人海灘與多座泳池。☎ Furama: 0236 3847 333 · Hyatt: 0236 3981 234">💰 ~4tr+/đêm · ★ 4.5 — Furama có bãi biển riêng, nhiều hồ bơi. ☎ Furama: 0236 3847 333 · Hyatt: 0236 3981 234</p>
       </div>
     </div>
   </div>
@@ -398,56 +417,56 @@
 
 <!-- ITINERARY -->
 <section class="plan reveal" id="plan">
-  <div class="label">Lịch trình chi tiết · 4 ngày</div>
-  <h2>Gọn gàng mà <em>vẫn đủ đầy</em></h2>
-  <p class="lead">Tối 18/6 đến nơi, hai ngày trọn vẹn cho Bà Nà – Sơn Trà, và Hội An vào ngày cuối trước khi trả phòng. Bấm mỗi điểm để mở ảnh, bản đồ, giá vé và review.</p>
+  <div class="label" data-zh="詳細行程 · 4天">Lịch trình chi tiết · 4 ngày</div>
+  <h2 data-zh="精簡卻<em>豐富完整</em>">Gọn gàng mà <em>vẫn đủ đầy</em></h2>
+  <p class="lead" data-zh="6/18晚抵達，兩整天暢遊巴拿山與山茶半島，最後一天退房前遊會安。點每個景點查看照片、地圖、票價與評價。">Tối 18/6 đến nơi, hai ngày trọn vẹn cho Bà Nà – Sơn Trà, và Hội An vào ngày cuối trước khi trả phòng. Bấm mỗi điểm để mở ảnh, bản đồ, giá vé và review.</p>
 
   <!-- DAY 18 -->
   <div class="day">
     <div class="day-mark">
       <div class="day-num">18<small>/6</small></div>
-      <div><div class="day-date">Tháng 6, 2026</div><div class="day-dow">Thứ Năm</div><div class="day-theme">🌊 Đặt chân tới biển</div></div>
+      <div><div class="day-date" data-zh="2026年6月">Tháng 6, 2026</div><div class="day-dow" data-zh="週四">Thứ Năm</div><div class="day-theme" data-zh="🌊 抵達海邊">🌊 Đặt chân tới biển</div></div>
     </div>
     <div class="day-body">
-      <h3>Đêm đầu tiên bên biển Mỹ Khê</h3>
+      <h3 data-zh="美溪海灘的第一夜">Đêm đầu tiên bên biển Mỹ Khê</h3>
 
       <div class="place">
-        <div class="place-head"><span class="place-time">~18h</span><span class="place-title">Tới Đà Nẵng &amp; nhận phòng<span class="meta">Chiều tối check-in, nghỉ ngơi</span></span><span class="place-toggle">+</span></div>
+        <div class="place-head"><span class="place-time" data-zh="約18:00">~18h</span><span class="place-title" data-zh="抵達峴港 &amp; 辦理入住<span class='meta'>傍晚入住、休息</span>">Tới Đà Nẵng &amp; nhận phòng<span class="meta">Chiều tối check-in, nghỉ ngơi</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="info-row"><span class="info-pill">🛬 Sân bay → Mỹ Khê ~10–15 phút</span><span class="info-pill">🚕 Taxi/Grab ~70–120k</span></div>
-          <p>Về thẳng khách sạn khu Mỹ Khê, cất hành lý và nghỉ một chút trước khi ra ngoài buổi tối. Sân bay Đà Nẵng nằm ngay trong thành phố nên rất gần biển.</p>
+          <div class="info-row"><span class="info-pill" data-zh="🛬 機場 → 美溪 約10–15分鐘">🛬 Sân bay → Mỹ Khê ~10–15 phút</span><span class="info-pill" data-zh="🚕 計程車/Grab 約7–12萬₫">🚕 Taxi/Grab ~70–120k</span></div>
+          <p data-zh="直接前往美溪區飯店，放好行李、稍作休息再出門。峴港機場就在市區，離海灘很近。">Về thẳng khách sạn khu Mỹ Khê, cất hành lý và nghỉ một chút trước khi ra ngoài buổi tối. Sân bay Đà Nẵng nằm ngay trong thành phố nên rất gần biển.</p>
         </div></div>
       </div>
 
       <div class="place">
-        <div class="place-head"><span class="place-time">Tối</span><span class="place-title">Dạo biển Mỹ Khê &amp; ăn hải sản<span class="meta">Bãi biển cát mịn, đẹp nhất Đà Nẵng</span></span><span class="place-toggle">+</span></div>
+        <div class="place-head"><span class="place-time" data-zh="晚上">Tối</span><span class="place-title" data-zh="漫步美溪海灘 &amp; 享用海鮮<span class='meta'>細沙海灘，峴港最美</span>">Dạo biển Mỹ Khê &amp; ăn hải sản<span class="meta">Bãi biển cát mịn, đẹp nhất Đà Nẵng</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="ph"><span class="ph-fallback">🏖️</span><img loading="lazy" alt="Biển Mỹ Khê Đà Nẵng" src="https://loremflickr.com/720/405/mykhe,beach,danang" data-cap="Biển Mỹ Khê — cát mịn, sóng êm"></div>
-          <span class="rating">★ 4.7 · 4.260 đánh giá</span>
-          <div class="info-row"><span class="info-pill">💸 Tắm miễn phí</span><span class="info-pill">🏖️ Ghế/dù 50–100k</span><span class="info-pill">🕐 Đẹp nhất: sáng sớm &amp; chiều</span></div>
-          <p>Bãi biển cát rất mịn, dài và thoáng, buổi tối mát mẻ để cả nhà đi dạo. Sau đó ăn hải sản tại quán gia đình gần đó — chọn quán đông khách, hỏi giá trước khi gọi.</p>
+          <div class="ph"><span class="ph-fallback">🏖️</span><img loading="lazy" alt="Biển Mỹ Khê Đà Nẵng" src="https://loremflickr.com/720/405/mykhe,beach,danang" data-cap="Biển Mỹ Khê — cát mịn, sóng êm" data-cap-zh="美溪海灘——細沙、浪平"></div>
+          <span class="rating" data-zh="★ 4.7 · 4,260則評價">★ 4.7 · 4.260 đánh giá</span>
+          <div class="info-row"><span class="info-pill" data-zh="💸 免費戲水">💸 Tắm miễn phí</span><span class="info-pill" data-zh="🏖️ 躺椅/陽傘 5–10萬₫">🏖️ Ghế/dù 50–100k</span><span class="info-pill" data-zh="🕐 最佳時段：清晨與傍晚">🕐 Đẹp nhất: sáng sớm &amp; chiều</span></div>
+          <p data-zh="海灘細沙綿密、寬廣開闊，夜晚涼爽，適合全家散步。之後在附近的家庭式餐館享用海鮮——挑人多的店，點菜前先問價。">Bãi biển cát rất mịn, dài và thoáng, buổi tối mát mẻ để cả nhà đi dạo. Sau đó ăn hải sản tại quán gia đình gần đó — chọn quán đông khách, hỏi giá trước khi gọi.</p>
           <div class="links">
-            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=My%20Khe%20Beach%20Danang&query_place_id=ChIJ4w7694IXQjERrFXucqKL--o" target="_blank">📍 Bản đồ</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=My%20Khe%20Beach%20Danang&query_place_id=ChIJ4w7694IXQjERrFXucqKL--o" target="_blank">★ Review</a>
+            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=My%20Khe%20Beach%20Danang&query_place_id=ChIJ4w7694IXQjERrFXucqKL--o" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
+            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=My%20Khe%20Beach%20Danang&query_place_id=ChIJ4w7694IXQjERrFXucqKL--o" target="_blank" data-zh="★ 評論">★ Review</a>
             <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=B%C3%A9%20M%E1%BA%B7n%20h%E1%BA%A3i%20s%E1%BA%A3n%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">🦐 Bé Mặn</a>
             <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=N%C4%83m%20%C4%90%E1%BA%A3nh%20h%E1%BA%A3i%20s%E1%BA%A3n%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">🦀 Năm Đảnh</a>
           </div>
-          <div class="place-tags"><span class="ptag">Hải sản</span><span class="ptag">Đi dạo</span><span class="ptag">Hoàng hôn</span></div>
+          <div class="place-tags"><span class="ptag" data-zh="海鮮">Hải sản</span><span class="ptag" data-zh="散步">Đi dạo</span><span class="ptag" data-zh="日落">Hoàng hôn</span></div>
         </div></div>
       </div>
 
       <div class="place">
-        <div class="place-head"><span class="place-time night">~21h</span><span class="place-title">Cầu Rồng &amp; Cầu Tình Yêu<span class="meta">Biểu tượng Đà Nẵng, check-in đêm</span></span><span class="place-toggle">+</span></div>
+        <div class="place-head"><span class="place-time night" data-zh="約21:00">~21h</span><span class="place-title" data-zh="龍橋 &amp; 愛情橋<span class='meta'>峴港地標，夜間打卡</span>">Cầu Rồng &amp; Cầu Tình Yêu<span class="meta">Biểu tượng Đà Nẵng, check-in đêm</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="ph"><span class="ph-fallback">🐉</span><img loading="lazy" alt="Cầu Rồng Đà Nẵng" src="https://loremflickr.com/720/405/dragon,bridge,danang" data-cap="Cầu Rồng lên đèn về đêm"></div>
-          <span class="rating">★ 4.5 · 8.300 đánh giá</span>
-          <div class="info-row"><span class="info-pill">💸 Miễn phí</span><span class="info-pill">🕐 24/7</span><span class="info-pill">🔥 Phun lửa: T6–T7–CN ~21h</span></div>
-          <p>Cầu Rồng phun lửa &amp; phun nước ~21h <strong>tối thứ Sáu, thứ Bảy, Chủ Nhật</strong>. Ngày 18/6 là thứ Năm nên không có màn trình diễn, nhưng cầu lên đèn về đêm vẫn rất đẹp để chụp ảnh. Muốn xem phun lửa thì quay lại tối 19 hoặc 20/6.</p>
+          <div class="ph"><span class="ph-fallback">🐉</span><img loading="lazy" alt="Cầu Rồng Đà Nẵng" src="https://loremflickr.com/720/405/dragon,bridge,danang" data-cap="Cầu Rồng lên đèn về đêm" data-cap-zh="龍橋夜間亮燈"></div>
+          <span class="rating" data-zh="★ 4.5 · 8,300則評價">★ 4.5 · 8.300 đánh giá</span>
+          <div class="info-row"><span class="info-pill" data-zh="💸 免費">💸 Miễn phí</span><span class="info-pill">🕐 24/7</span><span class="info-pill" data-zh="🔥 噴火：週五六日 約21:00">🔥 Phun lửa: T6–T7–CN ~21h</span></div>
+          <p data-zh="龍橋於<strong>週五、週六、週日</strong>約21:00噴火與噴水。6月18日為週四，沒有表演，但夜間亮燈仍非常上鏡。想看噴火可於6/19或6/20晚再來。">Cầu Rồng phun lửa &amp; phun nước ~21h <strong>tối thứ Sáu, thứ Bảy, Chủ Nhật</strong>. Ngày 18/6 là thứ Năm nên không có màn trình diễn, nhưng cầu lên đèn về đêm vẫn rất đẹp để chụp ảnh. Muốn xem phun lửa thì quay lại tối 19 hoặc 20/6.</p>
           <div class="links">
             <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Dragon%20Bridge%20Danang&query_place_id=ChIJL1GKWJYZQjERLrEGqlK2kwQ" target="_blank">📍 Bản đồ</a>
             <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Dragon%20Bridge%20Danang&query_place_id=ChIJL1GKWJYZQjERLrEGqlK2kwQ" target="_blank">★ Review</a>
           </div>
-          <div class="place-tags"><span class="ptag">Check-in đêm</span><span class="ptag">Phun lửa cuối tuần</span></div>
+          <div class="place-tags"><span class="ptag" data-zh="夜間打卡">Check-in đêm</span><span class="ptag" data-zh="週末噴火">Phun lửa cuối tuần</span></div>
         </div></div>
       </div>
     </div>
@@ -457,32 +476,32 @@
   <div class="day">
     <div class="day-mark">
       <div class="day-num">19<small>/6</small></div>
-      <div><div class="day-date">Tháng 6, 2026</div><div class="day-dow">Thứ Sáu</div><div class="day-theme">⛰️ Cả ngày trên mây</div></div>
+      <div><div class="day-date" data-zh="2026年6月">Tháng 6, 2026</div><div class="day-dow" data-zh="週五">Thứ Sáu</div><div class="day-theme" data-zh="⛰️ 整天在雲端">⛰️ Cả ngày trên mây</div></div>
     </div>
     <div class="day-body">
-      <h3>Bà Nà Hills — một ngày trên đỉnh núi</h3>
+      <h3 data-zh="巴拿山——山頂上的一天">Bà Nà Hills — một ngày trên đỉnh núi</h3>
 
       <div class="place">
-        <div class="place-head"><span class="place-time">~7–8h</span><span class="place-title">Bà Nà Hills (nguyên ngày)<span class="meta">Cầu Vàng, Làng Pháp, Fantasy Park…</span></span><span class="place-toggle">+</span></div>
+        <div class="place-head"><span class="place-time" data-zh="約7–8點">~7–8h</span><span class="place-title" data-zh="巴拿山（一整天）<span class='meta'>黃金橋、法國村、Fantasy Park…</span>">Bà Nà Hills (nguyên ngày)<span class="meta">Cầu Vàng, Làng Pháp, Fantasy Park…</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="ph"><span class="ph-fallback">🌉</span><img loading="lazy" alt="Cầu Vàng Bà Nà Hills" src="https://loremflickr.com/720/405/goldenbridge,banahills,vietnam" data-cap="Cầu Vàng (Golden Bridge) — Bà Nà Hills"></div>
-          <span class="rating">★ 4.4 · gần 100.000 đánh giá</span>
-          <div class="info-row"><span class="info-pill">🎫 NL ~1.000.000đ</span><span class="info-pill">🧒 Trẻ 1–1m4 ~800.000đ</span><span class="info-pill">🍽️ Combo buffet ~1.300.000đ</span><span class="info-pill">🧥 Trên đỉnh se lạnh</span></div>
-          <p>💰 <strong>Vé 2026 (khách ngoại tỉnh):</strong> Người lớn (&gt;1m4) ~1.000.000đ · trẻ em (1m–1m4) &amp; người cao tuổi ~800.000đ · dưới 1m miễn phí. Combo kèm buffet trưa ~1.300.000đ/người lớn. Vé gồm cáp treo khứ hồi &amp; hầu hết trò chơi Fantasy Park. Đặt online thường rẻ hơn.</p>
-          <p>Đi cáp treo sớm từ 8h cho mát &amp; ít đông. Cô con gái sẽ thích Cầu Vàng, Làng Pháp, tàu hỏa leo núi — rất nhiều góc chụp ảnh đẹp. ☎ Sun World: 0905 766 777 · 7h–22h.</p>
+          <div class="ph"><span class="ph-fallback">🌉</span><img loading="lazy" alt="Cầu Vàng Bà Nà Hills" src="https://loremflickr.com/720/405/goldenbridge,banahills,vietnam" data-cap="Cầu Vàng (Golden Bridge) — Bà Nà Hills" data-cap-zh="黃金橋（Golden Bridge）——巴拿山"></div>
+          <span class="rating" data-zh="★ 4.4 · 近10萬則評價">★ 4.4 · gần 100.000 đánh giá</span>
+          <div class="info-row"><span class="info-pill" data-zh="🎫 成人 約100萬₫">🎫 NL ~1.000.000đ</span><span class="info-pill" data-zh="🧒 兒童1–1.4m 約80萬₫">🧒 Trẻ 1–1m4 ~800.000đ</span><span class="info-pill" data-zh="🍽️ 含自助餐套票 約130萬₫">🍽️ Combo buffet ~1.300.000đ</span><span class="info-pill" data-zh="🧥 山頂微涼">🧥 Trên đỉnh se lạnh</span></div>
+          <p data-zh="💰 <strong>2026票價（外地遊客）：</strong>成人（&gt;1.4m）約100萬₫ · 兒童（1–1.4m）與長者約80萬₫ · 1m以下免費。含午餐自助餐套票約130萬₫/成人。門票含來回纜車與多數 Fantasy Park 遊樂設施。線上訂通常更便宜。">💰 <strong>Vé 2026 (khách ngoại tỉnh):</strong> Người lớn (&gt;1m4) ~1.000.000đ · trẻ em (1m–1m4) &amp; người cao tuổi ~800.000đ · dưới 1m miễn phí. Combo kèm buffet trưa ~1.300.000đ/người lớn. Vé gồm cáp treo khứ hồi &amp; hầu hết trò chơi Fantasy Park. Đặt online thường rẻ hơn.</p>
+          <p data-zh="早上8點搭纜車較涼也較不擁擠。小女兒會喜歡黃金橋、法國村、登山小火車——拍照點超多。☎ Sun World: 0905 766 777 · 7:00–22:00。">Đi cáp treo sớm từ 8h cho mát &amp; ít đông. Cô con gái sẽ thích Cầu Vàng, Làng Pháp, tàu hỏa leo núi — rất nhiều góc chụp ảnh đẹp. ☎ Sun World: 0905 766 777 · 7h–22h.</p>
           <div class="links">
-            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Ba%20Na%20Hills&query_place_id=ChIJyWFmArX3QTERon6tUT6re4Q" target="_blank">📍 Bản đồ</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Ba%20Na%20Hills&query_place_id=ChIJyWFmArX3QTERon6tUT6re4Q" target="_blank">★ Review</a>
+            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Ba%20Na%20Hills&query_place_id=ChIJyWFmArX3QTERon6tUT6re4Q" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
+            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Ba%20Na%20Hills&query_place_id=ChIJyWFmArX3QTERon6tUT6re4Q" target="_blank" data-zh="★ 評論">★ Review</a>
           </div>
-          <div class="place-tags"><span class="ptag">Cầu Vàng</span><span class="ptag">Làng Pháp</span><span class="ptag">Fantasy Park</span><span class="ptag">Cáp treo</span></div>
+          <div class="place-tags"><span class="ptag" data-zh="黃金橋">Cầu Vàng</span><span class="ptag" data-zh="法國村">Làng Pháp</span><span class="ptag">Fantasy Park</span><span class="ptag" data-zh="纜車">Cáp treo</span></div>
         </div></div>
       </div>
 
       <div class="place">
-        <div class="place-head"><span class="place-time night">Tối</span><span class="place-title">Về Đà Nẵng · Cầu Rồng phun lửa<span class="meta">Thứ Sáu có màn trình diễn ~21h</span></span><span class="place-toggle">+</span></div>
+        <div class="place-head"><span class="place-time night" data-zh="晚上">Tối</span><span class="place-title" data-zh="返回峴港 · 龍橋噴火<span class='meta'>週五有表演 約21:00</span>">Về Đà Nẵng · Cầu Rồng phun lửa<span class="meta">Thứ Sáu có màn trình diễn ~21h</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <p>Về lại thành phố, ăn tối gần biển. Tối nay là thứ Sáu nên có thể ghé Cầu Rồng xem phun lửa &amp; phun nước lúc ~21h nếu vẫn còn sức. Đến sớm ~20h30 để chọn chỗ đứng đẹp ở bờ đông.</p>
-          <div class="links"><a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Dragon%20Bridge%20Danang&query_place_id=ChIJL1GKWJYZQjERLrEGqlK2kwQ" target="_blank">📍 Cầu Rồng</a></div>
+          <p data-zh="回到市區，在海邊附近吃晚餐。今晚是週五，若還有體力可前往龍橋觀看約21:00的噴火與噴水。建議20:30前抵達，在東岸選個好位置。">Về lại thành phố, ăn tối gần biển. Tối nay là thứ Sáu nên có thể ghé Cầu Rồng xem phun lửa &amp; phun nước lúc ~21h nếu vẫn còn sức. Đến sớm ~20h30 để chọn chỗ đứng đẹp ở bờ đông.</p>
+          <div class="links"><a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Dragon%20Bridge%20Danang&query_place_id=ChIJL1GKWJYZQjERLrEGqlK2kwQ" target="_blank" data-zh="📍 龍橋">📍 Cầu Rồng</a></div>
         </div></div>
       </div>
     </div>
@@ -492,69 +511,69 @@
   <div class="day">
     <div class="day-mark">
       <div class="day-num">20<small>/6</small></div>
-      <div><div class="day-date">Tháng 6, 2026</div><div class="day-dow">Thứ Bảy</div><div class="day-theme">🛕 Sơn Trà &amp; vui chơi</div></div>
+      <div><div class="day-date" data-zh="2026年6月">Tháng 6, 2026</div><div class="day-dow" data-zh="週六">Thứ Bảy</div><div class="day-theme" data-zh="🛕 山茶半島與遊玩">🛕 Sơn Trà &amp; vui chơi</div></div>
     </div>
     <div class="day-body">
-      <h3>Bán đảo Sơn Trà sáng, dạo phố tối</h3>
+      <h3 data-zh="上午遊山茶半島，晚上逛街">Bán đảo Sơn Trà sáng, dạo phố tối</h3>
 
       <div class="place">
-        <div class="place-head"><span class="place-time">Sáng</span><span class="place-title">Chùa Linh Ứng — Sơn Trà<span class="meta">Tượng Phật Bà 67m, view biển</span></span><span class="place-toggle">+</span></div>
+        <div class="place-head"><span class="place-time" data-zh="上午">Sáng</span><span class="place-title" data-zh="靈應寺——山茶半島<span class='meta'>67公尺觀音像、海景</span>">Chùa Linh Ứng — Sơn Trà<span class="meta">Tượng Phật Bà 67m, view biển</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="ph"><span class="ph-fallback">🛕</span><img loading="lazy" alt="Chùa Linh Ứng Sơn Trà" src="https://loremflickr.com/720/405/buddha,statue,temple,vietnam" data-cap="Tượng Phật Bà 67m — Chùa Linh Ứng Sơn Trà"></div>
-          <span class="rating">★ 4.7 · 7.400 đánh giá</span>
-          <div class="info-row"><span class="info-pill">💸 Miễn phí</span><span class="info-pill">🅿️ Gửi xe 10–20k</span><span class="info-pill">👟 Bỏ giày khi vào điện</span></div>
-          <p>Ngôi chùa trên sườn núi với tượng Phật Bà khổng lồ cao 67m nhìn ra biển, không gian rộng và yên bình. Mặc đồ lịch sự kín đáo khi vào chùa.</p>
+          <div class="ph"><span class="ph-fallback">🛕</span><img loading="lazy" alt="Chùa Linh Ứng Sơn Trà" src="https://loremflickr.com/720/405/buddha,statue,temple,vietnam" data-cap="Tượng Phật Bà 67m — Chùa Linh Ứng Sơn Trà" data-cap-zh="67公尺觀音像——山茶靈應寺"></div>
+          <span class="rating" data-zh="★ 4.7 · 7,400則評價">★ 4.7 · 7.400 đánh giá</span>
+          <div class="info-row"><span class="info-pill" data-zh="💸 免費">💸 Miễn phí</span><span class="info-pill" data-zh="🅿️ 停車 1–2萬₫">🅿️ Gửi xe 10–20k</span><span class="info-pill" data-zh="👟 入殿需脫鞋">👟 Bỏ giày khi vào điện</span></div>
+          <p data-zh="依山而建的寺廟，矗立一尊高67公尺、面海的觀音像，空間開闊寧靜。入寺請著裝端莊。">Ngôi chùa trên sườn núi với tượng Phật Bà khổng lồ cao 67m nhìn ra biển, không gian rộng và yên bình. Mặc đồ lịch sự kín đáo khi vào chùa.</p>
           <div class="links">
-            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Chua%20Linh%20Ung%20Son%20Tra&query_place_id=ChIJHZakNa8ZQjERWNFToM16eB4" target="_blank">📍 Bản đồ</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Chua%20Linh%20Ung%20Son%20Tra&query_place_id=ChIJHZakNa8ZQjERWNFToM16eB4" target="_blank">★ Review</a>
+            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Chua%20Linh%20Ung%20Son%20Tra&query_place_id=ChIJHZakNa8ZQjERWNFToM16eB4" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
+            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Chua%20Linh%20Ung%20Son%20Tra&query_place_id=ChIJHZakNa8ZQjERWNFToM16eB4" target="_blank" data-zh="★ 評論">★ Review</a>
           </div>
-          <div class="place-tags"><span class="ptag">Tâm linh</span><span class="ptag">View biển</span></div>
+          <div class="place-tags"><span class="ptag" data-zh="心靈">Tâm linh</span><span class="ptag" data-zh="海景">View biển</span></div>
         </div></div>
       </div>
 
       <div class="place">
-        <div class="place-head"><span class="place-time">Sáng</span><span class="place-title">Đỉnh Bàn Cờ<span class="meta">Điểm cao nhất Đà Nẵng</span></span><span class="place-toggle">+</span></div>
+        <div class="place-head"><span class="place-time" data-zh="上午">Sáng</span><span class="place-title" data-zh="棋盤頂（Bàn Cờ峰）<span class='meta'>峴港最高點</span>">Đỉnh Bàn Cờ<span class="meta">Điểm cao nhất Đà Nẵng</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="ph"><span class="ph-fallback">⛰️</span><img loading="lazy" alt="Đỉnh Bàn Cờ Sơn Trà" src="https://loremflickr.com/720/405/sontra,mountain,viewpoint" data-cap="Đỉnh Bàn Cờ — view toàn cảnh Đà Nẵng"></div>
-          <span class="rating">★ 4.7 · 687 đánh giá</span>
-          <div class="info-row"><span class="info-pill">💸 Miễn phí</span><span class="info-pill">🚗 Nên thuê xe có tài xế</span><span class="info-pill">🐒 Có khỉ — giữ đồ ăn</span></div>
-          <p>Khoảng 700m so với mực nước biển, view toàn cảnh thành phố và bờ biển tuyệt đẹp. Đường lên dốc và quanh co — nên thuê xe có tài xế (xe tay ga bị cấm một số đoạn).</p>
+          <div class="ph"><span class="ph-fallback">⛰️</span><img loading="lazy" alt="Đỉnh Bàn Cờ Sơn Trà" src="https://loremflickr.com/720/405/sontra,mountain,viewpoint" data-cap="Đỉnh Bàn Cờ — view toàn cảnh Đà Nẵng" data-cap-zh="棋盤頂——峴港全景"></div>
+          <span class="rating" data-zh="★ 4.7 · 687則評價">★ 4.7 · 687 đánh giá</span>
+          <div class="info-row"><span class="info-pill" data-zh="💸 免費">💸 Miễn phí</span><span class="info-pill" data-zh="🚗 建議租附司機車輛">🚗 Nên thuê xe có tài xế</span><span class="info-pill" data-zh="🐒 有猴子——顧好食物">🐒 Có khỉ — giữ đồ ăn</span></div>
+          <p data-zh="海拔約700公尺，可俯瞰整座城市與海岸線，景色絕美。上山路陡且彎多——建議租附司機的車（部分路段禁速克達）。">Khoảng 700m so với mực nước biển, view toàn cảnh thành phố và bờ biển tuyệt đẹp. Đường lên dốc và quanh co — nên thuê xe có tài xế (xe tay ga bị cấm một số đoạn).</p>
           <div class="links">
-            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Dinh%20Ban%20Co%20Son%20Tra&query_place_id=ChIJT6YRonE9QjERIzwY4jOAWrY" target="_blank">📍 Bản đồ</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Dinh%20Ban%20Co%20Son%20Tra&query_place_id=ChIJT6YRonE9QjERIzwY4jOAWrY" target="_blank">★ Review</a>
+            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Dinh%20Ban%20Co%20Son%20Tra&query_place_id=ChIJT6YRonE9QjERIzwY4jOAWrY" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
+            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Dinh%20Ban%20Co%20Son%20Tra&query_place_id=ChIJT6YRonE9QjERIzwY4jOAWrY" target="_blank" data-zh="★ 評論">★ Review</a>
           </div>
-          <div class="place-tags"><span class="ptag">View đẹp</span><span class="ptag">Khỉ &amp; thiên nhiên</span></div>
+          <div class="place-tags"><span class="ptag" data-zh="美景">View đẹp</span><span class="ptag" data-zh="猴子與自然">Khỉ &amp; thiên nhiên</span></div>
         </div></div>
       </div>
 
       <div class="place">
-        <div class="place-head"><span class="place-time">Chiều</span><span class="place-title">Ngũ Hành Sơn (Marble Mountains)<span class="meta">Hang động, chùa cổ, view thành phố</span></span><span class="place-toggle">+</span></div>
+        <div class="place-head"><span class="place-time" data-zh="下午">Chiều</span><span class="place-title" data-zh="五行山（Marble Mountains）<span class='meta'>洞窟、古剎、市景</span>">Ngũ Hành Sơn (Marble Mountains)<span class="meta">Hang động, chùa cổ, view thành phố</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="ph"><span class="ph-fallback">🪨</span><img loading="lazy" alt="Ngũ Hành Sơn" src="https://loremflickr.com/720/405/marble,mountain,cave,vietnam" data-cap="Ngũ Hành Sơn — hang động &amp; chùa cổ"></div>
-          <span class="rating">★ 4.4 · 41.000 đánh giá</span>
-          <div class="info-row"><span class="info-pill">🎫 Thủy Sơn ~40k</span><span class="info-pill">🎓 HS/SV ~10k</span><span class="info-pill">🛗 Thang máy ~15k/lượt</span><span class="info-pill">🕐 7h–17h30</span></div>
-          <p>💰 Động Âm Phủ ~20.000đ. Trên đường về từ Sơn Trà ghé Ngũ Hành Sơn — cụm núi đá với hang động và chùa cổ. Đi giày chống trượt, mang nước. ☎ BQL: 0236 3961 114.</p>
+          <div class="ph"><span class="ph-fallback">🪨</span><img loading="lazy" alt="Ngũ Hành Sơn" src="https://loremflickr.com/720/405/marble,mountain,cave,vietnam" data-cap="Ngũ Hành Sơn — hang động &amp; chùa cổ" data-cap-zh="五行山——洞窟與古剎"></div>
+          <span class="rating" data-zh="★ 4.4 · 41,000則評價">★ 4.4 · 41.000 đánh giá</span>
+          <div class="info-row"><span class="info-pill" data-zh="🎫 水山 約4萬₫">🎫 Thủy Sơn ~40k</span><span class="info-pill" data-zh="🎓 學生 約1萬₫">🎓 HS/SV ~10k</span><span class="info-pill" data-zh="🛗 電梯 約1.5萬₫/趟">🛗 Thang máy ~15k/lượt</span><span class="info-pill" data-zh="🕐 7:00–17:30">🕐 7h–17h30</span></div>
+          <p data-zh="💰 陰府洞約2萬₫。從山茶半島回程順道遊五行山——一片石灰岩山群，有洞窟與古剎。請穿防滑鞋、帶水。☎ 管理處: 0236 3961 114。">💰 Động Âm Phủ ~20.000đ. Trên đường về từ Sơn Trà ghé Ngũ Hành Sơn — cụm núi đá với hang động và chùa cổ. Đi giày chống trượt, mang nước. ☎ BQL: 0236 3961 114.</p>
           <div class="links">
-            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Marble%20Mountains%20Danang&query_place_id=ChIJ2y5L4dQNQjERxeSLc68fbrw" target="_blank">📍 Bản đồ</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Marble%20Mountains%20Danang&query_place_id=ChIJ2y5L4dQNQjERxeSLc68fbrw" target="_blank">★ Review</a>
+            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Marble%20Mountains%20Danang&query_place_id=ChIJ2y5L4dQNQjERxeSLc68fbrw" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
+            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Marble%20Mountains%20Danang&query_place_id=ChIJ2y5L4dQNQjERxeSLc68fbrw" target="_blank" data-zh="★ 評論">★ Review</a>
           </div>
-          <div class="place-tags"><span class="ptag">Hang động</span><span class="ptag">Chùa cổ</span></div>
+          <div class="place-tags"><span class="ptag" data-zh="洞窟">Hang động</span><span class="ptag" data-zh="古剎">Chùa cổ</span></div>
         </div></div>
       </div>
 
       <div class="place">
-        <div class="place-head"><span class="place-time night">Tối</span><span class="place-title">Da Nang Downtown / dạo phố đêm<span class="meta">Vòng quay Sun Wheel · cần kiểm tra</span></span><span class="place-toggle">+</span></div>
+        <div class="place-head"><span class="place-time night" data-zh="晚上">Tối</span><span class="place-title" data-zh="峴港 Downtown / 逛夜市<span class='meta'>太陽輪 · 需確認</span>">Da Nang Downtown / dạo phố đêm<span class="meta">Vòng quay Sun Wheel · cần kiểm tra</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="ph"><span class="ph-fallback">🎡</span><img loading="lazy" alt="Vòng quay Sun Wheel Đà Nẵng" src="https://loremflickr.com/720/405/ferriswheel,night,city" data-cap="Vòng quay Sun Wheel về đêm"></div>
-          <span class="rating">★ 4.4 · 11.900 đánh giá</span>
-          <div class="warnbox">⚠️ <strong>Lưu ý:</strong> Đầu 2026 có thông tin Da Nang Downtown (Asia Park cũ) tạm dừng hoạt động để tái phát triển, nhưng các nguồn chưa thống nhất. <strong>Hãy gọi xác nhận trước khi đi.</strong> ☎ Sun World: 0905 766 777.</div>
-          <p>💰 Trước đây vào cổng/chợ đêm miễn phí; vé trò chơi trọn gói ~150.000–300.000đ. Nếu đóng cửa, có thể thay bằng <strong>chợ đêm Sơn Trà</strong>, <strong>cầu Tình Yêu – Cá Chép Hóa Rồng</strong> hoặc <strong>phố đêm An Thượng</strong> gần Mỹ Khê.</p>
+          <div class="ph"><span class="ph-fallback">🎡</span><img loading="lazy" alt="Vòng quay Sun Wheel Đà Nẵng" src="https://loremflickr.com/720/405/ferriswheel,night,city" data-cap="Vòng quay Sun Wheel về đêm" data-cap-zh="太陽輪夜景"></div>
+          <span class="rating" data-zh="★ 4.4 · 11,900則評價">★ 4.4 · 11.900 đánh giá</span>
+          <div class="warnbox" data-zh="⚠️ <strong>注意：</strong>2026年初有消息指 Da Nang Downtown（原 Asia Park）暫停營業進行改建，但各方說法不一。<strong>出發前請先電話確認。</strong>☎ Sun World: 0905 766 777。">⚠️ <strong>Lưu ý:</strong> Đầu 2026 có thông tin Da Nang Downtown (Asia Park cũ) tạm dừng hoạt động để tái phát triển, nhưng các nguồn chưa thống nhất. <strong>Hãy gọi xác nhận trước khi đi.</strong> ☎ Sun World: 0905 766 777.</div>
+          <p data-zh="💰 過去入園/夜市免費；遊樂設施套票約15–30萬₫。若關閉，可改去<strong>山茶夜市</strong>、<strong>愛情橋－鯉魚化龍</strong>或美溪附近的<strong>An Thượng 夜街</strong>。">💰 Trước đây vào cổng/chợ đêm miễn phí; vé trò chơi trọn gói ~150.000–300.000đ. Nếu đóng cửa, có thể thay bằng <strong>chợ đêm Sơn Trà</strong>, <strong>cầu Tình Yêu – Cá Chép Hóa Rồng</strong> hoặc <strong>phố đêm An Thượng</strong> gần Mỹ Khê.</p>
           <div class="links">
-            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Da%20Nang%20Downtown&query_place_id=ChIJF8yRoecZQjERdDBeBdSRD-Y" target="_blank">📍 Bản đồ</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Da%20Nang%20Downtown&query_place_id=ChIJF8yRoecZQjERdDBeBdSRD-Y" target="_blank">★ Review</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Ch%E1%BB%A3%20%C4%91%C3%AAm%20S%C6%A1n%20Tr%C3%A0%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">🌃 Chợ đêm Sơn Trà</a>
+            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Da%20Nang%20Downtown&query_place_id=ChIJF8yRoecZQjERdDBeBdSRD-Y" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
+            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Da%20Nang%20Downtown&query_place_id=ChIJF8yRoecZQjERdDBeBdSRD-Y" target="_blank" data-zh="★ 評論">★ Review</a>
+            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Ch%E1%BB%A3%20%C4%91%C3%AAm%20S%C6%A1n%20Tr%C3%A0%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank" data-zh="🌃 山茶夜市">🌃 Chợ đêm Sơn Trà</a>
           </div>
-          <div class="place-tags"><span class="ptag">Sun Wheel</span><span class="ptag">Chụp ảnh đêm</span></div>
+          <div class="place-tags"><span class="ptag">Sun Wheel</span><span class="ptag" data-zh="夜間拍照">Chụp ảnh đêm</span></div>
         </div></div>
       </div>
     </div>
@@ -564,44 +583,44 @@
   <div class="day">
     <div class="day-mark">
       <div class="day-num">21<small>/6</small></div>
-      <div><div class="day-date">Tháng 6, 2026</div><div class="day-dow">Chủ Nhật</div><div class="day-theme">🏮 Phố cổ &amp; tạm biệt</div></div>
+      <div><div class="day-date" data-zh="2026年6月">Tháng 6, 2026</div><div class="day-dow" data-zh="週日">Chủ Nhật</div><div class="day-theme" data-zh="🏮 古鎮與道別">🏮 Phố cổ &amp; tạm biệt</div></div>
     </div>
     <div class="day-body">
-      <h3>Hội An buổi sáng &amp; trả phòng chiều</h3>
+      <h3 data-zh="上午遊會安，下午退房">Hội An buổi sáng &amp; trả phòng chiều</h3>
 
       <div class="place">
-        <div class="place-head"><span class="place-time">Sáng</span><span class="place-title">Phố cổ Hội An<span class="meta">Cách Đà Nẵng ~30 phút</span></span><span class="place-toggle">+</span></div>
+        <div class="place-head"><span class="place-time" data-zh="上午">Sáng</span><span class="place-title" data-zh="會安古鎮<span class='meta'>距峴港約30分鐘</span>">Phố cổ Hội An<span class="meta">Cách Đà Nẵng ~30 phút</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="ph"><span class="ph-fallback">🏮</span><img loading="lazy" alt="Phố cổ Hội An" src="https://loremflickr.com/720/405/hoian,lantern,ancienttown" data-cap="Phố cổ Hội An — tường vàng, đèn lồng"></div>
-          <span class="rating">★ 4.7 · 4.000 đánh giá</span>
-          <div class="info-row"><span class="info-pill">🎫 Vé phố cổ ~120k</span><span class="info-pill">🏮 Hoa đăng 10–20k</span><span class="info-pill">🛶 Thuyền từ ~50k</span><span class="info-pill">🚗 Từ ĐN ~30 phút</span></div>
-          <p>💰 Vé phố cổ vào 5 điểm di tích; trẻ em thường miễn/giảm. Dạo phố không bắt buộc mua vé, chỉ cần khi vào nhà cổ/hội quán. Vì chiều phải trả phòng, sáng nay đi sớm để tránh nắng &amp; đông. ☎ 0944 104 901.</p>
+          <div class="ph"><span class="ph-fallback">🏮</span><img loading="lazy" alt="Phố cổ Hội An" src="https://loremflickr.com/720/405/hoian,lantern,ancienttown" data-cap="Phố cổ Hội An — tường vàng, đèn lồng" data-cap-zh="會安古鎮——黃牆、燈籠"></div>
+          <span class="rating" data-zh="★ 4.7 · 4,000則評價">★ 4.7 · 4.000 đánh giá</span>
+          <div class="info-row"><span class="info-pill" data-zh="🎫 古鎮門票 約12萬₫">🎫 Vé phố cổ ~120k</span><span class="info-pill" data-zh="🏮 水燈 1–2萬₫">🏮 Hoa đăng 10–20k</span><span class="info-pill" data-zh="🛶 搭船 約5萬₫起">🛶 Thuyền từ ~50k</span><span class="info-pill" data-zh="🚗 距峴港約30分鐘">🚗 Từ ĐN ~30 phút</span></div>
+          <p data-zh="💰 古鎮門票可參觀5處古蹟；兒童多為免/減票。純逛街不一定要買票，僅進古宅／會館時才需要。因下午要退房，今早提早出發以避開烈日與人潮。☎ 0944 104 901。">💰 Vé phố cổ vào 5 điểm di tích; trẻ em thường miễn/giảm. Dạo phố không bắt buộc mua vé, chỉ cần khi vào nhà cổ/hội quán. Vì chiều phải trả phòng, sáng nay đi sớm để tránh nắng &amp; đông. ☎ 0944 104 901.</p>
           <div class="links">
-            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Hoi%20An%20Ancient%20Town&query_place_id=ChIJ897x3ZAPQjER5-xlS8XyP68" target="_blank">📍 Bản đồ</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Hoi%20An%20Ancient%20Town&query_place_id=ChIJ897x3ZAPQjER5-xlS8XyP68" target="_blank">★ Review</a>
+            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Hoi%20An%20Ancient%20Town&query_place_id=ChIJ897x3ZAPQjER5-xlS8XyP68" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
+            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Hoi%20An%20Ancient%20Town&query_place_id=ChIJ897x3ZAPQjER5-xlS8XyP68" target="_blank" data-zh="★ 評論">★ Review</a>
           </div>
-          <div class="place-tags"><span class="ptag">Chùa Cầu</span><span class="ptag">Nhà cổ</span><span class="ptag">Sông Hoài</span></div>
+          <div class="place-tags"><span class="ptag" data-zh="來遠橋">Chùa Cầu</span><span class="ptag" data-zh="古宅">Nhà cổ</span><span class="ptag" data-zh="秋盆河">Sông Hoài</span></div>
         </div></div>
       </div>
 
       <div class="place">
-        <div class="place-head"><span class="place-time eat">Trưa</span><span class="place-title">Ăn đặc sản trước khi về<span class="meta">Mì Quảng, bún chả cá, bánh tráng cuốn</span></span><span class="place-toggle">+</span></div>
+        <div class="place-head"><span class="place-time eat" data-zh="中午">Trưa</span><span class="place-title" data-zh="返程前品嚐特色美食<span class='meta'>廣麵、魚餅米線、豬肉米紙捲</span>">Ăn đặc sản trước khi về<span class="meta">Mì Quảng, bún chả cá, bánh tráng cuốn</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="ph"><span class="ph-fallback">🍜</span><img loading="lazy" alt="Mì Quảng đặc sản" src="https://loremflickr.com/720/405/miquang,vietnamese,noodle" data-cap="Mì Quảng — đặc sản Đà Nẵng – Quảng Nam"></div>
-          <p>Bữa trưa với những món đặc trưng — có thể ăn ở Hội An (cao lầu, hoành thánh) hoặc về Đà Nẵng thưởng thức mì Quảng, bún chả cá. 💰 ~30.000–60.000đ/món. Xem thêm mục <a href="#food" style="color:var(--sea);font-weight:600;border-bottom:1px dotted var(--sea)">Ẩm thực</a> bên dưới.</p>
+          <div class="ph"><span class="ph-fallback">🍜</span><img loading="lazy" alt="Mì Quảng đặc sản" src="https://loremflickr.com/720/405/miquang,vietnamese,noodle" data-cap="Mì Quảng — đặc sản Đà Nẵng – Quảng Nam" data-cap-zh="廣麵——峴港、廣南特色"></div>
+          <p data-zh="午餐來點特色料理——可在會安吃高樓麵、雲吞，或回峴港品嚐廣麵、魚餅米線。💰 約3–6萬₫/份。更多請見下方<a href='#food' style='color:var(--sea);font-weight:600;border-bottom:1px dotted var(--sea)'>美食</a>單元。">Bữa trưa với những món đặc trưng — có thể ăn ở Hội An (cao lầu, hoành thánh) hoặc về Đà Nẵng thưởng thức mì Quảng, bún chả cá. 💰 ~30.000–60.000đ/món. Xem thêm mục <a href="#food" style="color:var(--sea);font-weight:600;border-bottom:1px dotted var(--sea)">Ẩm thực</a> bên dưới.</p>
           <div class="links">
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=M%C3%AC%20Qu%E1%BA%A3ng%20ngon%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">🍜 Mì Quảng</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=B%C3%BAn%20ch%E1%BA%A3%20c%C3%A1%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">🐟 Bún chả cá</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=B%C3%A1nh%20tr%C3%A1ng%20cu%E1%BB%91n%20th%E1%BB%8Bt%20heo%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">🥬 Bánh tráng cuốn</a>
+            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=M%C3%AC%20Qu%E1%BA%A3ng%20ngon%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank" data-zh="🍜 廣麵">🍜 Mì Quảng</a>
+            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=B%C3%BAn%20ch%E1%BA%A3%20c%C3%A1%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank" data-zh="🐟 魚餅米線">🐟 Bún chả cá</a>
+            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=B%C3%A1nh%20tr%C3%A1ng%20cu%E1%BB%91n%20th%E1%BB%8Bt%20heo%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank" data-zh="🥬 米紙肉捲">🥬 Bánh tráng cuốn</a>
           </div>
         </div></div>
       </div>
 
       <div class="place">
-        <div class="place-head"><span class="place-time night">Chiều</span><span class="place-title">Trả phòng &amp; ra sân bay<span class="meta">Kết thúc hành trình</span></span><span class="place-toggle">+</span></div>
+        <div class="place-head"><span class="place-time night" data-zh="下午">Chiều</span><span class="place-title" data-zh="退房 &amp; 前往機場<span class='meta'>旅程結束</span>">Trả phòng &amp; ra sân bay<span class="meta">Kết thúc hành trình</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="info-row"><span class="info-pill">🧳 Gửi hành lý ở lễ tân nếu cần</span><span class="info-pill">🕐 Có mặt sân bay trước 2 tiếng</span></div>
-          <p>Về khách sạn lấy hành lý, trả phòng buổi chiều rồi ra sân bay. Tạm biệt Đà Nẵng — hẹn gặp lại!</p>
+          <div class="info-row"><span class="info-pill" data-zh="🧳 需要可寄放行李於櫃台">🧳 Gửi hành lý ở lễ tân nếu cần</span><span class="info-pill" data-zh="🕐 提前2小時抵達機場">🕐 Có mặt sân bay trước 2 tiếng</span></div>
+          <p data-zh="回飯店取行李，下午退房後前往機場。再見峴港——期待再相見！">Về khách sạn lấy hành lý, trả phòng buổi chiều rồi ra sân bay. Tạm biệt Đà Nẵng — hẹn gặp lại!</p>
         </div></div>
       </div>
     </div>
@@ -610,95 +629,95 @@
 
 <!-- REVIEWS -->
 <section class="reviews reveal" id="reviews">
-  <div class="label">Cảm nhận du khách</div>
-  <h2>Người đi trước <em>nói gì?</em></h2>
-  <p class="lead">Tổng hợp tinh thần các đánh giá phổ biến trên Google Maps cho từng điểm đến — để cả nhà hình dung trước. Bấm “★ Review” trong lịch trình để đọc đánh giá gốc.</p>
+  <div class="label" data-zh="旅客心得">Cảm nhận du khách</div>
+  <h2 data-zh="過來人<em>怎麼說？</em>">Người đi trước <em>nói gì?</em></h2>
+  <p class="lead" data-zh="彙整 Google Maps 上各景點的常見評價精神，讓全家先有概念。點行程中的「★ 評論」可閱讀原始評價。">Tổng hợp tinh thần các đánh giá phổ biến trên Google Maps cho từng điểm đến — để cả nhà hình dung trước. Bấm “★ Review” trong lịch trình để đọc đánh giá gốc.</p>
   <div class="review-grid">
     <div class="rev-card">
-      <div class="rev-top"><span class="rev-place">Cầu Vàng · Bà Nà</span><span class="rev-stars">★★★★☆</span></div>
-      <p class="rev-quote">“Đẹp như tranh, đôi bàn tay khổng lồ chụp ảnh cực ‘ảo’. Nên đi sớm vì gần trưa rất đông và nắng.”</p>
-      <div class="rev-author"><span class="rev-avatar">M</span><div><div class="rev-name">Minh ·  gia đình 4 người</div><div class="rev-meta">Tổng hợp đánh giá Google</div></div></div>
+      <div class="rev-top"><span class="rev-place" data-zh="黃金橋 · 巴拿山">Cầu Vàng · Bà Nà</span><span class="rev-stars">★★★★☆</span></div>
+      <p class="rev-quote" data-zh="「美如畫，巨大的雙手拍照超夢幻。建議早點去，接近中午人多又曬。」">“Đẹp như tranh, đôi bàn tay khổng lồ chụp ảnh cực ‘ảo’. Nên đi sớm vì gần trưa rất đông và nắng.”</p>
+      <div class="rev-author"><span class="rev-avatar">M</span><div><div class="rev-name" data-zh="Minh · 四口之家">Minh ·  gia đình 4 người</div><div class="rev-meta" data-zh="Google 評價彙整">Tổng hợp đánh giá Google</div></div></div>
     </div>
     <div class="rev-card">
-      <div class="rev-top"><span class="rev-place">Biển Mỹ Khê</span><span class="rev-stars">★★★★★</span></div>
-      <p class="rev-quote">“Cát mịn, nước trong, sáng sớm ra tắm rất tuyệt. Hải sản quanh đây tươi nhưng nhớ hỏi giá trước.”</p>
-      <div class="rev-author"><span class="rev-avatar">H</span><div><div class="rev-name">Hương · du lịch cùng con nhỏ</div><div class="rev-meta">Tổng hợp đánh giá Google</div></div></div>
+      <div class="rev-top"><span class="rev-place" data-zh="美溪海灘">Biển Mỹ Khê</span><span class="rev-stars">★★★★★</span></div>
+      <p class="rev-quote" data-zh="「沙細水清，清晨下水超棒。附近海鮮新鮮，但記得先問價。」">“Cát mịn, nước trong, sáng sớm ra tắm rất tuyệt. Hải sản quanh đây tươi nhưng nhớ hỏi giá trước.”</p>
+      <div class="rev-author"><span class="rev-avatar">H</span><div><div class="rev-name" data-zh="Hương · 帶小孩出遊">Hương · du lịch cùng con nhỏ</div><div class="rev-meta" data-zh="Google 評價彙整">Tổng hợp đánh giá Google</div></div></div>
     </div>
     <div class="rev-card">
-      <div class="rev-top"><span class="rev-place">Chùa Linh Ứng</span><span class="rev-stars">★★★★★</span></div>
-      <p class="rev-quote">“Tượng Phật Bà uy nghi, view biển thoáng đãng, không khí thanh tịnh. Đi buổi sáng rất mát.”</p>
-      <div class="rev-author"><span class="rev-avatar">T</span><div><div class="rev-name">Trang · cặp đôi</div><div class="rev-meta">Tổng hợp đánh giá Google</div></div></div>
+      <div class="rev-top"><span class="rev-place" data-zh="靈應寺">Chùa Linh Ứng</span><span class="rev-stars">★★★★★</span></div>
+      <p class="rev-quote" data-zh="「觀音像莊嚴，海景開闊，氣氛清幽。早上去很涼爽。」">“Tượng Phật Bà uy nghi, view biển thoáng đãng, không khí thanh tịnh. Đi buổi sáng rất mát.”</p>
+      <div class="rev-author"><span class="rev-avatar">T</span><div><div class="rev-name" data-zh="Trang · 情侶">Trang · cặp đôi</div><div class="rev-meta" data-zh="Google 評價彙整">Tổng hợp đánh giá Google</div></div></div>
     </div>
     <div class="rev-card">
-      <div class="rev-top"><span class="rev-place">Phố cổ Hội An</span><span class="rev-stars">★★★★★</span></div>
-      <p class="rev-quote">“Ban ngày yên bình, tối lung linh đèn lồng. Thả hoa đăng trên sông Hoài là kỷ niệm khó quên.”</p>
-      <div class="rev-author"><span class="rev-avatar">Đ</span><div><div class="rev-name">Đức · nhóm bạn</div><div class="rev-meta">Tổng hợp đánh giá Google</div></div></div>
+      <div class="rev-top"><span class="rev-place" data-zh="會安古鎮">Phố cổ Hội An</span><span class="rev-stars">★★★★★</span></div>
+      <p class="rev-quote" data-zh="「白天寧靜，夜晚燈籠閃爍。在秋盆河放水燈是難忘的回憶。」">“Ban ngày yên bình, tối lung linh đèn lồng. Thả hoa đăng trên sông Hoài là kỷ niệm khó quên.”</p>
+      <div class="rev-author"><span class="rev-avatar">Đ</span><div><div class="rev-name" data-zh="Đức · 朋友團">Đức · nhóm bạn</div><div class="rev-meta" data-zh="Google 評價彙整">Tổng hợp đánh giá Google</div></div></div>
     </div>
     <div class="rev-card">
-      <div class="rev-top"><span class="rev-place">Ngũ Hành Sơn</span><span class="rev-stars">★★★★☆</span></div>
-      <p class="rev-quote">“Hang động mát mẻ, leo lên hơi mệt nhưng view đáng giá. Nên đi giày bệt và mang theo nước.”</p>
-      <div class="rev-author"><span class="rev-avatar">L</span><div><div class="rev-name">Lan · gia đình</div><div class="rev-meta">Tổng hợp đánh giá Google</div></div></div>
+      <div class="rev-top"><span class="rev-place" data-zh="五行山">Ngũ Hành Sơn</span><span class="rev-stars">★★★★☆</span></div>
+      <p class="rev-quote" data-zh="「洞窟涼爽，爬上去有點累但景色值得。建議穿平底鞋、帶水。」">“Hang động mát mẻ, leo lên hơi mệt nhưng view đáng giá. Nên đi giày bệt và mang theo nước.”</p>
+      <div class="rev-author"><span class="rev-avatar">L</span><div><div class="rev-name" data-zh="Lan · 家庭">Lan · gia đình</div><div class="rev-meta" data-zh="Google 評價彙整">Tổng hợp đánh giá Google</div></div></div>
     </div>
     <div class="rev-card">
-      <div class="rev-top"><span class="rev-place">Cầu Rồng</span><span class="rev-stars">★★★★☆</span></div>
-      <p class="rev-quote">“Cuối tuần xem rồng phun lửa rất thích, trẻ con mê tít. Đến sớm chọn chỗ kẻo đông kín người.”</p>
-      <div class="rev-author"><span class="rev-avatar">N</span><div><div class="rev-name">Nam · gia đình 3 người</div><div class="rev-meta">Tổng hợp đánh giá Google</div></div></div>
+      <div class="rev-top"><span class="rev-place" data-zh="龍橋">Cầu Rồng</span><span class="rev-stars">★★★★☆</span></div>
+      <p class="rev-quote" data-zh="「週末看龍噴火很過癮，小孩超愛。早點到佔位，否則人擠人。」">“Cuối tuần xem rồng phun lửa rất thích, trẻ con mê tít. Đến sớm chọn chỗ kẻo đông kín người.”</p>
+      <div class="rev-author"><span class="rev-avatar">N</span><div><div class="rev-name" data-zh="Nam · 三口之家">Nam · gia đình 3 người</div><div class="rev-meta" data-zh="Google 評價彙整">Tổng hợp đánh giá Google</div></div></div>
     </div>
   </div>
 </section>
 
 <!-- FOOD -->
 <section class="food reveal" id="food">
-  <div class="label">Ẩm thực Đà Nẵng</div>
-  <h2>Ăn gì cho <em>đã miệng?</em></h2>
-  <p class="lead">Những món nhất định phải thử — giá bình dân, ngon nhất ở quán địa phương. Bấm tên quán để mở bản đồ &amp; review.</p>
+  <div class="label" data-zh="峴港美食">Ẩm thực Đà Nẵng</div>
+  <h2 data-zh="吃什麼<em>最過癮？</em>">Ăn gì cho <em>đã miệng?</em></h2>
+  <p class="lead" data-zh="必嚐的料理——價格親民，地道小店最對味。點店名開啟地圖與評價。">Những món nhất định phải thử — giá bình dân, ngon nhất ở quán địa phương. Bấm tên quán để mở bản đồ &amp; review.</p>
   <div class="food-grid">
     <div class="food-card">
-      <div class="ph"><span class="ph-fallback">🍜</span><img loading="lazy" alt="Mì Quảng" src="https://loremflickr.com/480/360/miquang,noodle" data-cap="Mì Quảng"></div>
+      <div class="ph"><span class="ph-fallback">🍜</span><img loading="lazy" alt="Mì Quảng" src="https://loremflickr.com/480/360/miquang,noodle" data-cap="Mì Quảng" data-cap-zh="廣麵"></div>
       <div class="food-pad">
-        <h4>Mì Quảng</h4><div class="food-price">~30.000 – 50.000đ</div>
-        <p>Sợi mì vàng, nước lèo ít mà đậm, ăn kèm bánh tráng &amp; rau sống. Món “quốc dân” của xứ Quảng.</p>
-        <div class="food-where">Gợi ý: <a href="https://www.google.com/maps/search/?api=1&query=M%C3%AC%20Qu%E1%BA%A3ng%201A%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Mì Quảng 1A</a>, <a href="https://www.google.com/maps/search/?api=1&query=M%C3%AC%20Qu%E1%BA%A3ng%20B%C3%A0%20Mua%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Bà Mua</a></div>
+        <h4 data-zh="廣麵">Mì Quảng</h4><div class="food-price" data-zh="約3–5萬₫">~30.000 – 50.000đ</div>
+        <p data-zh="黃色麵條，湯少而濃郁，配米餅與生菜。廣南的「國民」料理。">Sợi mì vàng, nước lèo ít mà đậm, ăn kèm bánh tráng &amp; rau sống. Món “quốc dân” của xứ Quảng.</p>
+        <div class="food-where"><span data-zh="推薦：">Gợi ý: </span><a href="https://www.google.com/maps/search/?api=1&query=M%C3%AC%20Qu%E1%BA%A3ng%201A%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Mì Quảng 1A</a>, <a href="https://www.google.com/maps/search/?api=1&query=M%C3%AC%20Qu%E1%BA%A3ng%20B%C3%A0%20Mua%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Bà Mua</a></div>
       </div>
     </div>
     <div class="food-card">
-      <div class="ph"><span class="ph-fallback">🐟</span><img loading="lazy" alt="Bún chả cá" src="https://loremflickr.com/480/360/fishcake,noodle,soup" data-cap="Bún chả cá"></div>
+      <div class="ph"><span class="ph-fallback">🐟</span><img loading="lazy" alt="Bún chả cá" src="https://loremflickr.com/480/360/fishcake,noodle,soup" data-cap="Bún chả cá" data-cap-zh="魚餅米線"></div>
       <div class="food-pad">
-        <h4>Bún chả cá</h4><div class="food-price">~25.000 – 40.000đ</div>
-        <p>Nước dùng ngọt thanh từ cá, chả cá dai thơm. Ăn sáng hoặc tối đều hợp, nhẹ bụng.</p>
-        <div class="food-where">Gợi ý: <a href="https://www.google.com/maps/search/?api=1&query=B%C3%BAn%20ch%E1%BA%A3%20c%C3%A1%20109%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Bún chả cá 109</a>, <a href="https://www.google.com/maps/search/?api=1&query=B%C3%BAn%20ch%E1%BA%A3%20c%C3%A1%20B%C3%A0%20L%E1%BB%AF%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Bà Lữ</a></div>
+        <h4 data-zh="魚餅米線">Bún chả cá</h4><div class="food-price" data-zh="約2.5–4萬₫">~25.000 – 40.000đ</div>
+        <p data-zh="魚熬製的湯頭清甜，魚餅彈牙鮮香。早餐或宵夜都適合，清爽不膩。">Nước dùng ngọt thanh từ cá, chả cá dai thơm. Ăn sáng hoặc tối đều hợp, nhẹ bụng.</p>
+        <div class="food-where"><span data-zh="推薦：">Gợi ý: </span><a href="https://www.google.com/maps/search/?api=1&query=B%C3%BAn%20ch%E1%BA%A3%20c%C3%A1%20109%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Bún chả cá 109</a>, <a href="https://www.google.com/maps/search/?api=1&query=B%C3%BAn%20ch%E1%BA%A3%20c%C3%A1%20B%C3%A0%20L%E1%BB%AF%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Bà Lữ</a></div>
       </div>
     </div>
     <div class="food-card">
-      <div class="ph"><span class="ph-fallback">🥬</span><img loading="lazy" alt="Bánh tráng cuốn thịt heo" src="https://loremflickr.com/480/360/porkroll,vietnamese,food" data-cap="Bánh tráng cuốn thịt heo"></div>
+      <div class="ph"><span class="ph-fallback">🥬</span><img loading="lazy" alt="Bánh tráng cuốn thịt heo" src="https://loremflickr.com/480/360/porkroll,vietnamese,food" data-cap="Bánh tráng cuốn thịt heo" data-cap-zh="豬肉米紙捲"></div>
       <div class="food-pad">
-        <h4>Bánh tráng cuốn thịt heo</h4><div class="food-price">~70.000 – 90.000đ/phần</div>
-        <p>Thịt heo hai đầu da, cuốn cùng rau sống &amp; chấm mắm nêm — đặc sản khó cưỡng của Đà Nẵng.</p>
-        <div class="food-where">Gợi ý: <a href="https://www.google.com/maps/search/?api=1&query=B%C3%A1nh%20tr%C3%A1ng%20cu%E1%BB%91n%20th%E1%BB%8Bt%20heo%20M%E1%BA%ADu%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Mậu</a>, <a href="https://www.google.com/maps/search/?api=1&query=B%C3%A1nh%20tr%C3%A1ng%20cu%E1%BB%91n%20th%E1%BB%8Bt%20heo%20Tr%E1%BA%A7n%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Trần</a></div>
+        <h4 data-zh="豬肉米紙捲">Bánh tráng cuốn thịt heo</h4><div class="food-price" data-zh="約7–9萬₫/份">~70.000 – 90.000đ/phần</div>
+        <p data-zh="兩面帶皮的豬肉，包生菜、沾魚露醬——峴港令人難忘的特色。">Thịt heo hai đầu da, cuốn cùng rau sống &amp; chấm mắm nêm — đặc sản khó cưỡng của Đà Nẵng.</p>
+        <div class="food-where"><span data-zh="推薦：">Gợi ý: </span><a href="https://www.google.com/maps/search/?api=1&query=B%C3%A1nh%20tr%C3%A1ng%20cu%E1%BB%91n%20th%E1%BB%8Bt%20heo%20M%E1%BA%ADu%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Mậu</a>, <a href="https://www.google.com/maps/search/?api=1&query=B%C3%A1nh%20tr%C3%A1ng%20cu%E1%BB%91n%20th%E1%BB%8Bt%20heo%20Tr%E1%BA%A7n%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Trần</a></div>
       </div>
     </div>
     <div class="food-card">
-      <div class="ph"><span class="ph-fallback">🦐</span><img loading="lazy" alt="Hải sản Đà Nẵng" src="https://loremflickr.com/480/360/seafood,grill" data-cap="Hải sản tươi sống"></div>
+      <div class="ph"><span class="ph-fallback">🦐</span><img loading="lazy" alt="Hải sản Đà Nẵng" src="https://loremflickr.com/480/360/seafood,grill" data-cap="Hải sản tươi sống" data-cap-zh="新鮮海鮮"></div>
       <div class="food-pad">
-        <h4>Hải sản tươi</h4><div class="food-price">Theo giá thị trường</div>
-        <p>Tôm, ghẹ, ốc, mực nướng… Chọn quán đông khách, cân hải sản &amp; chốt giá trước khi chế biến.</p>
-        <div class="food-where">Gợi ý: <a href="https://www.google.com/maps/search/?api=1&query=B%C3%A9%20M%E1%BA%B7n%20h%E1%BA%A3i%20s%E1%BA%A3n%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Bé Mặn</a>, <a href="https://www.google.com/maps/search/?api=1&query=N%C4%83m%20%C4%90%E1%BA%A3nh%20h%E1%BA%A3i%20s%E1%BA%A3n%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Năm Đảnh</a></div>
+        <h4 data-zh="新鮮海鮮">Hải sản tươi</h4><div class="food-price" data-zh="依時價">Theo giá thị trường</div>
+        <p data-zh="蝦、蟹、螺、烤魷魚…挑人多的店，秤好海鮮、講好價再料理。">Tôm, ghẹ, ốc, mực nướng… Chọn quán đông khách, cân hải sản &amp; chốt giá trước khi chế biến.</p>
+        <div class="food-where"><span data-zh="推薦：">Gợi ý: </span><a href="https://www.google.com/maps/search/?api=1&query=B%C3%A9%20M%E1%BA%B7n%20h%E1%BA%A3i%20s%E1%BA%A3n%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Bé Mặn</a>, <a href="https://www.google.com/maps/search/?api=1&query=N%C4%83m%20%C4%90%E1%BA%A3nh%20h%E1%BA%A3i%20s%E1%BA%A3n%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Năm Đảnh</a></div>
       </div>
     </div>
     <div class="food-card">
-      <div class="ph"><span class="ph-fallback">🥢</span><img loading="lazy" alt="Bánh xèo nem lụi" src="https://loremflickr.com/480/360/banhxeo,vietnamese,pancake" data-cap="Bánh xèo – nem lụi"></div>
+      <div class="ph"><span class="ph-fallback">🥢</span><img loading="lazy" alt="Bánh xèo nem lụi" src="https://loremflickr.com/480/360/banhxeo,vietnamese,pancake" data-cap="Bánh xèo – nem lụi" data-cap-zh="越式煎餅－串燒肉"></div>
       <div class="food-pad">
-        <h4>Bánh xèo – nem lụi</h4><div class="food-price">~40.000 – 60.000đ</div>
-        <p>Bánh xèo giòn rụm, nem lụi nướng thơm, cuốn bánh tráng chấm nước lèo đậu phộng béo ngậy.</p>
-        <div class="food-where">Gợi ý: <a href="https://www.google.com/maps/search/?api=1&query=B%C3%A1nh%20x%C3%A8o%20B%C3%A0%20D%C6%B0%E1%BB%A1ng%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Bà Dưỡng</a></div>
+        <h4 data-zh="越式煎餅－串燒肉">Bánh xèo – nem lụi</h4><div class="food-price" data-zh="約4–6萬₫">~40.000 – 60.000đ</div>
+        <p data-zh="煎餅酥脆、串燒肉噴香，包米紙沾濃郁花生醬。">Bánh xèo giòn rụm, nem lụi nướng thơm, cuốn bánh tráng chấm nước lèo đậu phộng béo ngậy.</p>
+        <div class="food-where"><span data-zh="推薦：">Gợi ý: </span><a href="https://www.google.com/maps/search/?api=1&query=B%C3%A1nh%20x%C3%A8o%20B%C3%A0%20D%C6%B0%E1%BB%A1ng%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Bà Dưỡng</a></div>
       </div>
     </div>
     <div class="food-card">
-      <div class="ph"><span class="ph-fallback">🍧</span><img loading="lazy" alt="Kem bơ chè Đà Nẵng" src="https://loremflickr.com/480/360/avocado,icecream,dessert" data-cap="Kem bơ &amp; chè"></div>
+      <div class="ph"><span class="ph-fallback">🍧</span><img loading="lazy" alt="Kem bơ chè Đà Nẵng" src="https://loremflickr.com/480/360/avocado,icecream,dessert" data-cap="Kem bơ &amp; chè" data-cap-zh="酪梨冰 &amp; 甜湯"></div>
       <div class="food-pad">
-        <h4>Kem bơ &amp; chè</h4><div class="food-price">~20.000 – 35.000đ</div>
-        <p>Tráng miệng giải nhiệt ngày hè: kem bơ béo mịn, chè thập cẩm mát lạnh — cô con gái chắc chắn thích.</p>
-        <div class="food-where">Gợi ý: <a href="https://www.google.com/maps/search/?api=1&query=Kem%20b%C6%A1%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Kem bơ Đà Nẵng</a></div>
+        <h4 data-zh="酪梨冰 &amp; 甜湯">Kem bơ &amp; chè</h4><div class="food-price" data-zh="約2–3.5萬₫">~20.000 – 35.000đ</div>
+        <p data-zh="夏日消暑甜點：綿密酪梨冰、清涼什錦甜湯——小女兒一定愛。">Tráng miệng giải nhiệt ngày hè: kem bơ béo mịn, chè thập cẩm mát lạnh — cô con gái chắc chắn thích.</p>
+        <div class="food-where"><span data-zh="推薦：">Gợi ý: </span><a href="https://www.google.com/maps/search/?api=1&query=Kem%20b%C6%A1%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Kem bơ Đà Nẵng</a></div>
       </div>
     </div>
   </div>
@@ -706,74 +725,74 @@
 
 <!-- MAP -->
 <section class="mapsec reveal" id="map">
-  <div class="label">Bản đồ tổng quan</div>
-  <h2>Mọi điểm đến <em>trên một bản đồ</em></h2>
-  <p class="lead">Khu lưu trú Mỹ Khê nằm trung tâm, đi sân bay, Sơn Trà, Ngũ Hành Sơn và Hội An đều thuận tiện. Bấm các nút bên dưới để mở từng nơi trên Google Maps.</p>
+  <div class="label" data-zh="總覽地圖">Bản đồ tổng quan</div>
+  <h2 data-zh="所有景點<em>盡在一張地圖</em>">Mọi điểm đến <em>trên một bản đồ</em></h2>
+  <p class="lead" data-zh="美溪住宿區位置居中，前往機場、山茶半島、五行山與會安都方便。點下方按鈕在 Google 地圖開啟各景點。">Khu lưu trú Mỹ Khê nằm trung tâm, đi sân bay, Sơn Trà, Ngũ Hành Sơn và Hội An đều thuận tiện. Bấm các nút bên dưới để mở từng nơi trên Google Maps.</p>
   <div class="map-frame">
     <iframe loading="lazy" title="Bản đồ Đà Nẵng" referrerpolicy="no-referrer-when-downgrade"
       src="https://www.google.com/maps?q=My%20Khe%20Beach%20Da%20Nang&z=12&output=embed"></iframe>
   </div>
   <div class="map-legend">
-    <a href="https://www.google.com/maps/search/?api=1&query=My%20Khe%20Beach%20Danang" target="_blank">🏖️ Mỹ Khê</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Dragon%20Bridge%20Danang" target="_blank">🐉 Cầu Rồng</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Ba%20Na%20Hills" target="_blank">🌉 Bà Nà</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Chua%20Linh%20Ung%20Son%20Tra" target="_blank">🛕 Linh Ứng</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Marble%20Mountains%20Danang" target="_blank">🪨 Ngũ Hành Sơn</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Hoi%20An%20Ancient%20Town" target="_blank">🏮 Hội An</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Da%20Nang%20International%20Airport" target="_blank">✈️ Sân bay</a>
+    <a href="https://www.google.com/maps/search/?api=1&query=My%20Khe%20Beach%20Danang" target="_blank" data-zh="🏖️ 美溪">🏖️ Mỹ Khê</a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Dragon%20Bridge%20Danang" target="_blank" data-zh="🐉 龍橋">🐉 Cầu Rồng</a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Ba%20Na%20Hills" target="_blank" data-zh="🌉 巴拿山">🌉 Bà Nà</a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Chua%20Linh%20Ung%20Son%20Tra" target="_blank" data-zh="🛕 靈應寺">🛕 Linh Ứng</a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Marble%20Mountains%20Danang" target="_blank" data-zh="🪨 五行山">🪨 Ngũ Hành Sơn</a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Hoi%20An%20Ancient%20Town" target="_blank" data-zh="🏮 會安">🏮 Hội An</a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Da%20Nang%20International%20Airport" target="_blank" data-zh="✈️ 機場">✈️ Sân bay</a>
   </div>
 </section>
 
 <!-- INFO -->
 <section class="info reveal" id="info">
-  <div class="label" style="color:var(--gold-soft)">Thông tin hữu ích</div>
-  <h2>Cần biết trước <em>khi đi</em></h2>
-  <p class="lead">Thời tiết, đi lại, liên lạc và số khẩn cấp — gom lại một chỗ để cả nhà yên tâm.</p>
+  <div class="label" style="color:var(--gold-soft)" data-zh="實用資訊">Thông tin hữu ích</div>
+  <h2 data-zh="出發前<em>必看</em>">Cần biết trước <em>khi đi</em></h2>
+  <p class="lead" data-zh="天氣、交通、通訊與緊急電話——統整一處，讓全家安心。">Thời tiết, đi lại, liên lạc và số khẩn cấp — gom lại một chỗ để cả nhà yên tâm.</p>
   <div class="weather-strip">
-    <span class="wx">🌡️ Tháng 6: <b>28–35°C</b></span>
-    <span class="wx">☀️ Nắng nhiều, <b>ít mưa</b></span>
-    <span class="wx">🌊 Biển <b>êm, đẹp</b> để tắm</span>
-    <span class="wx">🧴 Chỉ số UV <b>cao</b> buổi trưa</span>
+    <span class="wx" data-zh="🌡️ 6月：<b>28–35°C</b>">🌡️ Tháng 6: <b>28–35°C</b></span>
+    <span class="wx" data-zh="☀️ 晴朗、<b>少雨</b>">☀️ Nắng nhiều, <b>ít mưa</b></span>
+    <span class="wx" data-zh="🌊 海面<b>平穩、適合戲水</b>">🌊 Biển <b>êm, đẹp</b> để tắm</span>
+    <span class="wx" data-zh="🧴 中午紫外線<b>強</b>">🧴 Chỉ số UV <b>cao</b> buổi trưa</span>
   </div>
   <div class="info-grid">
     <div class="info-card">
-      <h4>🚗 Di chuyển</h4>
+      <h4 data-zh="🚗 交通">🚗 Di chuyển</h4>
       <ul>
-        <li><span>Sân bay → Mỹ Khê</span><span>~10–15 phút</span></li>
-        <li><span>Grab / taxi trong phố</span><span>~15–60k</span></li>
-        <li><span>Thuê xe máy</span><span>~120–150k/ngày</span></li>
-        <li><span>Ô tô có tài xế (đi Bà Nà/Sơn Trà)</span><span>thuê theo ngày</span></li>
-        <li><span>Đà Nẵng → Hội An</span><span>~30 km · 30–40 phút</span></li>
+        <li><span data-zh="機場 → 美溪">Sân bay → Mỹ Khê</span><span data-zh="約10–15分鐘">~10–15 phút</span></li>
+        <li><span data-zh="市區 Grab/計程車">Grab / taxi trong phố</span><span data-zh="約1.5–6萬₫">~15–60k</span></li>
+        <li><span data-zh="租機車">Thuê xe máy</span><span data-zh="約12–15萬₫/天">~120–150k/ngày</span></li>
+        <li><span data-zh="附司機汽車（往巴拿山/山茶）">Ô tô có tài xế (đi Bà Nà/Sơn Trà)</span><span data-zh="按日租">thuê theo ngày</span></li>
+        <li><span data-zh="峴港 → 會安">Đà Nẵng → Hội An</span><span data-zh="約30公里 · 30–40分鐘">~30 km · 30–40 phút</span></li>
       </ul>
     </div>
     <div class="info-card">
-      <h4>📱 Liên lạc &amp; tiền</h4>
+      <h4 data-zh="📱 通訊與金錢">📱 Liên lạc &amp; tiền</h4>
       <ul>
-        <li><span>SIM 4G (Viettel/Mobi/Vina)</span><span>mua ở sân bay</span></li>
-        <li><span>ATM &amp; đổi tiền</span><span>nhiều ở trung tâm</span></li>
-        <li><span>Thanh toán</span><span>tiền mặt + QR/thẻ</span></li>
-        <li><span>Ổ cắm điện</span><span>type A/C, 220V</span></li>
-        <li><span>Mã vùng điện thoại</span><span>0236</span></li>
+        <li><span data-zh="4G SIM卡（Viettel/Mobi/Vina）">SIM 4G (Viettel/Mobi/Vina)</span><span data-zh="機場購買">mua ở sân bay</span></li>
+        <li><span data-zh="ATM 與換匯">ATM &amp; đổi tiền</span><span data-zh="市中心多">nhiều ở trung tâm</span></li>
+        <li><span data-zh="付款">Thanh toán</span><span data-zh="現金 + QR/卡">tiền mặt + QR/thẻ</span></li>
+        <li><span data-zh="插座">Ổ cắm điện</span><span data-zh="A/C型, 220V">type A/C, 220V</span></li>
+        <li><span data-zh="電話區碼">Mã vùng điện thoại</span><span>0236</span></li>
       </ul>
     </div>
     <div class="info-card sos">
-      <h4>🆘 Số khẩn cấp</h4>
+      <h4 data-zh="🆘 緊急電話">🆘 Số khẩn cấp</h4>
       <ul>
-        <li><span>Công an</span><span>113</span></li>
-        <li><span>Cứu hỏa</span><span>114</span></li>
-        <li><span>Cấp cứu y tế</span><span>115</span></li>
-        <li><span>Bệnh viện Đà Nẵng</span><a href="tel:02363821118">0236 3821 118</a></li>
-        <li><span>BV Gia Đình (quốc tế)</span><a href="tel:02363632111">0236 3632 111</a></li>
+        <li><span data-zh="警察">Công an</span><span>113</span></li>
+        <li><span data-zh="消防">Cứu hỏa</span><span>114</span></li>
+        <li><span data-zh="醫療急救">Cấp cứu y tế</span><span>115</span></li>
+        <li><span data-zh="峴港醫院">Bệnh viện Đà Nẵng</span><a href="tel:02363821118">0236 3821 118</a></li>
+        <li><span data-zh="家庭醫院（國際）">BV Gia Đình (quốc tế)</span><a href="tel:02363632111">0236 3632 111</a></li>
       </ul>
     </div>
     <div class="info-card">
-      <h4>💡 Lưu ý mùa hè</h4>
+      <h4 data-zh="💡 夏季提醒">💡 Lưu ý mùa hè</h4>
       <ul>
-        <li><span>Mùa cao điểm — đặt sớm</span><span>phòng &amp; vé</span></li>
-        <li><span>Tắm biển an toàn</span><span>theo cờ &amp; phao</span></li>
-        <li><span>Tránh nắng</span><span>10h–15h</span></li>
-        <li><span>Mang theo</span><span>kem chống nắng, mũ</span></li>
-        <li><span>Trang phục đền/chùa</span><span>kín đáo</span></li>
+        <li><span data-zh="旺季——提早預訂">Mùa cao điểm — đặt sớm</span><span data-zh="房間與門票">phòng &amp; vé</span></li>
+        <li><span data-zh="安全戲水">Tắm biển an toàn</span><span data-zh="依旗幟與浮標">theo cờ &amp; phao</span></li>
+        <li><span data-zh="避開烈日">Tránh nắng</span><span>10h–15h</span></li>
+        <li><span data-zh="攜帶">Mang theo</span><span data-zh="防曬乳、帽子">kem chống nắng, mũ</span></li>
+        <li><span data-zh="寺廟服裝">Trang phục đền/chùa</span><span data-zh="端莊">kín đáo</span></li>
       </ul>
     </div>
   </div>
@@ -781,49 +800,49 @@
 
 <!-- COST -->
 <section class="cost reveal" id="cost">
-  <div class="label">Ngân sách dự kiến</div>
-  <h2>Chi phí cho <em>3 người · 3 đêm</em></h2>
-  <p class="lead">Ước tính tham khảo, dao động theo hạng khách sạn và thói quen chi tiêu.</p>
+  <div class="label" data-zh="預估預算">Ngân sách dự kiến</div>
+  <h2 data-zh="<em>3人 · 3晚</em>的花費">Chi phí cho <em>3 người · 3 đêm</em></h2>
+  <p class="lead" data-zh="參考估算，依飯店等級與消費習慣而異。">Ước tính tham khảo, dao động theo hạng khách sạn và thói quen chi tiêu.</p>
   <div class="cost-table">
-    <div class="cost-row"><span>🏨 Khách sạn (3 đêm)</span><span>4,5 – 9 triệu</span></div>
-    <div class="cost-row"><span>🚡 Vé Bà Nà (2 NL + 1)</span><span>~2,8 – 3,2 triệu</span></div>
-    <div class="cost-row"><span>🪨 Ngũ Hành Sơn (3 người)</span><span>~0,1 – 0,15 triệu</span></div>
-    <div class="cost-row"><span>🏮 Vé phố cổ Hội An</span><span>~0,3 – 0,5 triệu</span></div>
-    <div class="cost-row"><span>🍤 Ăn uống</span><span>2,5 – 4 triệu</span></div>
-    <div class="cost-row"><span>🚖 Taxi / Grab / thuê xe</span><span>1 – 2 triệu</span></div>
-    <div class="cost-row total"><span>Tổng cộng</span><span>11 – 19 triệu</span></div>
+    <div class="cost-row"><span data-zh="🏨 飯店（3晚）">🏨 Khách sạn (3 đêm)</span><span data-zh="450–900萬₫">4,5 – 9 triệu</span></div>
+    <div class="cost-row"><span data-zh="🚡 巴拿山門票（2成人+1）">🚡 Vé Bà Nà (2 NL + 1)</span><span data-zh="約280–320萬₫">~2,8 – 3,2 triệu</span></div>
+    <div class="cost-row"><span data-zh="🪨 五行山（3人）">🪨 Ngũ Hành Sơn (3 người)</span><span data-zh="約10–15萬₫">~0,1 – 0,15 triệu</span></div>
+    <div class="cost-row"><span data-zh="🏮 會安古鎮門票">🏮 Vé phố cổ Hội An</span><span data-zh="約30–50萬₫">~0,3 – 0,5 triệu</span></div>
+    <div class="cost-row"><span data-zh="🍤 餐飲">🍤 Ăn uống</span><span data-zh="250–400萬₫">2,5 – 4 triệu</span></div>
+    <div class="cost-row"><span data-zh="🚖 計程車/Grab/租車">🚖 Taxi / Grab / thuê xe</span><span data-zh="100–200萬₫">1 – 2 triệu</span></div>
+    <div class="cost-row total"><span data-zh="總計">Tổng cộng</span><span data-zh="1,100–1,900萬₫">11 – 19 triệu</span></div>
   </div>
-  <p style="max-width:760px;margin-top:1.1rem;font-size:.84rem;color:rgba(251,245,234,.6);font-style:italic">Giá vé là mức tham khảo cho khách ngoại tỉnh 2026, có thể thay đổi theo thời điểm &amp; khuyến mãi. Nên gọi xác nhận trước khi đi.</p>
+  <p style="max-width:760px;margin-top:1.1rem;font-size:.84rem;color:rgba(251,245,234,.6);font-style:italic" data-zh="票價為2026年外地遊客參考價，可能因時段與優惠而變動。出發前請先電話確認。">Giá vé là mức tham khảo cho khách ngoại tỉnh 2026, có thể thay đổi theo thời điểm &amp; khuyến mãi. Nên gọi xác nhận trước khi đi.</p>
 </section>
 
 <!-- TIPS -->
 <section class="tips reveal" id="tips">
-  <div class="label">Mẹo nhỏ</div>
-  <h2>Để chuyến đi <em>nhẹ nhàng hơn</em></h2>
+  <div class="label" data-zh="小貼士">Mẹo nhỏ</div>
+  <h2 data-zh="讓旅程<em>更輕鬆</em>">Để chuyến đi <em>nhẹ nhàng hơn</em></h2>
   <div class="tip-grid">
-    <div class="tip"><div class="ic">🎟️</div><h4>Đặt vé Bà Nà trước</h4><p>Mua online sớm để tránh xếp hàng, đôi khi rẻ hơn. Lên cáp treo từ 8h cho mát.</p></div>
-    <div class="tip"><div class="ic">⏱️</div><h4>Ngày cuối gọn gàng</h4><p>21/6 trả phòng chiều — đi Hội An buổi sáng và gửi hành lý ở lễ tân nếu cần.</p></div>
-    <div class="tip"><div class="ic">☀️</div><h4>Tránh nắng trưa</h4><p>Buổi trưa nắng gắt — nghỉ hồ bơi, dồn hoạt động vào sáng sớm và chiều tối.</p></div>
-    <div class="tip"><div class="ic">🎒</div><h4>Mang theo</h4><p>Áo khoác mỏng (Bà Nà se lạnh), giày dễ tháo, kem chống nắng, mũ và nước.</p></div>
-    <div class="tip"><div class="ic">💵</div><h4>Hỏi giá trước</h4><p>Ăn hải sản, đi xe ôm/xích lô nên thống nhất giá trước để khỏi bất ngờ.</p></div>
-    <div class="tip"><div class="ic">📷</div><h4>Giờ vàng chụp ảnh</h4><p>Bình minh ở biển, hoàng hôn ở Sơn Trà và tối đèn lồng Hội An là đẹp nhất.</p></div>
+    <div class="tip"><div class="ic">🎟️</div><h4 data-zh="提前訂巴拿山票">Đặt vé Bà Nà trước</h4><p data-zh="提早線上購票免排隊，有時更便宜。8點搭纜車較涼爽。">Mua online sớm để tránh xếp hàng, đôi khi rẻ hơn. Lên cáp treo từ 8h cho mát.</p></div>
+    <div class="tip"><div class="ic">⏱️</div><h4 data-zh="最後一天從簡">Ngày cuối gọn gàng</h4><p data-zh="6/21下午退房——上午遊會安，需要可將行李寄櫃台。">21/6 trả phòng chiều — đi Hội An buổi sáng và gửi hành lý ở lễ tân nếu cần.</p></div>
+    <div class="tip"><div class="ic">☀️</div><h4 data-zh="避開中午烈日">Tránh nắng trưa</h4><p data-zh="中午很曬——到泳池休息，把活動集中在清晨與傍晚。">Buổi trưa nắng gắt — nghỉ hồ bơi, dồn hoạt động vào sáng sớm và chiều tối.</p></div>
+    <div class="tip"><div class="ic">🎒</div><h4 data-zh="隨身攜帶">Mang theo</h4><p data-zh="薄外套（巴拿山微涼）、易脫的鞋、防曬乳、帽子與水。">Áo khoác mỏng (Bà Nà se lạnh), giày dễ tháo, kem chống nắng, mũ và nước.</p></div>
+    <div class="tip"><div class="ic">💵</div><h4 data-zh="先問價">Hỏi giá trước</h4><p data-zh="吃海鮮、搭機車計程/三輪車，先講好價以免意外。">Ăn hải sản, đi xe ôm/xích lô nên thống nhất giá trước để khỏi bất ngờ.</p></div>
+    <div class="tip"><div class="ic">📷</div><h4 data-zh="拍照黃金時刻">Giờ vàng chụp ảnh</h4><p data-zh="海邊日出、山茶半島日落、會安夜晚燈籠最美。">Bình minh ở biển, hoàng hôn ở Sơn Trà và tối đèn lồng Hội An là đẹp nhất.</p></div>
   </div>
 </section>
 
 <!-- CHECKLIST -->
 <section class="checklist reveal" id="checklist">
-  <div class="label" style="color:var(--gold-soft)">Danh sách của tôi</div>
-  <h2>Mình muốn <em>đi những đâu?</em></h2>
-  <p class="lead">Tick vào những nơi cả nhà muốn đi. Lựa chọn được lưu lại ngay trên máy — mỗi lần mở lại trang là thấy ngay điểm tiếp theo cần tới. Bấm vào dòng để đánh dấu đã đi.</p>
+  <div class="label" style="color:var(--gold-soft)" data-zh="我的清單">Danh sách của tôi</div>
+  <h2 data-zh="我們想<em>去哪些地方？</em>">Mình muốn <em>đi những đâu?</em></h2>
+  <p class="lead" data-zh="勾選全家想去的地點。選擇會直接存在本機——每次開啟都能看到下一個要去的點。點一行即可標記已去。">Tick vào những nơi cả nhà muốn đi. Lựa chọn được lưu lại ngay trên máy — mỗi lần mở lại trang là thấy ngay điểm tiếp theo cần tới. Bấm vào dòng để đánh dấu đã đi.</p>
 
   <div class="check-progress-wrap">
-    <div class="check-progress-top"><span>Tiến độ chuyến đi</span><span id="pct">0%</span></div>
+    <div class="check-progress-top"><span data-zh="旅程進度">Tiến độ chuyến đi</span><span id="pct">0%</span></div>
     <div class="check-bar"><i id="barFill"></i></div>
     <div class="check-hint" id="countHint">Chưa đánh dấu nơi nào</div>
   </div>
 
   <div class="next-up" id="nextUp" style="display:none">
-    <div class="nl">⭐ Điểm tiếp theo</div>
+    <div class="nl" data-zh="⭐ 下一站">⭐ Điểm tiếp theo</div>
     <div class="nt" id="nextTitle">—</div>
     <div class="ns" id="nextSub"></div>
   </div>
@@ -831,13 +850,13 @@
   <div class="check-groups" id="groups"></div>
 
   <div class="check-actions">
-    <button class="btn primary" id="resetBtn">↺ Đặt lại tất cả</button>
-    <button class="btn" id="allBtn">✓ Đánh dấu hết</button>
+    <button class="btn primary" id="resetBtn" data-zh="↺ 全部重設">↺ Đặt lại tất cả</button>
+    <button class="btn" id="allBtn" data-zh="✓ 全部標記">✓ Đánh dấu hết</button>
   </div>
-  <p class="check-hint" style="margin-top:1.2rem">💡 Mẹo: tải file này về máy rồi mở bằng Chrome/Safari trên điện thoại để lưu được lựa chọn lâu dài. Có thể thêm vào màn hình chính như một ứng dụng.</p>
+  <p class="check-hint" style="margin-top:1.2rem" data-zh="💡 小撇步：將此檔下載到手機，用 Chrome/Safari 開啟即可長期保存選擇。也可加到主畫面當作 App 使用。">💡 Mẹo: tải file này về máy rồi mở bằng Chrome/Safari trên điện thoại để lưu được lựa chọn lâu dài. Có thể thêm vào màn hình chính như một ứng dụng.</p>
 </section>
 
-<footer>
+<footer data-zh="峴港旅程 · <b>2026年6月18→21日</b> · 4天3夜 · 海灘、山林、古鎮與度假的平衡。">
   Hành trình Đà Nẵng · <b>18 → 21 tháng 6, 2026</b> · 4 ngày 3 đêm · Cân bằng giữa biển, núi, phố cổ và nghỉ dưỡng.
 </footer>
 
@@ -864,6 +883,29 @@
   addEventListener('scroll',onScroll,{passive:true});onScroll();
   totop.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 
+  // ---------- i18n: Tiếng Việt <-> 中文（繁體） ----------
+  const LANG_KEY='danang_lang_v1';
+  let currentLang='vi';
+  const TITLES={vi:"Đà Nẵng · Hành trình gia đình 18–21.06.2026",zh:"峴港 · 家庭旅行 18–21.06.2026"};
+  const HINTS={
+    none:{vi:'Chưa đánh dấu nơi nào',zh:'尚未標記任何地點'},
+    all:{vi:'🎉 Đã đi hết tất cả các điểm!',zh:'🎉 所有地點都去過了！'},
+    cddone:{vi:'🎉 Chúc cả nhà chuyến đi vui vẻ!',zh:'🎉 祝全家旅途愉快！'}
+  };
+  const i18nEls=[...document.querySelectorAll('[data-zh]')];
+  i18nEls.forEach(el=>{el.dataset.vi=el.innerHTML;});
+  function setLang(lang){
+    currentLang=(lang==='zh')?'zh':'vi';
+    document.documentElement.lang=(currentLang==='zh')?'zh-Hant':'vi';
+    i18nEls.forEach(el=>{el.innerHTML=(currentLang==='zh')?el.dataset.zh:el.dataset.vi;});
+    document.title=TITLES[currentLang]||document.title;
+    document.querySelectorAll('#langSwitch button').forEach(b=>b.classList.toggle('active',b.dataset.lang===currentLang));
+    if(typeof buildGroups==='function'){buildGroups();render();}
+    document.querySelectorAll('.place.open .place-body').forEach(b=>{b.style.maxHeight=b.scrollHeight+'px';});
+    try{localStorage.setItem(LANG_KEY,currentLang);}catch(e){}
+  }
+  document.querySelectorAll('#langSwitch button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+
   // image fallback (show emoji placeholder if image fails)
   document.querySelectorAll('.ph img').forEach(img=>{
     img.addEventListener('error',()=>img.parentElement.classList.add('noimg'));
@@ -879,7 +921,9 @@
   function openLB(src,cap){lbImg.src=src;lbCap.textContent=cap||'';lb.classList.add('show');}
   function closeLB(){lb.classList.remove('show');lbImg.src='';}
   document.querySelectorAll('.ph img').forEach(img=>{
-    img.addEventListener('click',e=>{e.stopPropagation();openLB(img.currentSrc||img.src,img.dataset.cap);});
+    img.addEventListener('click',e=>{e.stopPropagation();
+      const cap=(currentLang==='zh')?(img.dataset.capZh||img.dataset.cap):img.dataset.cap;
+      openLB(img.currentSrc||img.src,cap);});
   });
   lb.addEventListener('click',closeLB);
   addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});
@@ -902,7 +946,7 @@
   const cdD=document.getElementById('cd-d'),cdH=document.getElementById('cd-h'),cdM=document.getElementById('cd-m'),cdS=document.getElementById('cd-s'),cdWrap=document.getElementById('countdown');
   function tick(){
     const diff=target-Date.now();
-    if(diff<=0){cdWrap.innerHTML='<div class="cd-done">🎉 Chúc cả nhà chuyến đi vui vẻ!</div>';return;}
+    if(diff<=0){cdWrap.innerHTML='<div class="cd-done">'+HINTS.cddone[currentLang]+'</div>';return;}
     const d=Math.floor(diff/86400000),h=Math.floor(diff/3600000)%24,m=Math.floor(diff/60000)%60,s=Math.floor(diff/1000)%60;
     cdD.textContent=d;cdH.textContent=String(h).padStart(2,'0');cdM.textContent=String(m).padStart(2,'0');cdS.textContent=String(s).padStart(2,'0');
   }
@@ -910,23 +954,23 @@
 
   // ---------- CHECKLIST DATA ----------
   const DATA=[
-    {day:'18/6 · Thứ Năm', items:[
-      {id:'d18-beach', t:'Dạo biển Mỹ Khê & ăn hải sản', s:'Tối · cát mịn, mát mẻ'},
-      {id:'d18-bridge', t:'Cầu Rồng & Cầu Tình Yêu', s:'~21h · check-in đêm'},
+    {day:'18/6 · Thứ Năm', dayZh:'6/18 · 週四', items:[
+      {id:'d18-beach', t:'Dạo biển Mỹ Khê & ăn hải sản', tz:'漫步美溪海灘 & 吃海鮮', s:'Tối · cát mịn, mát mẻ', sz:'晚上 · 細沙、涼爽'},
+      {id:'d18-bridge', t:'Cầu Rồng & Cầu Tình Yêu', tz:'龍橋 & 愛情橋', s:'~21h · check-in đêm', sz:'約21:00 · 夜間打卡'},
     ]},
-    {day:'19/6 · Thứ Sáu', items:[
-      {id:'d19-bana', t:'Bà Nà Hills (nguyên ngày)', s:'Cầu Vàng, Làng Pháp, Fantasy Park'},
-      {id:'d19-firebridge', t:'Cầu Rồng phun lửa', s:'~21h · tối thứ Sáu có'},
+    {day:'19/6 · Thứ Sáu', dayZh:'6/19 · 週五', items:[
+      {id:'d19-bana', t:'Bà Nà Hills (nguyên ngày)', tz:'巴拿山（一整天）', s:'Cầu Vàng, Làng Pháp, Fantasy Park', sz:'黃金橋、法國村、Fantasy Park'},
+      {id:'d19-firebridge', t:'Cầu Rồng phun lửa', tz:'龍橋噴火', s:'~21h · tối thứ Sáu có', sz:'約21:00 · 週五晚有'},
     ]},
-    {day:'20/6 · Thứ Bảy', items:[
-      {id:'d20-linhung', t:'Chùa Linh Ứng — Sơn Trà', s:'Sáng · tượng Phật Bà 67m'},
-      {id:'d20-banco', t:'Đỉnh Bàn Cờ', s:'Sáng · điểm cao nhất Đà Nẵng'},
-      {id:'d20-marble', t:'Ngũ Hành Sơn', s:'Chiều · hang động, chùa cổ'},
-      {id:'d20-downtown', t:'Da Nang Downtown / phố đêm', s:'Tối · nhớ gọi xác nhận trước'},
+    {day:'20/6 · Thứ Bảy', dayZh:'6/20 · 週六', items:[
+      {id:'d20-linhung', t:'Chùa Linh Ứng — Sơn Trà', tz:'靈應寺——山茶半島', s:'Sáng · tượng Phật Bà 67m', sz:'上午 · 67公尺觀音像'},
+      {id:'d20-banco', t:'Đỉnh Bàn Cờ', tz:'棋盤頂', s:'Sáng · điểm cao nhất Đà Nẵng', sz:'上午 · 峴港最高點'},
+      {id:'d20-marble', t:'Ngũ Hành Sơn', tz:'五行山', s:'Chiều · hang động, chùa cổ', sz:'下午 · 洞窟、古剎'},
+      {id:'d20-downtown', t:'Da Nang Downtown / phố đêm', tz:'峴港Downtown / 夜市', s:'Tối · nhớ gọi xác nhận trước', sz:'晚上 · 記得先電話確認'},
     ]},
-    {day:'21/6 · Chủ Nhật', items:[
-      {id:'d21-hoian', t:'Phố cổ Hội An', s:'Sáng · Chùa Cầu, nhà cổ'},
-      {id:'d21-food', t:'Ăn đặc sản chia tay', s:'Trưa · mì Quảng, bún chả cá'},
+    {day:'21/6 · Chủ Nhật', dayZh:'6/21 · 週日', items:[
+      {id:'d21-hoian', t:'Phố cổ Hội An', tz:'會安古鎮', s:'Sáng · Chùa Cầu, nhà cổ', sz:'上午 · 來遠橋、古宅'},
+      {id:'d21-food', t:'Ăn đặc sản chia tay', tz:'餞別特色餐', s:'Trưa · mì Quảng, bún chả cá', sz:'中午 · 廣麵、魚餅米線'},
     ]},
   ];
 
@@ -937,23 +981,27 @@
   const groupsEl=document.getElementById('groups');
   const CHECK_SVG='<svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>';
 
-  DATA.forEach(g=>{
-    const gd=document.createElement('div');gd.className='check-group';
-    gd.innerHTML='<h4>📍 '+g.day+'</h4>';
-    g.items.forEach(it=>{
-      const row=document.createElement('div');
-      row.className='check-item'+(state[it.id]?' done':'');
-      row.dataset.id=it.id;
-      row.innerHTML='<span class="check-box">'+CHECK_SVG+'</span><span class="check-label">'+it.t+'<small>'+it.s+'</small></span>';
-      row.addEventListener('click',()=>{
-        state[it.id]=!state[it.id];
-        row.classList.toggle('done',state[it.id]);
-        save();render();
+  function buildGroups(){
+    groupsEl.innerHTML='';
+    DATA.forEach(g=>{
+      const gd=document.createElement('div');gd.className='check-group';
+      gd.innerHTML='<h4>📍 '+(currentLang==='zh'?g.dayZh:g.day)+'</h4>';
+      g.items.forEach(it=>{
+        const row=document.createElement('div');
+        row.className='check-item'+(state[it.id]?' done':'');
+        row.dataset.id=it.id;
+        const t=currentLang==='zh'?it.tz:it.t, s=currentLang==='zh'?it.sz:it.s;
+        row.innerHTML='<span class="check-box">'+CHECK_SVG+'</span><span class="check-label">'+t+'<small>'+s+'</small></span>';
+        row.addEventListener('click',()=>{
+          state[it.id]=!state[it.id];
+          row.classList.toggle('done',state[it.id]);
+          save();render();
+        });
+        gd.appendChild(row);
       });
-      gd.appendChild(row);
+      groupsEl.appendChild(gd);
     });
-    groupsEl.appendChild(gd);
-  });
+  }
 
   const allItems=DATA.flatMap(g=>g.items);
   const pctEl=document.getElementById('pct'),fill=document.getElementById('barFill'),
@@ -966,10 +1014,14 @@
     const done=allItems.filter(i=>state[i.id]).length;
     const pct=Math.round(done/total*100);
     pctEl.textContent=pct+'%';fill.style.width=pct+'%';
-    hint.textContent=done===0?'Chưa đánh dấu nơi nào':(done===total?'🎉 Đã đi hết tất cả các điểm!':'Đã đi '+done+'/'+total+' điểm');
+    if(done===0)hint.textContent=HINTS.none[currentLang];
+    else if(done===total)hint.textContent=HINTS.all[currentLang];
+    else hint.textContent=(currentLang==='zh')?('已完成 '+done+'/'+total+' 個地點'):('Đã đi '+done+'/'+total+' điểm');
     const next=allItems.find(i=>!state[i.id]);
     if(next && done>0 && done<total){
-      nextUp.style.display='block';nextTitle.textContent=next.t;nextSub.textContent=next.s;
+      nextUp.style.display='block';
+      nextTitle.textContent=currentLang==='zh'?next.tz:next.t;
+      nextSub.textContent=currentLang==='zh'?next.sz:next.s;
     } else {nextUp.style.display='none';}
   }
   document.getElementById('resetBtn').addEventListener('click',()=>{
@@ -982,7 +1034,11 @@
     document.querySelectorAll('.check-item').forEach(r=>r.classList.add('done'));
     render();
   });
-  render();
+
+  // initial language (saved choice or default Vietnamese) — also builds checklist + renders
+  let savedLang='vi';
+  try{const sl=localStorage.getItem(LANG_KEY); if(sl) savedLang=sl;}catch(e){}
+  setLang(savedLang);
 </script>
 </body>
 </html>
