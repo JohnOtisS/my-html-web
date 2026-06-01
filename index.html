@@ -109,6 +109,12 @@
   @media(hover:hover){.ph:hover img{transform:scale(1.06)}}
   .ph .ph-cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.4rem .9rem .7rem;font-size:.74rem;font-weight:600;color:#fff;
     background:linear-gradient(transparent,rgba(5,30,28,.7));pointer-events:none}
+  .gal-badge{position:absolute;z-index:3;left:.6rem;top:.6rem;background:rgba(5,30,28,.6);color:#fff;font-size:.7rem;font-weight:700;padding:.26rem .6rem;border-radius:100px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);pointer-events:none}
+  /* thumbnail strip */
+  .gallery-strip{display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none;margin:-.45rem 0 1rem;padding-bottom:.25rem;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+  .gallery-strip::-webkit-scrollbar{display:none}
+  .gthumb{flex:0 0 auto;width:98px;height:68px;object-fit:cover;border-radius:11px;cursor:zoom-in;scroll-snap-align:start;border:1px solid var(--line);background:var(--sand);transition:transform .25s,box-shadow .25s,border-color .25s}
+  @media(hover:hover){.gthumb:hover{transform:translateY(-3px);box-shadow:0 8px 18px -10px var(--shadow);border-color:var(--coral-soft)}}
 
   /* ---------- HOTELS ---------- */
   .stay{background:var(--paper)}
@@ -284,7 +290,16 @@
   @keyframes fade{from{opacity:0}to{opacity:1}}
   .lightbox img{max-width:100%;max-height:88vh;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.55)}
   .lightbox .lb-cap{position:absolute;bottom:3.5vh;left:0;right:0;text-align:center;color:rgba(251,245,234,.9);font-size:.9rem;font-weight:500;padding:0 1rem}
-  .lightbox .lb-close{position:absolute;top:3vh;right:5vw;width:44px;height:44px;border-radius:50%;background:rgba(251,245,234,.14);border:1px solid rgba(251,245,234,.3);color:#fff;font-size:1.4rem;display:grid;place-items:center;cursor:pointer}
+  .lightbox .lb-close{position:absolute;top:3vh;right:5vw;width:44px;height:44px;border-radius:50%;background:rgba(251,245,234,.14);border:1px solid rgba(251,245,234,.3);color:#fff;font-size:1.4rem;display:grid;place-items:center;cursor:pointer;z-index:2}
+  .lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;background:rgba(251,245,234,.14);border:1px solid rgba(251,245,234,.3);color:#fff;font-size:1.6rem;display:grid;place-items:center;cursor:pointer;z-index:2;transition:background .2s}
+  .lightbox .lb-prev{left:3vw} .lightbox .lb-next{right:3vw}
+  @media(hover:hover){.lightbox .lb-nav:hover,.lightbox .lb-close:hover{background:rgba(251,245,234,.28)}}
+  .lightbox .lb-count{position:absolute;top:3.3vh;left:50%;transform:translateX(-50%);color:rgba(251,245,234,.9);font-size:.86rem;font-weight:600;letter-spacing:.04em;z-index:2}
+  @media(max-width:680px){
+    .lightbox{padding:8vw 3vw}
+    .lightbox .lb-prev{left:2vw} .lightbox .lb-next{right:2vw}
+    .lightbox .lb-nav{width:44px;height:44px;font-size:1.4rem}
+  }
 
   /* ---------- TO TOP ---------- */
   .totop{position:fixed;right:18px;bottom:18px;z-index:850;width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;
@@ -862,8 +877,11 @@
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
-  <button class="lb-close" aria-label="Đóng">✕</button>
+  <div class="lb-count" id="lbCount"></div>
+  <button class="lb-close" id="lbClose" aria-label="Đóng / 關閉">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Ảnh trước / 上一張">‹</button>
   <img id="lbImg" alt="">
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Ảnh sau / 下一張">›</button>
   <div class="lb-cap" id="lbCap"></div>
 </div>
 
@@ -906,27 +924,81 @@
   }
   document.querySelectorAll('#langSwitch button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
 
-  // image fallback (show emoji placeholder if image fails)
-  document.querySelectorAll('.ph img').forEach(img=>{
-    img.addEventListener('error',()=>img.parentElement.classList.add('noimg'));
-    // if a loaded image grows an open place card, recompute its height
-    img.addEventListener('load',()=>{
-      const card=img.closest('.place.open');
-      if(card){const b=card.querySelector('.place-body');b.style.maxHeight=b.scrollHeight+'px';}
-    });
+  // ---------- GALLERIES (nhiều ảnh / 多張照片) ----------
+  const GAL=[];               // mỗi phần tử = mảng {src,cap,capZh}
+  const SHOTS=8;              // tổng số ảnh mỗi điểm đến (1 lớn + 7 thu nhỏ)
+  function baseOf(src){return src.split('?')[0];}
+  function recalcOpen(el){const card=el.closest&&el.closest('.place.open');if(card){const b=card.querySelector('.place-body');b.style.maxHeight=b.scrollHeight+'px';}}
+  function onImgErr(im,isThumb){im.addEventListener('error',()=>{if(isThumb)im.style.display='none';else im.parentElement.classList.add('noimg');});}
+
+  // Biến mỗi ảnh trong lịch trình thành một bộ sưu tập ảnh
+  document.querySelectorAll('.place-inner .ph').forEach(ph=>{
+    const feat=ph.querySelector('img'); if(!feat) return;
+    const base=baseOf(feat.src), cap=feat.dataset.cap||'', capZh=feat.dataset.capZh||'';
+    const gi=GAL.length, group=[];
+    feat.src=base+'?lock=1';
+    feat.dataset.g=gi; feat.dataset.i='0';
+    onImgErr(feat,false);
+    feat.addEventListener('load',()=>recalcOpen(feat));
+    group.push({src:feat.src,cap,capZh});
+    const strip=document.createElement('div'); strip.className='gallery-strip';
+    for(let k=2;k<=SHOTS;k++){
+      const im=document.createElement('img');
+      im.className='gthumb'; im.loading='lazy'; im.alt=cap;
+      im.src=base+'?lock='+k;
+      im.dataset.cap=cap; im.dataset.capZh=capZh; im.dataset.g=gi; im.dataset.i=String(k-1);
+      onImgErr(im,true);
+      im.addEventListener('load',()=>recalcOpen(strip));
+      strip.appendChild(im);
+      group.push({src:im.src,cap,capZh});
+    }
+    ph.parentNode.insertBefore(strip, ph.nextSibling);
+    const badge=document.createElement('span'); badge.className='gal-badge'; badge.textContent='📷 '+group.length;
+    ph.appendChild(badge);
+    GAL.push(group);
   });
 
-  // lightbox
-  const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap');
-  function openLB(src,cap){lbImg.src=src;lbCap.textContent=cap||'';lb.classList.add('show');}
-  function closeLB(){lb.classList.remove('show');lbImg.src='';}
-  document.querySelectorAll('.ph img').forEach(img=>{
-    img.addEventListener('click',e=>{e.stopPropagation();
-      const cap=(currentLang==='zh')?(img.dataset.capZh||img.dataset.cap):img.dataset.cap;
-      openLB(img.currentSrc||img.src,cap);});
+  // Ảnh đơn (khách sạn, món ăn) cũng mở được lightbox
+  document.querySelectorAll('.ph img:not([data-g])').forEach(im=>{
+    const gi=GAL.length;
+    GAL.push([{src:im.src,cap:im.dataset.cap||'',capZh:im.dataset.capZh||''}]);
+    im.dataset.g=gi; im.dataset.i='0';
+    onImgErr(im,false);
   });
+
+  // ---------- LIGHTBOX (có chuyển ảnh) ----------
+  const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap'),
+        lbCount=document.getElementById('lbCount'),lbPrev=document.getElementById('lbPrev'),lbNext=document.getElementById('lbNext'),lbClose=document.getElementById('lbClose');
+  let curGroup=null,curIdx=0;
+  function showLB(){
+    const it=curGroup[curIdx];
+    lbImg.src=it.src;
+    lbCap.textContent=(currentLang==='zh')?(it.capZh||it.cap||''):(it.cap||'');
+    const multi=curGroup.length>1;
+    lbCount.textContent=multi?((curIdx+1)+' / '+curGroup.length):'';
+    lbPrev.style.display=lbNext.style.display=multi?'grid':'none';
+  }
+  function openLB(g,i){curGroup=GAL[g];curIdx=i||0;showLB();lb.classList.add('show');}
+  function closeLB(){lb.classList.remove('show');lbImg.src='';curGroup=null;}
+  function navLB(d){if(!curGroup)return;curIdx=(curIdx+d+curGroup.length)%curGroup.length;showLB();}
+  document.querySelectorAll('img[data-g]').forEach(im=>{
+    im.addEventListener('click',e=>{e.stopPropagation();openLB(+im.dataset.g,+im.dataset.i);});
+  });
+  lbPrev.addEventListener('click',e=>{e.stopPropagation();navLB(-1);});
+  lbNext.addEventListener('click',e=>{e.stopPropagation();navLB(1);});
+  lbClose.addEventListener('click',e=>{e.stopPropagation();closeLB();});
+  lbImg.addEventListener('click',e=>e.stopPropagation());
   lb.addEventListener('click',closeLB);
-  addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});
+  addEventListener('keydown',e=>{
+    if(!lb.classList.contains('show'))return;
+    if(e.key==='Escape')closeLB();
+    else if(e.key==='ArrowLeft')navLB(-1);
+    else if(e.key==='ArrowRight')navLB(1);
+  });
+  // vuốt trên điện thoại để chuyển ảnh
+  let tsx=0;
+  lbImg.addEventListener('touchstart',e=>{tsx=e.changedTouches[0].clientX;},{passive:true});
+  lbImg.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tsx;if(Math.abs(dx)>40)navLB(dx<0?1:-1);},{passive:true});
 
   // expandable places
   document.querySelectorAll('.place-head').forEach(head=>{
