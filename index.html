@@ -288,6 +288,7 @@
   footer b{color:var(--gold-soft)}
   .foot-credit{margin-top:.9rem;font-family:'Fraunces','Noto Serif TC',serif;font-style:italic;font-size:1rem;color:var(--gold-soft)}
   .foot-credit b{color:#fff;font-style:normal}
+  .foot-src{margin-top:.7rem;font-size:.72rem;color:rgba(251,245,234,.4)}
 
   /* ---------- LIGHTBOX ---------- */
   .lightbox{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;padding:5vw;
@@ -362,8 +363,8 @@
 
 <!-- HERO -->
 <header class="hero" id="top">
-  <img class="hero-bg" alt="Biển Đà Nẵng" loading="eager"
-       src="https://loremflickr.com/1600/1000/danang,beach,vietnam" onerror="this.style.display='none'">
+  <img class="hero-bg" alt="Biển Đà Nẵng" loading="eager" data-single="hero"
+       src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/My_Khe_Beach_5.jpg/1280px-My_Khe_Beach_5.jpg" onerror="this.style.display='none'">
   <div class="hero-overlay"></div>
   <div class="wave-deco"></div><div class="sun"></div>
   <div class="hero-inner">
@@ -394,7 +395,7 @@
   <p class="lead" data-zh="早晚都能散步到海邊，鄰近市中心，去哪都方便。三種價位任選——皆有家庭房與泳池。點飯店名稱開啟地圖。">Đi bộ ra biển buổi sáng và tối, gần trung tâm, đi đâu cũng tiện. Ba mức giá theo ngân sách — đều có phòng gia đình và hồ bơi. Bấm tên khách sạn để mở bản đồ.</p>
   <div class="hotel-grid">
     <div class="tier t1">
-      <div class="ph"><span class="ph-fallback">🏨</span><img loading="lazy" alt="Khách sạn view biển Mỹ Khê" src="https://loremflickr.com/640/360/danang,hotel,beach" data-cap="Khách sạn tiết kiệm gần biển Mỹ Khê" data-cap-zh="美溪海灘旁的經濟型飯店"></div>
+      <div class="ph"><span class="ph-fallback">🏨</span><img loading="lazy" data-single="hotel1" alt="Khách sạn view biển Mỹ Khê" src="https://loremflickr.com/640/360/danang,hotel,beach" data-cap="Khách sạn tiết kiệm gần biển Mỹ Khê" data-cap-zh="美溪海灘旁的經濟型飯店"></div>
       <div class="tier-pad">
         <span class="badge" data-zh="經濟 · 約120–200萬₫/晚">Tiết kiệm · 1,2–2tr/đêm</span>
         <div class="tier-price" data-zh="海景、泳池">View biển, hồ bơi</div>
@@ -408,7 +409,7 @@
       </div>
     </div>
     <div class="tier t2">
-      <div class="ph"><span class="ph-fallback">🏊</span><img loading="lazy" alt="Hồ bơi rooftop khách sạn Đà Nẵng" src="https://loremflickr.com/640/360/rooftop,pool,hotel" data-cap="Hồ bơi rooftop view biển" data-cap-zh="頂樓海景泳池"></div>
+      <div class="ph"><span class="ph-fallback">🏊</span><img loading="lazy" data-single="hotel2" alt="Hồ bơi rooftop khách sạn Đà Nẵng" src="https://loremflickr.com/640/360/rooftop,pool,hotel" data-cap="Hồ bơi rooftop view biển" data-cap-zh="頂樓海景泳池"></div>
       <div class="tier-pad">
         <span class="badge" data-zh="最超值 · 約200–400萬₫/晚">Đáng tiền nhất · 2–4tr/đêm</span>
         <div class="tier-price" data-zh="無邊際泳池、頂樓">Hồ bơi vô cực, rooftop</div>
@@ -422,7 +423,7 @@
       </div>
     </div>
     <div class="tier t3">
-      <div class="ph"><span class="ph-fallback">🌴</span><img loading="lazy" alt="Resort biển Đà Nẵng" src="https://loremflickr.com/640/360/resort,beach,palm" data-cap="Resort nghỉ dưỡng có bãi riêng" data-cap-zh="附私人海灘的度假村"></div>
+      <div class="ph"><span class="ph-fallback">🌴</span><img loading="lazy" data-single="hotel3" alt="Resort biển Đà Nẵng" src="https://loremflickr.com/640/360/resort,beach,palm" data-cap="Resort nghỉ dưỡng có bãi riêng" data-cap-zh="附私人海灘的度假村"></div>
       <div class="tier-pad">
         <span class="badge" data-zh="度假 · 約400萬₫+/晚">Nghỉ dưỡng · 4tr+/đêm</span>
         <div class="tier-price" data-zh="度假村、私人海灘、SPA">Resort, bãi riêng, spa</div>
@@ -463,7 +464,7 @@
       <div class="place">
         <div class="place-head"><span class="place-time" data-zh="晚上">Tối</span><span class="place-title" data-zh="漫步美溪海灘 &amp; 享用海鮮<span class='meta'>細沙海灘，峴港最美</span>">Dạo biển Mỹ Khê &amp; ăn hải sản<span class="meta">Bãi biển cát mịn, đẹp nhất Đà Nẵng</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="ph"><span class="ph-fallback">🏖️</span><img loading="lazy" alt="Biển Mỹ Khê Đà Nẵng" src="https://loremflickr.com/720/405/mykhe,beach,danang" data-cap="Biển Mỹ Khê — cát mịn, sóng êm" data-cap-zh="美溪海灘——細沙、浪平"></div>
+          <div class="ph" data-album="mykhe"><span class="ph-fallback">🏖️</span><img loading="lazy" alt="Biển Mỹ Khê Đà Nẵng" src="https://loremflickr.com/720/405/mykhe,beach,danang" data-cap="Biển Mỹ Khê — cát mịn, sóng êm" data-cap-zh="美溪海灘——細沙、浪平"></div>
           <span class="rating" data-zh="★ 4.7 · 4,260則評價">★ 4.7 · 4.260 đánh giá</span>
           <div class="info-row"><span class="info-pill" data-zh="💸 免費戲水">💸 Tắm miễn phí</span><span class="info-pill" data-zh="🏖️ 躺椅/陽傘 5–10萬₫">🏖️ Ghế/dù 50–100k</span><span class="info-pill" data-zh="🕐 最佳時段：清晨與傍晚">🕐 Đẹp nhất: sáng sớm &amp; chiều</span></div>
           <p data-zh="海灘細沙綿密、寬廣開闊，夜晚涼爽，適合全家散步。之後在附近的家庭式餐館享用海鮮——挑人多的店，點菜前先問價。">Bãi biển cát rất mịn, dài và thoáng, buổi tối mát mẻ để cả nhà đi dạo. Sau đó ăn hải sản tại quán gia đình gần đó — chọn quán đông khách, hỏi giá trước khi gọi.</p>
@@ -480,7 +481,7 @@
       <div class="place">
         <div class="place-head"><span class="place-time night" data-zh="約21:00">~21h</span><span class="place-title" data-zh="龍橋 &amp; 愛情橋<span class='meta'>峴港地標，夜間打卡</span>">Cầu Rồng &amp; Cầu Tình Yêu<span class="meta">Biểu tượng Đà Nẵng, check-in đêm</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="ph"><span class="ph-fallback">🐉</span><img loading="lazy" alt="Cầu Rồng Đà Nẵng" src="https://loremflickr.com/720/405/dragon,bridge,danang" data-cap="Cầu Rồng lên đèn về đêm" data-cap-zh="龍橋夜間亮燈"></div>
+          <div class="ph" data-album="dragon"><span class="ph-fallback">🐉</span><img loading="lazy" alt="Cầu Rồng Đà Nẵng" src="https://loremflickr.com/720/405/dragon,bridge,danang" data-cap="Cầu Rồng lên đèn về đêm" data-cap-zh="龍橋夜間亮燈"></div>
           <span class="rating" data-zh="★ 4.5 · 8,300則評價">★ 4.5 · 8.300 đánh giá</span>
           <div class="info-row"><span class="info-pill" data-zh="💸 免費">💸 Miễn phí</span><span class="info-pill">🕐 24/7</span><span class="info-pill" data-zh="🔥 噴火：週五六日 約21:00">🔥 Phun lửa: T6–T7–CN ~21h</span></div>
           <p data-zh="龍橋於<strong>週五、週六、週日</strong>約21:00噴火與噴水。6月18日為週四，沒有表演，但夜間亮燈仍非常上鏡。想看噴火可於6/19或6/20晚再來。">Cầu Rồng phun lửa &amp; phun nước ~21h <strong>tối thứ Sáu, thứ Bảy, Chủ Nhật</strong>. Ngày 18/6 là thứ Năm nên không có màn trình diễn, nhưng cầu lên đèn về đêm vẫn rất đẹp để chụp ảnh. Muốn xem phun lửa thì quay lại tối 19 hoặc 20/6.</p>
@@ -506,7 +507,7 @@
       <div class="place">
         <div class="place-head"><span class="place-time" data-zh="約7–8點">~7–8h</span><span class="place-title" data-zh="巴拿山（一整天）<span class='meta'>黃金橋、法國村、Fantasy Park…</span>">Bà Nà Hills (nguyên ngày)<span class="meta">Cầu Vàng, Làng Pháp, Fantasy Park…</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="ph"><span class="ph-fallback">🌉</span><img loading="lazy" alt="Cầu Vàng Bà Nà Hills" src="https://loremflickr.com/720/405/goldenbridge,banahills,vietnam" data-cap="Cầu Vàng (Golden Bridge) — Bà Nà Hills" data-cap-zh="黃金橋（Golden Bridge）——巴拿山"></div>
+          <div class="ph" data-album="bana"><span class="ph-fallback">🌉</span><img loading="lazy" alt="Cầu Vàng Bà Nà Hills" src="https://loremflickr.com/720/405/goldenbridge,banahills,vietnam" data-cap="Cầu Vàng (Golden Bridge) — Bà Nà Hills" data-cap-zh="黃金橋（Golden Bridge）——巴拿山"></div>
           <span class="rating" data-zh="★ 4.4 · 近10萬則評價">★ 4.4 · gần 100.000 đánh giá</span>
           <div class="info-row"><span class="info-pill" data-zh="🎫 成人 約100萬₫">🎫 NL ~1.000.000đ</span><span class="info-pill" data-zh="🧒 兒童1–1.4m 約80萬₫">🧒 Trẻ 1–1m4 ~800.000đ</span><span class="info-pill" data-zh="🍽️ 含自助餐套票 約130萬₫">🍽️ Combo buffet ~1.300.000đ</span><span class="info-pill" data-zh="🧥 山頂微涼">🧥 Trên đỉnh se lạnh</span></div>
           <p data-zh="💰 <strong>2026票價（外地遊客）：</strong>成人（&gt;1.4m）約100萬₫ · 兒童（1–1.4m）與長者約80萬₫ · 1m以下免費。含午餐自助餐套票約130萬₫/成人。門票含來回纜車與多數 Fantasy Park 遊樂設施。線上訂通常更便宜。">💰 <strong>Vé 2026 (khách ngoại tỉnh):</strong> Người lớn (&gt;1m4) ~1.000.000đ · trẻ em (1m–1m4) &amp; người cao tuổi ~800.000đ · dưới 1m miễn phí. Combo kèm buffet trưa ~1.300.000đ/người lớn. Vé gồm cáp treo khứ hồi &amp; hầu hết trò chơi Fantasy Park. Đặt online thường rẻ hơn.</p>
@@ -541,7 +542,7 @@
       <div class="place">
         <div class="place-head"><span class="place-time" data-zh="上午">Sáng</span><span class="place-title" data-zh="靈應寺——山茶半島<span class='meta'>67公尺觀音像、海景</span>">Chùa Linh Ứng — Sơn Trà<span class="meta">Tượng Phật Bà 67m, view biển</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="ph"><span class="ph-fallback">🛕</span><img loading="lazy" alt="Chùa Linh Ứng Sơn Trà" src="https://loremflickr.com/720/405/buddha,statue,temple,vietnam" data-cap="Tượng Phật Bà 67m — Chùa Linh Ứng Sơn Trà" data-cap-zh="67公尺觀音像——山茶靈應寺"></div>
+          <div class="ph" data-album="linhung"><span class="ph-fallback">🛕</span><img loading="lazy" alt="Chùa Linh Ứng Sơn Trà" src="https://loremflickr.com/720/405/buddha,statue,temple,vietnam" data-cap="Tượng Phật Bà 67m — Chùa Linh Ứng Sơn Trà" data-cap-zh="67公尺觀音像——山茶靈應寺"></div>
           <span class="rating" data-zh="★ 4.7 · 7,400則評價">★ 4.7 · 7.400 đánh giá</span>
           <div class="info-row"><span class="info-pill" data-zh="💸 免費">💸 Miễn phí</span><span class="info-pill" data-zh="🅿️ 停車 1–2萬₫">🅿️ Gửi xe 10–20k</span><span class="info-pill" data-zh="👟 入殿需脫鞋">👟 Bỏ giày khi vào điện</span></div>
           <p data-zh="依山而建的寺廟，矗立一尊高67公尺、面海的觀音像，空間開闊寧靜。入寺請著裝端莊。">Ngôi chùa trên sườn núi với tượng Phật Bà khổng lồ cao 67m nhìn ra biển, không gian rộng và yên bình. Mặc đồ lịch sự kín đáo khi vào chùa.</p>
@@ -556,7 +557,7 @@
       <div class="place">
         <div class="place-head"><span class="place-time" data-zh="上午">Sáng</span><span class="place-title" data-zh="棋盤頂（Bàn Cờ峰）<span class='meta'>峴港最高點</span>">Đỉnh Bàn Cờ<span class="meta">Điểm cao nhất Đà Nẵng</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="ph"><span class="ph-fallback">⛰️</span><img loading="lazy" alt="Đỉnh Bàn Cờ Sơn Trà" src="https://loremflickr.com/720/405/sontra,mountain,viewpoint" data-cap="Đỉnh Bàn Cờ — view toàn cảnh Đà Nẵng" data-cap-zh="棋盤頂——峴港全景"></div>
+          <div class="ph" data-album="banco"><span class="ph-fallback">⛰️</span><img loading="lazy" alt="Đỉnh Bàn Cờ Sơn Trà" src="https://loremflickr.com/720/405/sontra,mountain,viewpoint" data-cap="Đỉnh Bàn Cờ — view toàn cảnh Đà Nẵng" data-cap-zh="棋盤頂——峴港全景"></div>
           <span class="rating" data-zh="★ 4.7 · 687則評價">★ 4.7 · 687 đánh giá</span>
           <div class="info-row"><span class="info-pill" data-zh="💸 免費">💸 Miễn phí</span><span class="info-pill" data-zh="🚗 建議租附司機車輛">🚗 Nên thuê xe có tài xế</span><span class="info-pill" data-zh="🐒 有猴子——顧好食物">🐒 Có khỉ — giữ đồ ăn</span></div>
           <p data-zh="海拔約700公尺，可俯瞰整座城市與海岸線，景色絕美。上山路陡且彎多——建議租附司機的車（部分路段禁速克達）。">Khoảng 700m so với mực nước biển, view toàn cảnh thành phố và bờ biển tuyệt đẹp. Đường lên dốc và quanh co — nên thuê xe có tài xế (xe tay ga bị cấm một số đoạn).</p>
@@ -571,7 +572,7 @@
       <div class="place">
         <div class="place-head"><span class="place-time" data-zh="下午">Chiều</span><span class="place-title" data-zh="五行山（Marble Mountains）<span class='meta'>洞窟、古剎、市景</span>">Ngũ Hành Sơn (Marble Mountains)<span class="meta">Hang động, chùa cổ, view thành phố</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="ph"><span class="ph-fallback">🪨</span><img loading="lazy" alt="Ngũ Hành Sơn" src="https://loremflickr.com/720/405/marble,mountain,cave,vietnam" data-cap="Ngũ Hành Sơn — hang động &amp; chùa cổ" data-cap-zh="五行山——洞窟與古剎"></div>
+          <div class="ph" data-album="marble"><span class="ph-fallback">🪨</span><img loading="lazy" alt="Ngũ Hành Sơn" src="https://loremflickr.com/720/405/marble,mountain,cave,vietnam" data-cap="Ngũ Hành Sơn — hang động &amp; chùa cổ" data-cap-zh="五行山——洞窟與古剎"></div>
           <span class="rating" data-zh="★ 4.4 · 41,000則評價">★ 4.4 · 41.000 đánh giá</span>
           <div class="info-row"><span class="info-pill" data-zh="🎫 水山 約4萬₫">🎫 Thủy Sơn ~40k</span><span class="info-pill" data-zh="🎓 學生 約1萬₫">🎓 HS/SV ~10k</span><span class="info-pill" data-zh="🛗 電梯 約1.5萬₫/趟">🛗 Thang máy ~15k/lượt</span><span class="info-pill" data-zh="🕐 7:00–17:30">🕐 7h–17h30</span></div>
           <p data-zh="💰 陰府洞約2萬₫。從山茶半島回程順道遊五行山——一片石灰岩山群，有洞窟與古剎。請穿防滑鞋、帶水。☎ 管理處: 0236 3961 114。">💰 Động Âm Phủ ~20.000đ. Trên đường về từ Sơn Trà ghé Ngũ Hành Sơn — cụm núi đá với hang động và chùa cổ. Đi giày chống trượt, mang nước. ☎ BQL: 0236 3961 114.</p>
@@ -586,7 +587,7 @@
       <div class="place">
         <div class="place-head"><span class="place-time night" data-zh="晚上">Tối</span><span class="place-title" data-zh="峴港 Downtown / 逛夜市<span class='meta'>太陽輪 · 需確認</span>">Da Nang Downtown / dạo phố đêm<span class="meta">Vòng quay Sun Wheel · cần kiểm tra</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="ph"><span class="ph-fallback">🎡</span><img loading="lazy" alt="Vòng quay Sun Wheel Đà Nẵng" src="https://loremflickr.com/720/405/ferriswheel,night,city" data-cap="Vòng quay Sun Wheel về đêm" data-cap-zh="太陽輪夜景"></div>
+          <div class="ph" data-album="asiapark"><span class="ph-fallback">🎡</span><img loading="lazy" alt="Vòng quay Sun Wheel Đà Nẵng" src="https://loremflickr.com/720/405/ferriswheel,night,city" data-cap="Vòng quay Sun Wheel về đêm" data-cap-zh="太陽輪夜景"></div>
           <span class="rating" data-zh="★ 4.4 · 11,900則評價">★ 4.4 · 11.900 đánh giá</span>
           <div class="warnbox" data-zh="⚠️ <strong>注意：</strong>2026年初有消息指 Da Nang Downtown（原 Asia Park）暫停營業進行改建，但各方說法不一。<strong>出發前請先電話確認。</strong>☎ Sun World: 0905 766 777。">⚠️ <strong>Lưu ý:</strong> Đầu 2026 có thông tin Da Nang Downtown (Asia Park cũ) tạm dừng hoạt động để tái phát triển, nhưng các nguồn chưa thống nhất. <strong>Hãy gọi xác nhận trước khi đi.</strong> ☎ Sun World: 0905 766 777.</div>
           <p data-zh="💰 過去入園/夜市免費；遊樂設施套票約15–30萬₫。若關閉，可改去<strong>山茶夜市</strong>、<strong>愛情橋－鯉魚化龍</strong>或美溪附近的<strong>An Thượng 夜街</strong>。">💰 Trước đây vào cổng/chợ đêm miễn phí; vé trò chơi trọn gói ~150.000–300.000đ. Nếu đóng cửa, có thể thay bằng <strong>chợ đêm Sơn Trà</strong>, <strong>cầu Tình Yêu – Cá Chép Hóa Rồng</strong> hoặc <strong>phố đêm An Thượng</strong> gần Mỹ Khê.</p>
@@ -613,7 +614,7 @@
       <div class="place">
         <div class="place-head"><span class="place-time" data-zh="上午">Sáng</span><span class="place-title" data-zh="會安古鎮<span class='meta'>距峴港約30分鐘</span>">Phố cổ Hội An<span class="meta">Cách Đà Nẵng ~30 phút</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="ph"><span class="ph-fallback">🏮</span><img loading="lazy" alt="Phố cổ Hội An" src="https://loremflickr.com/720/405/hoian,lantern,ancienttown" data-cap="Phố cổ Hội An — tường vàng, đèn lồng" data-cap-zh="會安古鎮——黃牆、燈籠"></div>
+          <div class="ph" data-album="hoian"><span class="ph-fallback">🏮</span><img loading="lazy" alt="Phố cổ Hội An" src="https://loremflickr.com/720/405/hoian,lantern,ancienttown" data-cap="Phố cổ Hội An — tường vàng, đèn lồng" data-cap-zh="會安古鎮——黃牆、燈籠"></div>
           <span class="rating" data-zh="★ 4.7 · 4,000則評價">★ 4.7 · 4.000 đánh giá</span>
           <div class="info-row"><span class="info-pill" data-zh="🎫 古鎮門票 約12萬₫">🎫 Vé phố cổ ~120k</span><span class="info-pill" data-zh="🏮 水燈 1–2萬₫">🏮 Hoa đăng 10–20k</span><span class="info-pill" data-zh="🛶 搭船 約5萬₫起">🛶 Thuyền từ ~50k</span><span class="info-pill" data-zh="🚗 距峴港約30分鐘">🚗 Từ ĐN ~30 phút</span></div>
           <p data-zh="💰 古鎮門票可參觀5處古蹟；兒童多為免/減票。純逛街不一定要買票，僅進古宅／會館時才需要。因下午要退房，今早提早出發以避開烈日與人潮。☎ 0944 104 901。">💰 Vé phố cổ vào 5 điểm di tích; trẻ em thường miễn/giảm. Dạo phố không bắt buộc mua vé, chỉ cần khi vào nhà cổ/hội quán. Vì chiều phải trả phòng, sáng nay đi sớm để tránh nắng &amp; đông. ☎ 0944 104 901.</p>
@@ -628,7 +629,7 @@
       <div class="place">
         <div class="place-head"><span class="place-time eat" data-zh="中午">Trưa</span><span class="place-title" data-zh="返程前品嚐特色美食<span class='meta'>廣麵、魚餅米線、豬肉米紙捲</span>">Ăn đặc sản trước khi về<span class="meta">Mì Quảng, bún chả cá, bánh tráng cuốn</span></span><span class="place-toggle">+</span></div>
         <div class="place-body"><div class="place-inner">
-          <div class="ph"><span class="ph-fallback">🍜</span><img loading="lazy" alt="Mì Quảng đặc sản" src="https://loremflickr.com/720/405/miquang,vietnamese,noodle" data-cap="Mì Quảng — đặc sản Đà Nẵng – Quảng Nam" data-cap-zh="廣麵——峴港、廣南特色"></div>
+          <div class="ph" data-album="miquang"><span class="ph-fallback">🍜</span><img loading="lazy" alt="Mì Quảng đặc sản" src="https://loremflickr.com/720/405/miquang,vietnamese,noodle" data-cap="Mì Quảng — đặc sản Đà Nẵng – Quảng Nam" data-cap-zh="廣麵——峴港、廣南特色"></div>
           <p data-zh="午餐來點特色料理——可在會安吃高樓麵、雲吞，或回峴港品嚐廣麵、魚餅米線。💰 約3–6萬₫/份。更多請見下方<a href='#food' style='color:var(--sea);font-weight:600;border-bottom:1px dotted var(--sea)'>美食</a>單元。">Bữa trưa với những món đặc trưng — có thể ăn ở Hội An (cao lầu, hoành thánh) hoặc về Đà Nẵng thưởng thức mì Quảng, bún chả cá. 💰 ~30.000–60.000đ/món. Xem thêm mục <a href="#food" style="color:var(--sea);font-weight:600;border-bottom:1px dotted var(--sea)">Ẩm thực</a> bên dưới.</p>
           <div class="links">
             <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=M%C3%AC%20Qu%E1%BA%A3ng%20ngon%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank" data-zh="🍜 廣麵">🍜 Mì Quảng</a>
@@ -695,7 +696,7 @@
   <p class="lead" data-zh="必嚐的料理——價格親民，地道小店最對味。點店名開啟地圖與評價。">Những món nhất định phải thử — giá bình dân, ngon nhất ở quán địa phương. Bấm tên quán để mở bản đồ &amp; review.</p>
   <div class="food-grid">
     <div class="food-card">
-      <div class="ph"><span class="ph-fallback">🍜</span><img loading="lazy" alt="Mì Quảng" src="https://loremflickr.com/480/360/miquang,noodle" data-cap="Mì Quảng" data-cap-zh="廣麵"></div>
+      <div class="ph"><span class="ph-fallback">🍜</span><img loading="lazy" data-single="food_mq" alt="Mì Quảng" src="https://loremflickr.com/480/360/miquang,noodle" data-cap="Mì Quảng" data-cap-zh="廣麵"></div>
       <div class="food-pad">
         <h4 data-zh="廣麵">Mì Quảng</h4><div class="food-price" data-zh="約3–5萬₫">~30.000 – 50.000đ</div>
         <p data-zh="黃色麵條，湯少而濃郁，配米餅與生菜。廣南的「國民」料理。">Sợi mì vàng, nước lèo ít mà đậm, ăn kèm bánh tráng &amp; rau sống. Món “quốc dân” của xứ Quảng.</p>
@@ -703,7 +704,7 @@
       </div>
     </div>
     <div class="food-card">
-      <div class="ph"><span class="ph-fallback">🐟</span><img loading="lazy" alt="Bún chả cá" src="https://loremflickr.com/480/360/fishcake,noodle,soup" data-cap="Bún chả cá" data-cap-zh="魚餅米線"></div>
+      <div class="ph"><span class="ph-fallback">🐟</span><img loading="lazy" data-single="food_bcc" alt="Bún chả cá" src="https://loremflickr.com/480/360/fishcake,noodle,soup" data-cap="Bún chả cá" data-cap-zh="魚餅米線"></div>
       <div class="food-pad">
         <h4 data-zh="魚餅米線">Bún chả cá</h4><div class="food-price" data-zh="約2.5–4萬₫">~25.000 – 40.000đ</div>
         <p data-zh="魚熬製的湯頭清甜，魚餅彈牙鮮香。早餐或宵夜都適合，清爽不膩。">Nước dùng ngọt thanh từ cá, chả cá dai thơm. Ăn sáng hoặc tối đều hợp, nhẹ bụng.</p>
@@ -711,7 +712,7 @@
       </div>
     </div>
     <div class="food-card">
-      <div class="ph"><span class="ph-fallback">🥬</span><img loading="lazy" alt="Bánh tráng cuốn thịt heo" src="https://loremflickr.com/480/360/porkroll,vietnamese,food" data-cap="Bánh tráng cuốn thịt heo" data-cap-zh="豬肉米紙捲"></div>
+      <div class="ph"><span class="ph-fallback">🥬</span><img loading="lazy" data-single="food_btc" alt="Bánh tráng cuốn thịt heo" src="https://loremflickr.com/480/360/porkroll,vietnamese,food" data-cap="Bánh tráng cuốn thịt heo" data-cap-zh="豬肉米紙捲"></div>
       <div class="food-pad">
         <h4 data-zh="豬肉米紙捲">Bánh tráng cuốn thịt heo</h4><div class="food-price" data-zh="約7–9萬₫/份">~70.000 – 90.000đ/phần</div>
         <p data-zh="兩面帶皮的豬肉，包生菜、沾魚露醬——峴港令人難忘的特色。">Thịt heo hai đầu da, cuốn cùng rau sống &amp; chấm mắm nêm — đặc sản khó cưỡng của Đà Nẵng.</p>
@@ -719,7 +720,7 @@
       </div>
     </div>
     <div class="food-card">
-      <div class="ph"><span class="ph-fallback">🦐</span><img loading="lazy" alt="Hải sản Đà Nẵng" src="https://loremflickr.com/480/360/seafood,grill" data-cap="Hải sản tươi sống" data-cap-zh="新鮮海鮮"></div>
+      <div class="ph"><span class="ph-fallback">🦐</span><img loading="lazy" data-single="food_sf" alt="Hải sản Đà Nẵng" src="https://loremflickr.com/480/360/seafood,grill" data-cap="Hải sản tươi sống" data-cap-zh="新鮮海鮮"></div>
       <div class="food-pad">
         <h4 data-zh="新鮮海鮮">Hải sản tươi</h4><div class="food-price" data-zh="依時價">Theo giá thị trường</div>
         <p data-zh="蝦、蟹、螺、烤魷魚…挑人多的店，秤好海鮮、講好價再料理。">Tôm, ghẹ, ốc, mực nướng… Chọn quán đông khách, cân hải sản &amp; chốt giá trước khi chế biến.</p>
@@ -727,7 +728,7 @@
       </div>
     </div>
     <div class="food-card">
-      <div class="ph"><span class="ph-fallback">🥢</span><img loading="lazy" alt="Bánh xèo nem lụi" src="https://loremflickr.com/480/360/banhxeo,vietnamese,pancake" data-cap="Bánh xèo – nem lụi" data-cap-zh="越式煎餅－串燒肉"></div>
+      <div class="ph"><span class="ph-fallback">🥢</span><img loading="lazy" data-single="food_bx" alt="Bánh xèo nem lụi" src="https://loremflickr.com/480/360/banhxeo,vietnamese,pancake" data-cap="Bánh xèo – nem lụi" data-cap-zh="越式煎餅－串燒肉"></div>
       <div class="food-pad">
         <h4 data-zh="越式煎餅－串燒肉">Bánh xèo – nem lụi</h4><div class="food-price" data-zh="約4–6萬₫">~40.000 – 60.000đ</div>
         <p data-zh="煎餅酥脆、串燒肉噴香，包米紙沾濃郁花生醬。">Bánh xèo giòn rụm, nem lụi nướng thơm, cuốn bánh tráng chấm nước lèo đậu phộng béo ngậy.</p>
@@ -735,7 +736,7 @@
       </div>
     </div>
     <div class="food-card">
-      <div class="ph"><span class="ph-fallback">🍧</span><img loading="lazy" alt="Kem bơ chè Đà Nẵng" src="https://loremflickr.com/480/360/avocado,icecream,dessert" data-cap="Kem bơ &amp; chè" data-cap-zh="酪梨冰 &amp; 甜湯"></div>
+      <div class="ph"><span class="ph-fallback">🍧</span><img loading="lazy" data-single="food_kb" alt="Kem bơ chè Đà Nẵng" src="https://loremflickr.com/480/360/avocado,icecream,dessert" data-cap="Kem bơ &amp; chè" data-cap-zh="酪梨冰 &amp; 甜湯"></div>
       <div class="food-pad">
         <h4 data-zh="酪梨冰 &amp; 甜湯">Kem bơ &amp; chè</h4><div class="food-price" data-zh="約2–3.5萬₫">~20.000 – 35.000đ</div>
         <p data-zh="夏日消暑甜點：綿密酪梨冰、清涼什錦甜湯——小女兒一定愛。">Tráng miệng giải nhiệt ngày hè: kem bơ béo mịn, chè thập cẩm mát lạnh — cô con gái chắc chắn thích.</p>
@@ -881,6 +882,7 @@
 <footer>
   <div data-zh="峴港旅程 · <b>2026年6月18→21日</b> · 4天3夜 · 海灘、山林、古鎮與度假的平衡。">Hành trình Đà Nẵng · <b>18 → 21 tháng 6, 2026</b> · 4 ngày 3 đêm · Cân bằng giữa biển, núi, phố cổ và nghỉ dưỡng.</div>
   <div class="foot-credit" data-zh="✦ 本行程由 <b>Otis</b> 規劃 ✦">✦ Hành trình được lên kế hoạch bởi <b>Otis</b> ✦</div>
+  <div class="foot-src" data-zh="圖片來源：Wikimedia Commons">Ảnh: Wikimedia Commons</div>
 </footer>
 
 <!-- LIGHTBOX -->
@@ -932,33 +934,42 @@
   }
   document.querySelectorAll('#langSwitch button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
 
+  // ---------- ẢNH THẬT TỪ WIKIMEDIA COMMONS (chỉ cảnh quan, đúng địa điểm) ----------
+  const PHOTOS={mykhe:["https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/My_Khe_Beach_Da_Nang.jpg/1280px-My_Khe_Beach_Da_Nang.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/My_Khe_Beach_5.jpg/1280px-My_Khe_Beach_5.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/My_Khe_Beach_14.jpg/1280px-My_Khe_Beach_14.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/My_Khe_Beach_18.jpg/1280px-My_Khe_Beach_18.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/My_Khe_Beach_21.jpg/1280px-My_Khe_Beach_21.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/My_Khe_Beach_seen_from_the_Son_Tra_Mountain.jpg/1280px-My_Khe_Beach_seen_from_the_Son_Tra_Mountain.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Boats_on_My_Khe_Beach_1.jpg/1280px-Boats_on_My_Khe_Beach_1.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Boats_on_My_Khe_Beach_3.jpg/1280px-Boats_on_My_Khe_Beach_3.jpg"],
+  dragon:["https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/C%E1%BA%A7u_R%E1%BB%93ng.jpg/1280px-C%E1%BA%A7u_R%E1%BB%93ng.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Dragon_Bridge_5.jpg/1280px-Dragon_Bridge_5.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Dragon_Bridge_at_night_%28Danang%29_-_DSC02094.JPG/1280px-Dragon_Bridge_at_night_%28Danang%29_-_DSC02094.JPG","https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Dragon_Bridge_at_night_%28Danang%29_-_DSC02098.JPG/1280px-Dragon_Bridge_at_night_%28Danang%29_-_DSC02098.JPG","https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Dragon_Bridge_at_night_%28Danang%29_-_DSC02093.JPG/1280px-Dragon_Bridge_at_night_%28Danang%29_-_DSC02093.JPG","https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Da_nang_dragon_bridge.jpg/1280px-Da_nang_dragon_bridge.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Dragon_Bridge_%28Danang%29_20190919.jpg/1280px-Dragon_Bridge_%28Danang%29_20190919.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/2020_Da_Nang_Dragon_Bridge_IMG_3897.jpg/1280px-2020_Da_Nang_Dragon_Bridge_IMG_3897.jpg"],
+  bana:["https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/The_Golden_Bridge%2C_Ba_Na_Hills%2C_Vietnam.jpg/1280px-The_Golden_Bridge%2C_Ba_Na_Hills%2C_Vietnam.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Vietnam%2C_Ba_Na_Hill%2C_Golden_Bridge_-_Laslovarga_%282%29.jpg/1280px-Vietnam%2C_Ba_Na_Hill%2C_Golden_Bridge_-_Laslovarga_%282%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Vietnam%2C_Ba_Na_Hill%2C_Golden_Bridge_-_Laslovarga_%281%29.jpg/1280px-Vietnam%2C_Ba_Na_Hill%2C_Golden_Bridge_-_Laslovarga_%281%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Golden_Bridge_at_Ba_Na_Hills_20250718.jpg/1280px-Golden_Bridge_at_Ba_Na_Hills_20250718.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sun_World_Ba_Na_Hills_aerial_overview_sunset_Da_Nang_Vietnam.jpg/1280px-Sun_World_Ba_Na_Hills_aerial_overview_sunset_Da_Nang_Vietnam.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Cable_Car_at_Sun_World_Ba_Na_Hills_in_the_sunset.jpg/1280px-Cable_Car_at_Sun_World_Ba_Na_Hills_in_the_sunset.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Ba_Na_Hills_in_the_mist.jpg/1280px-Ba_Na_Hills_in_the_mist.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/B%C3%A0_N%C3%A0_Hills_mountains_%2830594984477%29.jpg/1280px-B%C3%A0_N%C3%A0_Hills_mountains_%2830594984477%29.jpg"],
+  linhung:["https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Son-Tra-Peninsula_Da-Nang_Vietnam_Linh-Ung-Pagoda-01.jpg/1280px-Son-Tra-Peninsula_Da-Nang_Vietnam_Linh-Ung-Pagoda-01.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Son-Tra-Peninsula_Da-Nang_Vietnam_Linh-Ung-Pagoda-02.jpg/1280px-Son-Tra-Peninsula_Da-Nang_Vietnam_Linh-Ung-Pagoda-02.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Son-Tra-Peninsula_Da-Nang_Vietnam_Linh-Ung-Pagoda-03.jpg/1280px-Son-Tra-Peninsula_Da-Nang_Vietnam_Linh-Ung-Pagoda-03.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Linh_Ung_Pagoda_5.jpg/1280px-Linh_Ung_Pagoda_5.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Linh_Ung_Pagoda_6.jpg/1280px-Linh_Ung_Pagoda_6.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Linh_Ung_Pagoda_8.jpg/1280px-Linh_Ung_Pagoda_8.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2024-12-07_Linh_Ung_Pagoda_1.jpg/1280px-2024-12-07_Linh_Ung_Pagoda_1.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/2024-12-07_Linh_Ung_Pagoda_2.jpg/1280px-2024-12-07_Linh_Ung_Pagoda_2.jpg"],
+  banco:["https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Chessboard_statue_in_Ban_Co_peak.jpg/1280px-Chessboard_statue_in_Ban_Co_peak.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Da_Nang_and_the_Son_Tra_Peninsula.jpg/1280px-Da_Nang_and_the_Son_Tra_Peninsula.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Son_Tra_Peninsula.jpg/1280px-Son_Tra_Peninsula.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Ho%C3%A0ng_Sa_Road%2C_Son_Tra_Peninsula.jpg/1280px-Ho%C3%A0ng_Sa_Road%2C_Son_Tra_Peninsula.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/My_Khe_Beach_seen_from_the_Son_Tra_Mountain.jpg/1280px-My_Khe_Beach_seen_from_the_Son_Tra_Mountain.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/A_Cityscape_Across_The_Bay_%28148479565%29.jpeg/1280px-A_Cityscape_Across_The_Bay_%28148479565%29.jpeg","https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Son-Tra-Peninsula_Da-Nang_Vietnam_Linh-Ung-Pagoda-01.jpg/1280px-Son-Tra-Peninsula_Da-Nang_Vietnam_Linh-Ung-Pagoda-01.jpg"],
+  marble:["https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Marble_Mountains_View_3.JPG/1280px-Marble_Mountains_View_3.JPG","https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ngu_Hanh_Son_Pagoda.jpg/1280px-Ngu_Hanh_Son_Pagoda.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Ngu_Hanh_Son_%2852672644377%29.jpg/1280px-Ngu_Hanh_Son_%2852672644377%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Ngu_Hanh_Son_%2852673158751%29.jpg/1280px-Ngu_Hanh_Son_%2852673158751%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Marble_Mountains_-_Ngu_Hanh_Son_District_-_South_of_Da_Nang_City_-_Vietnam_%283%29.jpg/1280px-Marble_Mountains_-_Ngu_Hanh_Son_District_-_South_of_Da_Nang_City_-_Vietnam_%283%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Stone_sculpture%2C_Ngu_Hanh_Son%2C_Da_Nang_%2849355899152%29.jpg/1280px-Stone_sculpture%2C_Ngu_Hanh_Son%2C_Da_Nang_%2849355899152%29.jpg","https://upload.wikimedia.org/wikipedia/commons/b/bb/Quan_Ngu_Hanh_Son.jpg"],
+  asiapark:["https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Sun_World_Asia_Park%2C_Da_Nang_%2849355235398%29.jpg/1280px-Sun_World_Asia_Park%2C_Da_Nang_%2849355235398%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Sun_World_Asia_Park%2C_Da_Nang_%2849356303773%29.jpg/1280px-Sun_World_Asia_Park%2C_Da_Nang_%2849356303773%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Sun_World_Asia_Park%2C_Da_Nang_%2849357434063%29.jpg/1280px-Sun_World_Asia_Park%2C_Da_Nang_%2849357434063%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sun_World_Asia_Park%2C_Da_Nang_%2849357438253%29.jpg/1280px-Sun_World_Asia_Park%2C_Da_Nang_%2849357438253%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Sun_World_Asia_Park%2C_Da_Nang_%2849358003906%29.jpg/1280px-Sun_World_Asia_Park%2C_Da_Nang_%2849358003906%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Sun_World_Asia_Park%2C_Da_Nang_%2849358210737%29.jpg/1280px-Sun_World_Asia_Park%2C_Da_Nang_%2849358210737%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sun_World_Asia_Park%2C_Da_Nang_%2849374135522%29.jpg/1280px-Sun_World_Asia_Park%2C_Da_Nang_%2849374135522%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Sun_Wheel_by_day.jpg/1280px-Sun_Wheel_by_day.jpg"],
+  hoian:["https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-01.jpg/1280px-H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-01.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-02.jpg/1280px-H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-02.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-05.jpg/1280px-H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-05.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-06.jpg/1280px-H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-06.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-07.jpg/1280px-H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-07.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-08.jpg/1280px-H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-08.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-10.jpg/1280px-H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-10.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-12.jpg/1280px-H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-12.jpg"],
+  miquang:["https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/M%C3%AC_Qu%E1%BA%A3ng%2C_Da_Nang%2C_Vietnam.jpg/1280px-M%C3%AC_Qu%E1%BA%A3ng%2C_Da_Nang%2C_Vietnam.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Mi_Quang_at_Ngoc_Mai_%28with_noodles_uncovered%29.jpg/1280px-Mi_Quang_at_Ngoc_Mai_%28with_noodles_uncovered%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Mi_Quang_-_Quan_Hat_Mi_Quang%2C_Cao_Lau_VND2000.jpg/1280px-Mi_Quang_-_Quan_Hat_Mi_Quang%2C_Cao_Lau_VND2000.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Cao_Lau_Hoi_An.JPG/1280px-Cao_Lau_Hoi_An.JPG","https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Cao_l%E1%BA%A7u_in_Hoi_An.jpg/1280px-Cao_l%E1%BA%A7u_in_Hoi_An.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/B%C3%A1nh_tr%C3%A1ng_cu%E1%BB%91n_th%E1%BB%8Bt_heo.jpg/1280px-B%C3%A1nh_tr%C3%A1ng_cu%E1%BB%91n_th%E1%BB%8Bt_heo.jpg"]};
+  const SINGLES={hotel1:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/My_Khe_Beach_Danang_Coastline.jpg/1280px-My_Khe_Beach_Danang_Coastline.jpg",hotel2:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Han_River_in_Da_Nang_at_sunrise.jpg/1280px-Han_River_in_Da_Nang_at_sunrise.jpg",hotel3:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/My_Khe_Beach_seen_from_the_Son_Tra_Mountain.jpg/1280px-My_Khe_Beach_seen_from_the_Son_Tra_Mountain.jpg",hero:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/My_Khe_Beach_5.jpg/1280px-My_Khe_Beach_5.jpg",food_mq:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/M%C3%AC_Qu%E1%BA%A3ng%2C_Da_Nang%2C_Vietnam.jpg/1280px-M%C3%AC_Qu%E1%BA%A3ng%2C_Da_Nang%2C_Vietnam.jpg",food_bcc:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Bun_cha_ca.jpg/1280px-Bun_cha_ca.jpg",food_btc:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/B%C3%A1nh_tr%C3%A1ng_cu%E1%BB%91n_th%E1%BB%8Bt_heo_%2818521%29.jpg/1280px-B%C3%A1nh_tr%C3%A1ng_cu%E1%BB%91n_th%E1%BB%8Bt_heo_%2818521%29.jpg",food_sf:"https://upload.wikimedia.org/wikipedia/commons/f/fc/Steamed_mussels._Vietnamse_style_-_Flickr_-_morning_rumtea.jpg",food_bx:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/B%C3%A1nh_x%C3%A8o_%2815826153307%29.jpg/1280px-B%C3%A1nh_x%C3%A8o_%2815826153307%29.jpg",food_kb:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Avocado_Ice_Cream%2C_Jun_2024.jpg/1280px-Avocado_Ice_Cream%2C_Jun_2024.jpg"};
+
   // ---------- GALLERIES (nhiều ảnh / 多張照片) ----------
   const GAL=[];               // mỗi phần tử = mảng {src,cap,capZh}
-  const SHOTS=8;              // tổng số ảnh mỗi điểm đến (1 lớn + 7 thu nhỏ)
-  function baseOf(src){return src.split('?')[0];}
   function recalcOpen(el){const card=el.closest&&el.closest('.place.open');if(card){const b=card.querySelector('.place-body');b.style.maxHeight=b.scrollHeight+'px';}}
   function onImgErr(im,isThumb){im.addEventListener('error',()=>{if(isThumb)im.style.display='none';else im.parentElement.classList.add('noimg');});}
 
-  // Biến mỗi ảnh trong lịch trình thành một bộ sưu tập ảnh
-  document.querySelectorAll('.place-inner .ph').forEach(ph=>{
-    const feat=ph.querySelector('img'); if(!feat) return;
-    const base=baseOf(feat.src), cap=feat.dataset.cap||'', capZh=feat.dataset.capZh||'';
+  // Đặt ảnh đơn (hero, khách sạn, món ăn) bằng ảnh thật
+  document.querySelectorAll('img[data-single]').forEach(im=>{const u=SINGLES[im.dataset.single]; if(u)im.src=u;});
+
+  // Mỗi điểm đến trong lịch trình -> bộ sưu tập ảnh thật của vùng đó
+  document.querySelectorAll('.place-inner .ph[data-album]').forEach(ph=>{
+    const album=PHOTOS[ph.dataset.album]||[];
+    const feat=ph.querySelector('img'); if(!feat||!album.length) return;
+    const cap=feat.dataset.cap||'', capZh=feat.dataset.capZh||'';
     const gi=GAL.length, group=[];
-    feat.src=base+'?lock=1';
-    feat.dataset.g=gi; feat.dataset.i='0';
-    onImgErr(feat,false);
-    feat.addEventListener('load',()=>recalcOpen(feat));
-    group.push({src:feat.src,cap,capZh});
+    feat.src=album[0]; feat.dataset.g=gi; feat.dataset.i='0';
+    onImgErr(feat,false); feat.addEventListener('load',()=>recalcOpen(feat));
+    group.push({src:album[0],cap,capZh});
     const strip=document.createElement('div'); strip.className='gallery-strip';
-    for(let k=2;k<=SHOTS;k++){
+    for(let k=1;k<album.length;k++){
       const im=document.createElement('img');
-      im.className='gthumb'; im.loading='lazy'; im.alt=cap;
-      im.src=base+'?lock='+k;
-      im.dataset.cap=cap; im.dataset.capZh=capZh; im.dataset.g=gi; im.dataset.i=String(k-1);
-      onImgErr(im,true);
-      im.addEventListener('load',()=>recalcOpen(strip));
-      strip.appendChild(im);
-      group.push({src:im.src,cap,capZh});
+      im.className='gthumb'; im.loading='lazy'; im.alt=cap; im.src=album[k];
+      im.dataset.cap=cap; im.dataset.capZh=capZh; im.dataset.g=gi; im.dataset.i=String(k);
+      onImgErr(im,true); im.addEventListener('load',()=>recalcOpen(strip));
+      strip.appendChild(im); group.push({src:album[k],cap,capZh});
     }
     ph.parentNode.insertBefore(strip, ph.nextSibling);
     const badge=document.createElement('span'); badge.className='gal-badge'; badge.textContent='📷 '+group.length;
