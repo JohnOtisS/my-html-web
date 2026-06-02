@@ -54,11 +54,13 @@
     .nav-links{order:3;flex-basis:100%;margin:0;padding-bottom:.1rem;
       -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%);
       mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%)}
+    /* menu xuống 2 hàng -> đẩy nội dung hero xuống cho khỏi vướng */
+    .hero{padding-top:calc(116px + 2vh)}
   }
 
   /* ---------- HERO ---------- */
   .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
-    padding:8vh var(--pad) 7vh;color:var(--cream);overflow:hidden;
+    padding:calc(64px + 6vh) var(--pad) 7vh;color:var(--cream);overflow:hidden;
     background:linear-gradient(155deg,var(--sea-deep) 0%,var(--sea) 50%,var(--sea-light) 100%)}
   .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.32;z-index:0;filter:saturate(1.1)}
   .hero-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -406,7 +408,7 @@
   @media(max-width:560px){
     :root{--pad:4.6vw}
     section{padding:2.9rem var(--pad)}
-    .hero{padding:7vh var(--pad) 8.5vh}
+    .hero{padding:calc(116px + 2vh) var(--pad) 8.5vh}
     .hero h1{font-size:clamp(2.9rem,17vw,4.6rem)}
     .hero-sub{font-size:1rem}
     .hero-credit{margin-top:1.4rem}
