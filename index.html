@@ -1,1585 +1,1018 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#052f38">
-<meta name="description" content="Hành trình gia đình Đà Nẵng 18–21.06.2026 — lịch trình, khách sạn, ẩm thực, review địa điểm, bản đồ và thông tin hữu ích.">
-<title>Otis Plan Trip · Đà Nẵng 18–21.06.2026</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#071f24" />
+<meta name="description" content="Otis Couple Roadtrip Planner — Sài Gòn → Phan Thiết → La Gi → Đèo Nước Ngọt → Sài Gòn." />
+<title>Otis Couple Roadtrip · 3N2Đ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,400..700&family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --sea:#0a6b74; --sea-deep:#052f38; --sea-mid:#0d7d85; --sea-light:#1ba3a8;
-    --sand:#f4ead8; --sand-deep:#e6d2b0;
-    --coral:#ff5e3a; --coral-soft:#ff8763;
-    --gold:#e0a437; --gold-soft:#f2c66b;
-    --ink:#0c2825; --cream:#fbf5ea; --paper:#fffdf8;
-    --line:rgba(12,40,37,.1);
-    --shadow:rgba(5,47,56,.16);
-    --pad:7vw;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:70px}
-  body{font-family:'Be Vietnam Pro','Noto Sans TC',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;overflow-x:hidden}
-  ::selection{background:var(--coral);color:#fff}
-  a{color:inherit;text-decoration:none}
-  img{max-width:100%}
+:root{
+  --night:#071f24;
+  --night-2:#0b3136;
+  --sea:#0a747a;
+  --sea-2:#14a4a8;
+  --mint:#8ce5d3;
+  --cream:#f8f2e8;
+  --paper:#fffdf9;
+  --sand:#efe2ce;
+  --sand-2:#e2cfaf;
+  --coral:#ff6847;
+  --coral-2:#ff8b69;
+  --gold:#f2c368;
+  --ink:#122c2c;
+  --muted:#6d817e;
+  --line:rgba(18,44,44,.10);
+  --white-line:rgba(255,255,255,.14);
+  --shadow-sm:0 8px 26px -18px rgba(7,31,36,.30);
+  --shadow-md:0 24px 56px -30px rgba(7,31,36,.38);
+  --shadow-lg:0 40px 90px -44px rgba(7,31,36,.52);
+  --radius:26px;
+  --radius-sm:18px;
+  --page:clamp(18px,5vw,76px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{
+  font-family:'Be Vietnam Pro',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 85% 8%,rgba(20,164,168,.10),transparent 28%),
+    radial-gradient(circle at 10% 42%,rgba(255,104,71,.07),transparent 24%),
+    var(--cream);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--coral);color:#fff}
 
-  .progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--coral),var(--gold));z-index:1200;transition:width .1s}
+/* ---------- scroll progress ---------- */
+.scroll-progress{position:fixed;top:0;left:0;width:0;height:3px;background:linear-gradient(90deg,var(--coral),var(--gold),var(--mint));z-index:2000}
 
-  /* ---------- NAV ---------- */
-  .nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;flex-wrap:wrap;align-items:center;gap:.55rem .9rem;
-    padding:.8rem var(--pad);transition:background .4s,box-shadow .4s,padding .35s}
-  .nav.scrolled{background:rgba(251,245,234,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 8px 30px -22px var(--shadow);padding-top:.55rem;padding-bottom:.55rem}
-  .nav-brand{order:1;font-family:'Fraunces','Noto Serif TC',serif;font-weight:600;font-size:1.05rem;color:#fff;transition:color .4s;white-space:nowrap;display:flex;align-items:center;gap:.45rem}
-  .nav.scrolled .nav-brand{color:var(--sea-deep)}
-  .nav-links{order:2;display:flex;gap:.2rem;margin-right:auto;margin-left:.6rem;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-  .nav-links::-webkit-scrollbar{display:none}
-  .nav-links a{font-size:.82rem;font-weight:600;padding:.42rem .8rem;border-radius:100px;color:rgba(255,255,255,.88);white-space:nowrap;transition:background .25s,color .25s}
-  .nav.scrolled .nav-links a{color:var(--sea-deep)}
-  @media(hover:hover){.nav-links a:hover{background:rgba(255,255,255,.18)}.nav.scrolled .nav-links a:hover{background:var(--sand)}}
-  /* language switch */
-  .lang-switch{order:3;display:inline-flex;flex:0 0 auto;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:100px;padding:3px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-  .nav.scrolled .lang-switch{background:#fff;border-color:var(--line)}
-  .lang-switch button{border:none;background:transparent;cursor:pointer;font-family:'Be Vietnam Pro','Noto Sans TC';font-weight:700;font-size:.78rem;color:rgba(255,255,255,.92);padding:.36rem .8rem;border-radius:100px;transition:background .25s,color .25s,box-shadow .25s;line-height:1.05;white-space:nowrap}
-  .nav.scrolled .lang-switch button{color:var(--sea-deep)}
-  .lang-switch button.active{background:var(--coral);color:#fff;box-shadow:0 4px 12px -4px rgba(255,94,58,.6)}
-  .nav.scrolled .lang-switch button.active{color:#fff}
-  @media(max-width:720px){
-    .nav{gap:.5rem .6rem}
-    .nav-brand{order:1}
-    .lang-switch{order:2;margin-left:auto}
-    .nav-links{order:3;flex-basis:100%;margin:0;padding-bottom:.1rem;
-      -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%);
-      mask-image:linear-gradient(90deg,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%)}
-    /* menu xuống 2 hàng -> đẩy nội dung hero xuống cho khỏi vướng */
-    .hero{padding-top:calc(116px + 2vh)}
-  }
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1500;
+  display:flex;align-items:center;gap:16px;
+  padding:16px var(--page);
+  transition:.3s ease;
+}
+.nav.scrolled{
+  background:rgba(248,242,232,.80);
+  border-bottom:1px solid rgba(255,255,255,.65);
+  backdrop-filter:blur(20px) saturate(1.25);
+  -webkit-backdrop-filter:blur(20px) saturate(1.25);
+  box-shadow:0 12px 40px -30px rgba(7,31,36,.6);
+  padding-top:11px;padding-bottom:11px;
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;color:#fff;white-space:nowrap}
+.nav.scrolled .brand{color:var(--night)}
+.brand-mark{width:32px;height:32px;border-radius:12px;background:linear-gradient(145deg,var(--coral),var(--gold));display:grid;place-items:center;box-shadow:0 9px 20px -9px rgba(255,104,71,.65);font-size:16px}
+.brand small{display:block;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.65;margin-top:-3px}
+.nav-links{display:flex;gap:3px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{padding:9px 13px;border-radius:999px;color:rgba(255,255,255,.82);font-size:12px;font-weight:700;white-space:nowrap;transition:.2s}
+.nav.scrolled .nav-links a{color:var(--night-2)}
+.nav-links a:hover{background:rgba(255,255,255,.13)}
+.nav.scrolled .nav-links a:hover{background:rgba(10,116,122,.08)}
+.nav-action{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.10);color:#fff;border-radius:999px;padding:10px 15px;font-size:12px;font-weight:800;backdrop-filter:blur(10px);white-space:nowrap}
+.nav.scrolled .nav-action{background:var(--night);border-color:var(--night);color:#fff}
 
-  /* ---------- HERO ---------- */
-  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
-    padding:calc(64px + 6vh) var(--pad) 7vh;color:var(--cream);overflow:hidden;
-    background:linear-gradient(155deg,var(--sea-deep) 0%,var(--sea) 50%,var(--sea-light) 100%)}
-  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.32;z-index:0;filter:saturate(1.1)}
-  .hero-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;
-    background:radial-gradient(130% 100% at 85% 5%,rgba(27,163,168,.55) 0%,transparent 55%),
-      radial-gradient(120% 90% at 5% 95%,rgba(255,94,58,.4) 0%,transparent 50%),
-      linear-gradient(155deg,rgba(5,47,56,.55),rgba(10,107,116,.35) 55%,rgba(27,163,168,.25))}
-  .wave-deco{position:absolute;inset:0;opacity:.5;pointer-events:none;z-index:1;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cpath d='M0 60 Q30 35 60 60 T120 60' fill='none' stroke='%23ffffff' stroke-opacity='0.045' stroke-width='2'/%3E%3Cpath d='M0 90 Q30 65 60 90 T120 90' fill='none' stroke='%23ffffff' stroke-opacity='0.045' stroke-width='2'/%3E%3C/svg%3E")}
-  .sun{position:absolute;top:11%;right:10%;width:clamp(110px,40vw,240px);height:clamp(110px,40vw,240px);border-radius:50%;z-index:1;
-    background:radial-gradient(circle,var(--gold-soft),var(--coral) 70%);filter:blur(6px);opacity:.5;animation:pulse 7s ease-in-out infinite}
-  @keyframes pulse{0%,100%{transform:scale(1);opacity:.45}50%{transform:scale(1.08);opacity:.58}}
-  .hero-inner{position:relative;z-index:2}
-  .hero-tag{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;font-weight:700;color:var(--gold-soft);margin-bottom:1.2rem;opacity:0;animation:rise .9s .1s forwards}
-  .hero h1{font-family:'Fraunces','Noto Serif TC',serif;font-weight:300;font-size:clamp(3.2rem,16vw,9.5rem);line-height:.9;letter-spacing:-.025em;opacity:0;animation:rise 1s .25s forwards}
-  .hero h1 em{font-style:italic;font-weight:500;color:var(--coral-soft);display:block}
-  .hero-sub{margin-top:1.5rem;max-width:50ch;font-size:clamp(.98rem,3.6vw,1.18rem);color:rgba(251,245,234,.88);font-weight:300;opacity:0;animation:rise 1s .45s forwards}
-  .hero-meta{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2rem;opacity:0;animation:rise 1s .6s forwards}
-  .chip{display:inline-flex;align-items:center;gap:.45rem;padding:.6rem 1rem;border-radius:100px;background:rgba(251,245,234,.1);border:1px solid rgba(251,245,234,.22);backdrop-filter:blur(8px);font-size:.82rem;font-weight:500}
-  .chip b{color:var(--gold-soft);font-weight:700}
+/* ---------- hero ---------- */
+.hero{
+  min-height:100svh;
+  position:relative;
+  overflow:hidden;
+  padding:clamp(110px,14vh,150px) var(--page) 66px;
+  color:#fff;
+  display:flex;
+  align-items:flex-end;
+  background:
+    radial-gradient(circle at 78% 22%,rgba(242,195,104,.28),transparent 19%),
+    radial-gradient(circle at 84% 18%,rgba(255,104,71,.22),transparent 32%),
+    linear-gradient(145deg,#041b20 0%,#07353a 48%,#0a747a 100%);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;opacity:.48;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:52px 52px;
+  mask-image:linear-gradient(120deg,#000 8%,transparent 70%);
+}
+.hero::after{
+  content:"";position:absolute;left:-8%;right:-8%;bottom:-150px;height:280px;border-radius:50%;
+  background:var(--cream);transform:rotate(-2.5deg);z-index:1;
+}
+.hero-orb{position:absolute;right:7vw;top:14vh;width:min(34vw,430px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 36% 34%,#ffd986,var(--coral) 55%,rgba(255,104,71,.10) 72%);filter:blur(.2px);opacity:.92;box-shadow:0 0 0 32px rgba(255,255,255,.025),0 0 0 76px rgba(255,255,255,.018)}
+.hero-orb::after{content:"";position:absolute;inset:18%;border-radius:50%;border:1px dashed rgba(255,255,255,.35);animation:spin 30s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero-inner{position:relative;z-index:3;width:min(1120px,100%)}
+.eyebrow{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.eyebrow::before{content:"";width:36px;height:2px;background:currentColor}
+.hero h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(3.7rem,10vw,8.8rem);line-height:.84;letter-spacing:-.048em;max-width:920px}
+.hero h1 em{display:block;font-weight:500;font-style:italic;background:linear-gradient(115deg,var(--coral-2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-copy{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:end;margin-top:27px;max-width:1050px}
+.hero-sub{max-width:690px;color:rgba(255,255,255,.72);font-size:clamp(.95rem,2vw,1.08rem);font-weight:400}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.07);backdrop-filter:blur(12px);border-radius:999px;padding:8px 12px;font-size:12px;color:rgba(255,255,255,.82)}
+.chip b{color:#fff;font-weight:800}
+.hero-cta{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}
+.btn{border:0;border-radius:999px;padding:12px 17px;font-weight:800;font-size:12px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:.22s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:linear-gradient(135deg,var(--coral),var(--coral-2));color:#fff;box-shadow:0 16px 28px -16px rgba(255,104,71,.8)}
+.btn-glass{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;backdrop-filter:blur(12px)}
+.btn-dark{background:var(--night);color:#fff}
+.btn-soft{background:#fff;border:1px solid var(--line);color:var(--night);box-shadow:var(--shadow-sm)}
+.btn-danger{background:#fff0ed;color:#c2442d;border:1px solid rgba(194,68,45,.13)}
+.hero-scroll{position:absolute;bottom:178px;right:var(--page);z-index:4;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45);writing-mode:vertical-rl;display:flex;align-items:center;gap:9px}
+.hero-scroll::after{content:"";height:54px;width:1px;background:linear-gradient(#fff,transparent)}
 
-  /* countdown */
-  .countdown{display:flex;gap:.7rem;margin-top:2rem;opacity:0;animation:rise 1s .75s forwards}
-  .cd-cell{min-width:64px;text-align:center;padding:.7rem .4rem;border-radius:16px;background:rgba(251,245,234,.1);border:1px solid rgba(251,245,234,.2);backdrop-filter:blur(8px)}
-  .cd-num{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.9rem;font-weight:500;line-height:1;color:var(--gold-soft)}
-  .cd-lbl{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(251,245,234,.65);margin-top:.35rem}
-  .cd-done{font-family:'Fraunces','Noto Serif TC',serif;font-style:italic;font-size:1.4rem;color:var(--gold-soft)}
+/* ---------- sections ---------- */
+section{padding:86px var(--page);position:relative}
+.section-shell{width:min(1180px,100%);margin:0 auto}
+.section-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:32px}
+.section-kicker{font-size:10px;font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:var(--coral);display:flex;gap:9px;align-items:center;margin-bottom:10px}
+.section-kicker::before{content:"";width:26px;height:2px;background:var(--coral)}
+h2{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(2.2rem,5vw,4.1rem);line-height:1;letter-spacing:-.035em;color:var(--night)}
+h2 em{font-style:italic;color:var(--coral)}
+.section-desc{max-width:660px;margin-top:14px;color:var(--muted);font-size:.95rem}
 
-  .hero-credit{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.7rem;padding:.5rem 1rem;border-radius:100px;
-    background:rgba(242,198,107,.12);border:1px solid rgba(242,198,107,.32);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-    font-size:.78rem;font-weight:600;color:var(--gold-soft);letter-spacing:.03em;opacity:0;animation:rise 1s .9s forwards}
-  .hero-credit b{font-family:'Fraunces','Noto Serif TC',serif;font-weight:600;font-style:italic;font-size:1.02rem;color:#fff;letter-spacing:0}
-  .scroll-hint{position:absolute;bottom:3vh;left:var(--pad);right:var(--pad);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(251,245,234,.55);animation:bob 2s infinite;z-index:2}
-  @keyframes rise{to{opacity:1;transform:translateY(0)}}
-  .hero-tag,.hero h1,.hero-sub,.hero-meta,.countdown,.hero-credit{transform:translateY(28px)}
-  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+/* ---------- overview bento ---------- */
+.overview{padding-top:34px}
+.bento{display:grid;grid-template-columns:1.35fr .65fr .65fr;grid-auto-rows:minmax(160px,auto);gap:14px}
+.bento-card{position:relative;border:1px solid rgba(18,44,44,.08);border-radius:var(--radius);padding:24px;background:rgba(255,253,249,.76);box-shadow:var(--shadow-sm);overflow:hidden;backdrop-filter:blur(12px)}
+.bento-card.dark{background:linear-gradient(150deg,var(--night),var(--night-2));color:#fff;border-color:rgba(255,255,255,.08)}
+.bento-card.accent{background:linear-gradient(150deg,#ffdba0 0%,#ff8b69 100%);border:0;color:#3a231e}
+.bento-card.route-card{grid-row:span 2}
+.card-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--muted)}
+.dark .card-label{color:rgba(255,255,255,.48)}
+.card-big{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.03;margin-top:10px;letter-spacing:-.03em}
+.card-note{font-size:12px;color:var(--muted);margin-top:10px}
+.dark .card-note{color:rgba(255,255,255,.58)}
+.route-map{position:absolute;inset:0;pointer-events:none;opacity:.7}
+.route-line{position:absolute;left:11%;right:8%;top:53%;height:3px;background:linear-gradient(90deg,var(--coral),var(--gold),var(--mint));transform:rotate(-5deg);border-radius:999px;box-shadow:0 0 22px rgba(242,195,104,.35)}
+.route-line::after{content:"";position:absolute;left:22%;width:17%;height:46px;border:3px solid var(--gold);border-left-color:transparent;border-bottom-color:transparent;border-radius:0 44px 0 0;top:-42px;transform:rotate(8deg)}
+.route-pins{position:absolute;inset:74px 18px 20px 18px}
+.pin{position:absolute;display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;color:rgba(255,255,255,.83);max-width:135px}
+.pin i{width:11px;height:11px;border:3px solid rgba(255,255,255,.8);border-radius:50%;background:var(--night);box-shadow:0 0 0 5px rgba(255,255,255,.07);flex:none}
+.pin:nth-child(1){left:0;bottom:17%}
+.pin:nth-child(2){left:24%;top:8%}
+.pin:nth-child(3){left:50%;bottom:12%}
+.pin:nth-child(4){right:4%;top:18%}
+.pin:nth-child(5){right:0;bottom:9%}
+.mini-stats{display:flex;align-items:flex-end;gap:8px;height:62px;margin-top:16px}
+.mini-stats i{flex:1;border-radius:999px 999px 6px 6px;background:linear-gradient(var(--mint),var(--sea));opacity:.8}
+.mini-stats i:nth-child(1){height:38%}.mini-stats i:nth-child(2){height:61%}.mini-stats i:nth-child(3){height:45%}.mini-stats i:nth-child(4){height:82%}.mini-stats i:nth-child(5){height:62%}
+.stat-number{font-family:'Fraunces',serif;font-size:3rem;line-height:1;margin-top:12px}
+.stat-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.progress-ring{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--coral) 0deg,rgba(255,255,255,.11) 0deg);position:relative}
+.progress-ring::before{content:"";position:absolute;inset:8px;border-radius:50%;background:var(--night)}
+.progress-ring span{position:relative;z-index:2;font-size:12px;font-weight:800}
 
-  section{padding:5rem var(--pad);position:relative}
-  .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
-  .reveal.in{opacity:1;transform:none}
-  .label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--coral);font-weight:800;margin-bottom:.9rem;display:flex;align-items:center;gap:.7rem}
-  .label::before{content:"";width:28px;height:2px;background:var(--coral);flex:0 0 auto}
-  h2{font-family:'Fraunces','Noto Serif TC',serif;font-weight:400;font-size:clamp(2rem,7vw,3.6rem);line-height:1.04;letter-spacing:-.018em;margin-bottom:1rem;color:var(--sea-deep)}
-  h2 em{font-style:italic;color:var(--coral)}
-  .lead{max-width:62ch;color:#3a5853;font-size:clamp(.98rem,3.4vw,1.08rem);margin-bottom:2.6rem}
+/* ---------- route strip ---------- */
+.route-strip{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px 20px;display:flex;align-items:center;gap:7px;overflow-x:auto;scrollbar-width:none;box-shadow:var(--shadow-sm)}
+.route-strip::-webkit-scrollbar{display:none}
+.route-stop{display:flex;align-items:center;gap:9px;white-space:nowrap;font-size:12px;font-weight:800;color:var(--night)}
+.route-stop b{width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:var(--sand);font-size:10px;color:var(--sea)}
+.route-arrow{color:var(--coral);font-weight:900;margin:0 5px}
 
-  /* ---------- PHOTO (reusable) ---------- */
-  .ph{position:relative;border-radius:14px;overflow:hidden;display:grid;place-items:center;
-    background:linear-gradient(135deg,var(--sea-mid),var(--sea-light));aspect-ratio:16/10}
-  .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s;cursor:zoom-in;z-index:1}
-  .ph .ph-fallback{font-size:2.6rem;color:rgba(255,255,255,.9);z-index:0;text-shadow:0 2px 10px rgba(0,0,0,.25)}
-  .ph.noimg img{display:none}
-  @media(hover:hover){.ph:hover img{transform:scale(1.06)}}
-  .ph .ph-cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.4rem .9rem .7rem;font-size:.74rem;font-weight:600;color:#fff;
-    background:linear-gradient(transparent,rgba(5,30,28,.7));pointer-events:none}
-  .gal-badge{position:absolute;z-index:3;left:.6rem;top:.6rem;background:rgba(5,30,28,.6);color:#fff;font-size:.7rem;font-weight:700;padding:.26rem .6rem;border-radius:100px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);pointer-events:none}
-  /* thumbnail strip */
-  .gallery-strip{display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none;margin:-.45rem 0 1rem;padding-bottom:.25rem;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
-  .gallery-strip::-webkit-scrollbar{display:none}
-  .gthumb{flex:0 0 auto;width:98px;height:68px;object-fit:cover;border-radius:11px;cursor:zoom-in;scroll-snap-align:start;border:1px solid var(--line);background:var(--sand);transition:transform .25s,box-shadow .25s,border-color .25s}
-  @media(hover:hover){.gthumb:hover{transform:translateY(-3px);box-shadow:0 8px 18px -10px var(--shadow);border-color:var(--coral-soft)}}
+/* ---------- planner ---------- */
+.planner{background:linear-gradient(180deg,rgba(255,253,249,.55),#fffdf9 55%,var(--cream));}
+.planner-toolbar{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.planner-summary{display:flex;align-items:center;gap:12px;background:var(--night);color:#fff;padding:11px 14px;border-radius:16px;min-width:200px}
+.summary-meter{flex:1;height:6px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden}
+.summary-meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--coral));border-radius:999px;transition:.3s}
+.summary-text{font-size:11px;color:rgba(255,255,255,.68);white-space:nowrap}
+.days{display:flex;flex-direction:column;gap:18px}
+.day-card{background:rgba(255,253,249,.86);border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow-md);overflow:hidden;transition:.28s;position:relative}
+.day-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.day-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(var(--coral),var(--gold));opacity:.85}
+.day-head{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:22px 22px 20px 26px;border-bottom:1px solid var(--line)}
+.day-index{width:62px;height:62px;border-radius:20px;background:linear-gradient(145deg,var(--night),var(--sea));color:#fff;display:grid;place-items:center;text-align:center;box-shadow:0 16px 32px -18px rgba(7,31,36,.6)}
+.day-index span{display:block;font-family:'Fraunces',serif;font-size:28px;line-height:.8}
+.day-index small{font-size:8px;text-transform:uppercase;letter-spacing:.16em;opacity:.58}
+.day-title-wrap h3{font-family:'Fraunces',serif;font-size:1.45rem;font-weight:500;line-height:1.1;color:var(--night)}
+.day-title-wrap p{font-size:11px;color:var(--muted);margin-top:7px;display:flex;gap:8px;flex-wrap:wrap}
+.day-meta-tag{padding:5px 8px;border-radius:999px;background:var(--sand);color:var(--sea);font-weight:700}
+.day-actions{display:flex;gap:6px}
+.icon-btn{width:38px;height:38px;border-radius:13px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;color:var(--night);transition:.2s}
+.icon-btn:hover{background:var(--sand);transform:translateY(-1px)}
+.icon-btn.danger:hover{background:#fff0ed;color:#c2442d}
+.day-body{padding:0 22px 22px 26px}
+.empty-day{padding:34px 0 24px;text-align:center;color:var(--muted)}
+.empty-visual{width:62px;height:62px;border-radius:21px;margin:0 auto 13px;background:linear-gradient(145deg,var(--sand),#fff);border:1px solid var(--line);display:grid;place-items:center;font-size:25px;box-shadow:var(--shadow-sm)}
+.empty-day strong{display:block;color:var(--night);font-size:13px;margin-bottom:4px}
+.empty-day p{font-size:11px;max-width:360px;margin:0 auto 15px}
 
-  /* ---------- HOTELS ---------- */
-  .stay{background:var(--paper)}
-  .hotel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.3rem}
-  .tier{background:var(--cream);border:1px solid var(--line);border-radius:22px;overflow:hidden;position:relative;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
-  .tier:active{transform:scale(.99)}
-  @media(hover:hover){.tier:hover{transform:translateY(-8px);box-shadow:0 24px 46px -20px var(--shadow)}}
-  .tier .ph{border-radius:0;aspect-ratio:16/9}
-  .tier-pad{padding:1.4rem 1.5rem 1.8rem;position:relative}
-  .tier-pad::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--accent,var(--sea))}
-  .tier.t1{--accent:var(--sea-light)} .tier.t2{--accent:var(--coral)} .tier.t3{--accent:var(--gold)}
-  .badge{display:inline-block;font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800;color:#fff;background:var(--accent);padding:.28rem .7rem;border-radius:7px;margin:.4rem 0 .9rem}
-  .tier-price{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.4rem;font-weight:500;color:var(--sea-deep)}
-  .tier-note{font-size:.78rem;color:#6b8581;margin-bottom:1.1rem;font-weight:500}
-  .tier ul{list-style:none}
-  .tier li{padding:.55rem 0;border-bottom:1px dashed var(--line);font-size:.94rem;font-weight:500}
-  .tier li:last-child{border:none}
-  .tier li a{display:flex;align-items:center;gap:.55rem;transition:color .2s}
-  @media(hover:hover){.tier li a:hover{color:var(--accent)}}
-  .tier li a::before{content:"›";color:var(--accent);font-weight:800;font-size:1.1rem;flex:0 0 auto}
-  .tier li a .ext{margin-left:auto;font-size:.68rem;color:#9bb0ac;flex:0 0 auto}
-  .perks{margin-top:1.1rem;font-size:.82rem;color:#6b8581;font-style:italic;border-top:1px solid var(--line);padding-top:.9rem;line-height:1.55}
+/* task editor */
+.task-form{margin:18px 0 3px;background:linear-gradient(145deg,#f7efe2,#fff);border:1px solid rgba(18,44,44,.09);border-radius:20px;padding:16px;display:none}
+.task-form.show{display:block;animation:pop .22s ease}
+@keyframes pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.form-grid{display:grid;grid-template-columns:120px 1.1fr .9fr;gap:9px}
+.form-field{display:flex;flex-direction:column;gap:6px}
+.form-field.full{grid-column:1/-1}
+.form-field label{font-size:9px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.field,input.field,textarea.field,select.field{width:100%;border:1px solid var(--line);background:#fff;border-radius:13px;padding:11px 12px;color:var(--night);outline:none;transition:.2s;font-size:12px}
+.field:focus{border-color:rgba(10,116,122,.55);box-shadow:0 0 0 4px rgba(10,116,122,.08)}
+textarea.field{min-height:78px;resize:vertical}
+.form-actions{display:flex;justify-content:flex-end;gap:7px;margin-top:12px}
 
-  /* ---------- ITINERARY ---------- */
-  .plan{background:linear-gradient(180deg,var(--cream),var(--paper))}
-  .day{display:grid;grid-template-columns:140px 1fr;gap:2.4rem;padding:2.6rem 0;border-top:2px solid var(--line);position:relative}
-  .day:last-of-type{border-bottom:2px solid var(--line)}
-  .day-mark{position:sticky;top:5rem;align-self:start}
-  .day-num{font-family:'Fraunces','Noto Serif TC',serif;font-size:3.2rem;line-height:1;font-weight:300;color:var(--coral)}
-  .day-num small{font-size:1rem;color:#9bb0ac;font-family:'Be Vietnam Pro','Noto Sans TC';font-weight:600}
-  .day-date{font-size:.8rem;font-weight:700;color:#6b8581;letter-spacing:.03em;margin-top:.3rem}
-  .day-dow{font-size:.7rem;color:#9bb0ac;text-transform:uppercase;letter-spacing:.12em}
-  .day-theme{display:inline-block;margin-top:.6rem;font-size:.68rem;font-weight:700;color:var(--sea);background:var(--sand);padding:.3rem .65rem;border-radius:100px}
-  .day-body h3{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.55rem;font-weight:500;color:var(--sea-deep);margin-bottom:1.3rem;line-height:1.2}
+/* task list */
+.task-list{display:flex;flex-direction:column;gap:9px;padding-top:18px}
+.task{display:grid;grid-template-columns:auto 68px 1fr auto;gap:12px;align-items:flex-start;padding:14px;border:1px solid var(--line);border-radius:18px;background:#fff;transition:.22s}
+.task:hover{border-color:rgba(10,116,122,.24);box-shadow:var(--shadow-sm)}
+.task.done{background:rgba(244,234,216,.52);opacity:.72}
+.task-check{width:27px;height:27px;border-radius:9px;border:2px solid rgba(10,116,122,.32);display:grid;place-items:center;background:#fff;color:#fff;transition:.2s;margin-top:1px}
+.task-check svg{width:15px;height:15px;stroke:currentColor;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;transform:scale(.4);opacity:0;transition:.2s}
+.task.done .task-check{background:linear-gradient(145deg,var(--sea),var(--sea-2));border-color:transparent}
+.task.done .task-check svg{transform:none;opacity:1}
+.task-time{font-size:11px;font-weight:800;color:var(--sea);padding:6px 7px;border-radius:9px;background:rgba(10,116,122,.07);text-align:center;white-space:nowrap}
+.task-main{min-width:0}
+.task-title{font-size:13px;font-weight:800;color:var(--night);line-height:1.35;overflow-wrap:anywhere}
+.task.done .task-title{text-decoration:line-through;text-decoration-thickness:1px}
+.task-meta{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.task-meta span{font-size:9px;font-weight:700;padding:4px 7px;border-radius:999px;background:var(--sand);color:var(--muted)}
+.task-notes{font-size:11px;color:var(--muted);margin-top:7px;white-space:pre-wrap;overflow-wrap:anywhere}
+.task-actions{display:flex;gap:4px}
+.task-actions .icon-btn{width:31px;height:31px;border-radius:10px;font-size:11px}
+.day-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:17px;padding-top:16px;border-top:1px dashed var(--line)}
+.day-progress{font-size:10px;color:var(--muted);font-weight:700}
+.day-progress b{color:var(--sea)}
 
-  .place{border:1px solid var(--line);border-radius:16px;margin-bottom:.9rem;overflow:hidden;background:var(--paper);transition:box-shadow .3s,border-color .3s}
-  @media(hover:hover){.place:hover{border-color:var(--coral-soft);box-shadow:0 10px 26px -16px var(--shadow)}}
-  .place-head{display:flex;align-items:center;gap:.85rem;padding:1rem 1.1rem;cursor:pointer;user-select:none}
-  .place.open .place-head{background:linear-gradient(90deg,rgba(255,94,58,.06),transparent)}
-  .place-time{flex:0 0 auto;font-size:.66rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#fff;background:var(--sea-mid);padding:.4rem .55rem;border-radius:8px;min-width:58px;text-align:center;line-height:1.1}
-  .place-time.eat{background:var(--coral)} .place-time.night{background:var(--sea-deep)} .place-time.free{background:var(--gold)}
-  .place-title{flex:1;font-weight:600;font-size:.98rem;line-height:1.3}
-  .place-title .meta{display:block;font-size:.78rem;color:#6b8581;font-weight:400;margin-top:.15rem}
-  .place-toggle{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--sand);display:grid;place-items:center;font-size:1.1rem;color:var(--sea);transition:transform .35s,background .3s}
-  .place.open .place-toggle{transform:rotate(45deg);background:var(--coral);color:#fff}
-  .place-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
-  .place-inner{padding:.2rem 1.1rem 1.2rem;color:#3a5853;font-size:.92rem}
-  .place-inner .ph{aspect-ratio:16/9;margin:.4rem 0 1rem}
-  .place-inner p{margin-bottom:.85rem}
-  .rating{display:inline-flex;align-items:center;gap:.3rem;font-size:.8rem;font-weight:700;color:var(--gold);background:rgba(224,164,55,.12);padding:.22rem .6rem;border-radius:100px;margin-bottom:.85rem}
-  .info-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.85rem}
-  .info-pill{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:600;color:var(--sea-deep);background:var(--sand);padding:.3rem .65rem;border-radius:100px}
-  .links{display:flex;flex-wrap:wrap;gap:.5rem}
-  .lnk{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:600;padding:.55rem .9rem;border-radius:100px;border:1px solid var(--line);transition:all .25s}
-  .lnk.map{background:var(--sea);color:#fff;border-color:var(--sea)}
-  .lnk.rev{background:transparent;color:var(--sea-deep)}
-  @media(hover:hover){.lnk.map:hover{background:var(--sea-deep)}.lnk.rev:hover{background:var(--sand);border-color:var(--coral-soft)}}
-  .place-tags{margin-top:.85rem;display:flex;flex-wrap:wrap;gap:.4rem}
-  .ptag{font-size:.72rem;font-weight:600;background:var(--sand);color:var(--sea-deep);padding:.22rem .6rem;border-radius:100px}
-  .warnbox{background:rgba(255,94,58,.08);border:1px solid rgba(255,94,58,.25);border-radius:12px;padding:.8rem .9rem;margin-bottom:.85rem;font-size:.88rem}
-  .lnk.tt{background:#000;color:#fff;border-color:#000}
-  @media(hover:hover){.lnk.tt:hover{opacity:.85}}
+/* ---------- notes ---------- */
+.notes{background:var(--night);color:#fff;overflow:hidden}
+.notes::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 10%,rgba(20,164,168,.22),transparent 35%),radial-gradient(circle at 12% 88%,rgba(255,104,71,.20),transparent 30%);pointer-events:none}
+.notes .section-shell{position:relative;z-index:2}
+.notes h2{color:#fff}
+.notes .section-desc{color:rgba(255,255,255,.60)}
+.notes-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+.note-card{border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.055);border-radius:26px;padding:20px;backdrop-filter:blur(10px)}
+.note-card label{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--gold);margin-bottom:12px}
+.note-area{width:100%;min-height:230px;background:rgba(0,0,0,.10);border:1px solid rgba(255,255,255,.10);border-radius:18px;color:#fff;padding:16px;outline:none;resize:vertical;font-size:13px;line-height:1.7}
+.note-area::placeholder{color:rgba(255,255,255,.30)}
+.note-area:focus{border-color:rgba(242,195,104,.45);box-shadow:0 0 0 4px rgba(242,195,104,.07)}
+.quick-list{display:flex;flex-direction:column;gap:9px}
+.quick-field{display:grid;grid-template-columns:34px 1fr;gap:8px;align-items:center}
+.quick-field i{width:34px;height:34px;border-radius:12px;background:rgba(255,255,255,.07);display:grid;place-items:center;font-style:normal}
+.quick-field input{background:rgba(0,0,0,.10);border:1px solid rgba(255,255,255,.10);border-radius:12px;padding:10px 12px;color:#fff;outline:none;font-size:12px;min-width:0}
+.quick-field input::placeholder{color:rgba(255,255,255,.28)}
+.quick-field input:focus{border-color:rgba(140,229,211,.45)}
 
-  /* ---------- ALTERNATIVES (lựa chọn khác) ---------- */
-  .alts{margin-top:1.8rem;border-top:2px dashed var(--line);padding-top:1.4rem}
-  .alts-head{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.18rem;font-weight:500;color:var(--sea-deep);margin-bottom:.2rem}
-  .alts-sub{font-size:.85rem;color:#6b8581;margin-bottom:1.1rem}
-  .alt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:.85rem}
-  .alt{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:0;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s,border-color .25s}
-  @media(hover:hover){.alt:hover{transform:translateY(-5px);box-shadow:0 18px 36px -22px var(--shadow);border-color:var(--coral-soft)}}
-  .alt .ph{aspect-ratio:16/9;border-radius:0}
-  .alt .ph .alt-tag{position:absolute;top:.55rem;right:.55rem;z-index:3;box-shadow:0 4px 12px -5px rgba(0,0,0,.5)}
-  .alt-tag{font-size:.62rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#fff;background:var(--sea-mid);padding:.3rem .58rem;border-radius:100px;white-space:nowrap}
-  .alt-tag.allday{background:var(--gold)} .alt-tag.night{background:var(--sea-deep)} .alt-tag.eat{background:var(--coral)}
-  .alt-body{padding:.9rem 1rem 1.1rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
-  .alt-name{font-weight:700;font-size:1rem;color:var(--sea-deep);line-height:1.3}
-  .alt-name .r{display:inline-block;font-size:.74rem;color:var(--gold);font-weight:700;margin-left:.35rem;white-space:nowrap}
-  .alt-meta{display:flex;flex-wrap:wrap;gap:.4rem}
-  .alt-meta span{display:inline-flex;align-items:center;gap:.25rem;font-size:.72rem;font-weight:700;color:var(--sea-deep);background:var(--sand);padding:.3rem .58rem;border-radius:100px}
-  .alt-meta .km{background:rgba(27,163,168,.14);color:var(--sea)}
-  .alt-desc{font-size:.84rem;color:#3a5853;flex:1;line-height:1.5}
-  .alt-links{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.1rem}
-  .alt-links a{display:inline-flex;align-items:center;gap:.3rem;font-size:.76rem;font-weight:600;padding:.46rem .8rem;border-radius:100px;border:1px solid var(--line);transition:all .2s}
-  .alt-links a.map{background:linear-gradient(135deg,var(--sea),var(--sea-mid));color:#fff;border-color:var(--sea)}
-  @media(hover:hover){.alt-links a.map:hover{filter:brightness(1.08)}}
+/* ---------- footer ---------- */
+footer{background:#04171b;color:rgba(255,255,255,.42);padding:38px var(--page) 48px;text-align:center;font-size:11px}
+footer b{color:var(--gold)}
+.footer-badge{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(255,255,255,.08);padding:8px 12px;border-radius:999px;margin-top:11px}
 
-  /* ---------- REVIEWS ---------- */
-  .reviews{background:var(--cream)}
-  .review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
-  .rev-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:1.5rem;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
-  @media(hover:hover){.rev-card:hover{transform:translateY(-5px);box-shadow:0 18px 38px -22px var(--shadow)}}
-  .rev-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.7rem}
-  .rev-place{font-weight:700;font-size:.9rem;color:var(--sea-deep)}
-  .rev-stars{color:var(--gold);font-size:.92rem;letter-spacing:.05em}
-  .rev-quote{font-family:'Fraunces','Noto Serif TC',serif;font-style:italic;font-size:1.02rem;color:#34514c;line-height:1.5;flex:1}
-  .rev-author{display:flex;align-items:center;gap:.65rem;margin-top:1.1rem;padding-top:.9rem;border-top:1px solid var(--line)}
-  .rev-avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:.95rem;flex:0 0 auto;background:linear-gradient(135deg,var(--coral),var(--gold))}
-  .rev-name{font-size:.84rem;font-weight:600;color:var(--ink)}
-  .rev-meta{font-size:.72rem;color:#9bb0ac}
+/* ---------- modal ---------- */
+.modal-backdrop{position:fixed;inset:0;background:rgba(2,15,18,.72);backdrop-filter:blur(8px);z-index:3000;display:none;align-items:center;justify-content:center;padding:18px}
+.modal-backdrop.show{display:flex;animation:fade .18s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.modal{width:min(560px,100%);background:var(--paper);border-radius:28px;padding:22px;box-shadow:0 40px 100px rgba(0,0,0,.35);max-height:92vh;overflow:auto}
+.modal-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:18px}
+.modal-head h3{font-family:'Fraunces',serif;font-size:1.75rem;font-weight:500;line-height:1.05}
+.modal-head p{font-size:11px;color:var(--muted);margin-top:5px}
+.modal-close{width:38px;height:38px;border-radius:12px;border:1px solid var(--line);background:#fff}
+.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.modal-grid .full{grid-column:1/-1}
+.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}
 
-  /* ---------- FOOD ---------- */
-  .food{background:var(--paper)}
-  .food-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.2rem}
-  .food-card{background:var(--cream);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
-  @media(hover:hover){.food-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px -24px var(--shadow)}}
-  .food-card .ph{border-radius:0;aspect-ratio:4/3}
-  .food-pad{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;flex:1}
-  .food-pad h4{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.18rem;font-weight:500;color:var(--sea-deep);margin-bottom:.2rem}
-  .food-price{font-size:.8rem;font-weight:700;color:var(--coral);margin-bottom:.5rem}
-  .food-pad p{font-size:.85rem;color:#3a5853;margin-bottom:.9rem;flex:1}
-  .food-where{font-size:.78rem;color:#6b8581}
-  .food-where a{font-weight:600;color:var(--sea);border-bottom:1px dotted var(--sea)}
+/* ---------- toast ---------- */
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--night);color:#fff;border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:11px 15px;font-size:11px;font-weight:700;z-index:4000;opacity:0;pointer-events:none;transition:.25s;box-shadow:var(--shadow-lg)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
 
-  /* ---------- MAP ---------- */
-  .mapsec{background:linear-gradient(180deg,var(--paper),var(--cream))}
-  .map-frame{border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 50px -30px var(--shadow);line-height:0}
-  .map-frame iframe{width:100%;height:420px;border:0;display:block;filter:saturate(1.05)}
-  .map-legend{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem}
-  .map-legend a{font-size:.82rem;font-weight:600;color:var(--sea-deep);background:var(--sand);padding:.5rem .9rem;border-radius:100px;transition:background .25s}
-  @media(hover:hover){.map-legend a:hover{background:var(--sand-deep)}}
+/* ---------- floating add ---------- */
+.fab{position:fixed;right:18px;bottom:18px;z-index:1400;width:54px;height:54px;border-radius:19px;border:0;background:linear-gradient(145deg,var(--coral),var(--gold));color:#fff;font-size:24px;box-shadow:0 20px 36px -18px rgba(255,104,71,.85);display:none;place-items:center}
 
-  /* ---------- INFO ---------- */
-  .info{background:var(--sea-deep);color:var(--cream)}
-  .info h2{color:var(--cream)} .info .lead{color:rgba(251,245,234,.72)}
-  .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.1rem}
-  .info-card{background:rgba(251,245,234,.06);border:1px solid rgba(251,245,234,.14);border-radius:18px;padding:1.4rem}
-  .info-card h4{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.12rem;font-weight:500;color:var(--gold-soft);margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}
-  .info-card ul{list-style:none}
-  .info-card li{padding:.45rem 0;font-size:.9rem;border-bottom:1px solid rgba(251,245,234,.08);display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
-  .info-card li:last-child{border:none}
-  .info-card li span:last-child{color:var(--gold-soft);font-weight:600;white-space:nowrap;text-align:right}
-  .info-card li a{color:var(--gold-soft);font-weight:600}
-  .info-card.sos{background:rgba(255,94,58,.12);border-color:rgba(255,94,58,.3)}
-  .info-card.sos h4{color:var(--coral-soft)}
-  .info-card.sos li span:last-child,.info-card.sos li a{color:var(--coral-soft);font-size:1.05rem;font-family:'Fraunces','Noto Serif TC',serif}
-  .weather-strip{display:flex;flex-wrap:wrap;gap:.7rem;margin-bottom:1.6rem}
-  .wx{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1rem;border-radius:100px;background:rgba(251,245,234,.08);border:1px solid rgba(251,245,234,.16);font-size:.85rem;font-weight:500}
-  .wx b{color:var(--gold-soft)}
-
-  /* ---------- COST ---------- */
-  .cost{background:var(--ink);color:var(--cream)}
-  .cost h2{color:var(--cream)} .cost .lead{color:rgba(251,245,234,.7)}
-  .cost-table{max-width:760px;border-radius:20px;overflow:hidden;background:rgba(251,245,234,.05);border:1px solid rgba(251,245,234,.14)}
-  .cost-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.05rem 1.3rem;border-bottom:1px solid rgba(251,245,234,.1);font-size:.96rem}
-  .cost-row span:first-child{font-weight:500}
-  .cost-row span:last-child{font-family:'Fraunces','Noto Serif TC',serif;font-weight:500;color:var(--gold-soft);white-space:nowrap}
-  .cost-row.total{background:rgba(255,94,58,.18);border:none;font-size:1.15rem}
-  .cost-row.total span:last-child{color:var(--coral-soft);font-size:1.35rem}
-
-  /* ---------- TIPS ---------- */
-  .tips{background:var(--paper)}
-  .tip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.1rem}
-  .tip{padding:1.6rem;border-radius:18px;background:var(--cream);border-left:4px solid var(--coral);transition:transform .3s}
-  @media(hover:hover){.tip:hover{transform:translateY(-5px)}}
-  .tip .ic{font-size:1.5rem;margin-bottom:.5rem}
-  .tip h4{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.15rem;color:var(--sea-deep);margin-bottom:.4rem;font-weight:500}
-  .tip p{font-size:.9rem;color:#3a5853}
-
-  /* ---------- CHECKLIST ---------- */
-  .checklist{background:linear-gradient(165deg,var(--sea) 0%,var(--sea-deep) 100%);color:var(--cream)}
-  .checklist h2{color:var(--cream)} .checklist .lead{color:rgba(251,245,234,.78)}
-  .check-progress-wrap{max-width:820px;margin-bottom:1.8rem}
-  .check-progress-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.6rem}
-  .check-progress-top span:first-child{font-weight:600;font-size:.95rem}
-  .check-progress-top span:last-child{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.4rem;color:var(--gold-soft)}
-  .check-bar{height:12px;border-radius:100px;background:rgba(251,245,234,.14);overflow:hidden}
-  .check-bar i{display:block;height:100%;width:0;border-radius:100px;background:linear-gradient(90deg,var(--gold-soft),var(--coral));transition:width .5s cubic-bezier(.2,.8,.2,1)}
-  .check-hint{font-size:.8rem;color:rgba(251,245,234,.55);margin-top:.6rem;font-style:italic}
-  .check-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.1rem;max-width:1000px}
-  .check-group{background:rgba(251,245,234,.06);border:1px solid rgba(251,245,234,.14);border-radius:18px;padding:1.3rem 1.3rem 1rem}
-  .check-group h4{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.05rem;font-weight:500;color:var(--gold-soft);margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem}
-  .check-item{display:flex;align-items:flex-start;gap:.8rem;padding:.75rem .2rem;cursor:pointer;border-bottom:1px solid rgba(251,245,234,.08);user-select:none;transition:opacity .25s}
-  .check-item:last-child{border-bottom:none}
-  .check-box{flex:0 0 auto;width:24px;height:24px;border-radius:8px;border:2px solid rgba(251,245,234,.4);display:grid;place-items:center;margin-top:1px;transition:all .25s;background:transparent}
-  .check-box svg{width:14px;height:14px;stroke:var(--sea-deep);stroke-width:3.5;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:20;stroke-dashoffset:20;transition:stroke-dashoffset .3s}
-  .check-item.done .check-box{background:var(--gold-soft);border-color:var(--gold-soft)}
-  .check-item.done .check-box svg{stroke-dashoffset:0}
-  .check-label{flex:1;font-size:.94rem;font-weight:500;line-height:1.35;transition:opacity .25s}
-  .check-label small{display:block;font-size:.76rem;color:rgba(251,245,234,.5);font-weight:400;margin-top:.1rem}
-  .check-item.done .check-label{opacity:.5;text-decoration:line-through;text-decoration-color:rgba(251,245,234,.4)}
-  .check-actions{margin-top:1.6rem;display:flex;gap:.8rem;flex-wrap:wrap}
-  .btn{font-family:'Be Vietnam Pro','Noto Sans TC';font-size:.86rem;font-weight:600;padding:.7rem 1.3rem;border-radius:100px;border:1px solid rgba(251,245,234,.3);background:transparent;color:var(--cream);cursor:pointer;transition:all .25s}
-  @media(hover:hover){.btn:hover{background:rgba(251,245,234,.12)}}
-  .btn.primary{background:var(--coral);border-color:var(--coral)}
-  @media(hover:hover){.btn.primary:hover{background:var(--coral-soft)}}
-  .next-up{max-width:1000px;margin-top:1.8rem;background:rgba(242,198,107,.12);border:1px solid rgba(242,198,107,.3);border-radius:16px;padding:1.2rem 1.4rem}
-  .next-up .nl{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--gold-soft);margin-bottom:.4rem}
-  .next-up .nt{font-family:'Fraunces','Noto Serif TC',serif;font-size:1.3rem;color:var(--cream)}
-  .next-up .ns{font-size:.85rem;color:rgba(251,245,234,.65);margin-top:.2rem}
-
-  footer{background:var(--ink);color:rgba(251,245,234,.55);text-align:center;padding:3rem var(--pad);font-size:.84rem}
-  footer b{color:var(--gold-soft)}
-  .foot-credit{margin-top:.9rem;font-family:'Fraunces','Noto Serif TC',serif;font-style:italic;font-size:1rem;color:var(--gold-soft)}
-  .foot-credit b{color:#fff;font-style:normal}
-  .foot-src{margin-top:.7rem;font-size:.72rem;color:rgba(251,245,234,.4)}
-
-  /* ---------- LIGHTBOX ---------- */
-  .lightbox{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;padding:5vw;
-    background:rgba(4,22,20,.93);backdrop-filter:blur(4px);cursor:zoom-out}
-  .lightbox.show{display:flex;animation:fade .25s ease}
-  @keyframes fade{from{opacity:0}to{opacity:1}}
-  .lightbox img{max-width:100%;max-height:88vh;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.55)}
-  .lightbox .lb-cap{position:absolute;bottom:3.5vh;left:0;right:0;text-align:center;color:rgba(251,245,234,.9);font-size:.9rem;font-weight:500;padding:0 1rem}
-  .lightbox .lb-close{position:absolute;top:3vh;right:5vw;width:44px;height:44px;border-radius:50%;background:rgba(251,245,234,.14);border:1px solid rgba(251,245,234,.3);color:#fff;font-size:1.4rem;display:grid;place-items:center;cursor:pointer;z-index:2}
-  .lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;background:rgba(251,245,234,.14);border:1px solid rgba(251,245,234,.3);color:#fff;font-size:1.6rem;display:grid;place-items:center;cursor:pointer;z-index:2;transition:background .2s}
-  .lightbox .lb-prev{left:3vw} .lightbox .lb-next{right:3vw}
-  @media(hover:hover){.lightbox .lb-nav:hover,.lightbox .lb-close:hover{background:rgba(251,245,234,.28)}}
-  .lightbox .lb-count{position:absolute;top:3.3vh;left:50%;transform:translateX(-50%);color:rgba(251,245,234,.9);font-size:.86rem;font-weight:600;letter-spacing:.04em;z-index:2}
-  @media(max-width:680px){
-    .lightbox{padding:8vw 3vw}
-    .lightbox .lb-prev{left:2vw} .lightbox .lb-next{right:2vw}
-    .lightbox .lb-nav{width:44px;height:44px;font-size:1.4rem}
-  }
-
-  /* ---------- TO TOP ---------- */
-  .totop{position:fixed;right:18px;bottom:18px;z-index:850;width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;
-    background:var(--coral);color:#fff;font-size:1.3rem;box-shadow:0 12px 26px -12px var(--shadow);opacity:0;transform:translateY(16px) scale(.8);pointer-events:none;transition:opacity .3s,transform .3s}
-  .totop.show{opacity:1;transform:none;pointer-events:auto}
-  @media(hover:hover){.totop:hover{background:var(--coral-soft)}}
-
-  /* ===== MOBILE ===== */
-  @media(max-width:680px){
-    :root{--pad:5.5vw}
-    html{scroll-padding-top:108px}
-    section{padding:3.8rem var(--pad)}
-    .nav-brand span.full{display:none}
-    .day{grid-template-columns:1fr;gap:1rem;padding:2.2rem 0}
-    .day-mark{position:static;display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;padding-bottom:.4rem}
-    .day-num{font-size:2.6rem}
-    .day-date{margin-top:0}
-    .day-theme{margin-top:0}
-    .check-groups{grid-template-columns:1fr}
-    .cost-row{font-size:.9rem;padding:.95rem 1.1rem}
-    .place-inner .links{gap:.45rem}
-    .lnk{padding:.6rem .85rem;font-size:.82rem}
-    .map-frame iframe{height:340px}
-  }
-  @media(max-width:380px){
-    .place-time{min-width:50px;font-size:.62rem}
-    .place-title{font-size:.92rem}
-    .cd-cell{min-width:56px}
-    .cd-num{font-size:1.6rem}
-  }
-
-  /* ============================================================
-     NÂNG CẤP GIAO DIỆN — Hiện đại · Futuristic · Mobile-first
-     (đặt cuối nên ghi đè các style phía trên)
-     ============================================================ */
-  :root{
-    --e1:0 2px 10px -5px rgba(5,47,56,.18);
-    --e2:0 14px 34px -20px rgba(5,47,56,.3);
-    --e3:0 30px 64px -30px rgba(5,47,56,.42);
-  }
-  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-  @media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
-
-  /* tiêu điểm bàn phím (accessibility) */
-  a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:10px}
-
-  /* chữ gradient hiện đại cho điểm nhấn */
-  .hero h1 em,h2 em{background:linear-gradient(120deg,var(--coral),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--coral)}
-  .hero h1 em{background:linear-gradient(120deg,var(--coral-soft),var(--gold-soft));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-
-  /* hệ bóng đổ mềm, đồng nhất */
-  .tier,.alt,.rev-card,.food-card,.tip,.info-card,.check-group,.map-frame,.cost-table{box-shadow:var(--e1)}
-  .lnk.map{background:linear-gradient(135deg,var(--sea),var(--sea-mid));border-color:var(--sea)}
-  .btn.primary{background:linear-gradient(135deg,var(--coral),var(--coral-soft));border-color:var(--coral)}
-
-  /* nav kính mờ rõ hơn, viền sáng futuristic */
-  .nav.scrolled{border-bottom:1px solid rgba(255,255,255,.5)}
-
-  /* link không vỡ layout vì chuỗi dài */
-  .place-inner,.alt-desc,.lead,.perks,.rev-quote,.food-pad p{overflow-wrap:anywhere}
-
-  /* ---------------- MOBILE-FIRST RESPONSIVE ---------------- */
-  @media(max-width:768px){
-    :root{--pad:5.2vw}
-    section{padding:3.4rem var(--pad)}
-    h2{font-size:clamp(1.75rem,8vw,2.6rem)}
-    .lead{font-size:1rem;margin-bottom:2.1rem}
-    .nav-links a{padding:.5rem .85rem}
-    .lnk,.alt-links a{min-height:42px}
-    .alt-grid{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
-  }
-  @media(max-width:560px){
-    :root{--pad:4.6vw}
-    section{padding:2.9rem var(--pad)}
-    .hero{padding:calc(116px + 2vh) var(--pad) 8.5vh}
-    .hero h1{font-size:clamp(2.9rem,17vw,4.6rem)}
-    .hero-sub{font-size:1rem}
-    .hero-credit{margin-top:1.4rem}
-    .countdown{gap:.5rem;flex-wrap:wrap}
-    .cd-cell{flex:1 1 calc(25% - .5rem);min-width:0;padding:.6rem .25rem}
-    .cd-num{font-size:1.55rem}
-    /* mọi lưới về 1 cột cho dễ đọc trên điện thoại */
-    .review-grid,.food-grid,.hotel-grid,.info-grid,.tip-grid,.check-groups,.alt-grid{grid-template-columns:1fr}
-    /* vùng chạm lớn hơn */
-    .place-head{padding:1.05rem .95rem;gap:.7rem}
-    .place-toggle{width:32px;height:32px}
-    .lnk{padding:.62rem 1rem;font-size:.84rem}
-    .alt{padding:1.1rem}
-    .alt-links a{padding:.56rem .95rem;font-size:.8rem}
-    .gthumb{width:110px;height:74px}
-    /* bảng chi phí xuống dòng gọn */
-    .cost-row{flex-direction:column;align-items:flex-start;gap:.25rem;padding:.95rem 1.1rem}
-    .cost-row.total{flex-direction:row;align-items:center}
-    .cost-row span:last-child{font-size:1.05rem}
-    .cost-row.total span:last-child{font-size:1.3rem}
-    /* thẻ thông tin: nhãn & giá trị xuống dòng, canh trái */
-    .info-card li{flex-direction:column;gap:.15rem}
-    .info-card li span:last-child,.info-card li a{text-align:left;white-space:normal}
-    .map-frame iframe{height:300px}
-    .lightbox{padding:9vw 3vw}
-    .lightbox .lb-nav,.lightbox .lb-close{width:46px;height:46px}
-    .check-group{padding:1.2rem 1.1rem .9rem}
-    .day-num{font-size:2.4rem}
-    .day-body h3{font-size:1.4rem}
-    footer{padding:2.5rem var(--pad)}
-  }
-  @media(max-width:400px){
-    .hero h1{font-size:clamp(2.5rem,18vw,3.7rem)}
-    .cd-num{font-size:1.35rem}
-    .cd-lbl{font-size:.56rem}
-    .chip{font-size:.76rem;padding:.5rem .8rem}
-    .label{font-size:.64rem;letter-spacing:.22em}
-    .badge{font-size:.6rem}
-  }
-  /* nút nổi tôn trọng vùng an toàn iPhone */
-  .totop{bottom:calc(18px + env(safe-area-inset-bottom,0px));right:calc(16px + env(safe-area-inset-right,0px))}
-
-  /* ============================================================
-     SỬA TRÀN NGANG & MENU VUỐT — quan trọng cho mobile
-     (đặt cuối cùng để thắng mọi rule trước đó)
-     ============================================================ */
-  /* KHÔNG đặt overflow-x trên <html> — gây KẸT CUỘN DỌC trên iOS Safari (mất phần dưới trang).
-     Chỉ khóa tràn ngang ở body; min-width:0 bên dưới mới là cái chặn tràn từ gốc. */
-  body{overflow-x:clip;max-width:100%}
-
-  /* Cho phép flex-item CO LẠI đúng khung — gốc rễ của lỗi tràn ngang.
-     Nếu thiếu min-width:0, flex-item nở theo nội dung và đẩy cả trang rộng ra. */
-  .nav,.nav-links,.place-head,.place-title,.place-title .meta,.cost-row,.info-card li,
-  .rev-author,.rev-author>div,.alt-top,.alt-name,.links,.info-row,.place-tags,.alt-links,
-  .map-legend,.check-item,.check-label,.hero-meta,.weather-strip,.day-mark,.check-progress-top,
-  .food-where,.lang-switch{min-width:0}
-
-  /* Thanh menu: cho co lại đúng khung rồi CUỘN NGANG nội bộ -> vuốt được
-     (bề rộng 100% trên mobile do media-query flex-basis:100% xử lý) */
-  .nav-links{min-width:0;max-width:100%;touch-action:pan-x;overscroll-behavior-x:contain}
-
-  /* Thẻ & lưới không bao giờ rộng hơn màn hình */
-  .tier,.alt,.rev-card,.food-card,.info-card,.tip,.check-group,.place,.day,.cost-table,
-  .map-frame,.next-up,.check-progress-wrap{min-width:0;max-width:100%}
-  .hotel-grid,.review-grid,.food-grid,.tip-grid,.info-grid,.check-groups,.alt-grid,
-  .day-body,.day{min-width:0}
-
-  /* Chữ dài (tên/tiêu đề) xuống dòng thay vì đẩy ngang */
-  .place-title,.alt-name,.rev-name,.tier-price,.food-pad h4,.day-body h3,.alts-head,.next-up .nt{overflow-wrap:anywhere;word-break:break-word}
-
-  /* Ảnh & iframe an toàn (không đụng .ph img tuyệt đối) */
-  iframe{max-width:100%}
-  .map-frame iframe{width:100%}
-
-  /* Tinh chỉnh nav cho màn nhỏ */
-  @media(max-width:560px){
-    .nav{padding:.7rem var(--pad);gap:.45rem .5rem}
-    .nav-brand{font-size:1rem}
-    .nav-links{gap:.15rem;margin-top:.1rem}
-    .nav-links a{padding:.46rem .72rem;font-size:.8rem}
-    .lang-switch button{padding:.34rem .7rem}
-  }
+/* ---------- responsive ---------- */
+@media(max-width:900px){
+  .hero-copy{grid-template-columns:1fr}
+  .hero-cta{justify-content:flex-start}
+  .hero-orb{right:-6vw;top:18vh;width:52vw;opacity:.55}
+  .bento{grid-template-columns:1fr 1fr}
+  .bento-card.route-card{grid-column:1/-1;grid-row:span 1;min-height:300px}
+  .notes-grid{grid-template-columns:1fr}
+}
+@media(max-width:720px){
+  :root{--page:18px}
+  html{scroll-padding-top:74px}
+  .nav{padding:11px var(--page);gap:8px}
+  .brand{font-size:12px}.brand small{display:none}.brand-mark{width:29px;height:29px;border-radius:10px}
+  .nav-links{order:3;flex-basis:100%;margin-left:0;padding-top:1px}
+  .nav-links a{font-size:10px;padding:7px 10px}
+  .nav-action{margin-left:auto;padding:8px 10px;font-size:10px}
+  .hero{padding-top:132px;min-height:88svh;align-items:center;padding-bottom:94px}
+  .hero::after{bottom:-195px}
+  .hero h1{font-size:clamp(3.3rem,18vw,5.2rem)}
+  .hero-orb{width:64vw;right:-22vw;top:17vh;opacity:.42}
+  .hero-sub{font-size:.9rem}
+  .hero-scroll{display:none}
+  section{padding:64px var(--page)}
+  .section-top{align-items:flex-start;flex-direction:column}
+  .planner-toolbar{justify-content:flex-start}
+  .bento{grid-template-columns:1fr}
+  .bento-card.route-card{grid-column:auto;min-height:310px}
+  .day-head{grid-template-columns:auto 1fr;gap:12px;padding:18px 16px 17px 20px}
+  .day-actions{grid-column:1/-1;justify-content:flex-end;margin-top:-4px}
+  .day-index{width:52px;height:52px;border-radius:17px}
+  .day-index span{font-size:24px}
+  .day-body{padding:0 16px 18px 20px}
+  .form-grid{grid-template-columns:1fr 1fr}
+  .form-field:nth-child(2){grid-column:span 1}
+  .form-field.place-field{grid-column:1/-1}
+  .task{grid-template-columns:auto 56px 1fr;gap:9px;padding:12px}
+  .task-actions{grid-column:3;justify-content:flex-end}
+  .task-notes{font-size:10px}
+  .fab{display:grid}
+}
+@media(max-width:480px){
+  .nav-links{padding-bottom:2px}
+  .hero{padding-top:140px;min-height:94svh}
+  .hero-meta{gap:6px}.chip{font-size:10px;padding:7px 9px}
+  .hero-cta .btn{flex:1}
+  .section-desc{font-size:.88rem}
+  .bento-card{padding:19px;border-radius:22px}
+  .route-pins{inset:82px 12px 18px}
+  .pin{font-size:9px;max-width:105px;gap:5px}.pin i{width:9px;height:9px;border-width:2px}
+  .day-title-wrap h3{font-size:1.25rem}
+  .form-grid{grid-template-columns:1fr}
+  .form-field:nth-child(2),.form-field.place-field{grid-column:auto}
+  .task{grid-template-columns:auto 1fr;gap:9px}
+  .task-time{grid-column:2;justify-self:start;margin-top:-1px}
+  .task-main{grid-column:2}
+  .task-actions{grid-column:2}
+  .day-footer{align-items:flex-start;flex-direction:column}
+  .modal-grid{grid-template-columns:1fr}.modal-grid .full{grid-column:auto}
+  .route-strip{padding:15px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+@media print{
+  .nav,.hero-scroll,.planner-toolbar,.day-actions,.task-actions,.task-form,.fab,.toast,.modal-backdrop,.hero-cta{display:none!important}
+  .hero{min-height:auto;padding:60px 34px;background:#08383d!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .hero::after{display:none}
+  section{padding:36px 34px}
+  .day-card{break-inside:avoid;box-shadow:none}
+  .notes{background:#071f24!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
 </style>
 </head>
 <body>
-<div class="progress" id="bar"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- NAV -->
 <nav class="nav" id="nav">
-  <a class="nav-brand" href="#top">🌴 Otis Plan Trip</a>
-  <div class="lang-switch" id="langSwitch" role="group" aria-label="Ngôn ngữ / 語言">
-    <button type="button" data-lang="vi" class="active">VI</button>
-    <button type="button" data-lang="zh">中文</button>
-  </div>
+  <a href="#top" class="brand">
+    <span class="brand-mark">✦</span>
+    <span>Otis Roadtrip<small>Couple edition</small></span>
+  </a>
   <div class="nav-links">
-    <a href="#stay" data-zh="飯店">Khách sạn</a>
-    <a href="#plan" data-zh="行程">Lịch trình</a>
-    <a href="#reviews" data-zh="評價">Review</a>
-    <a href="#food" data-zh="美食">Ẩm thực</a>
-    <a href="#map" data-zh="地圖">Bản đồ</a>
-    <a href="#info" data-zh="實用">Hữu ích</a>
-    <a href="#cost" data-zh="費用">Chi phí</a>
-    <a href="#checklist" data-zh="清單">Checklist</a>
+    <a href="#overview">Overview</a>
+    <a href="#planner">Plan chi tiết</a>
+    <a href="#notes">Ghi chú</a>
   </div>
+  <button class="nav-action" id="openTripSettings">⚙ Trip setup</button>
 </nav>
 
-<!-- HERO -->
 <header class="hero" id="top">
-  <img class="hero-bg" alt="Biển Đà Nẵng" loading="eager" data-single="hero"
-       src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/My_Khe_Beach_5.jpg/1280px-My_Khe_Beach_5.jpg" onerror="this.style.display='none'">
-  <div class="hero-overlay"></div>
-  <div class="wave-deco"></div><div class="sun"></div>
+  <div class="hero-orb"></div>
   <div class="hero-inner">
-    <div class="hero-tag" data-zh="家庭旅行 · 4天3夜">Hành trình gia đình · 4 ngày 3 đêm</div>
-    <h1 data-zh="峴港<em>陽光、海風與悠閒</em>">Đà Nẵng<em>nắng, gió &amp; thảnh thơi</em></h1>
-    <p class="hero-sub" data-zh="一趟屬於夫妻倆與小女兒的旅行——清晨的海、午後的山、入夜亮燈的古鎮。有美美的打卡點，也有讓全家同樂的活動。">Một chuyến đi cho hai vợ chồng và cô con gái — biển buổi sáng, núi giữa ngày, phố cổ lên đèn buổi tối. Đủ chỗ check-in đẹp, đủ trò để cả nhà cùng vui.</p>
-    <div class="hero-meta">
-      <span class="chip">📅 <b>18 → 21.06.2026</b></span>
-      <span class="chip" data-zh="🛎️ <b>6/18</b>晚 → <b>6/21</b>下午">🛎️ Tối <b>18/6</b> → chiều <b>21/6</b></span>
-      <span class="chip" data-zh="👨‍👩‍👧 <b>3人</b>">👨‍👩‍👧 <b>3 người</b></span>
-      <span class="chip" data-zh="🏖️ <b>美溪</b>">🏖️ <b>Mỹ Khê</b></span>
+    <div class="eyebrow">Couple roadtrip · 3 ngày 2 đêm</div>
+    <h1>Coastline<em>Escape.</em></h1>
+    <div class="hero-copy">
+      <div>
+        <p class="hero-sub" id="heroSubtitle">Sài Gòn → Phan Thiết → La Gi → Đèo Nước Ngọt → Sài Gòn. Một chuyến đi xe máy chỉ cần hai người, biển, vài đoạn đường đẹp và một plan vừa đủ để vẫn còn chỗ cho ngẫu hứng.</p>
+        <div class="hero-meta">
+          <span class="chip">🏍️ <b id="metaTransport">Xe máy</b></span>
+          <span class="chip">♡ <b id="metaCompanions">2 người</b></span>
+          <span class="chip">☀️ <b id="metaDuration">3 ngày 2 đêm</b></span>
+          <span class="chip">📅 <b id="metaDate">Chưa chọn ngày</b></span>
+        </div>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#planner">＋ Lên plan</a>
+        <button class="btn btn-glass" id="printBtn">⤓ Save PDF</button>
+      </div>
     </div>
-    <div class="countdown" id="countdown" aria-label="Đếm ngược ngày khởi hành">
-      <div class="cd-cell"><div class="cd-num" id="cd-d">--</div><div class="cd-lbl" data-zh="天">Ngày</div></div>
-      <div class="cd-cell"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl" data-zh="時">Giờ</div></div>
-      <div class="cd-cell"><div class="cd-num" id="cd-m">--</div><div class="cd-lbl" data-zh="分">Phút</div></div>
-      <div class="cd-cell"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl" data-zh="秒">Giây</div></div>
-    </div>
-    <div class="hero-credit" data-zh="✦ 行程規劃 <b>Otis</b>">✦ Plan by <b>Otis</b></div>
   </div>
-  <div class="scroll-hint" data-zh="向下滑動 · 點各景點看照片、地圖、價格與評價 · 頁尾有清單 ↓">Cuộn xuống · bấm điểm đến để xem ảnh, bản đồ, giá &amp; review · cuối trang có checklist ↓</div>
+  <div class="hero-scroll">scroll to plan</div>
 </header>
 
-<!-- HOTELS -->
-<section class="stay reveal" id="stay">
-  <div class="label" data-zh="住宿 · 3晚">Nơi lưu trú · 3 đêm</div>
-  <h2 data-zh="入住<em>美溪</em>海灘區">Ở khu biển <em>Mỹ Khê</em></h2>
-  <p class="lead" data-zh="早晚都能散步到海邊，鄰近市中心，去哪都方便。三種價位任選——皆有家庭房與泳池。點飯店名稱開啟地圖。">Đi bộ ra biển buổi sáng và tối, gần trung tâm, đi đâu cũng tiện. Ba mức giá theo ngân sách — đều có phòng gia đình và hồ bơi. Bấm tên khách sạn để mở bản đồ.</p>
-  <div class="hotel-grid">
-    <div class="tier t1">
-      <div class="ph"><span class="ph-fallback">🏨</span><img loading="lazy" data-single="hotel1" alt="Khách sạn view biển Mỹ Khê" src="https://loremflickr.com/640/360/danang,hotel,beach" data-cap="Khách sạn tiết kiệm gần biển Mỹ Khê" data-cap-zh="美溪海灘旁的經濟型飯店"></div>
-      <div class="tier-pad">
-        <span class="badge" data-zh="經濟 · 約120–200萬₫/晚">Tiết kiệm · 1,2–2tr/đêm</span>
-        <div class="tier-price" data-zh="海景、泳池">View biển, hồ bơi</div>
-        <div class="tier-note" data-zh="寬敞家庭房">Phòng gia đình thoải mái</div>
-        <ul>
-          <li><a href="https://www.google.com/maps/search/?api=1&query=Sala%20Danang%20Beach%20Hotel&query_place_id=ChIJMeyhoXgXQjERqCs6CuNR5yI" target="_blank">Sala Danang Beach Hotel <span class="ext">↗</span></a></li>
-          <li><a href="https://www.google.com/maps/search/?api=1&query=Mandila%20Beach%20Hotel%20Danang" target="_blank">Mandila Beach Hotel <span class="ext">↗</span></a></li>
-          <li><a href="https://www.google.com/maps/search/?api=1&query=Diamond%20Sea%20Hotel%20Danang" target="_blank">Diamond Sea Hotel <span class="ext">↗</span></a></li>
-        </ul>
-        <p class="perks" data-zh="💰 約120–200萬₫/晚 · ★ 4.6（近3,500則評價）——早餐與地點廣受好評。☎ Sala: 0236 3878 999">💰 ~1,2–2tr/đêm · ★ 4.6 (gần 3.500 đánh giá) — khen nhiều về bữa sáng &amp; vị trí. ☎ Sala: 0236 3878 999</p>
+<main>
+  <section class="overview" id="overview">
+    <div class="section-shell">
+      <div class="section-top">
+        <div>
+          <div class="section-kicker">Trip dashboard</div>
+          <h2>Một chuyến đi, <em>một nhịp riêng.</em></h2>
+          <p class="section-desc">Tui giữ tinh thần editorial + biển + màu coral của layout cũ, nhưng đổi sang bento dashboard, glass UI và planner tương tác để dùng thật trên điện thoại.</p>
+        </div>
+      </div>
+
+      <div class="bento">
+        <article class="bento-card dark route-card">
+          <div class="card-label">Cung đường chính</div>
+          <div class="card-big">Sài Gòn<br>→ Bình Thuận<br>→ Bà Rịa<br>→ Sài Gòn</div>
+          <div class="card-note">Không đi cao tốc · ưu tiên cung ven biển.</div>
+          <div class="route-map"><div class="route-line"></div></div>
+          <div class="route-pins">
+            <span class="pin"><i></i>Sài Gòn</span>
+            <span class="pin"><i></i>Phan Thiết</span>
+            <span class="pin"><i></i>La Gi</span>
+            <span class="pin"><i></i>Đèo Nước Ngọt</span>
+            <span class="pin"><i></i>Sài Gòn</span>
+          </div>
+        </article>
+
+        <article class="bento-card accent">
+          <div class="card-label" style="color:rgba(58,35,30,.55)">Plan days</div>
+          <div class="stat-number" id="statDays">3</div>
+          <div class="card-note" style="color:rgba(58,35,30,.65)">Ngày có thể thêm / xóa tùy ý.</div>
+        </article>
+
+        <article class="bento-card">
+          <div class="card-label">Total plans</div>
+          <div class="stat-number" id="statTasks">0</div>
+          <div class="mini-stats"><i></i><i></i><i></i><i></i><i></i></div>
+        </article>
+
+        <article class="bento-card dark">
+          <div class="card-label">Trip progress</div>
+          <div class="stat-row">
+            <div><div class="stat-number" id="statDone">0</div><div class="card-note">plan đã hoàn thành</div></div>
+            <div class="progress-ring" id="progressRing"><span id="statPercent">0%</span></div>
+          </div>
+        </article>
+
+        <article class="bento-card">
+          <div class="card-label">Trip date</div>
+          <div class="card-big" id="overviewDate">Chưa chọn</div>
+          <div class="card-note">Bấm “Trip setup” để nhập ngày khởi hành.</div>
+        </article>
+      </div>
+
+      <div class="route-strip" aria-label="Cung đường">
+        <span class="route-stop"><b>01</b>Sài Gòn</span><span class="route-arrow">→</span>
+        <span class="route-stop"><b>02</b>Phan Thiết</span><span class="route-arrow">→</span>
+        <span class="route-stop"><b>03</b>La Gi</span><span class="route-arrow">→</span>
+        <span class="route-stop"><b>04</b>Đèo Nước Ngọt</span><span class="route-arrow">→</span>
+        <span class="route-stop"><b>05</b>Sài Gòn</span>
       </div>
     </div>
-    <div class="tier t2">
-      <div class="ph"><span class="ph-fallback">🏊</span><img loading="lazy" data-single="hotel2" alt="Hồ bơi rooftop khách sạn Đà Nẵng" src="https://loremflickr.com/640/360/rooftop,pool,hotel" data-cap="Hồ bơi rooftop view biển" data-cap-zh="頂樓海景泳池"></div>
-      <div class="tier-pad">
-        <span class="badge" data-zh="最超值 · 約200–400萬₫/晚">Đáng tiền nhất · 2–4tr/đêm</span>
-        <div class="tier-price" data-zh="無邊際泳池、頂樓">Hồ bơi vô cực, rooftop</div>
-        <div class="tier-note" data-zh="價格與品質兼具">Cân bằng giá &amp; chất lượng</div>
-        <ul>
-          <li><a href="https://www.google.com/maps/search/?api=1&query=TMS%20Hotel%20Da%20Nang%20Beach&query_place_id=ChIJowDc5iUXQjERq0JS82QvKnM" target="_blank">TMS Hotel Da Nang Beach <span class="ext">↗</span></a></li>
-          <li><a href="https://www.google.com/maps/search/?api=1&query=Four%20Points%20by%20Sheraton%20Danang" target="_blank">Four Points by Sheraton <span class="ext">↗</span></a></li>
-          <li><a href="https://www.google.com/maps/search/?api=1&query=Radisson%20Hotel%20Danang" target="_blank">Radisson Hotel Danang <span class="ext">↗</span></a></li>
-        </ul>
-        <p class="perks" data-zh="💰 約200–400萬₫/晚 · ★ 4.7——頂樓海景泳池、房間寬敞、緊鄰海灘。☎ TMS: 0236 3782 888">💰 ~2–4tr/đêm · ★ 4.7 — bể bơi rooftop view biển, phòng rộng, sát bãi tắm. ☎ TMS: 0236 3782 888</p>
+  </section>
+
+  <section class="planner" id="planner">
+    <div class="section-shell">
+      <div class="section-top">
+        <div>
+          <div class="section-kicker">Plan chi tiết</div>
+          <h2>Tự build từng ngày, <em>tick từng plan.</em></h2>
+          <p class="section-desc">Tất cả plan chi tiết đang để trống. Bro tự thêm giờ, địa điểm, nội dung; tick khi hoàn thành. Dữ liệu được lưu ngay trên trình duyệt bằng localStorage.</p>
+        </div>
+        <div class="planner-toolbar">
+          <div class="planner-summary">
+            <div class="summary-meter"><i id="summaryFill"></i></div>
+            <span class="summary-text" id="summaryText">0 / 0 done</span>
+          </div>
+          <button class="btn btn-soft" id="addDayTop">＋ Thêm ngày</button>
+          <button class="btn btn-soft" id="exportBtn">⇧ Backup</button>
+          <label class="btn btn-soft" for="importFile" style="cursor:pointer">⇩ Restore</label>
+          <input type="file" id="importFile" accept="application/json" hidden />
+        </div>
+      </div>
+
+      <div class="days" id="days"></div>
+
+      <div style="display:flex;justify-content:center;margin-top:22px">
+        <button class="btn btn-dark" id="addDayBottom">＋ Thêm một ngày khác</button>
       </div>
     </div>
-    <div class="tier t3">
-      <div class="ph"><span class="ph-fallback">🌴</span><img loading="lazy" data-single="hotel3" alt="Resort biển Đà Nẵng" src="https://loremflickr.com/640/360/resort,beach,palm" data-cap="Resort nghỉ dưỡng có bãi riêng" data-cap-zh="附私人海灘的度假村"></div>
-      <div class="tier-pad">
-        <span class="badge" data-zh="度假 · 約400萬₫+/晚">Nghỉ dưỡng · 4tr+/đêm</span>
-        <div class="tier-price" data-zh="度假村、私人海灘、SPA">Resort, bãi riêng, spa</div>
-        <div class="tier-note" data-zh="想徹底放鬆時">Khi muốn thật sự thư giãn</div>
-        <ul>
-          <li><a href="https://www.google.com/maps/search/?api=1&query=Hyatt%20Regency%20Danang%20Resort%20and%20Spa" target="_blank">Hyatt Regency Danang <span class="ext">↗</span></a></li>
-          <li><a href="https://www.google.com/maps/search/?api=1&query=Furama%20Resort%20Danang&query_place_id=ChIJ7zjMyNsPQjER0iUSEjE-apo" target="_blank">Furama Resort Danang <span class="ext">↗</span></a></li>
-        </ul>
-        <p class="perks" data-zh="💰 約400萬₫+/晚 · ★ 4.5——Furama 擁私人海灘與多座泳池。☎ Furama: 0236 3847 333 · Hyatt: 0236 3981 234">💰 ~4tr+/đêm · ★ 4.5 — Furama có bãi biển riêng, nhiều hồ bơi. ☎ Furama: 0236 3847 333 · Hyatt: 0236 3981 234</p>
+  </section>
+
+  <section class="notes" id="notes">
+    <div class="section-shell">
+      <div class="section-top">
+        <div>
+          <div class="section-kicker" style="color:var(--gold)">Trip notes</div>
+          <h2>Chỗ để dành cho <em>những thứ riêng của hai đứa.</em></h2>
+          <p class="section-desc">Để trống hoàn toàn để bro tự ghi món muốn ăn, điểm muốn ghé, đồ cần mua hoặc bất cứ note nào cho chuyến đi.</p>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ITINERARY -->
-<section class="plan reveal" id="plan">
-  <div class="label" data-zh="詳細行程 · 4天">Lịch trình chi tiết · 4 ngày</div>
-  <h2 data-zh="精簡卻<em>豐富完整</em>">Gọn gàng mà <em>vẫn đủ đầy</em></h2>
-  <p class="lead" data-zh="6/18晚抵達，兩整天暢遊巴拿山與山茶半島，最後一天退房前遊會安。點每個景點查看照片、地圖、票價與評價。">Tối 18/6 đến nơi, hai ngày trọn vẹn cho Bà Nà – Sơn Trà, và Hội An vào ngày cuối trước khi trả phòng. Bấm mỗi điểm để mở ảnh, bản đồ, giá vé và review.</p>
-
-  <!-- DAY 18 -->
-  <div class="day">
-    <div class="day-mark">
-      <div class="day-num">18<small>/6</small></div>
-      <div><div class="day-date" data-zh="2026年6月">Tháng 6, 2026</div><div class="day-dow" data-zh="週四">Thứ Năm</div><div class="day-theme" data-zh="🌊 抵達海邊">🌊 Đặt chân tới biển</div></div>
-    </div>
-    <div class="day-body">
-      <h3 data-zh="美溪海灘的第一夜">Đêm đầu tiên bên biển Mỹ Khê</h3>
-
-      <div class="place">
-        <div class="place-head"><span class="place-time" data-zh="約18:00">~18h</span><span class="place-title" data-zh="抵達峴港 &amp; 辦理入住<span class='meta'>傍晚入住、休息</span>">Tới Đà Nẵng &amp; nhận phòng<span class="meta">Chiều tối check-in, nghỉ ngơi</span></span><span class="place-toggle">+</span></div>
-        <div class="place-body"><div class="place-inner">
-          <div class="info-row"><span class="info-pill" data-zh="🛬 機場 → 美溪 約10–15分鐘">🛬 Sân bay → Mỹ Khê ~10–15 phút</span><span class="info-pill" data-zh="🚕 計程車/Grab 約7–12萬₫">🚕 Taxi/Grab ~70–120k</span></div>
-          <p data-zh="直接前往美溪區飯店，放好行李、稍作休息再出門。峴港機場就在市區，離海灘很近。">Về thẳng khách sạn khu Mỹ Khê, cất hành lý và nghỉ một chút trước khi ra ngoài buổi tối. Sân bay Đà Nẵng nằm ngay trong thành phố nên rất gần biển.</p>
-        </div></div>
-      </div>
-
-      <div class="place">
-        <div class="place-head"><span class="place-time" data-zh="晚上">Tối</span><span class="place-title" data-zh="漫步美溪海灘 &amp; 享用海鮮<span class='meta'>細沙海灘，峴港最美</span>">Dạo biển Mỹ Khê &amp; ăn hải sản<span class="meta">Bãi biển cát mịn, đẹp nhất Đà Nẵng</span></span><span class="place-toggle">+</span></div>
-        <div class="place-body"><div class="place-inner">
-          <div class="ph" data-album="mykhe"><span class="ph-fallback">🏖️</span><img loading="lazy" alt="Biển Mỹ Khê Đà Nẵng" src="https://loremflickr.com/720/405/mykhe,beach,danang" data-cap="Biển Mỹ Khê — cát mịn, sóng êm" data-cap-zh="美溪海灘——細沙、浪平"></div>
-          <span class="rating" data-zh="★ 4.7 · 4,260則評價">★ 4.7 · 4.260 đánh giá</span>
-          <div class="info-row"><span class="info-pill" data-zh="💸 免費戲水">💸 Tắm miễn phí</span><span class="info-pill" data-zh="🏖️ 躺椅/陽傘 5–10萬₫">🏖️ Ghế/dù 50–100k</span><span class="info-pill" data-zh="🕐 最佳時段：清晨與傍晚">🕐 Đẹp nhất: sáng sớm &amp; chiều</span><span class="info-pill" data-zh="📍 就在美溪住宿區">📍 Ngay khu Mỹ Khê</span></div>
-          <p data-zh="海灘細沙綿密、寬廣開闊，夜晚涼爽，適合全家散步。之後在附近的家庭式餐館享用海鮮——挑人多的店，點菜前先問價。">Bãi biển cát rất mịn, dài và thoáng, buổi tối mát mẻ để cả nhà đi dạo. Sau đó ăn hải sản tại quán gia đình gần đó — chọn quán đông khách, hỏi giá trước khi gọi.</p>
-          <div class="links">
-            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=My%20Khe%20Beach%20Danang&query_place_id=ChIJ4w7694IXQjERrFXucqKL--o" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=My%20Khe%20Beach%20Danang&query_place_id=ChIJ4w7694IXQjERrFXucqKL--o" target="_blank" data-zh="★ 評論">★ Review</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=B%C3%A9%20M%E1%BA%B7n%20h%E1%BA%A3i%20s%E1%BA%A3n%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">🦐 Bé Mặn</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=N%C4%83m%20%C4%90%E1%BA%A3nh%20h%E1%BA%A3i%20s%E1%BA%A3n%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">🦀 Năm Đảnh</a>
-          </div>
-          <div class="place-tags"><span class="ptag" data-zh="海鮮">Hải sản</span><span class="ptag" data-zh="散步">Đi dạo</span><span class="ptag" data-zh="日落">Hoàng hôn</span></div>
-        </div></div>
-      </div>
-
-      <div class="place">
-        <div class="place-head"><span class="place-time night" data-zh="約21:00">~21h</span><span class="place-title" data-zh="龍橋 &amp; 愛情橋<span class='meta'>峴港地標，夜間打卡</span>">Cầu Rồng &amp; Cầu Tình Yêu<span class="meta">Biểu tượng Đà Nẵng, check-in đêm</span></span><span class="place-toggle">+</span></div>
-        <div class="place-body"><div class="place-inner">
-          <div class="ph" data-album="dragon"><span class="ph-fallback">🐉</span><img loading="lazy" alt="Cầu Rồng Đà Nẵng" src="https://loremflickr.com/720/405/dragon,bridge,danang" data-cap="Cầu Rồng lên đèn về đêm" data-cap-zh="龍橋夜間亮燈"></div>
-          <span class="rating" data-zh="★ 4.5 · 8,300則評價">★ 4.5 · 8.300 đánh giá</span>
-          <div class="info-row"><span class="info-pill" data-zh="💸 免費">💸 Miễn phí</span><span class="info-pill">🕐 24/7</span><span class="info-pill" data-zh="🔥 噴火：週五六日 約21:00">🔥 Phun lửa: T6–T7–CN ~21h</span><span class="info-pill" data-zh="📍 距美溪約3 km">📍 ~3 km từ Mỹ Khê</span></div>
-          <p data-zh="龍橋於<strong>週五、週六、週日</strong>約21:00噴火與噴水。6月18日為週四，沒有表演，但夜間亮燈仍非常上鏡。想看噴火可於6/19或6/20晚再來。">Cầu Rồng phun lửa &amp; phun nước ~21h <strong>tối thứ Sáu, thứ Bảy, Chủ Nhật</strong>. Ngày 18/6 là thứ Năm nên không có màn trình diễn, nhưng cầu lên đèn về đêm vẫn rất đẹp để chụp ảnh. Muốn xem phun lửa thì quay lại tối 19 hoặc 20/6.</p>
-          <div class="links">
-            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Dragon%20Bridge%20Danang&query_place_id=ChIJL1GKWJYZQjERLrEGqlK2kwQ" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Dragon%20Bridge%20Danang&query_place_id=ChIJL1GKWJYZQjERLrEGqlK2kwQ" target="_blank" data-zh="★ 評論">★ Review</a>
-          </div>
-          <div class="place-tags"><span class="ptag" data-zh="夜間打卡">Check-in đêm</span><span class="ptag" data-zh="週末噴火">Phun lửa cuối tuần</span></div>
-        </div></div>
-      </div>
-
-      <div class="alts">
-        <div class="alts-head" data-zh="✨ 本日其他夜間選擇">✨ Lựa chọn khác cho tối nay</div>
-        <div class="alts-sub" data-zh="可替換或加入以下夜間好去處——附照片、價格與距美溪的距離。">Có thể thay hoặc thêm các điểm chơi đêm dưới đây — kèm ảnh, giá &amp; khoảng cách từ Mỹ Khê.</div>
-        <div class="alt-grid">
-          <div class="alt">
-            <div class="ph" data-altimg="cruise"><span class="ph-fallback">🛥️</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="韓江遊船<span class='r'>★ 4.3</span>">Du thuyền sông Hàn<span class="r">★ 4.3</span></div>
-              <div class="alt-meta"><span data-zh="💰 約15–30萬₫/人">💰 ~150–300k/người</span><span class="km" data-zh="📍 距美溪約3 km">📍 ~3 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="從江上欣賞龍橋與城市夜景。">Ngắm cầu Rồng &amp; thành phố lung linh từ trên sông.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=du%20thuyen%20song%20Han%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="swing"><span class="ph-fallback">🌉</span><span class="alt-tag night" data-zh="深夜">Khuya</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="韓江旋轉橋<span class='r'>★ 4.6</span>">Cầu quay Sông Hàn<span class="r">★ 4.6</span></div>
-              <div class="alt-meta"><span data-zh="💰 免費">💰 Miễn phí</span><span class="km" data-zh="📍 距美溪約3 km">📍 ~3 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="週六、日約23:00旋轉90度，獨特一景。">Cầu quay 90° lúc ~23h tối thứ Bảy &amp; Chủ Nhật.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=cau%20quay%20song%20Han%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="helio"><span class="ph-fallback">🎪</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="Helio 夜市與中心<span class='r'>★ 4.2</span>">Chợ đêm &amp; Helio Center<span class="r">★ 4.2</span></div>
-              <div class="alt-meta"><span data-zh="💰 入場免費 · 遊樂30–150k">💰 Vào cửa free · trò chơi 30–150k</span><span class="km" data-zh="📍 距美溪約4 km">📍 ~4 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="美食與遊樂，很適合全家。">Khu ăn uống &amp; trò chơi, rất hợp gia đình.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Helio%20Center%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="anthuong"><span class="ph-fallback">🍹</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="An Thượng 夜街<span class='r'>★ 4.3</span>">Phố đêm An Thượng<span class="r">★ 4.3</span></div>
-              <div class="alt-meta"><span data-zh="💰 免費（餐飲另計）">💰 Miễn phí (ăn theo món)</span><span class="km" data-zh="📍 距美溪約1 km">📍 ~1 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="緊鄰美溪的酒吧與小吃街。">Quán xá, ăn vặt sôi động ngay sát biển Mỹ Khê.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=An%20Thuong%20Tourist%20Street%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="apec"><span class="ph-fallback">⛵</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="APEC 公園<span class='r'>★ 4.5</span>">Công viên APEC<span class="r">★ 4.5</span></div>
-              <div class="alt-meta"><span data-zh="💰 免費">💰 Miễn phí</span><span class="km" data-zh="📍 距美溪約3.5 km">📍 ~3,5 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="帆形屋頂建築，韓江畔散步拍照。">Mái vòm cánh buồm độc đáo, dạo &amp; chụp ảnh ven sông.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=APEC%20Park%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="thuanphuoc"><span class="ph-fallback">🌁</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="順福橋<span class='r'>★ 4.5</span>">Cầu Thuận Phước<span class="r">★ 4.5</span></div>
-              <div class="alt-meta"><span data-zh="💰 免費">💰 Miễn phí</span><span class="km" data-zh="📍 距美溪約6 km">📍 ~6 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="越南最長吊橋，看海口夜景。">Cầu treo dài nhất Việt Nam, view cửa biển về đêm.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Thuan%20Phuoc%20Bridge%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
+      <div class="notes-grid">
+        <div class="note-card">
+          <label>Ghi chú tự do</label>
+          <textarea class="note-area" id="freeNotes" placeholder="Ví dụ: chỗ muốn check-in, món nhất định phải thử, outfit, quà cần mua..."></textarea>
+        </div>
+        <div class="note-card">
+          <label>Quick notes</label>
+          <div class="quick-list">
+            <div class="quick-field"><i>🏨</i><input id="qStay" placeholder="Nơi ở / booking..." /></div>
+            <div class="quick-field"><i>🍜</i><input id="qFood" placeholder="Món / quán muốn thử..." /></div>
+            <div class="quick-field"><i>📸</i><input id="qPhoto" placeholder="Điểm check-in..." /></div>
+            <div class="quick-field"><i>💸</i><input id="qBudget" placeholder="Budget dự kiến..." /></div>
+            <div class="quick-field"><i>🎒</i><input id="qPack" placeholder="Đồ cần mang..." /></div>
+            <div class="quick-field"><i>♡</i><input id="qCouple" placeholder="Một điều muốn làm cùng nhau..." /></div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- DAY 19 -->
-  <div class="day">
-    <div class="day-mark">
-      <div class="day-num">19<small>/6</small></div>
-      <div><div class="day-date" data-zh="2026年6月">Tháng 6, 2026</div><div class="day-dow" data-zh="週五">Thứ Sáu</div><div class="day-theme" data-zh="⛰️ 整天在雲端">⛰️ Cả ngày trên mây</div></div>
-    </div>
-    <div class="day-body">
-      <h3 data-zh="巴拿山——山頂上的一天">Bà Nà Hills — một ngày trên đỉnh núi</h3>
-
-      <div class="place">
-        <div class="place-head"><span class="place-time" data-zh="約7–8點">~7–8h</span><span class="place-title" data-zh="巴拿山（一整天）<span class='meta'>黃金橋、法國村、Fantasy Park…</span>">Bà Nà Hills (nguyên ngày)<span class="meta">Cầu Vàng, Làng Pháp, Fantasy Park…</span></span><span class="place-toggle">+</span></div>
-        <div class="place-body"><div class="place-inner">
-          <div class="ph" data-album="bana"><span class="ph-fallback">🌉</span><img loading="lazy" alt="Cầu Vàng Bà Nà Hills" src="https://loremflickr.com/720/405/goldenbridge,banahills,vietnam" data-cap="Cầu Vàng (Golden Bridge) — Bà Nà Hills" data-cap-zh="黃金橋（Golden Bridge）——巴拿山"></div>
-          <span class="rating" data-zh="★ 4.4 · 近10萬則評價">★ 4.4 · gần 100.000 đánh giá</span>
-          <div class="info-row"><span class="info-pill" data-zh="🎫 成人 約100萬₫">🎫 NL ~1.000.000đ</span><span class="info-pill" data-zh="🧒 兒童1–1.4m 約80萬₫">🧒 Trẻ 1–1m4 ~800.000đ</span><span class="info-pill" data-zh="🍽️ 含自助餐套票 約130萬₫">🍽️ Combo buffet ~1.300.000đ</span><span class="info-pill" data-zh="🧥 山頂微涼">🧥 Trên đỉnh se lạnh</span><span class="info-pill" data-zh="📍 距美溪約35 km">📍 ~35 km từ Mỹ Khê</span></div>
-          <p data-zh="💰 <strong>2026票價（外地遊客）：</strong>成人（&gt;1.4m）約100萬₫ · 兒童（1–1.4m）與長者約80萬₫ · 1m以下免費。含午餐自助餐套票約130萬₫/成人。門票含來回纜車與多數 Fantasy Park 遊樂設施。線上訂通常更便宜。">💰 <strong>Vé 2026 (khách ngoại tỉnh):</strong> Người lớn (&gt;1m4) ~1.000.000đ · trẻ em (1m–1m4) &amp; người cao tuổi ~800.000đ · dưới 1m miễn phí. Combo kèm buffet trưa ~1.300.000đ/người lớn. Vé gồm cáp treo khứ hồi &amp; hầu hết trò chơi Fantasy Park. Đặt online thường rẻ hơn.</p>
-          <p data-zh="早上8點搭纜車較涼也較不擁擠。小女兒會喜歡黃金橋、法國村、登山小火車——拍照點超多。☎ Sun World: 0905 766 777 · 7:00–22:00。">Đi cáp treo sớm từ 8h cho mát &amp; ít đông. Cô con gái sẽ thích Cầu Vàng, Làng Pháp, tàu hỏa leo núi — rất nhiều góc chụp ảnh đẹp. ☎ Sun World: 0905 766 777 · 7h–22h.</p>
-          <div class="links">
-            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Ba%20Na%20Hills&query_place_id=ChIJyWFmArX3QTERon6tUT6re4Q" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Ba%20Na%20Hills&query_place_id=ChIJyWFmArX3QTERon6tUT6re4Q" target="_blank" data-zh="★ 評論">★ Review</a>
-          </div>
-          <div class="place-tags"><span class="ptag" data-zh="黃金橋">Cầu Vàng</span><span class="ptag" data-zh="法國村">Làng Pháp</span><span class="ptag">Fantasy Park</span><span class="ptag" data-zh="纜車">Cáp treo</span></div>
-        </div></div>
-      </div>
-
-      <div class="place">
-        <div class="place-head"><span class="place-time night" data-zh="晚上">Tối</span><span class="place-title" data-zh="返回峴港 · 龍橋噴火<span class='meta'>週五有表演 約21:00</span>">Về Đà Nẵng · Cầu Rồng phun lửa<span class="meta">Thứ Sáu có màn trình diễn ~21h</span></span><span class="place-toggle">+</span></div>
-        <div class="place-body"><div class="place-inner">
-          <p data-zh="回到市區，在海邊附近吃晚餐。今晚是週五，若還有體力可前往龍橋觀看約21:00的噴火與噴水。建議20:30前抵達，在東岸選個好位置。">Về lại thành phố, ăn tối gần biển. Tối nay là thứ Sáu nên có thể ghé Cầu Rồng xem phun lửa &amp; phun nước lúc ~21h nếu vẫn còn sức. Đến sớm ~20h30 để chọn chỗ đứng đẹp ở bờ đông.</p>
-          <div class="links"><a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Dragon%20Bridge%20Danang&query_place_id=ChIJL1GKWJYZQjERLrEGqlK2kwQ" target="_blank" data-zh="📍 龍橋">📍 Cầu Rồng</a></div>
-        </div></div>
-      </div>
-
-      <div class="alts">
-        <div class="alts-head" data-zh="✨ 整天的其他選擇（替代巴拿山）">✨ Lựa chọn khác cho cả ngày (thay Bà Nà)</div>
-        <div class="alts-sub" data-zh="不想去巴拿山？以下都是適合玩一整天的好去處——附價格與距離。">Không đi Bà Nà? Đây là những nơi đáng chơi trọn ngày — kèm giá &amp; khoảng cách.</div>
-        <div class="alt-grid">
-          <div class="alt">
-            <div class="ph" data-altimg="thantai"><span class="ph-fallback">♨️</span><span class="alt-tag allday" data-zh="整天">Cả ngày</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="神財山溫泉公園<span class='r'>★ 4.3</span>">Suối khoáng nóng Núi Thần Tài<span class="r">★ 4.3</span></div>
-              <div class="alt-meta"><span data-zh="💰 門票約40–50萬₫/人">💰 Vé ~400–500k/người</span><span class="km" data-zh="📍 距美溪約35 km">📍 ~35 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="溫泉、泥漿浴與水上樂園，老少咸宜。">Tắm khoáng nóng, tắm bùn &amp; công viên nước, hợp mọi lứa tuổi.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Than%20Tai%20Hot%20Springs%20Park%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="mikazuki"><span class="ph-fallback">🌊</span><span class="alt-tag allday" data-zh="整天">Cả ngày</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="Mikazuki 水樂園 365<span class='r'>★ 4.4</span>">Mikazuki Water Park 365<span class="r">★ 4.4</span></div>
-              <div class="alt-meta"><span data-zh="💰 門票約40–60萬₫">💰 Vé ~400–600k</span><span class="km" data-zh="📍 距美溪約13 km">📍 ~13 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="日式水樂園與溫泉，就在海邊。">Công viên nước Nhật &amp; onsen trong nhà, ngay sát biển.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Mikazuki%20Water%20Park%20365%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="haivan"><span class="ph-fallback">🏍️</span><span class="alt-tag" data-zh="半天">Nửa ngày</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="海雲關 &amp; 浪歌<span class='r'>★ 4.7</span>">Đèo Hải Vân &amp; Lăng Cô<span class="r">★ 4.7</span></div>
-              <div class="alt-meta"><span data-zh="💰 免費">💰 Miễn phí</span><span class="km" data-zh="📍 距美溪約25 km">📍 ~25 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="傳奇山道，俯瞰海灣絕景。">Cung đèo huyền thoại, view vịnh biển đẹp ngỡ ngàng.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hai%20Van%20Pass" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="culaocham"><span class="ph-fallback">🐠</span><span class="alt-tag allday" data-zh="整天">Cả ngày</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="占婆島<span class='r'>★ 4.5</span>">Cù Lao Chàm<span class="r">★ 4.5</span></div>
-              <div class="alt-meta"><span data-zh="💰 行程約40–70萬₫">💰 Tour ~400–700k</span><span class="km" data-zh="📍 距美溪約30 km">📍 ~30 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="海島浮潛賞珊瑚（從會安出發）。">Đảo biển xanh, lặn ngắm san hô (đi từ Cửa Đại – Hội An).</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Cu%20Lao%20Cham" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="vinwonders"><span class="ph-fallback">🎢</span><span class="alt-tag allday" data-zh="整天">Cả ngày</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="VinWonders 南會安<span class='r'>★ 4.4</span>">VinWonders Nam Hội An<span class="r">★ 4.4</span></div>
-              <div class="alt-meta"><span data-zh="💰 門票約50–60萬₫">💰 Vé ~500–600k</span><span class="km" data-zh="📍 距美溪約45 km">📍 ~45 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="大型主題樂園，孩子最愛。">Công viên giải trí lớn, cô con gái sẽ mê.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=VinWonders%20Nam%20Hoi%20An" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="artparadise"><span class="ph-fallback">🖼️</span><span class="alt-tag" data-zh="半天">Nửa ngày</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="3D 立體美術館<span class='r'>★ 4.2</span>">Art in Paradise (tranh 3D)<span class="r">★ 4.2</span></div>
-              <div class="alt-meta"><span data-zh="💰 門票約10–15萬₫">💰 Vé ~100–150k</span><span class="km" data-zh="📍 距美溪約3 km">📍 ~3 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="3D 錯覺美術館，拍照超有趣。">Bảo tàng tranh 3D, chụp ảnh vui nhộn, hợp ngày nắng.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Art%20in%20Paradise%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 20 -->
-  <div class="day">
-    <div class="day-mark">
-      <div class="day-num">20<small>/6</small></div>
-      <div><div class="day-date" data-zh="2026年6月">Tháng 6, 2026</div><div class="day-dow" data-zh="週六">Thứ Bảy</div><div class="day-theme" data-zh="🛕 山茶半島與遊玩">🛕 Sơn Trà &amp; vui chơi</div></div>
-    </div>
-    <div class="day-body">
-      <h3 data-zh="上午遊山茶半島，晚上逛街">Bán đảo Sơn Trà sáng, dạo phố tối</h3>
-
-      <div class="place">
-        <div class="place-head"><span class="place-time" data-zh="上午">Sáng</span><span class="place-title" data-zh="靈應寺——山茶半島<span class='meta'>67公尺觀音像、海景</span>">Chùa Linh Ứng — Sơn Trà<span class="meta">Tượng Phật Bà 67m, view biển</span></span><span class="place-toggle">+</span></div>
-        <div class="place-body"><div class="place-inner">
-          <div class="ph" data-album="linhung"><span class="ph-fallback">🛕</span><img loading="lazy" alt="Chùa Linh Ứng Sơn Trà" src="https://loremflickr.com/720/405/buddha,statue,temple,vietnam" data-cap="Tượng Phật Bà 67m — Chùa Linh Ứng Sơn Trà" data-cap-zh="67公尺觀音像——山茶靈應寺"></div>
-          <span class="rating" data-zh="★ 4.7 · 7,400則評價">★ 4.7 · 7.400 đánh giá</span>
-          <div class="info-row"><span class="info-pill" data-zh="💸 免費">💸 Miễn phí</span><span class="info-pill" data-zh="🅿️ 停車 1–2萬₫">🅿️ Gửi xe 10–20k</span><span class="info-pill" data-zh="👟 入殿需脫鞋">👟 Bỏ giày khi vào điện</span><span class="info-pill" data-zh="📍 距美溪約10 km">📍 ~10 km từ Mỹ Khê</span></div>
-          <p data-zh="依山而建的寺廟，矗立一尊高67公尺、面海的觀音像，空間開闊寧靜。入寺請著裝端莊。">Ngôi chùa trên sườn núi với tượng Phật Bà khổng lồ cao 67m nhìn ra biển, không gian rộng và yên bình. Mặc đồ lịch sự kín đáo khi vào chùa.</p>
-          <div class="links">
-            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Chua%20Linh%20Ung%20Son%20Tra&query_place_id=ChIJHZakNa8ZQjERWNFToM16eB4" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Chua%20Linh%20Ung%20Son%20Tra&query_place_id=ChIJHZakNa8ZQjERWNFToM16eB4" target="_blank" data-zh="★ 評論">★ Review</a>
-          </div>
-          <div class="place-tags"><span class="ptag" data-zh="心靈">Tâm linh</span><span class="ptag" data-zh="海景">View biển</span></div>
-        </div></div>
-      </div>
-
-      <div class="place">
-        <div class="place-head"><span class="place-time" data-zh="上午">Sáng</span><span class="place-title" data-zh="棋盤頂（Bàn Cờ峰）<span class='meta'>峴港最高點</span>">Đỉnh Bàn Cờ<span class="meta">Điểm cao nhất Đà Nẵng</span></span><span class="place-toggle">+</span></div>
-        <div class="place-body"><div class="place-inner">
-          <div class="ph" data-album="banco"><span class="ph-fallback">⛰️</span><img loading="lazy" alt="Đỉnh Bàn Cờ Sơn Trà" src="https://loremflickr.com/720/405/sontra,mountain,viewpoint" data-cap="Đỉnh Bàn Cờ — view toàn cảnh Đà Nẵng" data-cap-zh="棋盤頂——峴港全景"></div>
-          <span class="rating" data-zh="★ 4.7 · 687則評價">★ 4.7 · 687 đánh giá</span>
-          <div class="info-row"><span class="info-pill" data-zh="💸 免費">💸 Miễn phí</span><span class="info-pill" data-zh="🚗 建議租附司機車輛">🚗 Nên thuê xe có tài xế</span><span class="info-pill" data-zh="🐒 有猴子——顧好食物">🐒 Có khỉ — giữ đồ ăn</span><span class="info-pill" data-zh="📍 距美溪約13 km">📍 ~13 km từ Mỹ Khê</span></div>
-          <p data-zh="海拔約700公尺，可俯瞰整座城市與海岸線，景色絕美。上山路陡且彎多——建議租附司機的車（部分路段禁速克達）。">Khoảng 700m so với mực nước biển, view toàn cảnh thành phố và bờ biển tuyệt đẹp. Đường lên dốc và quanh co — nên thuê xe có tài xế (xe tay ga bị cấm một số đoạn).</p>
-          <div class="links">
-            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Dinh%20Ban%20Co%20Son%20Tra&query_place_id=ChIJT6YRonE9QjERIzwY4jOAWrY" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Dinh%20Ban%20Co%20Son%20Tra&query_place_id=ChIJT6YRonE9QjERIzwY4jOAWrY" target="_blank" data-zh="★ 評論">★ Review</a>
-          </div>
-          <div class="place-tags"><span class="ptag" data-zh="美景">View đẹp</span><span class="ptag" data-zh="猴子與自然">Khỉ &amp; thiên nhiên</span></div>
-        </div></div>
-      </div>
-
-      <div class="place">
-        <div class="place-head"><span class="place-time" data-zh="下午">Chiều</span><span class="place-title" data-zh="五行山（Marble Mountains）<span class='meta'>洞窟、古剎、市景</span>">Ngũ Hành Sơn (Marble Mountains)<span class="meta">Hang động, chùa cổ, view thành phố</span></span><span class="place-toggle">+</span></div>
-        <div class="place-body"><div class="place-inner">
-          <div class="ph" data-album="marble"><span class="ph-fallback">🪨</span><img loading="lazy" alt="Ngũ Hành Sơn" src="https://loremflickr.com/720/405/marble,mountain,cave,vietnam" data-cap="Ngũ Hành Sơn — hang động &amp; chùa cổ" data-cap-zh="五行山——洞窟與古剎"></div>
-          <span class="rating" data-zh="★ 4.4 · 41,000則評價">★ 4.4 · 41.000 đánh giá</span>
-          <div class="info-row"><span class="info-pill" data-zh="🎫 水山 約4萬₫">🎫 Thủy Sơn ~40k</span><span class="info-pill" data-zh="🎓 學生 約1萬₫">🎓 HS/SV ~10k</span><span class="info-pill" data-zh="🛗 電梯 約1.5萬₫/趟">🛗 Thang máy ~15k/lượt</span><span class="info-pill" data-zh="🕐 7:00–17:30">🕐 7h–17h30</span><span class="info-pill" data-zh="📍 距美溪約8 km">📍 ~8 km từ Mỹ Khê</span></div>
-          <p data-zh="💰 陰府洞約2萬₫。從山茶半島回程順道遊五行山——一片石灰岩山群，有洞窟與古剎。請穿防滑鞋、帶水。☎ 管理處: 0236 3961 114。">💰 Động Âm Phủ ~20.000đ. Trên đường về từ Sơn Trà ghé Ngũ Hành Sơn — cụm núi đá với hang động và chùa cổ. Đi giày chống trượt, mang nước. ☎ BQL: 0236 3961 114.</p>
-          <div class="links">
-            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Marble%20Mountains%20Danang&query_place_id=ChIJ2y5L4dQNQjERxeSLc68fbrw" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Marble%20Mountains%20Danang&query_place_id=ChIJ2y5L4dQNQjERxeSLc68fbrw" target="_blank" data-zh="★ 評論">★ Review</a>
-          </div>
-          <div class="place-tags"><span class="ptag" data-zh="洞窟">Hang động</span><span class="ptag" data-zh="古剎">Chùa cổ</span></div>
-        </div></div>
-      </div>
-
-      <div class="place">
-        <div class="place-head"><span class="place-time night" data-zh="晚上">Tối</span><span class="place-title" data-zh="峴港 Downtown / 逛夜市<span class='meta'>太陽輪 · 需確認</span>">Da Nang Downtown / dạo phố đêm<span class="meta">Vòng quay Sun Wheel · cần kiểm tra</span></span><span class="place-toggle">+</span></div>
-        <div class="place-body"><div class="place-inner">
-          <div class="ph" data-album="asiapark"><span class="ph-fallback">🎡</span><img loading="lazy" alt="Vòng quay Sun Wheel Đà Nẵng" src="https://loremflickr.com/720/405/ferriswheel,night,city" data-cap="Vòng quay Sun Wheel về đêm" data-cap-zh="太陽輪夜景"></div>
-          <span class="rating" data-zh="★ 4.4 · 11,900則評價">★ 4.4 · 11.900 đánh giá</span>
-          <div class="warnbox" data-zh="⚠️ <strong>注意：</strong>2026年初有消息指 Da Nang Downtown（原 Asia Park）暫停營業進行改建，但各方說法不一。<strong>出發前請先電話確認。</strong>☎ Sun World: 0905 766 777。">⚠️ <strong>Lưu ý:</strong> Đầu 2026 có thông tin Da Nang Downtown (Asia Park cũ) tạm dừng hoạt động để tái phát triển, nhưng các nguồn chưa thống nhất. <strong>Hãy gọi xác nhận trước khi đi.</strong> ☎ Sun World: 0905 766 777.</div>
-          <p data-zh="💰 過去入園/夜市免費；遊樂設施套票約15–30萬₫。若關閉，可改去<strong>山茶夜市</strong>、<strong>愛情橋－鯉魚化龍</strong>或美溪附近的<strong>An Thượng 夜街</strong>。">💰 Trước đây vào cổng/chợ đêm miễn phí; vé trò chơi trọn gói ~150.000–300.000đ. Nếu đóng cửa, có thể thay bằng <strong>chợ đêm Sơn Trà</strong>, <strong>cầu Tình Yêu – Cá Chép Hóa Rồng</strong> hoặc <strong>phố đêm An Thượng</strong> gần Mỹ Khê.</p>
-          <div class="links">
-            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Da%20Nang%20Downtown&query_place_id=ChIJF8yRoecZQjERdDBeBdSRD-Y" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Da%20Nang%20Downtown&query_place_id=ChIJF8yRoecZQjERdDBeBdSRD-Y" target="_blank" data-zh="★ 評論">★ Review</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Ch%E1%BB%A3%20%C4%91%C3%AAm%20S%C6%A1n%20Tr%C3%A0%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank" data-zh="🌃 山茶夜市">🌃 Chợ đêm Sơn Trà</a>
-          </div>
-          <div class="place-tags"><span class="ptag">Sun Wheel</span><span class="ptag" data-zh="夜間拍照">Chụp ảnh đêm</span></div>
-        </div></div>
-      </div>
-
-      <div class="alts">
-        <div class="alts-head" data-zh="✨ 本日其他選擇（山茶／市區）">✨ Lựa chọn khác cho ngày này</div>
-        <div class="alts-sub" data-zh="依時段挑選：上午山茶、下午博物館、晚上逛街——附價格與距離。">Chọn theo buổi: sáng Sơn Trà, chiều bảo tàng, tối dạo phố — kèm giá &amp; khoảng cách.</div>
-        <div class="alt-grid">
-          <div class="alt">
-            <div class="ph" data-altimg="baibut"><span class="ph-fallback">🏝️</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="山茶半島海灘<span class='r'>★ 4.5</span>">Bãi Bụt – Bãi Rạng (Sơn Trà)<span class="r">★ 4.5</span></div>
-              <div class="alt-meta"><span data-zh="💰 免費">💰 Miễn phí</span><span class="km" data-zh="📍 距美溪約10 km">📍 ~10 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="原始海灘，海水清澈，可浮潛。">Bãi biển hoang sơ, nước trong, có thể lặn ngắm.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bai%20But%20Son%20Tra%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="cayda"><span class="ph-fallback">🌳</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="千年古榕樹<span class='r'>★ 4.5</span>">Cây đa di sản ngàn năm<span class="r">★ 4.5</span></div>
-              <div class="alt-meta"><span data-zh="💰 免費">💰 Miễn phí</span><span class="km" data-zh="📍 距美溪約13 km">📍 ~13 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="山茶半島上的巨大古榕，氣勢驚人。">Cây đa cổ thụ khổng lồ trên bán đảo Sơn Trà.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Ancient%20Banyan%20Tree%20Son%20Tra%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="cham"><span class="ph-fallback">🗿</span><span class="alt-tag" data-zh="下午">Chiều</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="占婆雕刻博物館<span class='r'>★ 4.5</span>">Bảo tàng Điêu khắc Chăm<span class="r">★ 4.5</span></div>
-              <div class="alt-meta"><span data-zh="💰 門票約6萬₫">💰 Vé ~60k/người</span><span class="km" data-zh="📍 距美溪約4 km">📍 ~4 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="占婆古文物，室內涼爽避暑。">Cổ vật Chăm Pa quý giá, trong nhà mát mẻ tránh nắng.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Museum%20of%20Cham%20Sculpture%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="nonnuoc"><span class="ph-fallback">🪚</span><span class="alt-tag" data-zh="下午">Chiều</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="非水石雕村<span class='r'>★ 4.2</span>">Làng đá mỹ nghệ Non Nước<span class="r">★ 4.2</span></div>
-              <div class="alt-meta"><span data-zh="💰 參觀免費">💰 Miễn phí tham quan</span><span class="km" data-zh="📍 距美溪約8 km">📍 ~8 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="五行山腳下的石雕工藝村。">Làng nghề điêu khắc đá ngay dưới chân Ngũ Hành Sơn.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Non%20Nuoc%20Stone%20Carving%20Village%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="chodem"><span class="ph-fallback">🌃</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="山茶夜市<span class='r'>★ 4.0</span>">Chợ đêm Sơn Trà<span class="r">★ 4.0</span></div>
-              <div class="alt-meta"><span data-zh="💰 免費入場">💰 Miễn phí vào</span><span class="km" data-zh="📍 距美溪約3.5 km">📍 ~3,5 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="龍橋旁熱鬧的小吃夜市。">Khu ăn vặt sôi động ngay gần cầu Rồng.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Son%20Tra%20Night%20Market%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="lovebridge"><span class="ph-fallback">💕</span><span class="alt-tag night" data-zh="晚上">Tối</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="愛情橋 &amp; 鯉魚化龍<span class='r'>★ 4.4</span>">Cầu Tình Yêu &amp; Cá Chép Hóa Rồng<span class="r">★ 4.4</span></div>
-              <div class="alt-meta"><span data-zh="💰 免費">💰 Miễn phí</span><span class="km" data-zh="📍 距美溪約3.5 km">📍 ~3,5 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="江畔浪漫打卡，燈光閃爍。">Điểm check-in lung linh ven sông Hàn, gần chợ đêm.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Love%20Bridge%20Da%20Nang" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY 21 -->
-  <div class="day">
-    <div class="day-mark">
-      <div class="day-num">21<small>/6</small></div>
-      <div><div class="day-date" data-zh="2026年6月">Tháng 6, 2026</div><div class="day-dow" data-zh="週日">Chủ Nhật</div><div class="day-theme" data-zh="🏮 古鎮與道別">🏮 Phố cổ &amp; tạm biệt</div></div>
-    </div>
-    <div class="day-body">
-      <h3 data-zh="上午遊會安，下午退房">Hội An buổi sáng &amp; trả phòng chiều</h3>
-
-      <div class="place">
-        <div class="place-head"><span class="place-time" data-zh="上午">Sáng</span><span class="place-title" data-zh="會安古鎮<span class='meta'>距峴港約30分鐘</span>">Phố cổ Hội An<span class="meta">Cách Đà Nẵng ~30 phút</span></span><span class="place-toggle">+</span></div>
-        <div class="place-body"><div class="place-inner">
-          <div class="ph" data-album="hoian"><span class="ph-fallback">🏮</span><img loading="lazy" alt="Phố cổ Hội An" src="https://loremflickr.com/720/405/hoian,lantern,ancienttown" data-cap="Phố cổ Hội An — tường vàng, đèn lồng" data-cap-zh="會安古鎮——黃牆、燈籠"></div>
-          <span class="rating" data-zh="★ 4.7 · 4,000則評價">★ 4.7 · 4.000 đánh giá</span>
-          <div class="info-row"><span class="info-pill" data-zh="🎫 古鎮門票 約12萬₫">🎫 Vé phố cổ ~120k</span><span class="info-pill" data-zh="🏮 水燈 1–2萬₫">🏮 Hoa đăng 10–20k</span><span class="info-pill" data-zh="🛶 搭船 約5萬₫起">🛶 Thuyền từ ~50k</span><span class="info-pill" data-zh="🚗 距峴港約30分鐘">🚗 Từ ĐN ~30 phút</span><span class="info-pill" data-zh="📍 距美溪約30 km">📍 ~30 km từ Mỹ Khê</span></div>
-          <p data-zh="💰 古鎮門票可參觀5處古蹟；兒童多為免/減票。純逛街不一定要買票，僅進古宅／會館時才需要。因下午要退房，今早提早出發以避開烈日與人潮。☎ 0944 104 901。">💰 Vé phố cổ vào 5 điểm di tích; trẻ em thường miễn/giảm. Dạo phố không bắt buộc mua vé, chỉ cần khi vào nhà cổ/hội quán. Vì chiều phải trả phòng, sáng nay đi sớm để tránh nắng &amp; đông. ☎ 0944 104 901.</p>
-          <div class="links">
-            <a class="lnk map" href="https://www.google.com/maps/search/?api=1&query=Hoi%20An%20Ancient%20Town&query_place_id=ChIJ897x3ZAPQjER5-xlS8XyP68" target="_blank" data-zh="📍 地圖">📍 Bản đồ</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=Hoi%20An%20Ancient%20Town&query_place_id=ChIJ897x3ZAPQjER5-xlS8XyP68" target="_blank" data-zh="★ 評論">★ Review</a>
-          </div>
-          <div class="place-tags"><span class="ptag" data-zh="來遠橋">Chùa Cầu</span><span class="ptag" data-zh="古宅">Nhà cổ</span><span class="ptag" data-zh="秋盆河">Sông Hoài</span></div>
-        </div></div>
-      </div>
-
-      <div class="place">
-        <div class="place-head"><span class="place-time eat" data-zh="中午">Trưa</span><span class="place-title" data-zh="返程前品嚐特色美食<span class='meta'>廣麵、魚餅米線、豬肉米紙捲</span>">Ăn đặc sản trước khi về<span class="meta">Mì Quảng, bún chả cá, bánh tráng cuốn</span></span><span class="place-toggle">+</span></div>
-        <div class="place-body"><div class="place-inner">
-          <div class="ph" data-album="miquang"><span class="ph-fallback">🍜</span><img loading="lazy" alt="Mì Quảng đặc sản" src="https://loremflickr.com/720/405/miquang,vietnamese,noodle" data-cap="Mì Quảng — đặc sản Đà Nẵng – Quảng Nam" data-cap-zh="廣麵——峴港、廣南特色"></div>
-          <p data-zh="午餐來點特色料理——可在會安吃高樓麵、雲吞，或回峴港品嚐廣麵、魚餅米線。💰 約3–6萬₫/份。更多請見下方<a href='#food' style='color:var(--sea);font-weight:600;border-bottom:1px dotted var(--sea)'>美食</a>單元。">Bữa trưa với những món đặc trưng — có thể ăn ở Hội An (cao lầu, hoành thánh) hoặc về Đà Nẵng thưởng thức mì Quảng, bún chả cá. 💰 ~30.000–60.000đ/món. Xem thêm mục <a href="#food" style="color:var(--sea);font-weight:600;border-bottom:1px dotted var(--sea)">Ẩm thực</a> bên dưới.</p>
-          <div class="links">
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=M%C3%AC%20Qu%E1%BA%A3ng%20ngon%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank" data-zh="🍜 廣麵">🍜 Mì Quảng</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=B%C3%BAn%20ch%E1%BA%A3%20c%C3%A1%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank" data-zh="🐟 魚餅米線">🐟 Bún chả cá</a>
-            <a class="lnk rev" href="https://www.google.com/maps/search/?api=1&query=B%C3%A1nh%20tr%C3%A1ng%20cu%E1%BB%91n%20th%E1%BB%8Bt%20heo%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank" data-zh="🥬 米紙肉捲">🥬 Bánh tráng cuốn</a>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="place">
-        <div class="place-head"><span class="place-time night" data-zh="下午">Chiều</span><span class="place-title" data-zh="退房 &amp; 前往機場<span class='meta'>旅程結束</span>">Trả phòng &amp; ra sân bay<span class="meta">Kết thúc hành trình</span></span><span class="place-toggle">+</span></div>
-        <div class="place-body"><div class="place-inner">
-          <div class="info-row"><span class="info-pill" data-zh="🧳 需要可寄放行李於櫃台">🧳 Gửi hành lý ở lễ tân nếu cần</span><span class="info-pill" data-zh="🕐 提前2小時抵達機場">🕐 Có mặt sân bay trước 2 tiếng</span></div>
-          <p data-zh="回飯店取行李，下午退房後前往機場。再見峴港——期待再相見！">Về khách sạn lấy hành lý, trả phòng buổi chiều rồi ra sân bay. Tạm biệt Đà Nẵng — hẹn gặp lại!</p>
-        </div></div>
-      </div>
-
-      <div class="alts">
-        <div class="alts-head" data-zh="✨ 會安周邊其他選擇">✨ Lựa chọn khác quanh Hội An</div>
-        <div class="alts-sub" data-zh="想換個早晨？以下會安周邊景點——附價格與距離。">Muốn đổi gió buổi sáng? Các điểm quanh Hội An dưới đây — kèm giá &amp; khoảng cách.</div>
-        <div class="alt-grid">
-          <div class="alt">
-            <div class="ph" data-altimg="rungdua"><span class="ph-fallback">🛶</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="七畝水椰林<span class='r'>★ 4.4</span>">Rừng dừa Bảy Mẫu<span class="r">★ 4.4</span></div>
-              <div class="alt-meta"><span data-zh="💰 籃船約15–20萬₫">💰 Thuyền ~150–200k</span><span class="km" data-zh="📍 距美溪約27 km">📍 ~27 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="搭籃船遊水椰林，趣味十足。">Chèo thuyền thúng giữa rừng dừa nước, rất vui.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bay%20Mau%20Coconut%20Forest%20Hoi%20An" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="anbang"><span class="ph-fallback">🏖️</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="安邦海灘<span class='r'>★ 4.5</span>">Biển An Bàng<span class="r">★ 4.5</span></div>
-              <div class="alt-meta"><span data-zh="💰 免費">💰 Miễn phí</span><span class="km" data-zh="📍 距美溪約28 km">📍 ~28 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="會安寧靜美麗的海灘。">Bãi biển đẹp &amp; yên bình bậc nhất Hội An.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=An%20Bang%20Beach%20Hoi%20An" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="thanhha"><span class="ph-fallback">🏺</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="清河陶藝村<span class='r'>★ 4.2</span>">Làng gốm Thanh Hà<span class="r">★ 4.2</span></div>
-              <div class="alt-meta"><span data-zh="💰 門票約3.5萬₫">💰 Vé ~35k/người</span><span class="km" data-zh="📍 距美溪約28 km">📍 ~28 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="約500年歷史的古陶村，可體驗拉坯。">Làng nghề gốm cổ ~500 năm, trải nghiệm nặn gốm.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Thanh%20Ha%20Pottery%20Village%20Hoi%20An" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="traque"><span class="ph-fallback">🥬</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="茶桂菜村<span class='r'>★ 4.4</span>">Làng rau Trà Quế<span class="r">★ 4.4</span></div>
-              <div class="alt-meta"><span data-zh="💰 門票約3.5萬₫">💰 Vé ~35k/người</span><span class="km" data-zh="📍 距美溪約26 km">📍 ~26 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="傳統菜村，體驗農事與田園風光。">Làng rau truyền thống, trải nghiệm làm nông yên bình.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Tra%20Que%20Vegetable%20Village%20Hoi%20An" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="vinwonders"><span class="ph-fallback">🎢</span><span class="alt-tag allday" data-zh="整天">Cả ngày</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="VinWonders 南會安<span class='r'>★ 4.4</span>">VinWonders Nam Hội An<span class="r">★ 4.4</span></div>
-              <div class="alt-meta"><span data-zh="💰 門票約50–60萬₫">💰 Vé ~500–600k</span><span class="km" data-zh="📍 距美溪約45 km">📍 ~45 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="有時間又想玩樂的話可選。">Nếu còn nhiều thời gian &amp; muốn vui chơi cả ngày.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=VinWonders%20Nam%20Hoi%20An" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-          <div class="alt">
-            <div class="ph" data-altimg="chuacau"><span class="ph-fallback">🏛️</span><span class="alt-tag" data-zh="上午">Sáng</span></div>
-            <div class="alt-body">
-              <div class="alt-name" data-zh="會安博物館 &amp; 來遠橋<span class='r'>★ 4.5</span>">Bảo tàng &amp; Chùa Cầu Hội An<span class="r">★ 4.5</span></div>
-              <div class="alt-meta"><span data-zh="💰 含古鎮門票12萬₫">💰 Trong vé phố cổ 120k</span><span class="km" data-zh="📍 距美溪約30 km">📍 ~30 km từ Mỹ Khê</span></div>
-              <div class="alt-desc" data-zh="古鎮內的代表性古蹟。">Các di tích tiêu biểu ngay trong lòng phố cổ.</div>
-              <div class="alt-links"><a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Chua%20Cau%20Hoi%20An" data-zh="📍 地圖 &amp; 評論">📍 Bản đồ &amp; review</a></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- REVIEWS -->
-<section class="reviews reveal" id="reviews">
-  <div class="label" data-zh="旅客心得">Cảm nhận du khách</div>
-  <h2 data-zh="過來人<em>怎麼說？</em>">Người đi trước <em>nói gì?</em></h2>
-  <p class="lead" data-zh="彙整 Google Maps 上各景點的常見評價精神，讓全家先有概念。點行程中的「★ 評論」可閱讀原始評價。">Tổng hợp tinh thần các đánh giá phổ biến trên Google Maps cho từng điểm đến — để cả nhà hình dung trước. Bấm “★ Review” trong lịch trình để đọc đánh giá gốc.</p>
-  <div class="review-grid">
-    <div class="rev-card">
-      <div class="rev-top"><span class="rev-place" data-zh="黃金橋 · 巴拿山">Cầu Vàng · Bà Nà</span><span class="rev-stars">★★★★☆</span></div>
-      <p class="rev-quote" data-zh="「美如畫，巨大的雙手拍照超夢幻。建議早點去，接近中午人多又曬。」">“Đẹp như tranh, đôi bàn tay khổng lồ chụp ảnh cực ‘ảo’. Nên đi sớm vì gần trưa rất đông và nắng.”</p>
-      <div class="rev-author"><span class="rev-avatar">M</span><div><div class="rev-name" data-zh="Minh · 四口之家">Minh ·  gia đình 4 người</div><div class="rev-meta" data-zh="Google 評價彙整">Tổng hợp đánh giá Google</div></div></div>
-    </div>
-    <div class="rev-card">
-      <div class="rev-top"><span class="rev-place" data-zh="美溪海灘">Biển Mỹ Khê</span><span class="rev-stars">★★★★★</span></div>
-      <p class="rev-quote" data-zh="「沙細水清，清晨下水超棒。附近海鮮新鮮，但記得先問價。」">“Cát mịn, nước trong, sáng sớm ra tắm rất tuyệt. Hải sản quanh đây tươi nhưng nhớ hỏi giá trước.”</p>
-      <div class="rev-author"><span class="rev-avatar">H</span><div><div class="rev-name" data-zh="Hương · 帶小孩出遊">Hương · du lịch cùng con nhỏ</div><div class="rev-meta" data-zh="Google 評價彙整">Tổng hợp đánh giá Google</div></div></div>
-    </div>
-    <div class="rev-card">
-      <div class="rev-top"><span class="rev-place" data-zh="靈應寺">Chùa Linh Ứng</span><span class="rev-stars">★★★★★</span></div>
-      <p class="rev-quote" data-zh="「觀音像莊嚴，海景開闊，氣氛清幽。早上去很涼爽。」">“Tượng Phật Bà uy nghi, view biển thoáng đãng, không khí thanh tịnh. Đi buổi sáng rất mát.”</p>
-      <div class="rev-author"><span class="rev-avatar">T</span><div><div class="rev-name" data-zh="Trang · 情侶">Trang · cặp đôi</div><div class="rev-meta" data-zh="Google 評價彙整">Tổng hợp đánh giá Google</div></div></div>
-    </div>
-    <div class="rev-card">
-      <div class="rev-top"><span class="rev-place" data-zh="會安古鎮">Phố cổ Hội An</span><span class="rev-stars">★★★★★</span></div>
-      <p class="rev-quote" data-zh="「白天寧靜，夜晚燈籠閃爍。在秋盆河放水燈是難忘的回憶。」">“Ban ngày yên bình, tối lung linh đèn lồng. Thả hoa đăng trên sông Hoài là kỷ niệm khó quên.”</p>
-      <div class="rev-author"><span class="rev-avatar">Đ</span><div><div class="rev-name" data-zh="Đức · 朋友團">Đức · nhóm bạn</div><div class="rev-meta" data-zh="Google 評價彙整">Tổng hợp đánh giá Google</div></div></div>
-    </div>
-    <div class="rev-card">
-      <div class="rev-top"><span class="rev-place" data-zh="五行山">Ngũ Hành Sơn</span><span class="rev-stars">★★★★☆</span></div>
-      <p class="rev-quote" data-zh="「洞窟涼爽，爬上去有點累但景色值得。建議穿平底鞋、帶水。」">“Hang động mát mẻ, leo lên hơi mệt nhưng view đáng giá. Nên đi giày bệt và mang theo nước.”</p>
-      <div class="rev-author"><span class="rev-avatar">L</span><div><div class="rev-name" data-zh="Lan · 家庭">Lan · gia đình</div><div class="rev-meta" data-zh="Google 評價彙整">Tổng hợp đánh giá Google</div></div></div>
-    </div>
-    <div class="rev-card">
-      <div class="rev-top"><span class="rev-place" data-zh="龍橋">Cầu Rồng</span><span class="rev-stars">★★★★☆</span></div>
-      <p class="rev-quote" data-zh="「週末看龍噴火很過癮，小孩超愛。早點到佔位，否則人擠人。」">“Cuối tuần xem rồng phun lửa rất thích, trẻ con mê tít. Đến sớm chọn chỗ kẻo đông kín người.”</p>
-      <div class="rev-author"><span class="rev-avatar">N</span><div><div class="rev-name" data-zh="Nam · 三口之家">Nam · gia đình 3 người</div><div class="rev-meta" data-zh="Google 評價彙整">Tổng hợp đánh giá Google</div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOD -->
-<section class="food reveal" id="food">
-  <div class="label" data-zh="峴港美食">Ẩm thực Đà Nẵng</div>
-  <h2 data-zh="吃什麼<em>最過癮？</em>">Ăn gì cho <em>đã miệng?</em></h2>
-  <p class="lead" data-zh="必嚐的料理——價格親民，地道小店最對味。點店名開啟地圖與評價。">Những món nhất định phải thử — giá bình dân, ngon nhất ở quán địa phương. Bấm tên quán để mở bản đồ &amp; review.</p>
-  <div class="food-grid">
-    <div class="food-card">
-      <div class="ph"><span class="ph-fallback">🍜</span><img loading="lazy" data-single="food_mq" alt="Mì Quảng" src="https://loremflickr.com/480/360/miquang,noodle" data-cap="Mì Quảng" data-cap-zh="廣麵"></div>
-      <div class="food-pad">
-        <h4 data-zh="廣麵">Mì Quảng</h4><div class="food-price" data-zh="約3–5萬₫">~30.000 – 50.000đ</div>
-        <p data-zh="黃色麵條，湯少而濃郁，配米餅與生菜。廣南的「國民」料理。">Sợi mì vàng, nước lèo ít mà đậm, ăn kèm bánh tráng &amp; rau sống. Món “quốc dân” của xứ Quảng.</p>
-        <div class="food-where"><span data-zh="推薦：">Gợi ý: </span><a href="https://www.google.com/maps/search/?api=1&query=M%C3%AC%20Qu%E1%BA%A3ng%201A%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Mì Quảng 1A</a>, <a href="https://www.google.com/maps/search/?api=1&query=M%C3%AC%20Qu%E1%BA%A3ng%20B%C3%A0%20Mua%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Bà Mua</a></div>
-      </div>
-    </div>
-    <div class="food-card">
-      <div class="ph"><span class="ph-fallback">🐟</span><img loading="lazy" data-single="food_bcc" alt="Bún chả cá" src="https://loremflickr.com/480/360/fishcake,noodle,soup" data-cap="Bún chả cá" data-cap-zh="魚餅米線"></div>
-      <div class="food-pad">
-        <h4 data-zh="魚餅米線">Bún chả cá</h4><div class="food-price" data-zh="約2.5–4萬₫">~25.000 – 40.000đ</div>
-        <p data-zh="魚熬製的湯頭清甜，魚餅彈牙鮮香。早餐或宵夜都適合，清爽不膩。">Nước dùng ngọt thanh từ cá, chả cá dai thơm. Ăn sáng hoặc tối đều hợp, nhẹ bụng.</p>
-        <div class="food-where"><span data-zh="推薦：">Gợi ý: </span><a href="https://www.google.com/maps/search/?api=1&query=B%C3%BAn%20ch%E1%BA%A3%20c%C3%A1%20109%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Bún chả cá 109</a>, <a href="https://www.google.com/maps/search/?api=1&query=B%C3%BAn%20ch%E1%BA%A3%20c%C3%A1%20B%C3%A0%20L%E1%BB%AF%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Bà Lữ</a></div>
-      </div>
-    </div>
-    <div class="food-card">
-      <div class="ph"><span class="ph-fallback">🥬</span><img loading="lazy" data-single="food_btc" alt="Bánh tráng cuốn thịt heo" src="https://loremflickr.com/480/360/porkroll,vietnamese,food" data-cap="Bánh tráng cuốn thịt heo" data-cap-zh="豬肉米紙捲"></div>
-      <div class="food-pad">
-        <h4 data-zh="豬肉米紙捲">Bánh tráng cuốn thịt heo</h4><div class="food-price" data-zh="約7–9萬₫/份">~70.000 – 90.000đ/phần</div>
-        <p data-zh="兩面帶皮的豬肉，包生菜、沾魚露醬——峴港令人難忘的特色。">Thịt heo hai đầu da, cuốn cùng rau sống &amp; chấm mắm nêm — đặc sản khó cưỡng của Đà Nẵng.</p>
-        <div class="food-where"><span data-zh="推薦：">Gợi ý: </span><a href="https://www.google.com/maps/search/?api=1&query=B%C3%A1nh%20tr%C3%A1ng%20cu%E1%BB%91n%20th%E1%BB%8Bt%20heo%20M%E1%BA%ADu%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Mậu</a>, <a href="https://www.google.com/maps/search/?api=1&query=B%C3%A1nh%20tr%C3%A1ng%20cu%E1%BB%91n%20th%E1%BB%8Bt%20heo%20Tr%E1%BA%A7n%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Trần</a></div>
-      </div>
-    </div>
-    <div class="food-card">
-      <div class="ph"><span class="ph-fallback">🦐</span><img loading="lazy" data-single="food_sf" alt="Hải sản Đà Nẵng" src="https://loremflickr.com/480/360/seafood,grill" data-cap="Hải sản tươi sống" data-cap-zh="新鮮海鮮"></div>
-      <div class="food-pad">
-        <h4 data-zh="新鮮海鮮">Hải sản tươi</h4><div class="food-price" data-zh="依時價">Theo giá thị trường</div>
-        <p data-zh="蝦、蟹、螺、烤魷魚…挑人多的店，秤好海鮮、講好價再料理。">Tôm, ghẹ, ốc, mực nướng… Chọn quán đông khách, cân hải sản &amp; chốt giá trước khi chế biến.</p>
-        <div class="food-where"><span data-zh="推薦：">Gợi ý: </span><a href="https://www.google.com/maps/search/?api=1&query=B%C3%A9%20M%E1%BA%B7n%20h%E1%BA%A3i%20s%E1%BA%A3n%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Bé Mặn</a>, <a href="https://www.google.com/maps/search/?api=1&query=N%C4%83m%20%C4%90%E1%BA%A3nh%20h%E1%BA%A3i%20s%E1%BA%A3n%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Năm Đảnh</a></div>
-      </div>
-    </div>
-    <div class="food-card">
-      <div class="ph"><span class="ph-fallback">🥢</span><img loading="lazy" data-single="food_bx" alt="Bánh xèo nem lụi" src="https://loremflickr.com/480/360/banhxeo,vietnamese,pancake" data-cap="Bánh xèo – nem lụi" data-cap-zh="越式煎餅－串燒肉"></div>
-      <div class="food-pad">
-        <h4 data-zh="越式煎餅－串燒肉">Bánh xèo – nem lụi</h4><div class="food-price" data-zh="約4–6萬₫">~40.000 – 60.000đ</div>
-        <p data-zh="煎餅酥脆、串燒肉噴香，包米紙沾濃郁花生醬。">Bánh xèo giòn rụm, nem lụi nướng thơm, cuốn bánh tráng chấm nước lèo đậu phộng béo ngậy.</p>
-        <div class="food-where"><span data-zh="推薦：">Gợi ý: </span><a href="https://www.google.com/maps/search/?api=1&query=B%C3%A1nh%20x%C3%A8o%20B%C3%A0%20D%C6%B0%E1%BB%A1ng%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Bà Dưỡng</a></div>
-      </div>
-    </div>
-    <div class="food-card">
-      <div class="ph"><span class="ph-fallback">🍧</span><img loading="lazy" data-single="food_kb" alt="Kem bơ chè Đà Nẵng" src="https://loremflickr.com/480/360/avocado,icecream,dessert" data-cap="Kem bơ &amp; chè" data-cap-zh="酪梨冰 &amp; 甜湯"></div>
-      <div class="food-pad">
-        <h4 data-zh="酪梨冰 &amp; 甜湯">Kem bơ &amp; chè</h4><div class="food-price" data-zh="約2–3.5萬₫">~20.000 – 35.000đ</div>
-        <p data-zh="夏日消暑甜點：綿密酪梨冰、清涼什錦甜湯——小女兒一定愛。">Tráng miệng giải nhiệt ngày hè: kem bơ béo mịn, chè thập cẩm mát lạnh — cô con gái chắc chắn thích.</p>
-        <div class="food-where"><span data-zh="推薦：">Gợi ý: </span><a href="https://www.google.com/maps/search/?api=1&query=Kem%20b%C6%A1%20%C4%90%C3%A0%20N%E1%BA%B5ng" target="_blank">Kem bơ Đà Nẵng</a></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MAP -->
-<section class="mapsec reveal" id="map">
-  <div class="label" data-zh="總覽地圖">Bản đồ tổng quan</div>
-  <h2 data-zh="所有景點<em>盡在一張地圖</em>">Mọi điểm đến <em>trên một bản đồ</em></h2>
-  <p class="lead" data-zh="美溪住宿區位置居中，前往機場、山茶半島、五行山與會安都方便。點下方按鈕在 Google 地圖開啟各景點。">Khu lưu trú Mỹ Khê nằm trung tâm, đi sân bay, Sơn Trà, Ngũ Hành Sơn và Hội An đều thuận tiện. Bấm các nút bên dưới để mở từng nơi trên Google Maps.</p>
-  <div class="map-frame">
-    <iframe loading="lazy" title="Bản đồ Đà Nẵng" referrerpolicy="no-referrer-when-downgrade"
-      src="https://www.google.com/maps?q=My%20Khe%20Beach%20Da%20Nang&z=12&output=embed"></iframe>
-  </div>
-  <div class="map-legend">
-    <a href="https://www.google.com/maps/search/?api=1&query=My%20Khe%20Beach%20Danang" target="_blank" data-zh="🏖️ 美溪">🏖️ Mỹ Khê</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Dragon%20Bridge%20Danang" target="_blank" data-zh="🐉 龍橋">🐉 Cầu Rồng</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Ba%20Na%20Hills" target="_blank" data-zh="🌉 巴拿山">🌉 Bà Nà</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Chua%20Linh%20Ung%20Son%20Tra" target="_blank" data-zh="🛕 靈應寺">🛕 Linh Ứng</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Marble%20Mountains%20Danang" target="_blank" data-zh="🪨 五行山">🪨 Ngũ Hành Sơn</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Hoi%20An%20Ancient%20Town" target="_blank" data-zh="🏮 會安">🏮 Hội An</a>
-    <a href="https://www.google.com/maps/search/?api=1&query=Da%20Nang%20International%20Airport" target="_blank" data-zh="✈️ 機場">✈️ Sân bay</a>
-  </div>
-</section>
-
-<!-- INFO -->
-<section class="info reveal" id="info">
-  <div class="label" style="color:var(--gold-soft)" data-zh="實用資訊">Thông tin hữu ích</div>
-  <h2 data-zh="出發前<em>必看</em>">Cần biết trước <em>khi đi</em></h2>
-  <p class="lead" data-zh="天氣、交通、通訊與緊急電話——統整一處，讓全家安心。">Thời tiết, đi lại, liên lạc và số khẩn cấp — gom lại một chỗ để cả nhà yên tâm.</p>
-  <div class="weather-strip">
-    <span class="wx" data-zh="🌡️ 6月：<b>28–35°C</b>">🌡️ Tháng 6: <b>28–35°C</b></span>
-    <span class="wx" data-zh="☀️ 晴朗、<b>少雨</b>">☀️ Nắng nhiều, <b>ít mưa</b></span>
-    <span class="wx" data-zh="🌊 海面<b>平穩、適合戲水</b>">🌊 Biển <b>êm, đẹp</b> để tắm</span>
-    <span class="wx" data-zh="🧴 中午紫外線<b>強</b>">🧴 Chỉ số UV <b>cao</b> buổi trưa</span>
-  </div>
-  <div class="info-grid">
-    <div class="info-card">
-      <h4 data-zh="🚗 交通">🚗 Di chuyển</h4>
-      <ul>
-        <li><span data-zh="機場 → 美溪">Sân bay → Mỹ Khê</span><span data-zh="約10–15分鐘">~10–15 phút</span></li>
-        <li><span data-zh="市區 Grab/計程車">Grab / taxi trong phố</span><span data-zh="約1.5–6萬₫">~15–60k</span></li>
-        <li><span data-zh="租機車">Thuê xe máy</span><span data-zh="約12–15萬₫/天">~120–150k/ngày</span></li>
-        <li><span data-zh="附司機汽車（往巴拿山/山茶）">Ô tô có tài xế (đi Bà Nà/Sơn Trà)</span><span data-zh="按日租">thuê theo ngày</span></li>
-        <li><span data-zh="峴港 → 會安">Đà Nẵng → Hội An</span><span data-zh="約30公里 · 30–40分鐘">~30 km · 30–40 phút</span></li>
-      </ul>
-    </div>
-    <div class="info-card">
-      <h4 data-zh="📱 通訊與金錢">📱 Liên lạc &amp; tiền</h4>
-      <ul>
-        <li><span data-zh="4G SIM卡（Viettel/Mobi/Vina）">SIM 4G (Viettel/Mobi/Vina)</span><span data-zh="機場購買">mua ở sân bay</span></li>
-        <li><span data-zh="ATM 與換匯">ATM &amp; đổi tiền</span><span data-zh="市中心多">nhiều ở trung tâm</span></li>
-        <li><span data-zh="付款">Thanh toán</span><span data-zh="現金 + QR/卡">tiền mặt + QR/thẻ</span></li>
-        <li><span data-zh="插座">Ổ cắm điện</span><span data-zh="A/C型, 220V">type A/C, 220V</span></li>
-        <li><span data-zh="電話區碼">Mã vùng điện thoại</span><span>0236</span></li>
-      </ul>
-    </div>
-    <div class="info-card sos">
-      <h4 data-zh="🆘 緊急電話">🆘 Số khẩn cấp</h4>
-      <ul>
-        <li><span data-zh="警察">Công an</span><span>113</span></li>
-        <li><span data-zh="消防">Cứu hỏa</span><span>114</span></li>
-        <li><span data-zh="醫療急救">Cấp cứu y tế</span><span>115</span></li>
-        <li><span data-zh="峴港醫院">Bệnh viện Đà Nẵng</span><a href="tel:02363821118">0236 3821 118</a></li>
-        <li><span data-zh="家庭醫院（國際）">BV Gia Đình (quốc tế)</span><a href="tel:02363632111">0236 3632 111</a></li>
-      </ul>
-    </div>
-    <div class="info-card">
-      <h4 data-zh="💡 夏季提醒">💡 Lưu ý mùa hè</h4>
-      <ul>
-        <li><span data-zh="旺季——提早預訂">Mùa cao điểm — đặt sớm</span><span data-zh="房間與門票">phòng &amp; vé</span></li>
-        <li><span data-zh="安全戲水">Tắm biển an toàn</span><span data-zh="依旗幟與浮標">theo cờ &amp; phao</span></li>
-        <li><span data-zh="避開烈日">Tránh nắng</span><span>10h–15h</span></li>
-        <li><span data-zh="攜帶">Mang theo</span><span data-zh="防曬乳、帽子">kem chống nắng, mũ</span></li>
-        <li><span data-zh="寺廟服裝">Trang phục đền/chùa</span><span data-zh="端莊">kín đáo</span></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- COST -->
-<section class="cost reveal" id="cost">
-  <div class="label" data-zh="預估預算">Ngân sách dự kiến</div>
-  <h2 data-zh="<em>3人 · 3晚</em>的花費">Chi phí cho <em>3 người · 3 đêm</em></h2>
-  <p class="lead" data-zh="參考估算，依飯店等級與消費習慣而異。">Ước tính tham khảo, dao động theo hạng khách sạn và thói quen chi tiêu.</p>
-  <div class="cost-table">
-    <div class="cost-row"><span data-zh="🏨 飯店（3晚）">🏨 Khách sạn (3 đêm)</span><span data-zh="450–900萬₫">4,5 – 9 triệu</span></div>
-    <div class="cost-row"><span data-zh="🚡 巴拿山門票（2成人+1）">🚡 Vé Bà Nà (2 NL + 1)</span><span data-zh="約280–320萬₫">~2,8 – 3,2 triệu</span></div>
-    <div class="cost-row"><span data-zh="🪨 五行山（3人）">🪨 Ngũ Hành Sơn (3 người)</span><span data-zh="約10–15萬₫">~0,1 – 0,15 triệu</span></div>
-    <div class="cost-row"><span data-zh="🏮 會安古鎮門票">🏮 Vé phố cổ Hội An</span><span data-zh="約30–50萬₫">~0,3 – 0,5 triệu</span></div>
-    <div class="cost-row"><span data-zh="🍤 餐飲">🍤 Ăn uống</span><span data-zh="250–400萬₫">2,5 – 4 triệu</span></div>
-    <div class="cost-row"><span data-zh="🚖 計程車/Grab/租車">🚖 Taxi / Grab / thuê xe</span><span data-zh="100–200萬₫">1 – 2 triệu</span></div>
-    <div class="cost-row total"><span data-zh="總計">Tổng cộng</span><span data-zh="1,100–1,900萬₫">11 – 19 triệu</span></div>
-  </div>
-  <p style="max-width:760px;margin-top:1.1rem;font-size:.84rem;color:rgba(251,245,234,.6);font-style:italic" data-zh="票價為2026年外地遊客參考價，可能因時段與優惠而變動。出發前請先電話確認。">Giá vé là mức tham khảo cho khách ngoại tỉnh 2026, có thể thay đổi theo thời điểm &amp; khuyến mãi. Nên gọi xác nhận trước khi đi.</p>
-</section>
-
-<!-- TIPS -->
-<section class="tips reveal" id="tips">
-  <div class="label" data-zh="小貼士">Mẹo nhỏ</div>
-  <h2 data-zh="讓旅程<em>更輕鬆</em>">Để chuyến đi <em>nhẹ nhàng hơn</em></h2>
-  <div class="tip-grid">
-    <div class="tip"><div class="ic">🎟️</div><h4 data-zh="提前訂巴拿山票">Đặt vé Bà Nà trước</h4><p data-zh="提早線上購票免排隊，有時更便宜。8點搭纜車較涼爽。">Mua online sớm để tránh xếp hàng, đôi khi rẻ hơn. Lên cáp treo từ 8h cho mát.</p></div>
-    <div class="tip"><div class="ic">⏱️</div><h4 data-zh="最後一天從簡">Ngày cuối gọn gàng</h4><p data-zh="6/21下午退房——上午遊會安，需要可將行李寄櫃台。">21/6 trả phòng chiều — đi Hội An buổi sáng và gửi hành lý ở lễ tân nếu cần.</p></div>
-    <div class="tip"><div class="ic">☀️</div><h4 data-zh="避開中午烈日">Tránh nắng trưa</h4><p data-zh="中午很曬——到泳池休息，把活動集中在清晨與傍晚。">Buổi trưa nắng gắt — nghỉ hồ bơi, dồn hoạt động vào sáng sớm và chiều tối.</p></div>
-    <div class="tip"><div class="ic">🎒</div><h4 data-zh="隨身攜帶">Mang theo</h4><p data-zh="薄外套（巴拿山微涼）、易脫的鞋、防曬乳、帽子與水。">Áo khoác mỏng (Bà Nà se lạnh), giày dễ tháo, kem chống nắng, mũ và nước.</p></div>
-    <div class="tip"><div class="ic">💵</div><h4 data-zh="先問價">Hỏi giá trước</h4><p data-zh="吃海鮮、搭機車計程/三輪車，先講好價以免意外。">Ăn hải sản, đi xe ôm/xích lô nên thống nhất giá trước để khỏi bất ngờ.</p></div>
-    <div class="tip"><div class="ic">📷</div><h4 data-zh="拍照黃金時刻">Giờ vàng chụp ảnh</h4><p data-zh="海邊日出、山茶半島日落、會安夜晚燈籠最美。">Bình minh ở biển, hoàng hôn ở Sơn Trà và tối đèn lồng Hội An là đẹp nhất.</p></div>
-  </div>
-</section>
-
-<!-- CHECKLIST -->
-<section class="checklist reveal" id="checklist">
-  <div class="label" style="color:var(--gold-soft)" data-zh="我的清單">Danh sách của tôi</div>
-  <h2 data-zh="我們想<em>去哪些地方？</em>">Mình muốn <em>đi những đâu?</em></h2>
-  <p class="lead" data-zh="勾選全家想去的地點。選擇會直接存在本機——每次開啟都能看到下一個要去的點。點一行即可標記已去。">Tick vào những nơi cả nhà muốn đi. Lựa chọn được lưu lại ngay trên máy — mỗi lần mở lại trang là thấy ngay điểm tiếp theo cần tới. Bấm vào dòng để đánh dấu đã đi.</p>
-
-  <div class="check-progress-wrap">
-    <div class="check-progress-top"><span data-zh="旅程進度">Tiến độ chuyến đi</span><span id="pct">0%</span></div>
-    <div class="check-bar"><i id="barFill"></i></div>
-    <div class="check-hint" id="countHint">Chưa đánh dấu nơi nào</div>
-  </div>
-
-  <div class="next-up" id="nextUp" style="display:none">
-    <div class="nl" data-zh="⭐ 下一站">⭐ Điểm tiếp theo</div>
-    <div class="nt" id="nextTitle">—</div>
-    <div class="ns" id="nextSub"></div>
-  </div>
-
-  <div class="check-groups" id="groups"></div>
-
-  <div class="check-actions">
-    <button class="btn primary" id="resetBtn" data-zh="↺ 全部重設">↺ Đặt lại tất cả</button>
-    <button class="btn" id="allBtn" data-zh="✓ 全部標記">✓ Đánh dấu hết</button>
-  </div>
-  <p class="check-hint" style="margin-top:1.2rem" data-zh="💡 小撇步：將此檔下載到手機，用 Chrome/Safari 開啟即可長期保存選擇。也可加到主畫面當作 App 使用。">💡 Mẹo: tải file này về máy rồi mở bằng Chrome/Safari trên điện thoại để lưu được lựa chọn lâu dài. Có thể thêm vào màn hình chính như một ứng dụng.</p>
-</section>
+  </section>
+</main>
 
 <footer>
-  <div data-zh="峴港旅程 · <b>2026年6月18→21日</b> · 4天3夜 · 海灘、山林、古鎮與度假的平衡。">Hành trình Đà Nẵng · <b>18 → 21 tháng 6, 2026</b> · 4 ngày 3 đêm · Cân bằng giữa biển, núi, phố cổ và nghỉ dưỡng.</div>
-  <div class="foot-credit" data-zh="✦ 本行程由 <b>Otis</b> 規劃 ✦">✦ Hành trình được lên kế hoạch bởi <b>Otis</b> ✦</div>
-  <div class="foot-src" data-zh="圖片來源：Wikimedia Commons">Ảnh: Wikimedia Commons</div>
+  <div>Otis Couple Roadtrip · <b>Sài Gòn → Phan Thiết → La Gi → Đèo Nước Ngọt → Sài Gòn</b></div>
+  <div class="footer-badge">✦ plan slowly · ride safely · take more photos ✦</div>
 </footer>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <div class="lb-count" id="lbCount"></div>
-  <button class="lb-close" id="lbClose" aria-label="Đóng / 關閉">✕</button>
-  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Ảnh trước / 上一張">‹</button>
-  <img id="lbImg" alt="">
-  <button class="lb-nav lb-next" id="lbNext" aria-label="Ảnh sau / 下一張">›</button>
-  <div class="lb-cap" id="lbCap"></div>
+<button class="fab" id="fab" aria-label="Thêm ngày">＋</button>
+
+<!-- Trip settings modal -->
+<div class="modal-backdrop" id="tripModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="tripModalTitle">
+    <div class="modal-head">
+      <div><h3 id="tripModalTitle">Trip setup</h3><p>Chỉnh thông tin chung. Plan chi tiết vẫn do bro tự nhập.</p></div>
+      <button class="modal-close" data-close-modal="tripModal">✕</button>
+    </div>
+    <div class="modal-grid">
+      <div class="form-field full"><label>Tên chuyến đi</label><input class="field" id="tripTitleInput" placeholder="Coastline Escape" /></div>
+      <div class="form-field full"><label>Mô tả / route</label><textarea class="field" id="tripSubtitleInput" placeholder="Sài Gòn → Phan Thiết → La Gi..."></textarea></div>
+      <div class="form-field"><label>Ngày khởi hành</label><input type="date" class="field" id="tripStartInput" /></div>
+      <div class="form-field"><label>Thời lượng</label><input class="field" id="tripDurationInput" placeholder="3 ngày 2 đêm" /></div>
+      <div class="form-field"><label>Phương tiện</label><input class="field" id="tripTransportInput" placeholder="Xe máy" /></div>
+      <div class="form-field"><label>Đi cùng</label><input class="field" id="tripCompanionsInput" placeholder="2 người" /></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-soft" data-close-modal="tripModal">Hủy</button>
+      <button class="btn btn-primary" id="saveTripSettings">Lưu thay đổi</button>
+    </div>
+  </div>
 </div>
 
-<!-- BACK TO TOP -->
-<button class="totop" id="totop" aria-label="Về đầu trang">↑</button>
+<!-- Day settings modal -->
+<div class="modal-backdrop" id="dayModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="dayModalTitle">
+    <div class="modal-head">
+      <div><h3 id="dayModalTitle">Chỉnh ngày</h3><p>Tên ngày, vibe và ngày cụ thể đều có thể để trống.</p></div>
+      <button class="modal-close" data-close-modal="dayModal">✕</button>
+    </div>
+    <div class="modal-grid">
+      <input type="hidden" id="dayIdInput" />
+      <div class="form-field"><label>Ngày cụ thể</label><input type="date" class="field" id="dayDateInput" /></div>
+      <div class="form-field"><label>Vibe / tag</label><input class="field" id="dayMoodInput" placeholder="Ví dụ: chill biển" /></div>
+      <div class="form-field full"><label>Tiêu đề ngày</label><input class="field" id="dayTitleInput" placeholder="Ví dụ: City foodtour & sunset" /></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-soft" data-close-modal="dayModal">Hủy</button>
+      <button class="btn btn-primary" id="saveDaySettings">Lưu ngày</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">Đã lưu</div>
 
 <script>
-  // progress bar + nav scrolled state + back-to-top
-  const bar=document.getElementById('bar'),nav=document.getElementById('nav'),totop=document.getElementById('totop');
-  function onScroll(){
-    const h=document.documentElement;
-    const p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
-    bar.style.width=p+'%';
-    nav.classList.toggle('scrolled',h.scrollTop>40);
-    totop.classList.toggle('show',h.scrollTop>600);
+(() => {
+  'use strict';
+
+  const STORE_KEY = 'otis_couple_roadtrip_planner_v3';
+  const qs = s => document.querySelector(s);
+  const qsa = s => [...document.querySelectorAll(s)];
+  const uid = prefix => `${prefix}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2,7)}`;
+
+  const defaultState = () => ({
+    trip: {
+      title: 'Coastline Escape',
+      subtitle: 'Sài Gòn → Phan Thiết → La Gi → Đèo Nước Ngọt → Sài Gòn. Một chuyến đi xe máy chỉ cần hai người, biển, vài đoạn đường đẹp và một plan vừa đủ để vẫn còn chỗ cho ngẫu hứng.',
+      startDate: '',
+      duration: '3 ngày 2 đêm',
+      transport: 'Xe máy',
+      companions: '2 người'
+    },
+    days: [1,2,3].map(n => ({ id: uid('day'), title: '', mood: '', date: '', items: [] })),
+    notes: { free:'', stay:'', food:'', photo:'', budget:'', pack:'', couple:'' }
+  });
+
+  let state = loadState();
+  let editingTask = null;
+
+  function loadState(){
+    try{
+      const raw = localStorage.getItem(STORE_KEY);
+      if(!raw) return defaultState();
+      const parsed = JSON.parse(raw);
+      if(!parsed || !Array.isArray(parsed.days)) return defaultState();
+      parsed.trip = { ...defaultState().trip, ...(parsed.trip || {}) };
+      parsed.notes = { ...defaultState().notes, ...(parsed.notes || {}) };
+      parsed.days = parsed.days.map(d => ({ id:d.id || uid('day'), title:d.title || '', mood:d.mood || '', date:d.date || '', items:Array.isArray(d.items) ? d.items : [] }));
+      return parsed;
+    }catch(e){ return defaultState(); }
   }
-  addEventListener('scroll',onScroll,{passive:true});onScroll();
-  totop.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 
-  // ---------- i18n: Tiếng Việt <-> 中文（繁體） ----------
-  const LANG_KEY='danang_lang_v1';
-  let currentLang='vi';
-  const TITLES={vi:"Otis Plan Trip · Đà Nẵng · Hành trình gia đình 18–21.06.2026",zh:"Otis Plan Trip · 峴港 · 家庭旅行 18–21.06.2026"};
-  const HINTS={
-    none:{vi:'Chưa đánh dấu nơi nào',zh:'尚未標記任何地點'},
-    all:{vi:'🎉 Đã đi hết tất cả các điểm!',zh:'🎉 所有地點都去過了！'},
-    cddone:{vi:'🎉 Chúc cả nhà chuyến đi vui vẻ!',zh:'🎉 祝全家旅途愉快！'}
-  };
-  const i18nEls=[...document.querySelectorAll('[data-zh]')];
-  i18nEls.forEach(el=>{el.dataset.vi=el.innerHTML;});
-  function setLang(lang){
-    currentLang=(lang==='zh')?'zh':'vi';
-    document.documentElement.lang=(currentLang==='zh')?'zh-Hant':'vi';
-    i18nEls.forEach(el=>{el.innerHTML=(currentLang==='zh')?el.dataset.zh:el.dataset.vi;});
-    document.title=TITLES[currentLang]||document.title;
-    document.querySelectorAll('#langSwitch button').forEach(b=>b.classList.toggle('active',b.dataset.lang===currentLang));
-    if(typeof buildGroups==='function'){buildGroups();render();}
-    document.querySelectorAll('.place.open .place-body').forEach(b=>{b.style.maxHeight=b.scrollHeight+'px';});
-    try{localStorage.setItem(LANG_KEY,currentLang);}catch(e){}
+  function saveState(show=false){
+    try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
+    catch(e){ console.warn('Không thể lưu localStorage', e); }
+    if(show) toast('Đã lưu trên thiết bị này');
   }
-  document.querySelectorAll('#langSwitch button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
 
-  // ---------- ẢNH THẬT TỪ WIKIMEDIA COMMONS (chỉ cảnh quan, đúng địa điểm) ----------
-  const PHOTOS={mykhe:["https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/My_Khe_Beach_Da_Nang.jpg/1280px-My_Khe_Beach_Da_Nang.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/My_Khe_Beach_5.jpg/1280px-My_Khe_Beach_5.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/My_Khe_Beach_14.jpg/1280px-My_Khe_Beach_14.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/My_Khe_Beach_18.jpg/1280px-My_Khe_Beach_18.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/My_Khe_Beach_21.jpg/1280px-My_Khe_Beach_21.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/My_Khe_Beach_seen_from_the_Son_Tra_Mountain.jpg/1280px-My_Khe_Beach_seen_from_the_Son_Tra_Mountain.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Boats_on_My_Khe_Beach_1.jpg/1280px-Boats_on_My_Khe_Beach_1.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Boats_on_My_Khe_Beach_3.jpg/1280px-Boats_on_My_Khe_Beach_3.jpg"],
-  dragon:["https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/C%E1%BA%A7u_R%E1%BB%93ng.jpg/1280px-C%E1%BA%A7u_R%E1%BB%93ng.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Dragon_Bridge_5.jpg/1280px-Dragon_Bridge_5.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Dragon_Bridge_at_night_%28Danang%29_-_DSC02094.JPG/1280px-Dragon_Bridge_at_night_%28Danang%29_-_DSC02094.JPG","https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Dragon_Bridge_at_night_%28Danang%29_-_DSC02098.JPG/1280px-Dragon_Bridge_at_night_%28Danang%29_-_DSC02098.JPG","https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Dragon_Bridge_at_night_%28Danang%29_-_DSC02093.JPG/1280px-Dragon_Bridge_at_night_%28Danang%29_-_DSC02093.JPG","https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Da_nang_dragon_bridge.jpg/1280px-Da_nang_dragon_bridge.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Dragon_Bridge_%28Danang%29_20190919.jpg/1280px-Dragon_Bridge_%28Danang%29_20190919.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/2020_Da_Nang_Dragon_Bridge_IMG_3897.jpg/1280px-2020_Da_Nang_Dragon_Bridge_IMG_3897.jpg"],
-  bana:["https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/The_Golden_Bridge%2C_Ba_Na_Hills%2C_Vietnam.jpg/1280px-The_Golden_Bridge%2C_Ba_Na_Hills%2C_Vietnam.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Vietnam%2C_Ba_Na_Hill%2C_Golden_Bridge_-_Laslovarga_%282%29.jpg/1280px-Vietnam%2C_Ba_Na_Hill%2C_Golden_Bridge_-_Laslovarga_%282%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Vietnam%2C_Ba_Na_Hill%2C_Golden_Bridge_-_Laslovarga_%281%29.jpg/1280px-Vietnam%2C_Ba_Na_Hill%2C_Golden_Bridge_-_Laslovarga_%281%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Golden_Bridge_at_Ba_Na_Hills_20250718.jpg/1280px-Golden_Bridge_at_Ba_Na_Hills_20250718.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Sun_World_Ba_Na_Hills_aerial_overview_sunset_Da_Nang_Vietnam.jpg/1280px-Sun_World_Ba_Na_Hills_aerial_overview_sunset_Da_Nang_Vietnam.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Cable_Car_at_Sun_World_Ba_Na_Hills_in_the_sunset.jpg/1280px-Cable_Car_at_Sun_World_Ba_Na_Hills_in_the_sunset.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Ba_Na_Hills_in_the_mist.jpg/1280px-Ba_Na_Hills_in_the_mist.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/B%C3%A0_N%C3%A0_Hills_mountains_%2830594984477%29.jpg/1280px-B%C3%A0_N%C3%A0_Hills_mountains_%2830594984477%29.jpg"],
-  linhung:["https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Son-Tra-Peninsula_Da-Nang_Vietnam_Linh-Ung-Pagoda-01.jpg/1280px-Son-Tra-Peninsula_Da-Nang_Vietnam_Linh-Ung-Pagoda-01.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Son-Tra-Peninsula_Da-Nang_Vietnam_Linh-Ung-Pagoda-02.jpg/1280px-Son-Tra-Peninsula_Da-Nang_Vietnam_Linh-Ung-Pagoda-02.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Son-Tra-Peninsula_Da-Nang_Vietnam_Linh-Ung-Pagoda-03.jpg/1280px-Son-Tra-Peninsula_Da-Nang_Vietnam_Linh-Ung-Pagoda-03.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Linh_Ung_Pagoda_5.jpg/1280px-Linh_Ung_Pagoda_5.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Linh_Ung_Pagoda_6.jpg/1280px-Linh_Ung_Pagoda_6.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Linh_Ung_Pagoda_8.jpg/1280px-Linh_Ung_Pagoda_8.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2024-12-07_Linh_Ung_Pagoda_1.jpg/1280px-2024-12-07_Linh_Ung_Pagoda_1.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/2024-12-07_Linh_Ung_Pagoda_2.jpg/1280px-2024-12-07_Linh_Ung_Pagoda_2.jpg"],
-  banco:["https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Chessboard_statue_in_Ban_Co_peak.jpg/1280px-Chessboard_statue_in_Ban_Co_peak.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Da_Nang_and_the_Son_Tra_Peninsula.jpg/1280px-Da_Nang_and_the_Son_Tra_Peninsula.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Son_Tra_Peninsula.jpg/1280px-Son_Tra_Peninsula.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Ho%C3%A0ng_Sa_Road%2C_Son_Tra_Peninsula.jpg/1280px-Ho%C3%A0ng_Sa_Road%2C_Son_Tra_Peninsula.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/My_Khe_Beach_seen_from_the_Son_Tra_Mountain.jpg/1280px-My_Khe_Beach_seen_from_the_Son_Tra_Mountain.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/A_Cityscape_Across_The_Bay_%28148479565%29.jpeg/1280px-A_Cityscape_Across_The_Bay_%28148479565%29.jpeg","https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Son-Tra-Peninsula_Da-Nang_Vietnam_Linh-Ung-Pagoda-01.jpg/1280px-Son-Tra-Peninsula_Da-Nang_Vietnam_Linh-Ung-Pagoda-01.jpg"],
-  marble:["https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Marble_Mountains_View_3.JPG/1280px-Marble_Mountains_View_3.JPG","https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ngu_Hanh_Son_Pagoda.jpg/1280px-Ngu_Hanh_Son_Pagoda.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Ngu_Hanh_Son_%2852672644377%29.jpg/1280px-Ngu_Hanh_Son_%2852672644377%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Ngu_Hanh_Son_%2852673158751%29.jpg/1280px-Ngu_Hanh_Son_%2852673158751%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Marble_Mountains_-_Ngu_Hanh_Son_District_-_South_of_Da_Nang_City_-_Vietnam_%283%29.jpg/1280px-Marble_Mountains_-_Ngu_Hanh_Son_District_-_South_of_Da_Nang_City_-_Vietnam_%283%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Stone_sculpture%2C_Ngu_Hanh_Son%2C_Da_Nang_%2849355899152%29.jpg/1280px-Stone_sculpture%2C_Ngu_Hanh_Son%2C_Da_Nang_%2849355899152%29.jpg","https://upload.wikimedia.org/wikipedia/commons/b/bb/Quan_Ngu_Hanh_Son.jpg"],
-  asiapark:["https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Sun_World_Asia_Park%2C_Da_Nang_%2849355235398%29.jpg/1280px-Sun_World_Asia_Park%2C_Da_Nang_%2849355235398%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Sun_World_Asia_Park%2C_Da_Nang_%2849356303773%29.jpg/1280px-Sun_World_Asia_Park%2C_Da_Nang_%2849356303773%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Sun_World_Asia_Park%2C_Da_Nang_%2849357434063%29.jpg/1280px-Sun_World_Asia_Park%2C_Da_Nang_%2849357434063%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Sun_World_Asia_Park%2C_Da_Nang_%2849357438253%29.jpg/1280px-Sun_World_Asia_Park%2C_Da_Nang_%2849357438253%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Sun_World_Asia_Park%2C_Da_Nang_%2849358003906%29.jpg/1280px-Sun_World_Asia_Park%2C_Da_Nang_%2849358003906%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Sun_World_Asia_Park%2C_Da_Nang_%2849358210737%29.jpg/1280px-Sun_World_Asia_Park%2C_Da_Nang_%2849358210737%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sun_World_Asia_Park%2C_Da_Nang_%2849374135522%29.jpg/1280px-Sun_World_Asia_Park%2C_Da_Nang_%2849374135522%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Sun_Wheel_by_day.jpg/1280px-Sun_Wheel_by_day.jpg"],
-  hoian:["https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-01.jpg/1280px-H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-01.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-02.jpg/1280px-H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-02.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-05.jpg/1280px-H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-05.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-06.jpg/1280px-H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-06.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-07.jpg/1280px-H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-07.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-08.jpg/1280px-H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-08.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-10.jpg/1280px-H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-10.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-12.jpg/1280px-H%E1%BB%99i_An%2C_Ancient_Town%2C_2020-01_CN-12.jpg"],
-  miquang:["https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/M%C3%AC_Qu%E1%BA%A3ng%2C_Da_Nang%2C_Vietnam.jpg/1280px-M%C3%AC_Qu%E1%BA%A3ng%2C_Da_Nang%2C_Vietnam.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Mi_Quang_at_Ngoc_Mai_%28with_noodles_uncovered%29.jpg/1280px-Mi_Quang_at_Ngoc_Mai_%28with_noodles_uncovered%29.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Mi_Quang_-_Quan_Hat_Mi_Quang%2C_Cao_Lau_VND2000.jpg/1280px-Mi_Quang_-_Quan_Hat_Mi_Quang%2C_Cao_Lau_VND2000.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Cao_Lau_Hoi_An.JPG/1280px-Cao_Lau_Hoi_An.JPG","https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Cao_l%E1%BA%A7u_in_Hoi_An.jpg/1280px-Cao_l%E1%BA%A7u_in_Hoi_An.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/B%C3%A1nh_tr%C3%A1ng_cu%E1%BB%91n_th%E1%BB%8Bt_heo.jpg/1280px-B%C3%A1nh_tr%C3%A1ng_cu%E1%BB%91n_th%E1%BB%8Bt_heo.jpg"]};
-  const SINGLES={hotel1:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/My_Khe_Beach_Danang_Coastline.jpg/1280px-My_Khe_Beach_Danang_Coastline.jpg",hotel2:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Han_River_in_Da_Nang_at_sunrise.jpg/1280px-Han_River_in_Da_Nang_at_sunrise.jpg",hotel3:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/My_Khe_Beach_seen_from_the_Son_Tra_Mountain.jpg/1280px-My_Khe_Beach_seen_from_the_Son_Tra_Mountain.jpg",hero:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/My_Khe_Beach_5.jpg/1280px-My_Khe_Beach_5.jpg",food_mq:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/M%C3%AC_Qu%E1%BA%A3ng%2C_Da_Nang%2C_Vietnam.jpg/1280px-M%C3%AC_Qu%E1%BA%A3ng%2C_Da_Nang%2C_Vietnam.jpg",food_bcc:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Bun_cha_ca.jpg/1280px-Bun_cha_ca.jpg",food_btc:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/B%C3%A1nh_tr%C3%A1ng_cu%E1%BB%91n_th%E1%BB%8Bt_heo_%2818521%29.jpg/1280px-B%C3%A1nh_tr%C3%A1ng_cu%E1%BB%91n_th%E1%BB%8Bt_heo_%2818521%29.jpg",food_sf:"https://upload.wikimedia.org/wikipedia/commons/f/fc/Steamed_mussels._Vietnamse_style_-_Flickr_-_morning_rumtea.jpg",food_bx:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/B%C3%A1nh_x%C3%A8o_%2815826153307%29.jpg/1280px-B%C3%A1nh_x%C3%A8o_%2815826153307%29.jpg",food_kb:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Avocado_Ice_Cream%2C_Jun_2024.jpg/1280px-Avocado_Ice_Cream%2C_Jun_2024.jpg"};
-
-  // ---------- GALLERIES (nhiều ảnh / 多張照片) ----------
-  const GAL=[];               // mỗi phần tử = mảng {src,cap,capZh}
-  // Wikimedia chỉ phục vụ một số kích thước cố định (1280px, 1920px...); kích thước tùy ý lỗi 400.
-  // Hiển thị dùng 1280px (gốc API, chắc chắn có); lightbox nâng lên 1920px (2K) cho sắc nét.
-  function sizeUrl(u,w){return (typeof u==='string')?u.replace(/\/\d+px-/,'/'+w+'px-'):u;}
-  // Ảnh thật (cảnh quan) cho các "lựa chọn khác"
-  const ALT_IMG={cruise:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Bright_Da_Nang_skyline_%28Unsplash%29.jpg/1280px-Bright_Da_Nang_skyline_%28Unsplash%29.jpg",swing:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/S%C3%B4ng_H%C3%A0n.jpg/1280px-S%C3%B4ng_H%C3%A0n.jpg",helio:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Food_court_at_Helio_Center%2C_Da_Nang_%2849358206972%29.jpg/1280px-Food_court_at_Helio_Center%2C_Da_Nang_%2849358206972%29.jpg",thuanphuoc:"https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/2024-12-08_Thuan_Phuoc_Bridge_in_Da_Nang.jpg/1280px-2024-12-08_Thuan_Phuoc_Bridge_in_Da_Nang.jpg",thantai:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/CVKSN_N%C3%BAi_Th%E1%BA%A7n_T%C3%A0i.jpg/1280px-CVKSN_N%C3%BAi_Th%E1%BA%A7n_T%C3%A0i.jpg",haivan:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/%C4%90%C3%A0_N%E1%BA%B5ng%2C_H%E1%BA%A3i_V%C3%A2n_Pass%2C_2020-01_CN-01.jpg/1280px-%C4%90%C3%A0_N%E1%BA%B5ng%2C_H%E1%BA%A3i_V%C3%A2n_Pass%2C_2020-01_CN-01.jpg",culaocham:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Cu_Lao_Cham_Marine_Park%2C_Vietnam_%282594704519%29.jpg/1280px-Cu_Lao_Cham_Marine_Park%2C_Vietnam_%282594704519%29.jpg",cham:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/0040323_Nandi%2C_Cham_Hindu_artwork%2C_Museum_of_Cham_Sculpture%2C_Da_Nang_Vietnam.jpg/1280px-0040323_Nandi%2C_Cham_Hindu_artwork%2C_Museum_of_Cham_Sculpture%2C_Da_Nang_Vietnam.jpg",nonnuoc:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Non_Nuoc_Pagoda_Da_Nang_4.jpg/1280px-Non_Nuoc_Pagoda_Da_Nang_4.jpg",lovebridge:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Love_Lock_Bridge_Da_Nang_05.19.jpg/1280px-Love_Lock_Bridge_Da_Nang_05.19.jpg",anbang:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/2024-11-23_An_Bang_Beach_in_Hoi_An_in_November.jpg/1280px-2024-11-23_An_Bang_Beach_in_Hoi_An_in_November.jpg",traque:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Tra_Que_Village%2C_Hoi_An_%2846404317941%29.jpg/1280px-Tra_Que_Village%2C_Hoi_An_%2846404317941%29.jpg",chuacau:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Japanese_Covered_Bridge_in_Hoi_An_%2826312976905%29.jpg/1280px-Japanese_Covered_Bridge_in_Hoi_An_%2826312976905%29.jpg",baibut:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Chua_Linh_Ung_Bai_But_DN.jpg/1280px-Chua_Linh_Ung_Bai_But_DN.jpg",cayda:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Road_on_the_Son_Tra_Mountain.jpg/1280px-Road_on_the_Son_Tra_Mountain.jpg",apec:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Bright_Da_Nang_skyline_%28Unsplash%29.jpg/1280px-Bright_Da_Nang_skyline_%28Unsplash%29.jpg"};
-  function recalcOpen(el){const card=el.closest&&el.closest('.place.open');if(card){const b=card.querySelector('.place-body');b.style.maxHeight=b.scrollHeight+'px';}}
-  function onImgErr(im,isThumb){im.addEventListener('error',()=>{if(isThumb)im.style.display='none';else im.parentElement.classList.add('noimg');});}
-
-  // Đặt ảnh đơn (hero, khách sạn, món ăn) bằng ảnh thật
-  document.querySelectorAll('img[data-single]').forEach(im=>{const u=SINGLES[im.dataset.single]; if(u)im.src=u;});
-
-  // Mỗi điểm đến trong lịch trình -> bộ sưu tập ảnh thật của vùng đó
-  document.querySelectorAll('.place-inner .ph[data-album]').forEach(ph=>{
-    const album=PHOTOS[ph.dataset.album]||[];
-    const feat=ph.querySelector('img'); if(!feat||!album.length) return;
-    const cap=feat.dataset.cap||'', capZh=feat.dataset.capZh||'';
-    const gi=GAL.length, group=[];
-    feat.src=album[0]; feat.dataset.g=gi; feat.dataset.i='0';
-    onImgErr(feat,false); feat.addEventListener('load',()=>recalcOpen(feat));
-    group.push({src:album[0],cap,capZh});
-    const strip=document.createElement('div'); strip.className='gallery-strip';
-    for(let k=1;k<album.length;k++){
-      const im=document.createElement('img');
-      im.className='gthumb'; im.loading='lazy'; im.alt=cap; im.src=album[k];
-      im.dataset.cap=cap; im.dataset.capZh=capZh; im.dataset.g=gi; im.dataset.i=String(k);
-      onImgErr(im,true); im.addEventListener('load',()=>recalcOpen(strip));
-      strip.appendChild(im); group.push({src:album[k],cap,capZh});
-    }
-    ph.parentNode.insertBefore(strip, ph.nextSibling);
-    const badge=document.createElement('span'); badge.className='gal-badge'; badge.textContent='📷 '+group.length;
-    ph.appendChild(badge);
-    GAL.push(group);
-  });
-
-  // Ảnh thật cho các "lựa chọn khác" (nếu tìm được)
-  document.querySelectorAll('.ph[data-altimg]').forEach(ph=>{
-    const u=ALT_IMG[ph.dataset.altimg]; if(!u) return;
-    const card=ph.closest('.alt'), nameEl=card&&card.querySelector('.alt-name');
-    const cap=nameEl?nameEl.textContent.replace(/★.*$/,'').trim():'';
-    const im=document.createElement('img');
-    im.loading='lazy'; im.alt=cap; im.src=u; im.dataset.cap=cap;
-    onImgErr(im,false); ph.insertBefore(im, ph.firstChild);
-  });
-
-  // Ảnh đơn (khách sạn, món ăn, lựa chọn khác) cũng mở được lightbox
-  document.querySelectorAll('.ph img:not([data-g])').forEach(im=>{
-    const gi=GAL.length;
-    GAL.push([{src:im.src,cap:im.dataset.cap||'',capZh:im.dataset.capZh||''}]);
-    im.dataset.g=gi; im.dataset.i='0';
-    onImgErr(im,false);
-  });
-
-  // ---------- LIGHTBOX (có chuyển ảnh) ----------
-  const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap'),
-        lbCount=document.getElementById('lbCount'),lbPrev=document.getElementById('lbPrev'),lbNext=document.getElementById('lbNext'),lbClose=document.getElementById('lbClose');
-  let curGroup=null,curIdx=0;
-  function showLB(){
-    const it=curGroup[curIdx];
-    lbImg.src=sizeUrl(it.src,1920);
-    lbCap.textContent=(currentLang==='zh')?(it.capZh||it.cap||''):(it.cap||'');
-    const multi=curGroup.length>1;
-    lbCount.textContent=multi?((curIdx+1)+' / '+curGroup.length):'';
-    lbPrev.style.display=lbNext.style.display=multi?'grid':'none';
+  function toast(text){
+    const el = qs('#toast');
+    el.textContent = text;
+    el.classList.add('show');
+    clearTimeout(toast.timer);
+    toast.timer = setTimeout(() => el.classList.remove('show'), 1800);
   }
-  function openLB(g,i){curGroup=GAL[g];curIdx=i||0;showLB();lb.classList.add('show');}
-  function closeLB(){lb.classList.remove('show');lbImg.src='';curGroup=null;}
-  function navLB(d){if(!curGroup)return;curIdx=(curIdx+d+curGroup.length)%curGroup.length;showLB();}
-  document.querySelectorAll('img[data-g]').forEach(im=>{
-    im.addEventListener('click',e=>{e.stopPropagation();openLB(+im.dataset.g,+im.dataset.i);});
-  });
-  lbPrev.addEventListener('click',e=>{e.stopPropagation();navLB(-1);});
-  lbNext.addEventListener('click',e=>{e.stopPropagation();navLB(1);});
-  lbClose.addEventListener('click',e=>{e.stopPropagation();closeLB();});
-  lbImg.addEventListener('click',e=>e.stopPropagation());
-  lb.addEventListener('click',closeLB);
-  addEventListener('keydown',e=>{
-    if(!lb.classList.contains('show'))return;
-    if(e.key==='Escape')closeLB();
-    else if(e.key==='ArrowLeft')navLB(-1);
-    else if(e.key==='ArrowRight')navLB(1);
-  });
-  // vuốt trên điện thoại để chuyển ảnh
-  let tsx=0;
-  lbImg.addEventListener('touchstart',e=>{tsx=e.changedTouches[0].clientX;},{passive:true});
-  lbImg.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tsx;if(Math.abs(dx)>40)navLB(dx<0?1:-1);},{passive:true});
 
-  // expandable places
-  document.querySelectorAll('.place-head').forEach(head=>{
-    head.addEventListener('click',()=>{
-      const card=head.parentElement,body=card.querySelector('.place-body');
-      if(card.classList.contains('open')){card.classList.remove('open');body.style.maxHeight=null;}
-      else{card.classList.add('open');body.style.maxHeight=body.scrollHeight+'px';}
+  function escapeHTML(str=''){
+    return String(str).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+  }
+
+  function formatDate(dateStr){
+    if(!dateStr) return '';
+    const d = new Date(dateStr + 'T00:00:00');
+    if(Number.isNaN(d.getTime())) return '';
+    return new Intl.DateTimeFormat('vi-VN',{weekday:'short',day:'2-digit',month:'2-digit',year:'numeric'}).format(d);
+  }
+
+  function deriveDate(index){
+    const day = state.days[index];
+    if(day.date) return day.date;
+    if(!state.trip.startDate) return '';
+    const d = new Date(state.trip.startDate + 'T00:00:00');
+    if(Number.isNaN(d.getTime())) return '';
+    d.setDate(d.getDate() + index);
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  }
+
+  function getStats(){
+    const tasks = state.days.flatMap(d => d.items || []);
+    const done = tasks.filter(t => t.done).length;
+    return { tasks:tasks.length, done, pct:tasks.length ? Math.round(done/tasks.length*100) : 0 };
+  }
+
+  function renderAll(){
+    renderTrip();
+    renderDays();
+    renderStats();
+    renderNotes();
+  }
+
+  function renderTrip(){
+    const t = state.trip;
+    document.title = `Otis Roadtrip · ${t.title || 'Couple Trip'}`;
+    const h1 = qs('.hero h1');
+    const safeTitle = escapeHTML(t.title || 'Coastline Escape');
+    const parts = safeTitle.split(/\s+/);
+    if(parts.length > 1){
+      const last = parts.pop();
+      h1.innerHTML = `${parts.join(' ')}<em>${last}${last.endsWith('.')?'':'.'}</em>`;
+    }else h1.innerHTML = `${safeTitle}<em>Roadtrip.</em>`;
+    qs('#heroSubtitle').textContent = t.subtitle || '';
+    qs('#metaTransport').textContent = t.transport || '—';
+    qs('#metaCompanions').textContent = t.companions || '—';
+    qs('#metaDuration').textContent = t.duration || '—';
+    qs('#metaDate').textContent = t.startDate ? formatDate(t.startDate).replace(/^\w+,\s*/,'') : 'Chưa chọn ngày';
+    qs('#overviewDate').textContent = t.startDate ? new Intl.DateTimeFormat('vi-VN',{day:'2-digit',month:'2-digit'}).format(new Date(t.startDate+'T00:00:00')) : 'Chưa chọn';
+  }
+
+  function renderStats(){
+    const {tasks,done,pct} = getStats();
+    qs('#statDays').textContent = state.days.length;
+    qs('#statTasks').textContent = tasks;
+    qs('#statDone').textContent = done;
+    qs('#statPercent').textContent = pct + '%';
+    qs('#summaryText').textContent = `${done} / ${tasks} done`;
+    qs('#summaryFill').style.width = pct + '%';
+    qs('#progressRing').style.background = `conic-gradient(var(--coral) ${pct*3.6}deg,rgba(255,255,255,.11) 0deg)`;
+  }
+
+  function dayLabel(day,index){
+    return day.title.trim() || `Ngày ${index+1}`;
+  }
+
+  function taskTypeLabel(type){
+    return ({move:'Di chuyển',eat:'Ăn uống',stay:'Nghỉ',photo:'Check-in',play:'Đi chơi',other:'Khác'})[type] || 'Khác';
+  }
+
+  function renderDays(){
+    const wrap = qs('#days');
+    wrap.innerHTML = '';
+
+    state.days.forEach((day,index) => {
+      const total = day.items.length;
+      const done = day.items.filter(i => i.done).length;
+      const date = deriveDate(index);
+      const card = document.createElement('article');
+      card.className = 'day-card';
+      card.dataset.dayId = day.id;
+
+      card.innerHTML = `
+        <div class="day-head">
+          <div class="day-index"><div><span>${String(index+1).padStart(2,'0')}</span><small>day</small></div></div>
+          <div class="day-title-wrap">
+            <h3>${escapeHTML(dayLabel(day,index))}</h3>
+            <p>
+              <span>${date ? '📅 '+escapeHTML(formatDate(date)) : '📅 Chưa chọn ngày'}</span>
+              ${day.mood ? `<span class="day-meta-tag">✦ ${escapeHTML(day.mood)}</span>` : ''}
+            </p>
+          </div>
+          <div class="day-actions">
+            <button class="icon-btn" data-action="edit-day" title="Chỉnh ngày">✎</button>
+            <button class="icon-btn danger" data-action="delete-day" title="Xóa ngày">⌫</button>
+          </div>
+        </div>
+        <div class="day-body">
+          <div class="task-form" id="form_${day.id}">
+            <div class="form-grid">
+              <div class="form-field"><label>Thời gian</label><input class="field f-time" placeholder="08:30–09:30"></div>
+              <div class="form-field"><label>Plan / hoạt động</label><input class="field f-title" placeholder="Nhập hoạt động..."></div>
+              <div class="form-field place-field"><label>Địa điểm</label><input class="field f-place" placeholder="Tên quán / địa điểm..."></div>
+              <div class="form-field"><label>Loại plan</label>
+                <select class="field f-type">
+                  <option value="move">Di chuyển</option><option value="eat">Ăn uống</option><option value="stay">Nghỉ</option><option value="photo">Check-in</option><option value="play">Đi chơi</option><option value="other">Khác</option>
+                </select>
+              </div>
+              <div class="form-field full"><label>Ghi chú</label><textarea class="field f-notes" placeholder="Điều cần nhớ, order món gì, giờ mở cửa, outfit, góc chụp..."></textarea></div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-soft" data-action="cancel-task">Hủy</button>
+              <button class="btn btn-primary" data-action="save-task">Lưu plan</button>
+            </div>
+          </div>
+
+          ${total === 0 ? `
+            <div class="empty-day">
+              <div class="empty-visual">＋</div>
+              <strong>Ngày này chưa có plan nào.</strong>
+              <p>Thêm từng hoạt động rồi tick khi hoàn thành. Bro muốn lên bao nhiêu item cũng được.</p>
+              <button class="btn btn-soft" data-action="add-task">＋ Thêm plan đầu tiên</button>
+            </div>` : `<div class="task-list">${day.items.map(item => taskHTML(item)).join('')}</div>`}
+
+          <div class="day-footer">
+            <div class="day-progress">Tiến độ ngày: <b>${done}/${total}</b>${total ? ` · ${Math.round(done/total*100)}%` : ''}</div>
+            ${total ? '<button class="btn btn-soft" data-action="add-task">＋ Thêm plan</button>' : ''}
+          </div>
+        </div>`;
+      wrap.appendChild(card);
     });
-  });
 
-  // reveal khi cuộn — dùng scroll listener (bền, không phụ thuộc IntersectionObserver,
-  // luôn hiện nội dung kể cả khi IO trục trặc trên một số trình duyệt mobile)
-  const revealEls=[...document.querySelectorAll('.reveal')];
-  function checkReveal(){
-    const vh=window.innerHeight||document.documentElement.clientHeight;
-    for(let i=revealEls.length-1;i>=0;i--){
-      const el=revealEls[i];
-      if(el.getBoundingClientRect().top < vh*0.9){ el.classList.add('in'); revealEls.splice(i,1); }
-    }
+    bindDayEvents();
   }
-  addEventListener('scroll',checkReveal,{passive:true});
-  addEventListener('resize',checkReveal,{passive:true});
-  addEventListener('load',checkReveal);
-  checkReveal();
-  // an toàn tuyệt đối: nếu vì lý do nào đó còn sót, hiện hết sau 2.5s
-  setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')),2500);
 
-  // countdown to 18/06/2026
-  const target=new Date(2026,5,18,18,0,0).getTime();
-  const cdD=document.getElementById('cd-d'),cdH=document.getElementById('cd-h'),cdM=document.getElementById('cd-m'),cdS=document.getElementById('cd-s'),cdWrap=document.getElementById('countdown');
-  function tick(){
-    const diff=target-Date.now();
-    if(diff<=0){cdWrap.innerHTML='<div class="cd-done">'+HINTS.cddone[currentLang]+'</div>';return;}
-    const d=Math.floor(diff/86400000),h=Math.floor(diff/3600000)%24,m=Math.floor(diff/60000)%60,s=Math.floor(diff/1000)%60;
-    cdD.textContent=d;cdH.textContent=String(h).padStart(2,'0');cdM.textContent=String(m).padStart(2,'0');cdS.textContent=String(s).padStart(2,'0');
+  function taskHTML(item){
+    return `<div class="task ${item.done ? 'done':''}" data-task-id="${item.id}">
+      <button class="task-check" data-action="toggle-task" aria-label="Đánh dấu hoàn thành"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></button>
+      <div class="task-time">${escapeHTML(item.time || '—')}</div>
+      <div class="task-main">
+        <div class="task-title">${escapeHTML(item.title || 'Plan chưa đặt tên')}</div>
+        <div class="task-meta">
+          <span>${escapeHTML(taskTypeLabel(item.type))}</span>
+          ${item.place ? `<span>📍 ${escapeHTML(item.place)}</span>` : ''}
+        </div>
+        ${item.notes ? `<div class="task-notes">${escapeHTML(item.notes)}</div>` : ''}
+      </div>
+      <div class="task-actions">
+        <button class="icon-btn" data-action="up-task" title="Đưa lên">↑</button>
+        <button class="icon-btn" data-action="down-task" title="Đưa xuống">↓</button>
+        <button class="icon-btn" data-action="edit-task" title="Sửa">✎</button>
+        <button class="icon-btn danger" data-action="delete-task" title="Xóa">⌫</button>
+      </div>
+    </div>`;
   }
-  tick();setInterval(tick,1000);
 
-  // ---------- CHECKLIST DATA ----------
-  const DATA=[
-    {day:'18/6 · Thứ Năm', dayZh:'6/18 · 週四', items:[
-      {id:'d18-beach', t:'Dạo biển Mỹ Khê & ăn hải sản', tz:'漫步美溪海灘 & 吃海鮮', s:'Tối · cát mịn, mát mẻ', sz:'晚上 · 細沙、涼爽'},
-      {id:'d18-bridge', t:'Cầu Rồng & Cầu Tình Yêu', tz:'龍橋 & 愛情橋', s:'~21h · check-in đêm', sz:'約21:00 · 夜間打卡'},
-      {id:'d18-cruise', t:'Du thuyền sông Hàn', tz:'韓江遊船', s:'Tối · lựa chọn thêm', sz:'晚上 · 其他選擇'},
-      {id:'d18-swing', t:'Cầu quay Sông Hàn', tz:'韓江旋轉橋', s:'Khuya · lựa chọn thêm', sz:'深夜 · 其他選擇'},
-      {id:'d18-helio', t:'Chợ đêm & Helio Center', tz:'Helio 夜市與中心', s:'Tối · lựa chọn thêm', sz:'晚上 · 其他選擇'},
-      {id:'d18-anthuong', t:'Phố đêm An Thượng', tz:'An Thượng 夜街', s:'Tối · lựa chọn thêm', sz:'晚上 · 其他選擇'},
-      {id:'d18-apec', t:'Công viên APEC', tz:'APEC 公園', s:'Tối · lựa chọn thêm', sz:'晚上 · 其他選擇'},
-      {id:'d18-thuanphuoc', t:'Cầu Thuận Phước', tz:'順福橋', s:'Tối · lựa chọn thêm', sz:'晚上 · 其他選擇'},
-    ]},
-    {day:'19/6 · Thứ Sáu', dayZh:'6/19 · 週五', items:[
-      {id:'d19-bana', t:'Bà Nà Hills (nguyên ngày)', tz:'巴拿山（一整天）', s:'Cầu Vàng, Làng Pháp, Fantasy Park', sz:'黃金橋、法國村、Fantasy Park'},
-      {id:'d19-firebridge', t:'Cầu Rồng phun lửa', tz:'龍橋噴火', s:'~21h · tối thứ Sáu có', sz:'約21:00 · 週五晚有'},
-      {id:'d19-thantai', t:'Suối khoáng Núi Thần Tài', tz:'神財山溫泉公園', s:'Cả ngày · lựa chọn thêm', sz:'整天 · 其他選擇'},
-      {id:'d19-mikazuki', t:'Mikazuki Water Park 365', tz:'Mikazuki 水樂園', s:'Cả ngày · lựa chọn thêm', sz:'整天 · 其他選擇'},
-      {id:'d19-haivan', t:'Đèo Hải Vân & Lăng Cô', tz:'海雲關 & 浪歌', s:'Nửa ngày · lựa chọn thêm', sz:'半天 · 其他選擇'},
-      {id:'d19-culaocham', t:'Cù Lao Chàm', tz:'占婆島', s:'Cả ngày · lựa chọn thêm', sz:'整天 · 其他選擇'},
-      {id:'d19-vinwonders', t:'VinWonders Nam Hội An', tz:'VinWonders 南會安', s:'Cả ngày · lựa chọn thêm', sz:'整天 · 其他選擇'},
-      {id:'d19-artparadise', t:'Art in Paradise (tranh 3D)', tz:'3D 立體美術館', s:'Nửa ngày · lựa chọn thêm', sz:'半天 · 其他選擇'},
-    ]},
-    {day:'20/6 · Thứ Bảy', dayZh:'6/20 · 週六', items:[
-      {id:'d20-linhung', t:'Chùa Linh Ứng — Sơn Trà', tz:'靈應寺——山茶半島', s:'Sáng · tượng Phật Bà 67m', sz:'上午 · 67公尺觀音像'},
-      {id:'d20-banco', t:'Đỉnh Bàn Cờ', tz:'棋盤頂', s:'Sáng · điểm cao nhất Đà Nẵng', sz:'上午 · 峴港最高點'},
-      {id:'d20-marble', t:'Ngũ Hành Sơn', tz:'五行山', s:'Chiều · hang động, chùa cổ', sz:'下午 · 洞窟、古剎'},
-      {id:'d20-downtown', t:'Da Nang Downtown / phố đêm', tz:'峴港Downtown / 夜市', s:'Tối · nhớ gọi xác nhận trước', sz:'晚上 · 記得先電話確認'},
-      {id:'d20-baibut', t:'Bãi Bụt – Bãi Rạng (Sơn Trà)', tz:'山茶半島海灘', s:'Sáng · lựa chọn thêm', sz:'上午 · 其他選擇'},
-      {id:'d20-cayda', t:'Cây đa di sản ngàn năm', tz:'千年古榕樹', s:'Sáng · lựa chọn thêm', sz:'上午 · 其他選擇'},
-      {id:'d20-cham', t:'Bảo tàng Điêu khắc Chăm', tz:'占婆雕刻博物館', s:'Chiều · lựa chọn thêm', sz:'下午 · 其他選擇'},
-      {id:'d20-nonnuoc', t:'Làng đá mỹ nghệ Non Nước', tz:'非水石雕村', s:'Chiều · lựa chọn thêm', sz:'下午 · 其他選擇'},
-      {id:'d20-chodem', t:'Chợ đêm Sơn Trà', tz:'山茶夜市', s:'Tối · lựa chọn thêm', sz:'晚上 · 其他選擇'},
-      {id:'d20-lovebridge', t:'Cầu Tình Yêu & Cá Chép Hóa Rồng', tz:'愛情橋 & 鯉魚化龍', s:'Tối · lựa chọn thêm', sz:'晚上 · 其他選擇'},
-    ]},
-    {day:'21/6 · Chủ Nhật', dayZh:'6/21 · 週日', items:[
-      {id:'d21-hoian', t:'Phố cổ Hội An', tz:'會安古鎮', s:'Sáng · Chùa Cầu, nhà cổ', sz:'上午 · 來遠橋、古宅'},
-      {id:'d21-food', t:'Ăn đặc sản chia tay', tz:'餞別特色餐', s:'Trưa · mì Quảng, bún chả cá', sz:'中午 · 廣麵、魚餅米線'},
-      {id:'d21-rungdua', t:'Rừng dừa Bảy Mẫu', tz:'七畝水椰林', s:'Sáng · lựa chọn thêm', sz:'上午 · 其他選擇'},
-      {id:'d21-anbang', t:'Biển An Bàng', tz:'安邦海灘', s:'Sáng · lựa chọn thêm', sz:'上午 · 其他選擇'},
-      {id:'d21-thanhha', t:'Làng gốm Thanh Hà', tz:'清河陶藝村', s:'Sáng · lựa chọn thêm', sz:'上午 · 其他選擇'},
-      {id:'d21-traque', t:'Làng rau Trà Quế', tz:'茶桂菜村', s:'Sáng · lựa chọn thêm', sz:'上午 · 其他選擇'},
-      {id:'d21-vinwonders', t:'VinWonders Nam Hội An', tz:'VinWonders 南會安', s:'Cả ngày · lựa chọn thêm', sz:'整天 · 其他選擇'},
-      {id:'d21-chuacau', t:'Bảo tàng & Chùa Cầu Hội An', tz:'會安博物館 & 來遠橋', s:'Sáng · lựa chọn thêm', sz:'上午 · 其他選擇'},
-    ]},
-  ];
+  function bindDayEvents(){
+    qsa('.day-card').forEach(card => {
+      const dayId = card.dataset.dayId;
+      card.addEventListener('click', e => {
+        const btn = e.target.closest('[data-action]');
+        if(!btn) return;
+        const action = btn.dataset.action;
+        const taskEl = e.target.closest('.task');
+        const taskId = taskEl?.dataset.taskId;
 
-  const KEY='danang_checklist_v1';
-  let state={};
-  try{const raw=localStorage.getItem(KEY); if(raw) state=JSON.parse(raw);}catch(e){}
-
-  const groupsEl=document.getElementById('groups');
-  const CHECK_SVG='<svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>';
-
-  function buildGroups(){
-    groupsEl.innerHTML='';
-    DATA.forEach(g=>{
-      const gd=document.createElement('div');gd.className='check-group';
-      gd.innerHTML='<h4>📍 '+(currentLang==='zh'?g.dayZh:g.day)+'</h4>';
-      g.items.forEach(it=>{
-        const row=document.createElement('div');
-        row.className='check-item'+(state[it.id]?' done':'');
-        row.dataset.id=it.id;
-        const t=currentLang==='zh'?it.tz:it.t, s=currentLang==='zh'?it.sz:it.s;
-        row.innerHTML='<span class="check-box">'+CHECK_SVG+'</span><span class="check-label">'+t+'<small>'+s+'</small></span>';
-        row.addEventListener('click',()=>{
-          state[it.id]=!state[it.id];
-          row.classList.toggle('done',state[it.id]);
-          save();render();
-        });
-        gd.appendChild(row);
+        if(action === 'edit-day') openDayModal(dayId);
+        if(action === 'delete-day') deleteDay(dayId);
+        if(action === 'add-task') openTaskForm(dayId);
+        if(action === 'cancel-task') closeTaskForm(dayId);
+        if(action === 'save-task') saveTaskFromForm(dayId);
+        if(action === 'toggle-task') toggleTask(dayId,taskId);
+        if(action === 'edit-task') openTaskForm(dayId,taskId);
+        if(action === 'delete-task') deleteTask(dayId,taskId);
+        if(action === 'up-task') moveTask(dayId,taskId,-1);
+        if(action === 'down-task') moveTask(dayId,taskId,1);
       });
-      groupsEl.appendChild(gd);
     });
   }
 
-  const allItems=DATA.flatMap(g=>g.items);
-  const pctEl=document.getElementById('pct'),fill=document.getElementById('barFill'),
-        hint=document.getElementById('countHint'),nextUp=document.getElementById('nextUp'),
-        nextTitle=document.getElementById('nextTitle'),nextSub=document.getElementById('nextSub');
-
-  function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
-  function render(){
-    const total=allItems.length;
-    const done=allItems.filter(i=>state[i.id]).length;
-    const pct=Math.round(done/total*100);
-    pctEl.textContent=pct+'%';fill.style.width=pct+'%';
-    if(done===0)hint.textContent=HINTS.none[currentLang];
-    else if(done===total)hint.textContent=HINTS.all[currentLang];
-    else hint.textContent=(currentLang==='zh')?('已完成 '+done+'/'+total+' 個地點'):('Đã đi '+done+'/'+total+' điểm');
-    const next=allItems.find(i=>!state[i.id]);
-    if(next && done>0 && done<total){
-      nextUp.style.display='block';
-      nextTitle.textContent=currentLang==='zh'?next.tz:next.t;
-      nextSub.textContent=currentLang==='zh'?next.sz:next.s;
-    } else {nextUp.style.display='none';}
+  function addDay(){
+    state.days.push({ id:uid('day'), title:'', mood:'', date:'', items:[] });
+    saveState();
+    renderAll();
+    const last = qs('.day-card:last-child');
+    if(last) setTimeout(() => last.scrollIntoView({behavior:'smooth',block:'center'}), 30);
+    toast('Đã thêm một ngày mới');
   }
-  document.getElementById('resetBtn').addEventListener('click',()=>{
-    state={};save();
-    document.querySelectorAll('.check-item').forEach(r=>r.classList.remove('done'));
-    render();
-  });
-  document.getElementById('allBtn').addEventListener('click',()=>{
-    allItems.forEach(i=>state[i.id]=true);save();
-    document.querySelectorAll('.check-item').forEach(r=>r.classList.add('done'));
-    render();
-  });
 
-  // initial language (saved choice or default Vietnamese) — also builds checklist + renders
-  let savedLang='vi';
-  try{const sl=localStorage.getItem(LANG_KEY); if(sl) savedLang=sl;}catch(e){}
-  setLang(savedLang);
+  function deleteDay(dayId){
+    if(state.days.length <= 1){ toast('Giữ lại ít nhất 1 ngày nha bro'); return; }
+    const d = state.days.find(x => x.id === dayId);
+    if(!confirm(`Xóa ${d?.title || 'ngày này'} và toàn bộ plan bên trong?`)) return;
+    state.days = state.days.filter(x => x.id !== dayId);
+    saveState(); renderAll(); toast('Đã xóa ngày');
+  }
+
+  function openTaskForm(dayId,taskId=null){
+    editingTask = taskId ? {dayId,taskId} : null;
+    qsa('.task-form.show').forEach(f => f.classList.remove('show'));
+    const form = qs(`#form_${CSS.escape(dayId)}`);
+    if(!form) return;
+    const day = state.days.find(d => d.id === dayId);
+    const item = taskId ? day.items.find(i => i.id === taskId) : null;
+    form.querySelector('.f-time').value = item?.time || '';
+    form.querySelector('.f-title').value = item?.title || '';
+    form.querySelector('.f-place').value = item?.place || '';
+    form.querySelector('.f-type').value = item?.type || 'move';
+    form.querySelector('.f-notes').value = item?.notes || '';
+    form.classList.add('show');
+    setTimeout(() => form.querySelector('.f-title').focus(), 80);
+    form.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+
+  function closeTaskForm(dayId){
+    const form = qs(`#form_${CSS.escape(dayId)}`);
+    form?.classList.remove('show');
+    editingTask = null;
+  }
+
+  function saveTaskFromForm(dayId){
+    const form = qs(`#form_${CSS.escape(dayId)}`);
+    const day = state.days.find(d => d.id === dayId);
+    if(!form || !day) return;
+    const title = form.querySelector('.f-title').value.trim();
+    if(!title){ form.querySelector('.f-title').focus(); toast('Nhập tên plan trước nha'); return; }
+    const payload = {
+      time:form.querySelector('.f-time').value.trim(),
+      title,
+      place:form.querySelector('.f-place').value.trim(),
+      type:form.querySelector('.f-type').value,
+      notes:form.querySelector('.f-notes').value.trim()
+    };
+    if(editingTask && editingTask.dayId === dayId){
+      const item = day.items.find(i => i.id === editingTask.taskId);
+      if(item) Object.assign(item,payload);
+    }else{
+      day.items.push({id:uid('task'), ...payload, done:false});
+    }
+    editingTask = null;
+    saveState(); renderAll(); toast('Plan đã được lưu');
+  }
+
+  function toggleTask(dayId,taskId){
+    const day = state.days.find(d => d.id === dayId);
+    const task = day?.items.find(i => i.id === taskId);
+    if(!task) return;
+    task.done = !task.done;
+    saveState(); renderAll();
+  }
+
+  function deleteTask(dayId,taskId){
+    const day = state.days.find(d => d.id === dayId);
+    if(!day) return;
+    const task = day.items.find(i => i.id === taskId);
+    if(!confirm(`Xóa plan “${task?.title || ''}”?`)) return;
+    day.items = day.items.filter(i => i.id !== taskId);
+    saveState(); renderAll(); toast('Đã xóa plan');
+  }
+
+  function moveTask(dayId,taskId,dir){
+    const day = state.days.find(d => d.id === dayId);
+    if(!day) return;
+    const i = day.items.findIndex(x => x.id === taskId);
+    const j = i + dir;
+    if(i < 0 || j < 0 || j >= day.items.length) return;
+    [day.items[i],day.items[j]] = [day.items[j],day.items[i]];
+    saveState(); renderAll();
+  }
+
+  function openDayModal(dayId){
+    const d = state.days.find(x => x.id === dayId);
+    if(!d) return;
+    qs('#dayIdInput').value = d.id;
+    qs('#dayDateInput').value = d.date || '';
+    qs('#dayMoodInput').value = d.mood || '';
+    qs('#dayTitleInput').value = d.title || '';
+    openModal('dayModal');
+  }
+
+  function saveDaySettings(){
+    const id = qs('#dayIdInput').value;
+    const d = state.days.find(x => x.id === id);
+    if(!d) return;
+    d.date = qs('#dayDateInput').value;
+    d.mood = qs('#dayMoodInput').value.trim();
+    d.title = qs('#dayTitleInput').value.trim();
+    saveState(); closeModal('dayModal'); renderAll(); toast('Đã lưu thông tin ngày');
+  }
+
+  function openTripModal(){
+    const t = state.trip;
+    qs('#tripTitleInput').value = t.title || '';
+    qs('#tripSubtitleInput').value = t.subtitle || '';
+    qs('#tripStartInput').value = t.startDate || '';
+    qs('#tripDurationInput').value = t.duration || '';
+    qs('#tripTransportInput').value = t.transport || '';
+    qs('#tripCompanionsInput').value = t.companions || '';
+    openModal('tripModal');
+  }
+
+  function saveTripSettings(){
+    state.trip.title = qs('#tripTitleInput').value.trim() || 'Coastline Escape';
+    state.trip.subtitle = qs('#tripSubtitleInput').value.trim();
+    state.trip.startDate = qs('#tripStartInput').value;
+    state.trip.duration = qs('#tripDurationInput').value.trim();
+    state.trip.transport = qs('#tripTransportInput').value.trim();
+    state.trip.companions = qs('#tripCompanionsInput').value.trim();
+    saveState(); closeModal('tripModal'); renderAll(); toast('Trip setup đã lưu');
+  }
+
+  function renderNotes(){
+    const n = state.notes;
+    const pairs = [['freeNotes','free'],['qStay','stay'],['qFood','food'],['qPhoto','photo'],['qBudget','budget'],['qPack','pack'],['qCouple','couple']];
+    pairs.forEach(([id,key]) => { const el = qs('#'+id); if(el && document.activeElement !== el) el.value = n[key] || ''; });
+  }
+
+  function bindNotes(){
+    const pairs = [['freeNotes','free'],['qStay','stay'],['qFood','food'],['qPhoto','photo'],['qBudget','budget'],['qPack','pack'],['qCouple','couple']];
+    pairs.forEach(([id,key]) => {
+      const el = qs('#'+id);
+      el.addEventListener('input', () => {
+        state.notes[key] = el.value;
+        saveState();
+      });
+    });
+  }
+
+  function exportBackup(){
+    const blob = new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `otis-roadtrip-backup-${new Date().toISOString().slice(0,10)}.json`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href),1000);
+    toast('Đã tạo file backup');
+  }
+
+  function importBackup(file){
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try{
+        const parsed = JSON.parse(reader.result);
+        if(!parsed || !Array.isArray(parsed.days)) throw new Error('invalid');
+        state = parsed;
+        state.trip = {...defaultState().trip,...(state.trip||{})};
+        state.notes = {...defaultState().notes,...(state.notes||{})};
+        saveState(); renderAll(); toast('Restore thành công');
+      }catch(e){ alert('File backup không hợp lệ.'); }
+    };
+    reader.readAsText(file);
+  }
+
+  function openModal(id){ qs('#'+id)?.classList.add('show'); document.body.style.overflow='hidden'; }
+  function closeModal(id){ qs('#'+id)?.classList.remove('show'); document.body.style.overflow=''; }
+
+  // modal events
+  qsa('[data-close-modal]').forEach(b => b.addEventListener('click', () => closeModal(b.dataset.closeModal)));
+  qsa('.modal-backdrop').forEach(m => m.addEventListener('click', e => { if(e.target === m) closeModal(m.id); }));
+  addEventListener('keydown', e => { if(e.key === 'Escape') qsa('.modal-backdrop.show').forEach(m => closeModal(m.id)); });
+
+  // buttons
+  qs('#openTripSettings').addEventListener('click', openTripModal);
+  qs('#saveTripSettings').addEventListener('click', saveTripSettings);
+  qs('#saveDaySettings').addEventListener('click', saveDaySettings);
+  qs('#addDayTop').addEventListener('click', addDay);
+  qs('#addDayBottom').addEventListener('click', addDay);
+  qs('#fab').addEventListener('click', addDay);
+  qs('#exportBtn').addEventListener('click', exportBackup);
+  qs('#importFile').addEventListener('change', e => { importBackup(e.target.files[0]); e.target.value=''; });
+  qs('#printBtn').addEventListener('click', () => window.print());
+
+  // nav + scroll progress
+  const nav = qs('#nav');
+  const progress = qs('#scrollProgress');
+  function onScroll(){
+    const doc = document.documentElement;
+    const pct = doc.scrollTop / Math.max(1,doc.scrollHeight-doc.clientHeight) * 100;
+    progress.style.width = pct + '%';
+    nav.classList.toggle('scrolled',doc.scrollTop > 26);
+  }
+  addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+
+  bindNotes();
+  renderAll();
+})();
 </script>
 </body>
 </html>
