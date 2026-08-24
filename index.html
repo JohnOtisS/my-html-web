@@ -50,6 +50,7 @@ button,input,textarea,select{font:inherit}
 button{cursor:pointer}
 a{color:inherit;text-decoration:none}
 ::selection{background:var(--coral);color:#fff}
+:focus-visible{outline:3px solid rgba(255,104,71,.42);outline-offset:3px}
 
 /* ---------- scroll progress ---------- */
 .scroll-progress{position:fixed;top:0;left:0;width:0;height:3px;background:linear-gradient(90deg,var(--coral),var(--gold),var(--mint));z-index:2000}
@@ -81,10 +82,13 @@ a{color:inherit;text-decoration:none}
 .nav.scrolled .nav-links a:hover{background:rgba(10,116,122,.08)}
 .nav-action{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.10);color:#fff;border-radius:999px;padding:10px 15px;font-size:12px;font-weight:800;backdrop-filter:blur(10px);white-space:nowrap}
 .nav.scrolled .nav-action{background:var(--night);border-color:var(--night);color:#fff}
+.nav-account{width:42px;height:42px;border-radius:50%;padding:0;display:grid;place-items:center;font-family:'Fraunces',serif;font-size:14px;line-height:1;flex:0 0 auto}
+.nav-account svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.nav-account [hidden]{display:none}
 
 /* ---------- hero ---------- */
 .hero{
-  min-height:100svh;
+  min-height:94svh;
   position:relative;
   overflow:hidden;
   padding:clamp(110px,14vh,150px) var(--page) 66px;
@@ -133,7 +137,7 @@ a{color:inherit;text-decoration:none}
 .hero-scroll::after{content:"";height:54px;width:1px;background:linear-gradient(#fff,transparent)}
 
 /* ---------- sections ---------- */
-section{padding:86px var(--page);position:relative}
+section{padding:74px var(--page);position:relative}
 .section-shell{width:min(1180px,100%);margin:0 auto}
 .section-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:32px}
 .section-kicker{font-size:10px;font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:var(--coral);display:flex;gap:9px;align-items:center;margin-bottom:10px}
@@ -144,8 +148,9 @@ h2 em{font-style:italic;color:var(--coral)}
 
 /* ---------- overview bento ---------- */
 .overview{padding-top:34px}
-.bento{display:grid;grid-template-columns:1.35fr .65fr .65fr;grid-auto-rows:minmax(160px,auto);gap:14px}
-.bento-card{position:relative;border:1px solid rgba(18,44,44,.08);border-radius:var(--radius);padding:24px;background:rgba(255,253,249,.76);box-shadow:var(--shadow-sm);overflow:hidden;backdrop-filter:blur(12px)}
+.bento{display:grid;grid-template-columns:1.35fr .65fr .65fr;grid-auto-rows:minmax(148px,auto);gap:12px}
+.bento-card{position:relative;border:1px solid rgba(18,44,44,.08);border-radius:23px;padding:21px;background:rgba(255,253,249,.8);box-shadow:var(--shadow-sm);overflow:hidden;backdrop-filter:blur(12px);transition:.22s}
+.bento-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
 .bento-card.dark{background:linear-gradient(150deg,var(--night),var(--night-2));color:#fff;border-color:rgba(255,255,255,.08)}
 .bento-card.accent{background:linear-gradient(150deg,#ffdba0 0%,#ff8b69 100%);border:0;color:#3a231e}
 .bento-card.route-card{grid-row:span 2}
@@ -183,34 +188,51 @@ h2 em{font-style:italic;color:var(--coral)}
 
 /* ---------- planner ---------- */
 .planner{background:linear-gradient(180deg,rgba(255,253,249,.55),#fffdf9 55%,var(--cream));}
-.planner-toolbar{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-.cloud-status{display:inline-flex;align-items:center;gap:7px;padding:9px 11px;border:1px solid var(--line);border-radius:13px;background:#fff;font-size:10px;font-weight:800;color:var(--muted)}
+.planner-console{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;margin-bottom:18px}
+.planner-copy{max-width:690px}
+.planner-toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:10px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.72);box-shadow:var(--shadow-sm);margin-bottom:14px}
+.planner-toolbar .toolbar-spacer{flex:1}
+.cloud-status{display:inline-flex;align-items:center;gap:7px;padding:9px 11px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:10px;font-weight:800;color:var(--muted)}
 .cloud-status::before{content:"";width:8px;height:8px;border-radius:50%;background:#aaa;box-shadow:0 0 0 3px rgba(0,0,0,.04)}
 .cloud-status[data-state="online"]::before{background:#31a66a;box-shadow:0 0 0 3px rgba(49,166,106,.12)}
 .cloud-status[data-state="saving"]::before{background:var(--gold);box-shadow:0 0 0 3px rgba(218,166,75,.14)}
 .cloud-status[data-state="error"]::before{background:var(--coral);box-shadow:0 0 0 3px rgba(255,104,71,.12)}
-.planner-summary{display:flex;align-items:center;gap:12px;background:var(--night);color:#fff;padding:11px 14px;border-radius:16px;min-width:200px}
+.account-card{display:flex;align-items:center;gap:11px;padding:11px 12px;background:var(--night);color:#fff;border-radius:18px;min-width:285px;box-shadow:var(--shadow-md)}
+.account-avatar{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(145deg,var(--coral),var(--gold));font-family:'Fraunces',serif;font-size:18px;color:#fff;flex:0 0 auto}
+.account-copy{min-width:0;flex:1}.account-copy strong{display:block;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.account-copy small{display:block;font-size:9px;color:rgba(255,255,255,.55);margin-top:3px}
+.account-card .btn{padding:8px 10px;font-size:9px;background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.12)}
+.view-mode-note{align-self:end;max-width:260px;padding:11px 14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.72);color:var(--muted);font-size:10px;line-height:1.5;box-shadow:var(--shadow-sm)}
+.view-mode-note[hidden]{display:none}
+.account-profile{display:flex;align-items:center;gap:13px;padding:14px;border:1px solid var(--line);border-radius:18px;background:#fff}
+.account-profile .account-avatar{width:48px;height:48px}
+.account-profile strong{display:block;color:var(--night)}
+.account-profile small{display:block;color:var(--muted);margin-top:3px}
+body:not(.edit-mode) .edit-only{display:none!important}
+body:not(.edit-mode) .note-area,body:not(.edit-mode) .quick-field input{cursor:default;background:rgba(255,255,255,.72)}
+.planner-summary{display:flex;align-items:center;gap:12px;background:var(--night);color:#fff;padding:10px 13px;border-radius:13px;min-width:185px}
 .summary-meter{flex:1;height:6px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden}
 .summary-meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--coral));border-radius:999px;transition:.3s}
 .summary-text{font-size:11px;color:rgba(255,255,255,.68);white-space:nowrap}
-.days{display:flex;flex-direction:column;gap:18px}
-.day-card{background:rgba(255,253,249,.86);border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow-md);overflow:hidden;transition:.28s;position:relative}
-.day-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.days{display:flex;flex-direction:column;gap:12px}
+.day-card{background:rgba(255,253,249,.9);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-sm);overflow:hidden;transition:.22s;position:relative}
+.day-card:hover{box-shadow:var(--shadow-md);border-color:rgba(10,116,122,.18)}
 .day-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(var(--coral),var(--gold));opacity:.85}
-.day-head{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:22px 22px 20px 26px;border-bottom:1px solid var(--line)}
-.day-index{width:62px;height:62px;border-radius:20px;background:linear-gradient(145deg,var(--night),var(--sea));color:#fff;display:grid;place-items:center;text-align:center;box-shadow:0 16px 32px -18px rgba(7,31,36,.6)}
-.day-index span{display:block;font-family:'Fraunces',serif;font-size:28px;line-height:.8}
+.day-card.collapsed .day-body{display:none}
+.day-card.collapsed .day-head{border-bottom:0}
+.day-head{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:15px 16px 14px 20px;border-bottom:1px solid var(--line)}
+.day-index{width:50px;height:50px;border-radius:16px;background:linear-gradient(145deg,var(--night),var(--sea));color:#fff;display:grid;place-items:center;text-align:center;box-shadow:0 12px 24px -16px rgba(7,31,36,.6)}
+.day-index span{display:block;font-family:'Fraunces',serif;font-size:23px;line-height:.8}
 .day-index small{font-size:8px;text-transform:uppercase;letter-spacing:.16em;opacity:.58}
-.day-title-wrap h3{font-family:'Fraunces',serif;font-size:1.45rem;font-weight:500;line-height:1.1;color:var(--night)}
+.day-title-wrap h3{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:500;line-height:1.1;color:var(--night)}
 .day-title-wrap p{font-size:11px;color:var(--muted);margin-top:7px;display:flex;gap:8px;flex-wrap:wrap}
 .day-meta-tag{padding:5px 8px;border-radius:999px;background:var(--sand);color:var(--sea);font-weight:700}
 .day-actions{display:flex;gap:6px}
 .icon-btn{width:38px;height:38px;border-radius:13px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;color:var(--night);transition:.2s}
 .icon-btn:hover{background:var(--sand);transform:translateY(-1px)}
 .icon-btn.danger:hover{background:#fff0ed;color:#c2442d}
-.day-body{padding:0 22px 22px 26px}
-.empty-day{padding:34px 0 24px;text-align:center;color:var(--muted)}
-.empty-visual{width:62px;height:62px;border-radius:21px;margin:0 auto 13px;background:linear-gradient(145deg,var(--sand),#fff);border:1px solid var(--line);display:grid;place-items:center;font-size:25px;box-shadow:var(--shadow-sm)}
+.day-body{padding:0 15px 14px 20px}
+.empty-day{padding:24px 0 14px;text-align:center;color:var(--muted)}
+.empty-visual{width:50px;height:50px;border-radius:17px;margin:0 auto 10px;background:linear-gradient(145deg,var(--sand),#fff);border:1px solid var(--line);display:grid;place-items:center;font-size:21px;box-shadow:var(--shadow-sm)}
 .empty-day strong{display:block;color:var(--night);font-size:13px;margin-bottom:4px}
 .empty-day p{font-size:11px;max-width:360px;margin:0 auto 15px}
 
@@ -228,8 +250,8 @@ textarea.field{min-height:78px;resize:vertical}
 .form-actions{display:flex;justify-content:flex-end;gap:7px;margin-top:12px}
 
 /* task list */
-.task-list{display:flex;flex-direction:column;gap:9px;padding-top:18px}
-.task{display:grid;grid-template-columns:auto 68px 1fr auto;gap:12px;align-items:flex-start;padding:14px;border:1px solid var(--line);border-radius:18px;background:#fff;transition:.22s}
+.task-list{display:flex;flex-direction:column;gap:7px;padding-top:12px}
+.task{display:grid;grid-template-columns:auto 62px 1fr auto;gap:10px;align-items:center;padding:10px 11px;border:1px solid var(--line);border-radius:15px;background:#fff;transition:.2s}
 .task:hover{border-color:rgba(10,116,122,.24);box-shadow:var(--shadow-sm)}
 .task.done{background:rgba(244,234,216,.52);opacity:.72}
 .task-check{width:27px;height:27px;border-radius:9px;border:2px solid rgba(10,116,122,.32);display:grid;place-items:center;background:#fff;color:#fff;transition:.2s;margin-top:1px}
@@ -239,6 +261,8 @@ textarea.field{min-height:78px;resize:vertical}
 .task-time{font-size:11px;font-weight:800;color:var(--sea);padding:6px 7px;border-radius:9px;background:rgba(10,116,122,.07);text-align:center;white-space:nowrap}
 .task-main{min-width:0}
 .task-title{font-size:13px;font-weight:800;color:var(--night);line-height:1.35;overflow-wrap:anywhere}
+.task-title-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.task-author{display:inline-flex;align-items:center;gap:4px;padding:3px 7px;border-radius:999px;background:var(--sand);color:var(--sea);font-size:8px;font-weight:800}
 .task.done .task-title{text-decoration:line-through;text-decoration-thickness:1px}
 .task-meta{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
 .task-meta span{font-size:9px;font-weight:700;padding:4px 7px;border-radius:999px;background:var(--sand);color:var(--muted)}
@@ -256,7 +280,7 @@ textarea.field{min-height:78px;resize:vertical}
 .notes h2{color:#fff}
 .notes .section-desc{color:rgba(255,255,255,.60)}
 .notes-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
-.note-card{border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.055);border-radius:26px;padding:20px;backdrop-filter:blur(10px)}
+.note-card{border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.055);border-radius:22px;padding:18px;backdrop-filter:blur(10px)}
 .note-card label{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--gold);margin-bottom:12px}
 .note-area{width:100%;min-height:230px;background:rgba(0,0,0,.10);border:1px solid rgba(255,255,255,.10);border-radius:18px;color:#fff;padding:16px;outline:none;resize:vertical;font-size:13px;line-height:1.7}
 .note-area::placeholder{color:rgba(255,255,255,.30)}
@@ -277,7 +301,7 @@ footer b{color:var(--gold)}
 .modal-backdrop{position:fixed;inset:0;background:rgba(2,15,18,.72);backdrop-filter:blur(8px);z-index:3000;display:none;align-items:center;justify-content:center;padding:18px}
 .modal-backdrop.show{display:flex;animation:fade .18s ease}
 @keyframes fade{from{opacity:0}to{opacity:1}}
-.modal{width:min(560px,100%);background:var(--paper);border-radius:28px;padding:22px;box-shadow:0 40px 100px rgba(0,0,0,.35);max-height:92vh;overflow:auto}
+.modal{width:min(560px,100%);background:var(--paper);border-radius:24px;padding:22px;box-shadow:0 40px 100px rgba(0,0,0,.35);max-height:92vh;overflow:auto}
 .modal-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:18px}
 .modal-head h3{font-family:'Fraunces',serif;font-size:1.75rem;font-weight:500;line-height:1.05}
 .modal-head p{font-size:11px;color:var(--muted);margin-top:5px}
@@ -301,56 +325,69 @@ footer b{color:var(--gold)}
   .bento{grid-template-columns:1fr 1fr}
   .bento-card.route-card{grid-column:1/-1;grid-row:span 1;min-height:300px}
   .notes-grid{grid-template-columns:1fr}
+  .planner-console{grid-template-columns:1fr;align-items:start}
+  .view-mode-note{max-width:none}
 }
 @media(max-width:720px){
   :root{--page:18px}
   html{scroll-padding-top:74px}
-  .nav{padding:11px var(--page);gap:8px}
+  .nav{padding:11px var(--page);gap:8px;flex-wrap:wrap}
   .brand{font-size:12px}.brand small{display:none}.brand-mark{width:29px;height:29px;border-radius:10px}
   .nav-links{order:3;flex-basis:100%;margin-left:0;padding-top:1px}
   .nav-links a{font-size:10px;padding:7px 10px}
-  .nav-action{margin-left:auto;padding:8px 10px;font-size:10px}
-  .hero{padding-top:132px;min-height:88svh;align-items:center;padding-bottom:94px}
+  .nav-action{margin-left:auto;padding:8px 10px;font-size:10px}.nav-account{width:38px;height:38px;padding:0}
+  .hero{padding-top:126px;min-height:82svh;align-items:center;padding-bottom:86px}
   .hero::after{bottom:-195px}
   .hero h1{font-size:clamp(3.3rem,18vw,5.2rem)}
   .hero-orb{width:64vw;right:-22vw;top:17vh;opacity:.42}
   .hero-sub{font-size:.9rem}
   .hero-scroll{display:none}
-  section{padding:64px var(--page)}
+  section{padding:54px var(--page)}
   .section-top{align-items:flex-start;flex-direction:column}
-  .planner-toolbar{justify-content:flex-start}
+  .planner-toolbar{justify-content:flex-start;padding:8px}
+  .planner-toolbar .toolbar-spacer{display:none}
+  .planner-summary{order:-2;flex:1;min-width:170px}
+  .cloud-status{order:-1}
   .bento{grid-template-columns:1fr}
   .bento-card.route-card{grid-column:auto;min-height:310px}
-  .day-head{grid-template-columns:auto 1fr;gap:12px;padding:18px 16px 17px 20px}
-  .day-actions{grid-column:1/-1;justify-content:flex-end;margin-top:-4px}
-  .day-index{width:52px;height:52px;border-radius:17px}
-  .day-index span{font-size:24px}
-  .day-body{padding:0 16px 18px 20px}
+  .day-head{grid-template-columns:auto 1fr auto;gap:10px;padding:13px 12px 12px 17px}
+  .day-actions{justify-content:flex-end}
+  .day-index{width:46px;height:46px;border-radius:15px}
+  .day-index span{font-size:21px}
+  .day-body{padding:0 12px 12px 17px}
   .form-grid{grid-template-columns:1fr 1fr}
   .form-field:nth-child(2){grid-column:span 1}
   .form-field.place-field{grid-column:1/-1}
-  .task{grid-template-columns:auto 56px 1fr;gap:9px;padding:12px}
+  .task{grid-template-columns:auto 55px 1fr;gap:8px;padding:10px}
   .task-actions{grid-column:3;justify-content:flex-end}
   .task-notes{font-size:10px}
-  .fab{display:grid}
+  body.edit-mode .fab{display:grid}
 }
 @media(max-width:480px){
-  .nav-links{padding-bottom:2px}
-  .hero{padding-top:140px;min-height:94svh}
+  .nav-links{display:none}
+  .hero{padding-top:132px;min-height:86svh}
   .hero-meta{gap:6px}.chip{font-size:10px;padding:7px 9px}
   .hero-cta .btn{flex:1}
   .section-desc{font-size:.88rem}
+  .planner-console{gap:14px;margin-bottom:12px}
+  .account-avatar{width:36px;height:36px;border-radius:11px}
+  .planner-toolbar{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+  .planner-toolbar .planner-summary,.planner-toolbar .cloud-status{grid-column:1/-1;width:100%}
+  .planner-toolbar .btn,.planner-toolbar label.btn{width:100%;justify-content:center;text-align:center}
   .bento-card{padding:19px;border-radius:22px}
   .route-pins{inset:82px 12px 18px}
   .pin{font-size:9px;max-width:105px;gap:5px}.pin i{width:9px;height:9px;border-width:2px}
   .day-title-wrap h3{font-size:1.25rem}
   .form-grid{grid-template-columns:1fr}
   .form-field:nth-child(2),.form-field.place-field{grid-column:auto}
-  .task{grid-template-columns:auto 1fr;gap:9px}
+  .task{grid-template-columns:auto 1fr;gap:8px}
   .task-time{grid-column:2;justify-self:start;margin-top:-1px}
   .task-main{grid-column:2}
   .task-actions{grid-column:2}
   .day-footer{align-items:flex-start;flex-direction:column}
+  .day-actions .icon-btn{width:34px;height:34px;border-radius:10px}
+  .modal-backdrop{align-items:flex-end;padding:10px}
+  .modal{border-radius:22px 22px 14px 14px;padding:18px;max-height:88svh}
   .modal-grid{grid-template-columns:1fr}.modal-grid .full{grid-column:auto}
   .route-strip{padding:15px}
 }
@@ -378,7 +415,10 @@ footer b{color:var(--gold)}
     <a href="#planner">Plan chi tiết</a>
     <a href="#notes">Ghi chú</a>
   </div>
-  <button class="nav-action" id="openTripSettings">⚙ Trip setup</button>
+  <button class="nav-action nav-account" id="cloudAuthBtn" aria-label="Đăng nhập" title="Đăng nhập">
+    <svg id="accountIcon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg>
+    <span id="accountInitials" hidden>?</span>
+  </button>
 </nav>
 
 <header class="hero" id="top">
@@ -470,30 +510,19 @@ footer b{color:var(--gold)}
 
   <section class="planner" id="planner">
     <div class="section-shell">
-      <div class="section-top">
-        <div>
+      <div class="planner-console">
+        <div class="planner-copy">
           <div class="section-kicker">Plan chi tiết</div>
           <h2>Tự build từng ngày, <em>tick từng plan.</em></h2>
-          <p class="section-desc">Bro tự thêm giờ, địa điểm, nội dung; tick khi hoàn thành. Dữ liệu luôn lưu trên thiết bị và tự đồng bộ Supabase sau khi đăng nhập.</p>
+          <p class="section-desc">Hai người cùng sửa một lịch trình. Mỗi thay đổi được lưu trên thiết bị, đồng bộ lên cloud và ghi lại người cập nhật.</p>
         </div>
-        <div class="planner-toolbar">
-          <div class="planner-summary">
-            <div class="summary-meter"><i id="summaryFill"></i></div>
-            <span class="summary-text" id="summaryText">0 / 0 done</span>
-          </div>
-          <span class="cloud-status" id="cloudStatus" data-state="offline">Chưa đăng nhập</span>
-          <button class="btn btn-soft" id="cloudAuthBtn">☁ Đăng nhập</button>
-          <button class="btn btn-soft" id="addDayTop">＋ Thêm ngày</button>
-          <button class="btn btn-soft" id="exportBtn">⇧ Backup</button>
-          <label class="btn btn-soft" for="importFile" style="cursor:pointer">⇩ Restore</label>
-          <input type="file" id="importFile" accept="application/json" hidden />
-        </div>
+        <div class="view-mode-note" id="viewModeNote">Chế độ xem · đăng nhập bằng biểu tượng góc phải để chỉnh sửa plan.</div>
       </div>
 
       <div class="days" id="days"></div>
 
       <div style="display:flex;justify-content:center;margin-top:22px">
-        <button class="btn btn-dark" id="addDayBottom">＋ Thêm một ngày khác</button>
+        <button class="btn btn-dark edit-only" id="addDayBottom">＋ Thêm một ngày khác</button>
       </div>
     </div>
   </section>
@@ -577,20 +606,37 @@ footer b{color:var(--gold)}
   </div>
 </div>
 
+<!-- Signed-in account modal -->
+<div class="modal-backdrop" id="accountModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="accountModalTitle">
+    <div class="modal-head">
+      <div><h3 id="accountModalTitle">Tài khoản</h3><p>Phiên đăng nhập được giữ đến khi bạn chủ động đăng xuất.</p></div>
+      <button class="modal-close" data-close-modal="accountModal">✕</button>
+    </div>
+    <div class="account-profile">
+      <div class="account-avatar" id="accountAvatar">?</div>
+      <div><strong id="accountLabel">Chưa đăng nhập</strong><small id="accountDetail">—</small></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-soft" id="openTripSettings">⚙ Trip setup</button>
+      <button class="btn btn-danger" id="logoutBtn">Đăng xuất</button>
+    </div>
+  </div>
+</div>
+
 <!-- Cloud authentication modal -->
 <div class="modal-backdrop" id="authModal">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
     <div class="modal-head">
-      <div><h3 id="authModalTitle">Đồng bộ plan</h3><p>Đăng nhập để plan không mất khi đổi trình duyệt hoặc thiết bị.</p></div>
+      <div><h3 id="authModalTitle">Welcome back</h3><p>Chỉ hai tài khoản đã được cấp quyền mới mở được planner chung.</p></div>
       <button class="modal-close" data-close-modal="authModal">✕</button>
     </div>
     <div class="modal-grid">
       <div class="form-field full"><label>Email</label><input type="email" autocomplete="email" class="field" id="cloudEmail" placeholder="you@example.com" /></div>
       <div class="form-field full"><label>Mật khẩu</label><input type="password" autocomplete="current-password" class="field" id="cloudPassword" placeholder="Tối thiểu 6 ký tự" /></div>
-      <p class="section-desc full" id="authMessage" style="margin:0"></p>
+      <p class="section-desc full" id="authMessage" style="margin:0">Phiên đăng nhập được giữ trên thiết bị này cho đến khi bạn bấm đăng xuất.</p>
     </div>
     <div class="modal-actions">
-      <button class="btn btn-soft" id="cloudSignUpBtn">Tạo tài khoản</button>
       <button class="btn btn-primary" id="cloudSignInBtn">Đăng nhập</button>
     </div>
   </div>
@@ -609,8 +655,11 @@ footer b{color:var(--gold)}
   const qsa = s => [...document.querySelectorAll(s)];
   const uid = prefix => `${prefix}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2,7)}`;
   const cloudConfig = window.OTIS_SUPABASE_CONFIG || {};
-  const cloudClient = window.supabase && cloudConfig.url && cloudConfig.publishableKey
-    ? window.supabase.createClient(cloudConfig.url, cloudConfig.publishableKey)
+  const workspaceId = cloudConfig.workspaceId || '';
+  const cloudClient = window.supabase && cloudConfig.url && cloudConfig.publishableKey && workspaceId
+    ? window.supabase.createClient(cloudConfig.url, cloudConfig.publishableKey, {
+        auth:{ persistSession:true, autoRefreshToken:true, detectSessionInUrl:true }
+      })
     : null;
 
   const defaultState = () => ({
@@ -629,10 +678,35 @@ footer b{color:var(--gold)}
   let state = loadState();
   let editingTask = null;
   let cloudUser = null;
+  let cloudMember = null;
   let cloudReady = false;
   let cloudSaveTimer = null;
+  let cloudChannel = null;
   let cloudLoadedUserId = null;
   let applyingCloudState = false;
+  const collapsedDays = new Set();
+
+  function canEdit(){
+    return Boolean(cloudUser && cloudMember && cloudReady);
+  }
+
+  function requireEdit(){
+    if(canEdit()) return true;
+    toast('Đăng nhập để chỉnh sửa planner');
+    if(!cloudUser) openModal('authModal');
+    return false;
+  }
+
+  function applyAccessMode(){
+    const editable = canEdit();
+    document.body.classList.toggle('edit-mode', editable);
+    const note = qs('#viewModeNote');
+    if(note) note.hidden = editable;
+    qsa('#notes textarea, #notes input').forEach(el => {
+      el.readOnly = !editable;
+      el.setAttribute('aria-readonly', String(!editable));
+    });
+  }
 
   function normalizeState(parsed){
     if(!parsed || !Array.isArray(parsed.days)) return defaultState();
@@ -657,6 +731,10 @@ footer b{color:var(--gold)}
   }
 
   function saveState(show=false){
+    if(!canEdit()){
+      if(show) toast('Đăng nhập để chỉnh sửa planner');
+      return;
+    }
     try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
     catch(e){ console.warn('Không thể lưu localStorage', e); }
     if(!applyingCloudState) scheduleCloudSave();
@@ -671,11 +749,37 @@ footer b{color:var(--gold)}
   }
 
   function updateCloudAuthUI(){
-    qs('#cloudAuthBtn').textContent = cloudUser ? '↪ Đăng xuất' : '☁ Đăng nhập';
+    const displayName = cloudMember?.display_name || cloudUser?.email || 'Chưa đăng nhập';
+    const initials = displayName === 'Chưa đăng nhập' ? '?' : displayName.split(/\s+/).map(part => part[0]).join('').slice(0,2).toUpperCase();
+    const navButton = qs('#cloudAuthBtn');
+    const navIcon = qs('#accountIcon');
+    const navInitials = qs('#accountInitials');
+    navButton.setAttribute('aria-label', cloudUser ? `Tài khoản ${displayName}` : 'Đăng nhập');
+    navButton.title = cloudUser ? displayName : 'Đăng nhập';
+    navIcon.hidden = Boolean(cloudUser);
+    navInitials.hidden = !cloudUser;
+    navIcon.style.display = cloudUser ? 'none' : 'block';
+    navInitials.style.display = cloudUser ? 'block' : 'none';
+    navInitials.textContent = initials;
+    qs('#accountAvatar').textContent = initials;
+    qs('#accountLabel').textContent = displayName;
+    qs('#accountDetail').textContent = cloudUser
+      ? (cloudMember ? `${cloudMember.role === 'owner' ? 'Chủ workspace' : 'Thành viên'} · tự lưu đến khi logout` : 'Tài khoản chưa được cấp quyền')
+      : 'Chế độ chỉ xem';
     if(!cloudClient) setCloudStatus('Cloud chưa cấu hình','error');
     else if(cloudUser && cloudReady) setCloudStatus('Đã đồng bộ','online');
+    else if(cloudUser && !cloudMember) setCloudStatus('Chưa được cấp quyền','error');
     else if(cloudUser) setCloudStatus('Đang kết nối…','saving');
     else setCloudStatus('Chưa đăng nhập','offline');
+    applyAccessMode();
+  }
+
+  function currentActor(){
+    return {
+      id: cloudUser?.id || 'local',
+      email: cloudUser?.email || '',
+      name: cloudMember?.display_name || (cloudUser?.email ? cloudUser.email.split('@')[0] : 'Thiết bị này')
+    };
   }
 
   function scheduleCloudSave(){
@@ -688,11 +792,11 @@ footer b{color:var(--gold)}
   async function saveCloudNow(){
     if(!cloudClient || !cloudUser || !cloudReady || applyingCloudState) return;
     const snapshot = JSON.parse(JSON.stringify(state));
-    const { error } = await cloudClient.from('planner_states').upsert({
-      user_id: cloudUser.id,
+    const { error } = await cloudClient.from('planner_workspaces').update({
       state: snapshot,
-      updated_at: new Date().toISOString()
-    }, { onConflict:'user_id' });
+      updated_at: new Date().toISOString(),
+      updated_by: cloudUser.id
+    }).eq('id', workspaceId);
     if(error){
       console.error('Supabase save failed', error);
       setCloudStatus('Lỗi đồng bộ','error');
@@ -703,14 +807,14 @@ footer b{color:var(--gold)}
   }
 
   async function loadCloudState(){
-    if(!cloudClient || !cloudUser) return;
+    if(!cloudClient) return;
     cloudReady = false;
     updateCloudAuthUI();
     const { data, error } = await cloudClient
-      .from('planner_states')
+      .from('planner_workspaces')
       .select('state,updated_at')
-      .eq('user_id', cloudUser.id)
-      .maybeSingle();
+      .eq('id', workspaceId)
+      .single();
     if(error){
       console.error('Supabase load failed', error);
       setCloudStatus('Lỗi kết nối','error');
@@ -726,8 +830,49 @@ footer b{color:var(--gold)}
       toast('Đã tải plan từ Supabase');
     }
     cloudReady = true;
-    if(!data) await saveCloudNow();
+    if(cloudUser && (!data?.state || !Array.isArray(data.state.days))) await saveCloudNow();
+    renderAll();
     updateCloudAuthUI();
+  }
+
+  async function loadCloudMembership(){
+    if(!cloudClient || !cloudUser) return false;
+    const { data, error } = await cloudClient.from('planner_members')
+      .select('display_name,role')
+      .eq('workspace_id', workspaceId)
+      .eq('user_id', cloudUser.id)
+      .maybeSingle();
+    if(error || !data){
+      cloudMember = null;
+      cloudReady = false;
+      updateCloudAuthUI();
+      toast('Tài khoản này chưa được cấp quyền vào planner');
+      return false;
+    }
+    cloudMember = data;
+    updateCloudAuthUI();
+    return true;
+  }
+
+  function subscribeToCloud(){
+    if(!cloudClient || !cloudUser || !cloudMember) return;
+    if(cloudChannel) cloudClient.removeChannel(cloudChannel);
+    cloudChannel = cloudClient.channel(`planner-${workspaceId}`)
+      .on('postgres_changes', {
+        event:'UPDATE', schema:'public', table:'planner_workspaces', filter:`id=eq.${workspaceId}`
+      }, payload => {
+        if(payload.new?.updated_by === cloudUser?.id) return;
+        const remoteState = payload.new?.state;
+        if(!remoteState || !Array.isArray(remoteState.days)) return;
+        applyingCloudState = true;
+        state = normalizeState(remoteState);
+        try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){}
+        renderAll();
+        applyingCloudState = false;
+        setCloudStatus('Vừa nhận cập nhật','online');
+        toast('Planner vừa được thành viên khác cập nhật');
+      })
+      .subscribe();
   }
 
   async function handleCloudSession(session){
@@ -735,14 +880,20 @@ footer b{color:var(--gold)}
     cloudUser = nextUser;
     if(!nextUser){
       cloudReady = false;
+      cloudMember = null;
       cloudLoadedUserId = null;
+      if(cloudChannel){ cloudClient.removeChannel(cloudChannel); cloudChannel = null; }
       updateCloudAuthUI();
+      await loadCloudState();
       return;
     }
     updateCloudAuthUI();
     if(cloudLoadedUserId !== nextUser.id){
       cloudLoadedUserId = nextUser.id;
-      await loadCloudState();
+      if(await loadCloudMembership()){
+        await loadCloudState();
+        subscribeToCloud();
+      }
     }
   }
 
@@ -774,26 +925,20 @@ footer b{color:var(--gold)}
     toast('Đăng nhập thành công');
   }
 
-  async function signUpCloud(){
-    const email = qs('#cloudEmail').value.trim();
-    const password = qs('#cloudPassword').value;
-    if(!email || password.length < 6){ setAuthMessage('Nhập email và mật khẩu từ 6 ký tự.',true); return; }
-    setAuthMessage('Đang tạo tài khoản…');
-    const { data, error } = await cloudClient.auth.signUp({email,password});
-    if(error){ setAuthMessage(error.message,true); return; }
-    if(data.session){ closeModal('authModal'); toast('Tài khoản đã được tạo'); }
-    else setAuthMessage('Đã gửi email xác nhận. Mở email, xác nhận rồi quay lại đăng nhập.');
-  }
-
   async function toggleCloudAuth(){
     if(!cloudClient){ toast('Cloud chưa được cấu hình'); return; }
     if(cloudUser){
-      await cloudClient.auth.signOut();
-      toast('Đã đăng xuất; dữ liệu local vẫn được giữ');
+      openModal('accountModal');
     }else{
-      setAuthMessage('');
+      setAuthMessage('Phiên đăng nhập được giữ trên thiết bị này cho đến khi bạn bấm đăng xuất.');
       openModal('authModal');
     }
+  }
+
+  async function signOutCloud(){
+    closeModal('accountModal');
+    await cloudClient.auth.signOut();
+    toast('Đã đăng xuất · chuyển sang chế độ chỉ xem');
   }
 
   function toast(text){
@@ -862,8 +1007,8 @@ footer b{color:var(--gold)}
     qs('#statTasks').textContent = tasks;
     qs('#statDone').textContent = done;
     qs('#statPercent').textContent = pct + '%';
-    qs('#summaryText').textContent = `${done} / ${tasks} done`;
-    qs('#summaryFill').style.width = pct + '%';
+    if(qs('#summaryText')) qs('#summaryText').textContent = `${done} / ${tasks} done`;
+    if(qs('#summaryFill')) qs('#summaryFill').style.width = pct + '%';
     qs('#progressRing').style.background = `conic-gradient(var(--coral) ${pct*3.6}deg,rgba(255,255,255,.11) 0deg)`;
   }
 
@@ -878,13 +1023,14 @@ footer b{color:var(--gold)}
   function renderDays(){
     const wrap = qs('#days');
     wrap.innerHTML = '';
+    const editable = canEdit();
 
     state.days.forEach((day,index) => {
       const total = day.items.length;
       const done = day.items.filter(i => i.done).length;
       const date = deriveDate(index);
       const card = document.createElement('article');
-      card.className = 'day-card';
+      card.className = `day-card${collapsedDays.has(day.id) ? ' collapsed' : ''}`;
       card.dataset.dayId = day.id;
 
       card.innerHTML = `
@@ -898,8 +1044,8 @@ footer b{color:var(--gold)}
             </p>
           </div>
           <div class="day-actions">
-            <button class="icon-btn" data-action="edit-day" title="Chỉnh ngày">✎</button>
-            <button class="icon-btn danger" data-action="delete-day" title="Xóa ngày">⌫</button>
+            <button class="icon-btn" data-action="toggle-day" title="Thu gọn / mở rộng">${collapsedDays.has(day.id) ? '⌄' : '⌃'}</button>
+            ${editable ? '<button class="icon-btn" data-action="edit-day" title="Chỉnh ngày">✎</button><button class="icon-btn danger" data-action="delete-day" title="Xóa ngày">⌫</button>' : ''}
           </div>
         </div>
         <div class="day-body">
@@ -926,12 +1072,12 @@ footer b{color:var(--gold)}
               <div class="empty-visual">＋</div>
               <strong>Ngày này chưa có plan nào.</strong>
               <p>Thêm từng hoạt động rồi tick khi hoàn thành. Bro muốn lên bao nhiêu item cũng được.</p>
-              <button class="btn btn-soft" data-action="add-task">＋ Thêm plan đầu tiên</button>
+              ${editable ? '<button class="btn btn-soft" data-action="add-task">＋ Thêm plan đầu tiên</button>' : ''}
             </div>` : `<div class="task-list">${day.items.map(item => taskHTML(item)).join('')}</div>`}
 
           <div class="day-footer">
             <div class="day-progress">Tiến độ ngày: <b>${done}/${total}</b>${total ? ` · ${Math.round(done/total*100)}%` : ''}</div>
-            ${total ? '<button class="btn btn-soft" data-action="add-task">＋ Thêm plan</button>' : ''}
+            ${total && editable ? '<button class="btn btn-soft" data-action="add-task">＋ Thêm plan</button>' : ''}
           </div>
         </div>`;
       wrap.appendChild(card);
@@ -941,23 +1087,27 @@ footer b{color:var(--gold)}
   }
 
   function taskHTML(item){
+    const author = item.createdBy?.name || item.createdBy?.email || 'Dữ liệu cũ';
     return `<div class="task ${item.done ? 'done':''}" data-task-id="${item.id}">
-      <button class="task-check" data-action="toggle-task" aria-label="Đánh dấu hoàn thành"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></button>
+      <button class="task-check" ${canEdit() ? 'data-action="toggle-task"' : 'disabled'} aria-label="${canEdit() ? 'Đánh dấu hoàn thành' : 'Trạng thái hoàn thành'}"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></button>
       <div class="task-time">${escapeHTML(item.time || '—')}</div>
       <div class="task-main">
-        <div class="task-title">${escapeHTML(item.title || 'Plan chưa đặt tên')}</div>
+        <div class="task-title-row">
+          <div class="task-title">${escapeHTML(item.title || 'Plan chưa đặt tên')}</div>
+          <span class="task-author">✦ ${escapeHTML(author)}</span>
+        </div>
         <div class="task-meta">
           <span>${escapeHTML(taskTypeLabel(item.type))}</span>
           ${item.place ? `<span>📍 ${escapeHTML(item.place)}</span>` : ''}
         </div>
         ${item.notes ? `<div class="task-notes">${escapeHTML(item.notes)}</div>` : ''}
       </div>
-      <div class="task-actions">
-        <button class="icon-btn" data-action="up-task" title="Đưa lên">↑</button>
-        <button class="icon-btn" data-action="down-task" title="Đưa xuống">↓</button>
-        <button class="icon-btn" data-action="edit-task" title="Sửa">✎</button>
-        <button class="icon-btn danger" data-action="delete-task" title="Xóa">⌫</button>
-      </div>
+      ${canEdit() ? '<div class="task-actions">\n' +
+        '        <button class="icon-btn" data-action="up-task" title="Đưa lên">↑</button>\n' +
+        '        <button class="icon-btn" data-action="down-task" title="Đưa xuống">↓</button>\n' +
+        '        <button class="icon-btn" data-action="edit-task" title="Sửa">✎</button>\n' +
+        '        <button class="icon-btn danger" data-action="delete-task" title="Xóa">⌫</button>\n' +
+        '      </div>' : ''}
     </div>`;
   }
 
@@ -972,6 +1122,7 @@ footer b{color:var(--gold)}
         const taskId = taskEl?.dataset.taskId;
 
         if(action === 'edit-day') openDayModal(dayId);
+        if(action === 'toggle-day') toggleDayCard(dayId);
         if(action === 'delete-day') deleteDay(dayId);
         if(action === 'add-task') openTaskForm(dayId);
         if(action === 'cancel-task') closeTaskForm(dayId);
@@ -985,7 +1136,14 @@ footer b{color:var(--gold)}
     });
   }
 
+  function toggleDayCard(dayId){
+    if(collapsedDays.has(dayId)) collapsedDays.delete(dayId);
+    else collapsedDays.add(dayId);
+    renderDays();
+  }
+
   function addDay(){
+    if(!requireEdit()) return;
     state.days.push({ id:uid('day'), title:'', mood:'', date:'', items:[] });
     saveState();
     renderAll();
@@ -995,6 +1153,7 @@ footer b{color:var(--gold)}
   }
 
   function deleteDay(dayId){
+    if(!requireEdit()) return;
     if(state.days.length <= 1){ toast('Giữ lại ít nhất 1 ngày nha bro'); return; }
     const d = state.days.find(x => x.id === dayId);
     if(!confirm(`Xóa ${d?.title || 'ngày này'} và toàn bộ plan bên trong?`)) return;
@@ -1003,6 +1162,7 @@ footer b{color:var(--gold)}
   }
 
   function openTaskForm(dayId,taskId=null){
+    if(!requireEdit()) return;
     editingTask = taskId ? {dayId,taskId} : null;
     qsa('.task-form.show').forEach(f => f.classList.remove('show'));
     const form = qs(`#form_${CSS.escape(dayId)}`);
@@ -1026,6 +1186,7 @@ footer b{color:var(--gold)}
   }
 
   function saveTaskFromForm(dayId){
+    if(!requireEdit()) return;
     const form = qs(`#form_${CSS.escape(dayId)}`);
     const day = state.days.find(d => d.id === dayId);
     if(!form || !day) return;
@@ -1036,27 +1197,33 @@ footer b{color:var(--gold)}
       title,
       place:form.querySelector('.f-place').value.trim(),
       type:form.querySelector('.f-type').value,
-      notes:form.querySelector('.f-notes').value.trim()
+      notes:form.querySelector('.f-notes').value.trim(),
+      updatedBy:currentActor(),
+      updatedAt:new Date().toISOString()
     };
     if(editingTask && editingTask.dayId === dayId){
       const item = day.items.find(i => i.id === editingTask.taskId);
       if(item) Object.assign(item,payload);
     }else{
-      day.items.push({id:uid('task'), ...payload, done:false});
+      day.items.push({id:uid('task'), ...payload, createdBy:currentActor(), createdAt:new Date().toISOString(), done:false});
     }
     editingTask = null;
     saveState(); renderAll(); toast('Plan đã được lưu');
   }
 
   function toggleTask(dayId,taskId){
+    if(!requireEdit()) return;
     const day = state.days.find(d => d.id === dayId);
     const task = day?.items.find(i => i.id === taskId);
     if(!task) return;
     task.done = !task.done;
+    task.updatedBy = currentActor();
+    task.updatedAt = new Date().toISOString();
     saveState(); renderAll();
   }
 
   function deleteTask(dayId,taskId){
+    if(!requireEdit()) return;
     const day = state.days.find(d => d.id === dayId);
     if(!day) return;
     const task = day.items.find(i => i.id === taskId);
@@ -1066,6 +1233,7 @@ footer b{color:var(--gold)}
   }
 
   function moveTask(dayId,taskId,dir){
+    if(!requireEdit()) return;
     const day = state.days.find(d => d.id === dayId);
     if(!day) return;
     const i = day.items.findIndex(x => x.id === taskId);
@@ -1076,6 +1244,7 @@ footer b{color:var(--gold)}
   }
 
   function openDayModal(dayId){
+    if(!requireEdit()) return;
     const d = state.days.find(x => x.id === dayId);
     if(!d) return;
     qs('#dayIdInput').value = d.id;
@@ -1086,6 +1255,7 @@ footer b{color:var(--gold)}
   }
 
   function saveDaySettings(){
+    if(!requireEdit()) return;
     const id = qs('#dayIdInput').value;
     const d = state.days.find(x => x.id === id);
     if(!d) return;
@@ -1096,6 +1266,7 @@ footer b{color:var(--gold)}
   }
 
   function openTripModal(){
+    if(!requireEdit()) return;
     const t = state.trip;
     qs('#tripTitleInput').value = t.title || '';
     qs('#tripSubtitleInput').value = t.subtitle || '';
@@ -1107,6 +1278,7 @@ footer b{color:var(--gold)}
   }
 
   function saveTripSettings(){
+    if(!requireEdit()) return;
     state.trip.title = qs('#tripTitleInput').value.trim() || 'Coastline Escape';
     state.trip.subtitle = qs('#tripSubtitleInput').value.trim();
     state.trip.startDate = qs('#tripStartInput').value;
@@ -1127,6 +1299,7 @@ footer b{color:var(--gold)}
     pairs.forEach(([id,key]) => {
       const el = qs('#'+id);
       el.addEventListener('input', () => {
+        if(!canEdit()) return;
         state.notes[key] = el.value;
         saveState();
       });
@@ -1168,18 +1341,15 @@ footer b{color:var(--gold)}
   addEventListener('keydown', e => { if(e.key === 'Escape') qsa('.modal-backdrop.show').forEach(m => closeModal(m.id)); });
 
   // buttons
-  qs('#openTripSettings').addEventListener('click', openTripModal);
+  qs('#openTripSettings').addEventListener('click', () => { closeModal('accountModal'); openTripModal(); });
   qs('#saveTripSettings').addEventListener('click', saveTripSettings);
   qs('#saveDaySettings').addEventListener('click', saveDaySettings);
-  qs('#addDayTop').addEventListener('click', addDay);
   qs('#addDayBottom').addEventListener('click', addDay);
   qs('#fab').addEventListener('click', addDay);
-  qs('#exportBtn').addEventListener('click', exportBackup);
-  qs('#importFile').addEventListener('change', e => { importBackup(e.target.files[0]); e.target.value=''; });
   qs('#printBtn').addEventListener('click', () => window.print());
   qs('#cloudAuthBtn').addEventListener('click', toggleCloudAuth);
+  qs('#logoutBtn').addEventListener('click', signOutCloud);
   qs('#cloudSignInBtn').addEventListener('click', signInCloud);
-  qs('#cloudSignUpBtn').addEventListener('click', signUpCloud);
   qs('#cloudPassword').addEventListener('keydown', e => { if(e.key === 'Enter') signInCloud(); });
 
   // nav + scroll progress
