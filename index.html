@@ -184,6 +184,11 @@ h2 em{font-style:italic;color:var(--coral)}
 /* ---------- planner ---------- */
 .planner{background:linear-gradient(180deg,rgba(255,253,249,.55),#fffdf9 55%,var(--cream));}
 .planner-toolbar{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cloud-status{display:inline-flex;align-items:center;gap:7px;padding:9px 11px;border:1px solid var(--line);border-radius:13px;background:#fff;font-size:10px;font-weight:800;color:var(--muted)}
+.cloud-status::before{content:"";width:8px;height:8px;border-radius:50%;background:#aaa;box-shadow:0 0 0 3px rgba(0,0,0,.04)}
+.cloud-status[data-state="online"]::before{background:#31a66a;box-shadow:0 0 0 3px rgba(49,166,106,.12)}
+.cloud-status[data-state="saving"]::before{background:var(--gold);box-shadow:0 0 0 3px rgba(218,166,75,.14)}
+.cloud-status[data-state="error"]::before{background:var(--coral);box-shadow:0 0 0 3px rgba(255,104,71,.12)}
 .planner-summary{display:flex;align-items:center;gap:12px;background:var(--night);color:#fff;padding:11px 14px;border-radius:16px;min-width:200px}
 .summary-meter{flex:1;height:6px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden}
 .summary-meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--coral));border-radius:999px;transition:.3s}
@@ -469,13 +474,15 @@ footer b{color:var(--gold)}
         <div>
           <div class="section-kicker">Plan chi tiết</div>
           <h2>Tự build từng ngày, <em>tick từng plan.</em></h2>
-          <p class="section-desc">Tất cả plan chi tiết đang để trống. Bro tự thêm giờ, địa điểm, nội dung; tick khi hoàn thành. Dữ liệu được lưu ngay trên trình duyệt bằng localStorage.</p>
+          <p class="section-desc">Bro tự thêm giờ, địa điểm, nội dung; tick khi hoàn thành. Dữ liệu luôn lưu trên thiết bị và tự đồng bộ Supabase sau khi đăng nhập.</p>
         </div>
         <div class="planner-toolbar">
           <div class="planner-summary">
             <div class="summary-meter"><i id="summaryFill"></i></div>
             <span class="summary-text" id="summaryText">0 / 0 done</span>
           </div>
+          <span class="cloud-status" id="cloudStatus" data-state="offline">Chưa đăng nhập</span>
+          <button class="btn btn-soft" id="cloudAuthBtn">☁ Đăng nhập</button>
           <button class="btn btn-soft" id="addDayTop">＋ Thêm ngày</button>
           <button class="btn btn-soft" id="exportBtn">⇧ Backup</button>
           <label class="btn btn-soft" for="importFile" style="cursor:pointer">⇩ Restore</label>
@@ -570,8 +577,29 @@ footer b{color:var(--gold)}
   </div>
 </div>
 
+<!-- Cloud authentication modal -->
+<div class="modal-backdrop" id="authModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+    <div class="modal-head">
+      <div><h3 id="authModalTitle">Đồng bộ plan</h3><p>Đăng nhập để plan không mất khi đổi trình duyệt hoặc thiết bị.</p></div>
+      <button class="modal-close" data-close-modal="authModal">✕</button>
+    </div>
+    <div class="modal-grid">
+      <div class="form-field full"><label>Email</label><input type="email" autocomplete="email" class="field" id="cloudEmail" placeholder="you@example.com" /></div>
+      <div class="form-field full"><label>Mật khẩu</label><input type="password" autocomplete="current-password" class="field" id="cloudPassword" placeholder="Tối thiểu 6 ký tự" /></div>
+      <p class="section-desc full" id="authMessage" style="margin:0"></p>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-soft" id="cloudSignUpBtn">Tạo tài khoản</button>
+      <button class="btn btn-primary" id="cloudSignInBtn">Đăng nhập</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast">Đã lưu</div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./supabase-config.js"></script>
 <script>
 (() => {
   'use strict';
@@ -580,6 +608,10 @@ footer b{color:var(--gold)}
   const qs = s => document.querySelector(s);
   const qsa = s => [...document.querySelectorAll(s)];
   const uid = prefix => `${prefix}_${Date.now().toString(36)}_${Math.random().toString(36).slice(2,7)}`;
+  const cloudConfig = window.OTIS_SUPABASE_CONFIG || {};
+  const cloudClient = window.supabase && cloudConfig.url && cloudConfig.publishableKey
+    ? window.supabase.createClient(cloudConfig.url, cloudConfig.publishableKey)
+    : null;
 
   const defaultState = () => ({
     trip: {
@@ -596,24 +628,172 @@ footer b{color:var(--gold)}
 
   let state = loadState();
   let editingTask = null;
+  let cloudUser = null;
+  let cloudReady = false;
+  let cloudSaveTimer = null;
+  let cloudLoadedUserId = null;
+  let applyingCloudState = false;
+
+  function normalizeState(parsed){
+    if(!parsed || !Array.isArray(parsed.days)) return defaultState();
+    const defaults = defaultState();
+    return {
+      trip: { ...defaults.trip, ...(parsed.trip || {}) },
+      notes: { ...defaults.notes, ...(parsed.notes || {}) },
+      days: parsed.days.map(d => ({
+        id:d.id || uid('day'), title:d.title || '', mood:d.mood || '', date:d.date || '',
+        items:Array.isArray(d.items) ? d.items : []
+      }))
+    };
+  }
 
   function loadState(){
     try{
       const raw = localStorage.getItem(STORE_KEY);
       if(!raw) return defaultState();
       const parsed = JSON.parse(raw);
-      if(!parsed || !Array.isArray(parsed.days)) return defaultState();
-      parsed.trip = { ...defaultState().trip, ...(parsed.trip || {}) };
-      parsed.notes = { ...defaultState().notes, ...(parsed.notes || {}) };
-      parsed.days = parsed.days.map(d => ({ id:d.id || uid('day'), title:d.title || '', mood:d.mood || '', date:d.date || '', items:Array.isArray(d.items) ? d.items : [] }));
-      return parsed;
+      return normalizeState(parsed);
     }catch(e){ return defaultState(); }
   }
 
   function saveState(show=false){
     try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
     catch(e){ console.warn('Không thể lưu localStorage', e); }
-    if(show) toast('Đã lưu trên thiết bị này');
+    if(!applyingCloudState) scheduleCloudSave();
+    if(show) toast(cloudReady ? 'Đã lưu và chờ đồng bộ' : 'Đã lưu trên thiết bị này');
+  }
+
+  function setCloudStatus(text, status='offline'){
+    const el = qs('#cloudStatus');
+    if(!el) return;
+    el.textContent = text;
+    el.dataset.state = status;
+  }
+
+  function updateCloudAuthUI(){
+    qs('#cloudAuthBtn').textContent = cloudUser ? '↪ Đăng xuất' : '☁ Đăng nhập';
+    if(!cloudClient) setCloudStatus('Cloud chưa cấu hình','error');
+    else if(cloudUser && cloudReady) setCloudStatus('Đã đồng bộ','online');
+    else if(cloudUser) setCloudStatus('Đang kết nối…','saving');
+    else setCloudStatus('Chưa đăng nhập','offline');
+  }
+
+  function scheduleCloudSave(){
+    if(!cloudClient || !cloudUser || !cloudReady) return;
+    clearTimeout(cloudSaveTimer);
+    setCloudStatus('Đang lưu…','saving');
+    cloudSaveTimer = setTimeout(saveCloudNow, 650);
+  }
+
+  async function saveCloudNow(){
+    if(!cloudClient || !cloudUser || !cloudReady || applyingCloudState) return;
+    const snapshot = JSON.parse(JSON.stringify(state));
+    const { error } = await cloudClient.from('planner_states').upsert({
+      user_id: cloudUser.id,
+      state: snapshot,
+      updated_at: new Date().toISOString()
+    }, { onConflict:'user_id' });
+    if(error){
+      console.error('Supabase save failed', error);
+      setCloudStatus('Lỗi đồng bộ','error');
+      toast('Không thể đồng bộ cloud');
+      return;
+    }
+    setCloudStatus('Đã đồng bộ','online');
+  }
+
+  async function loadCloudState(){
+    if(!cloudClient || !cloudUser) return;
+    cloudReady = false;
+    updateCloudAuthUI();
+    const { data, error } = await cloudClient
+      .from('planner_states')
+      .select('state,updated_at')
+      .eq('user_id', cloudUser.id)
+      .maybeSingle();
+    if(error){
+      console.error('Supabase load failed', error);
+      setCloudStatus('Lỗi kết nối','error');
+      toast('Không tải được dữ liệu cloud');
+      return;
+    }
+    if(data?.state && Array.isArray(data.state.days)){
+      applyingCloudState = true;
+      state = normalizeState(data.state);
+      try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){}
+      renderAll();
+      applyingCloudState = false;
+      toast('Đã tải plan từ Supabase');
+    }
+    cloudReady = true;
+    if(!data) await saveCloudNow();
+    updateCloudAuthUI();
+  }
+
+  async function handleCloudSession(session){
+    const nextUser = session?.user || null;
+    cloudUser = nextUser;
+    if(!nextUser){
+      cloudReady = false;
+      cloudLoadedUserId = null;
+      updateCloudAuthUI();
+      return;
+    }
+    updateCloudAuthUI();
+    if(cloudLoadedUserId !== nextUser.id){
+      cloudLoadedUserId = nextUser.id;
+      await loadCloudState();
+    }
+  }
+
+  async function initCloud(){
+    updateCloudAuthUI();
+    if(!cloudClient) return;
+    cloudClient.auth.onAuthStateChange((_event, session) => {
+      setTimeout(() => handleCloudSession(session), 0);
+    });
+    const { data, error } = await cloudClient.auth.getSession();
+    if(error){ setCloudStatus('Lỗi đăng nhập','error'); return; }
+    await handleCloudSession(data.session);
+  }
+
+  function setAuthMessage(message, isError=false){
+    const el = qs('#authMessage');
+    el.textContent = message || '';
+    el.style.color = isError ? 'var(--coral)' : 'var(--muted)';
+  }
+
+  async function signInCloud(){
+    const email = qs('#cloudEmail').value.trim();
+    const password = qs('#cloudPassword').value;
+    if(!email || !password){ setAuthMessage('Nhập email và mật khẩu trước nha.',true); return; }
+    setAuthMessage('Đang đăng nhập…');
+    const { error } = await cloudClient.auth.signInWithPassword({email,password});
+    if(error){ setAuthMessage(error.message,true); return; }
+    closeModal('authModal');
+    toast('Đăng nhập thành công');
+  }
+
+  async function signUpCloud(){
+    const email = qs('#cloudEmail').value.trim();
+    const password = qs('#cloudPassword').value;
+    if(!email || password.length < 6){ setAuthMessage('Nhập email và mật khẩu từ 6 ký tự.',true); return; }
+    setAuthMessage('Đang tạo tài khoản…');
+    const { data, error } = await cloudClient.auth.signUp({email,password});
+    if(error){ setAuthMessage(error.message,true); return; }
+    if(data.session){ closeModal('authModal'); toast('Tài khoản đã được tạo'); }
+    else setAuthMessage('Đã gửi email xác nhận. Mở email, xác nhận rồi quay lại đăng nhập.');
+  }
+
+  async function toggleCloudAuth(){
+    if(!cloudClient){ toast('Cloud chưa được cấu hình'); return; }
+    if(cloudUser){
+      await cloudClient.auth.signOut();
+      toast('Đã đăng xuất; dữ liệu local vẫn được giữ');
+    }else{
+      setAuthMessage('');
+      openModal('authModal');
+    }
   }
 
   function toast(text){
@@ -997,6 +1177,10 @@ footer b{color:var(--gold)}
   qs('#exportBtn').addEventListener('click', exportBackup);
   qs('#importFile').addEventListener('change', e => { importBackup(e.target.files[0]); e.target.value=''; });
   qs('#printBtn').addEventListener('click', () => window.print());
+  qs('#cloudAuthBtn').addEventListener('click', toggleCloudAuth);
+  qs('#cloudSignInBtn').addEventListener('click', signInCloud);
+  qs('#cloudSignUpBtn').addEventListener('click', signUpCloud);
+  qs('#cloudPassword').addEventListener('keydown', e => { if(e.key === 'Enter') signInCloud(); });
 
   // nav + scroll progress
   const nav = qs('#nav');
@@ -1012,6 +1196,7 @@ footer b{color:var(--gold)}
 
   bindNotes();
   renderAll();
+  initCloud();
 })();
 </script>
 </body>
