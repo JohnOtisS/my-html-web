@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ3ynHTnrrVFM4D8MZ7o8A0QbM6Lx8=" crossorigin="" />
 <style>
 :root{
   --night:#071f24;
@@ -148,28 +149,47 @@ h2 em{font-style:italic;color:var(--coral)}
 
 /* ---------- overview bento ---------- */
 .overview{padding-top:34px}
-.bento{display:grid;grid-template-columns:1.35fr .65fr .65fr;grid-auto-rows:minmax(148px,auto);gap:12px}
+.bento{display:grid;grid-template-columns:3fr 1fr;grid-template-rows:1fr 1fr;grid-auto-rows:minmax(148px,auto);gap:12px}
 .bento-card{position:relative;border:1px solid rgba(18,44,44,.08);border-radius:23px;padding:21px;background:rgba(255,253,249,.8);box-shadow:var(--shadow-sm);overflow:hidden;backdrop-filter:blur(12px);transition:.22s}
 .bento-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
 .bento-card.dark{background:linear-gradient(150deg,var(--night),var(--night-2));color:#fff;border-color:rgba(255,255,255,.08)}
 .bento-card.accent{background:linear-gradient(150deg,#ffdba0 0%,#ff8b69 100%);border:0;color:#3a231e}
-.bento-card.route-card{grid-row:span 2}
+.bento-card.route-card{grid-row:span 2;padding:0;min-height:500px;background:var(--night);transform:none!important}
+.bento-card.map-secondary{display:none}
 .card-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--muted)}
 .dark .card-label{color:rgba(255,255,255,.48)}
 .card-big{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.03;margin-top:10px;letter-spacing:-.03em}
 .card-note{font-size:12px;color:var(--muted);margin-top:10px}
 .dark .card-note{color:rgba(255,255,255,.58)}
-.route-map{position:absolute;inset:0;pointer-events:none;opacity:.7}
-.route-line{position:absolute;left:11%;right:8%;top:53%;height:3px;background:linear-gradient(90deg,var(--coral),var(--gold),var(--mint));transform:rotate(-5deg);border-radius:999px;box-shadow:0 0 22px rgba(242,195,104,.35)}
-.route-line::after{content:"";position:absolute;left:22%;width:17%;height:46px;border:3px solid var(--gold);border-left-color:transparent;border-bottom-color:transparent;border-radius:0 44px 0 0;top:-42px;transform:rotate(8deg)}
-.route-pins{position:absolute;inset:74px 18px 20px 18px}
-.pin{position:absolute;display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;color:rgba(255,255,255,.83);max-width:135px}
-.pin i{width:11px;height:11px;border:3px solid rgba(255,255,255,.8);border-radius:50%;background:var(--night);box-shadow:0 0 0 5px rgba(255,255,255,.07);flex:none}
-.pin:nth-child(1){left:0;bottom:17%}
-.pin:nth-child(2){left:24%;top:8%}
-.pin:nth-child(3){left:50%;bottom:12%}
-.pin:nth-child(4){right:4%;top:18%}
-.pin:nth-child(5){right:0;bottom:9%}
+.route-map-shell{height:350px;position:relative;overflow:hidden;background:#dfe9e5}
+.real-route-map{position:absolute;inset:0;z-index:1}
+.route-map-head{position:absolute;z-index:500;left:13px;top:13px;right:13px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;pointer-events:none}
+.route-map-title{padding:10px 12px;border:1px solid rgba(255,255,255,.62);border-radius:15px;background:rgba(7,31,36,.88);color:#fff;box-shadow:0 14px 30px -18px rgba(0,0,0,.65);backdrop-filter:blur(12px)}
+.route-map-title .card-label{color:rgba(255,255,255,.58)}
+.route-map-title strong{display:block;margin-top:4px;font-size:12px}
+.route-map-state{padding:9px 11px;border-radius:999px;background:rgba(255,253,249,.92);color:var(--sea);font-size:9px;font-weight:900;box-shadow:var(--shadow-sm);white-space:nowrap}
+.route-map-loading{position:absolute;z-index:450;inset:auto 13px 13px;display:flex;align-items:center;gap:8px;width:max-content;max-width:calc(100% - 26px);padding:8px 10px;border-radius:11px;background:rgba(255,253,249,.9);color:var(--muted);font-size:9px;font-weight:800;box-shadow:var(--shadow-sm)}
+.route-map-loading::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(242,195,104,.18)}
+.route-map-loading.ready::before{background:#31a66a;box-shadow:0 0 0 3px rgba(49,166,106,.14)}
+.route-checkpoints{padding:12px;background:linear-gradient(160deg,#09272c,#071f24);display:flex;flex-direction:column;gap:7px}
+.route-stop-button{width:100%;display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:9px;padding:8px 10px;border:1px solid rgba(255,255,255,.09);border-radius:13px;background:rgba(255,255,255,.04);color:#fff;text-align:left;transition:.2s}
+.route-stop-button:not(:disabled):hover{background:rgba(255,255,255,.09);transform:translateX(2px)}
+.route-stop-button:disabled{cursor:default}.route-stop-button.locked{opacity:.42}
+.route-stop-check{width:24px;height:24px;border:2px solid rgba(255,255,255,.32);border-radius:8px;display:grid;place-items:center;font-size:11px;color:transparent}
+.route-stop-button.reached .route-stop-check{color:var(--night);border-color:var(--mint);background:var(--mint);box-shadow:0 0 18px rgba(140,229,211,.42)}
+.route-stop-copy strong{display:block;font-size:10px}.route-stop-copy small{display:block;margin-top:2px;color:rgba(255,255,255,.46);font-size:8px}
+.route-stop-order{font-family:'Fraunces',serif;color:rgba(255,255,255,.36);font-size:17px}
+.route-map-footer{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px 12px;color:rgba(255,255,255,.52);font-size:8px}
+.route-google-link{display:inline-flex;align-items:center;gap:6px;padding:7px 9px;border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font-weight:800;white-space:nowrap}
+.route-google-link:hover{background:rgba(255,255,255,.14)}
+.route-marker-wrap{background:transparent;border:0}.route-marker{position:relative;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#fff;border:3px solid rgba(7,31,36,.72);box-shadow:0 6px 18px rgba(7,31,36,.35);color:var(--night);font-size:9px;font-weight:900;transition:.25s}
+.route-marker::after{content:"";position:absolute;inset:-6px;border:2px solid rgba(7,31,36,.18);border-radius:50%}
+.route-marker.reached{background:var(--coral);border-color:#fff;color:#fff;box-shadow:0 0 0 5px rgba(255,104,71,.22),0 10px 24px rgba(7,31,36,.4)}
+.route-marker.reached::after{border-color:rgba(255,104,71,.42)}
+.route-marker-label{background:rgba(7,31,36,.9);border:0;color:#fff;border-radius:8px;box-shadow:none;font-family:'Be Vietnam Pro',sans-serif;font-size:9px;font-weight:800;padding:5px 7px}
+.route-marker-label::before{border-top-color:rgba(7,31,36,.9)}
+.route-card .leaflet-control-attribution{font-size:7px;background:rgba(255,255,255,.76)}
+.route-card .leaflet-control-zoom a{color:var(--night);border:0}
 .mini-stats{display:flex;align-items:flex-end;gap:8px;height:62px;margin-top:16px}
 .mini-stats i{flex:1;border-radius:999px 999px 6px 6px;background:linear-gradient(var(--mint),var(--sea));opacity:.8}
 .mini-stats i:nth-child(1){height:38%}.mini-stats i:nth-child(2){height:61%}.mini-stats i:nth-child(3){height:45%}.mini-stats i:nth-child(4){height:82%}.mini-stats i:nth-child(5){height:62%}
@@ -328,7 +348,7 @@ footer b{color:var(--gold)}
   .hero-cta{justify-content:flex-start}
   .hero-orb{right:-6vw;top:18vh;width:52vw;opacity:.55}
   .bento{grid-template-columns:1fr 1fr}
-  .bento-card.route-card{grid-column:1/-1;grid-row:span 1;min-height:300px}
+  .bento-card.route-card{grid-column:1/-1;grid-row:span 1;min-height:500px}
   .notes-grid{grid-template-columns:1fr}
   .planner-console{grid-template-columns:1fr;align-items:start}
   .view-mode-note{max-width:none}
@@ -354,7 +374,7 @@ footer b{color:var(--gold)}
   .planner-summary{order:-2;flex:1;min-width:170px}
   .cloud-status{order:-1}
   .bento{grid-template-columns:1fr}
-  .bento-card.route-card{grid-column:auto;min-height:310px}
+  .bento-card.route-card{grid-column:auto;min-height:500px}
   .day-head{grid-template-columns:auto 1fr auto;gap:10px;padding:13px 12px 12px 17px}
   .day-actions{justify-content:flex-end}
   .day-index{width:46px;height:46px;border-radius:15px}
@@ -380,8 +400,7 @@ footer b{color:var(--gold)}
   .planner-toolbar .planner-summary,.planner-toolbar .cloud-status{grid-column:1/-1;width:100%}
   .planner-toolbar .btn,.planner-toolbar label.btn{width:100%;justify-content:center;text-align:center}
   .bento-card{padding:19px;border-radius:22px}
-  .route-pins{inset:82px 12px 18px}
-  .pin{font-size:9px;max-width:105px;gap:5px}.pin i{width:9px;height:9px;border-width:2px}
+  .route-map-shell{height:330px}.route-map-head{left:9px;top:9px;right:9px}.route-map-state{font-size:8px;padding:8px 9px}
   .day-title-wrap h3{font-size:1.25rem}
   .form-grid{grid-template-columns:1fr}
   .form-field:nth-child(2),.form-field.place-field{grid-column:auto}
@@ -462,17 +481,19 @@ footer b{color:var(--gold)}
       </div>
 
       <div class="bento">
-        <article class="bento-card dark route-card">
-          <div class="card-label">Cung đường chính</div>
-          <div class="card-big">Sài Gòn<br>→ Bình Thuận<br>→ Bà Rịa<br>→ Sài Gòn</div>
-          <div class="card-note">Không đi cao tốc · ưu tiên cung ven biển.</div>
-          <div class="route-map"><div class="route-line"></div></div>
-          <div class="route-pins">
-            <span class="pin"><i></i>Sài Gòn</span>
-            <span class="pin"><i></i>Phan Thiết</span>
-            <span class="pin"><i></i>La Gi</span>
-            <span class="pin"><i></i>Đèo Nước Ngọt</span>
-            <span class="pin"><i></i>Sài Gòn</span>
+        <article class="bento-card route-card">
+          <div class="route-map-shell">
+            <div class="real-route-map" id="routeMap" aria-label="Bản đồ cung đường xe máy"></div>
+            <div class="route-map-head">
+              <div class="route-map-title"><div class="card-label">Cung đường xe máy thật</div><strong>Ven biển · mở dần theo checkpoint</strong></div>
+              <div class="route-map-state" id="routeMapState">1/5 điểm đã đến</div>
+            </div>
+            <div class="route-map-loading" id="routeMapLoading">Đang lấy đường thực tế…</div>
+          </div>
+          <div class="route-checkpoints" id="routeCheckpoints"></div>
+          <div class="route-map-footer">
+            <span>Route hiển thị theo dữ liệu đường OSM · kiểm tra biển báo thực tế.</span>
+            <a class="route-google-link" id="routeGoogleLink" target="_blank" rel="noopener">↗ Google Maps xe máy</a>
           </div>
         </article>
 
@@ -482,7 +503,7 @@ footer b{color:var(--gold)}
           <div class="card-note" style="color:rgba(58,35,30,.65)">Ngày có thể thêm / xóa tùy ý.</div>
         </article>
 
-        <article class="bento-card">
+        <article class="bento-card map-secondary">
           <div class="card-label">Total plans</div>
           <div class="stat-number" id="statTasks">0</div>
           <div class="mini-stats"><i></i><i></i><i></i><i></i><i></i></div>
@@ -496,7 +517,7 @@ footer b{color:var(--gold)}
           </div>
         </article>
 
-        <article class="bento-card">
+        <article class="bento-card map-secondary">
           <div class="card-label">Trip date</div>
           <div class="card-big" id="overviewDate">Chưa chọn</div>
           <div class="card-note">Bấm “Trip setup” để nhập ngày khởi hành.</div>
@@ -649,6 +670,7 @@ footer b{color:var(--gold)}
 
 <div class="toast" id="toast">Đã lưu</div>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="./supabase-config.js"></script>
 <script>
@@ -666,6 +688,20 @@ footer b{color:var(--gold)}
         auth:{ persistSession:true, autoRefreshToken:true, detectSessionInUrl:true }
       })
     : null;
+
+  const ROUTE_STOPS = [
+    {id:'route_checkpoint_start',name:'Sài Gòn',detail:'Xuất phát · trung tâm thành phố',lat:10.7723,lng:106.6980},
+    {id:'route_checkpoint_lotus',name:'Lotus Mũi Né',detail:'Phú Hài · Phan Thiết',lat:10.93638,lng:108.172455},
+    {id:'route_checkpoint_lagi',name:'La Gi',detail:'Cung biển Kê Gà',lat:10.6599,lng:107.7722},
+    {id:'route_checkpoint_deo',name:'Đèo Nước Ngọt',detail:'ĐT44A · Phước Hải',lat:10.3822803,lng:107.2573996},
+    {id:'route_checkpoint_finish',name:'Sài Gòn',detail:'Về đích',lat:10.7949,lng:106.7218}
+  ];
+  const ROUTE_LEGS = [
+    [[10.7723,106.6980],[10.8503,106.7714],[10.9500,106.8200],[10.9490,107.2280],[10.9245,107.4300],[10.9284,108.1024],[10.93638,108.172455]],
+    [[10.93638,108.172455],[10.9284,108.1024],[10.8180,108.0080],[10.6960,107.9920],[10.6599,107.7722]],
+    [[10.6599,107.7722],[10.6040,107.5660],[10.4850,107.4780],[10.3822803,107.2573996]],
+    [[10.3822803,107.2573996],[10.4960,107.1680],[10.5900,107.0540],[10.7070,106.8830],[10.7690,106.7890],[10.7949,106.7218]]
+  ];
 
   const defaultState = () => ({
     trip: {
@@ -688,6 +724,11 @@ footer b{color:var(--gold)}
   let cloudSaveTimer = null;
   let cloudChannel = null;
   let progressChannel = null;
+  let routeMap = null;
+  let routeMarkers = [];
+  let routeLayers = [];
+  let routeLegGeometries = [];
+  let routeProgress = {};
   let cloudLoadedUserId = null;
   let applyingCloudState = false;
   const collapsedDays = new Set();
@@ -851,16 +892,31 @@ footer b{color:var(--gold)}
     return null;
   }
 
+  function isRouteProgressId(id=''){
+    return ROUTE_STOPS.some(stop => stop.id === id);
+  }
+
+  function applySharedProgressRow(row){
+    if(!row?.task_id) return false;
+    if(isRouteProgressId(row.task_id)){
+      routeProgress[row.task_id] = Boolean(row.done);
+      updateRouteMap();
+      return true;
+    }
+    const task = findTaskById(row.task_id);
+    if(!task) return false;
+    task.done = Boolean(row.done);
+    return true;
+  }
+
   async function loadSharedProgress(){
     if(!cloudClient) return;
     const { data, error } = await cloudClient.from('planner_task_progress')
       .select('task_id,done')
       .eq('workspace_id',workspaceId);
     if(error){ console.error('Progress load failed',error); return; }
-    (data || []).forEach(row => {
-      const task = findTaskById(row.task_id);
-      if(task) task.done = Boolean(row.done);
-    });
+    (data || []).forEach(applySharedProgressRow);
+    updateRouteMap();
   }
 
   async function saveSharedProgress(taskId,done){
@@ -874,6 +930,18 @@ footer b{color:var(--gold)}
     },{onConflict:'workspace_id,task_id'});
   }
 
+  async function saveSharedProgressBatch(entries){
+    if(!cloudClient) return {error:new Error('Cloud chưa được cấu hình')};
+    const rows = entries.map(entry => ({
+      workspace_id:workspaceId,
+      task_id:entry.taskId,
+      done:Boolean(entry.done),
+      updated_by:cloudUser?.id || null,
+      updated_at:new Date().toISOString()
+    }));
+    return cloudClient.from('planner_task_progress').upsert(rows,{onConflict:'workspace_id,task_id'});
+  }
+
   function subscribeToProgress(){
     if(!cloudClient) return;
     if(progressChannel) cloudClient.removeChannel(progressChannel);
@@ -883,6 +951,13 @@ footer b{color:var(--gold)}
       },payload => {
         const row = payload.new;
         if(!row?.task_id) return;
+        if(isRouteProgressId(row.task_id)){
+          if(routeProgress[row.task_id] === Boolean(row.done)) return;
+          routeProgress[row.task_id] = Boolean(row.done);
+          updateRouteMap();
+          toast('Checkpoint bản đồ vừa được cập nhật');
+          return;
+        }
         const task = findTaskById(row.task_id);
         if(!task || task.done === Boolean(row.done)) return;
         task.done = Boolean(row.done);
@@ -1004,6 +1079,144 @@ footer b{color:var(--gold)}
     el.classList.add('show');
     clearTimeout(toast.timer);
     toast.timer = setTimeout(() => el.classList.remove('show'), 1800);
+  }
+
+  function routeStopReached(index){
+    return index === 0 || Boolean(routeProgress[ROUTE_STOPS[index].id]);
+  }
+
+  function routeIcon(index){
+    const reached = routeStopReached(index);
+    return L.divIcon({
+      className:'route-marker-wrap',
+      html:`<div class="route-marker${reached ? ' reached' : ''}">${reached ? '✓' : index+1}</div>`,
+      iconSize:[28,28],
+      iconAnchor:[14,14]
+    });
+  }
+
+  function renderRouteCheckpoints(){
+    const wrap = qs('#routeCheckpoints');
+    if(!wrap) return;
+    wrap.innerHTML = ROUTE_STOPS.map((stop,index) => {
+      const reached = routeStopReached(index);
+      const locked = index > 1 && !routeStopReached(index-1);
+      return `<button class="route-stop-button${reached ? ' reached' : ''}${locked ? ' locked' : ''}" data-route-stop="${index}" ${index === 0 || locked ? 'disabled' : ''}>
+        <span class="route-stop-check">✓</span>
+        <span class="route-stop-copy"><strong>${escapeHTML(stop.name)}</strong><small>${escapeHTML(stop.detail)}</small></span>
+        <span class="route-stop-order">${String(index+1).padStart(2,'0')}</span>
+      </button>`;
+    }).join('');
+    qsa('[data-route-stop]').forEach(button => button.addEventListener('click',() => toggleRouteCheckpoint(Number(button.dataset.routeStop))));
+  }
+
+  function updateRouteMap(){
+    renderRouteCheckpoints();
+    const reachedCount = ROUTE_STOPS.filter((_,index) => routeStopReached(index)).length;
+    const stateEl = qs('#routeMapState');
+    if(stateEl) stateEl.textContent = `${reachedCount}/${ROUTE_STOPS.length} điểm đã đến`;
+    if(!routeMap || !window.L) return;
+    routeMarkers.forEach((marker,index) => marker.setIcon(routeIcon(index)));
+    routeLayers.forEach(layer => routeMap.removeLayer(layer));
+    routeLayers = [];
+    routeLegGeometries.forEach((geometry,index) => {
+      if(!geometry?.length || !routeStopReached(index+1)) return;
+      const outline = L.polyline(geometry,{color:'#071f24',weight:8,opacity:.5,lineCap:'round',lineJoin:'round'}).addTo(routeMap);
+      const path = L.polyline(geometry,{color:index % 2 ? '#f2c368' : '#ff6847',weight:4,opacity:.96,lineCap:'round',lineJoin:'round'}).addTo(routeMap);
+      routeLayers.push(outline,path);
+    });
+  }
+
+  async function toggleRouteCheckpoint(index){
+    if(index <= 0 || index >= ROUTE_STOPS.length) return;
+    if(index > 1 && !routeStopReached(index-1)){
+      toast('Tick checkpoint trước đó trước nha bro');
+      return;
+    }
+    const previous = {...routeProgress};
+    const nextDone = !routeStopReached(index);
+    const changes = [];
+    if(nextDone){
+      routeProgress[ROUTE_STOPS[index].id] = true;
+      changes.push({taskId:ROUTE_STOPS[index].id,done:true});
+    }else{
+      for(let i=index;i<ROUTE_STOPS.length;i++){
+        routeProgress[ROUTE_STOPS[i].id] = false;
+        changes.push({taskId:ROUTE_STOPS[i].id,done:false});
+      }
+    }
+    updateRouteMap();
+    const { error } = await saveSharedProgressBatch(changes);
+    if(error){
+      routeProgress = previous;
+      updateRouteMap();
+      toast('Không thể lưu checkpoint lên cloud');
+      console.error('Route progress save failed',error);
+      return;
+    }
+    toast(nextDone ? `Đã đến ${ROUTE_STOPS[index].name}` : `Đã bỏ checkpoint ${ROUTE_STOPS[index].name}`);
+  }
+
+  function osrmRouteUrl(points){
+    const coordinates = points.map(([lat,lng]) => `${lng},${lat}`).join(';');
+    return `https://router.project-osrm.org/route/v1/driving/${coordinates}?overview=full&geometries=geojson&steps=false`;
+  }
+
+  async function loadRouteGeometries(){
+    const loading = qs('#routeMapLoading');
+    let totalDistance = 0;
+    routeLegGeometries = [];
+    for(const points of ROUTE_LEGS){
+      try{
+        const response = await fetch(osrmRouteUrl(points));
+        if(!response.ok) throw new Error(`Routing HTTP ${response.status}`);
+        const payload = await response.json();
+        const route = payload.routes?.[0];
+        if(!route?.geometry?.coordinates) throw new Error('Không có geometry');
+        routeLegGeometries.push(route.geometry.coordinates.map(([lng,lat]) => [lat,lng]));
+        totalDistance += route.distance || 0;
+      }catch(error){
+        routeLegGeometries.push(null);
+        console.error('Route geometry failed',error);
+      }
+    }
+    updateRouteMap();
+    const loaded = routeLegGeometries.filter(Boolean).length;
+    if(loading){
+      loading.classList.toggle('ready',loaded === ROUTE_LEGS.length);
+      loading.textContent = loaded === ROUTE_LEGS.length
+        ? `Đã tải đường thực tế · khoảng ${Math.round(totalDistance/1000)} km`
+        : `Đã tải ${loaded}/${ROUTE_LEGS.length} chặng · mở Google Maps để kiểm tra`;
+    }
+  }
+
+  function initRouteMap(){
+    renderRouteCheckpoints();
+    const mapElement = qs('#routeMap');
+    if(!mapElement || !window.L) return;
+    routeMap = L.map(mapElement,{zoomControl:false,scrollWheelZoom:false,attributionControl:true});
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{
+        subdomains:'abcd',
+        maxZoom:20,
+        attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
+      }).addTo(routeMap);
+    L.control.zoom({position:'bottomright'}).addTo(routeMap);
+    routeMarkers = ROUTE_STOPS.map((stop,index) => {
+      const marker = L.marker([stop.lat,stop.lng],{icon:routeIcon(index),title:stop.name}).addTo(routeMap);
+      marker.bindTooltip(stop.name,{direction:'top',className:'route-marker-label',offset:[0,-10]});
+      if(index > 0) marker.on('click',() => toggleRouteCheckpoint(index));
+      return marker;
+    });
+    routeMap.fitBounds(L.latLngBounds(ROUTE_STOPS.map(stop => [stop.lat,stop.lng])),{padding:[30,30]});
+    const link = qs('#routeGoogleLink');
+    if(link){
+      const origin = `${ROUTE_STOPS[0].lat},${ROUTE_STOPS[0].lng}`;
+      const destination = `${ROUTE_STOPS.at(-1).lat},${ROUTE_STOPS.at(-1).lng}`;
+      const waypoints = ROUTE_STOPS.slice(1,-1).map(stop => `${stop.lat},${stop.lng}`).join('|');
+      link.href = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&travelmode=two-wheeler&waypoints=${encodeURIComponent(waypoints)}`;
+    }
+    updateRouteMap();
+    loadRouteGeometries();
   }
 
   function escapeHTML(str=''){
@@ -1475,6 +1688,7 @@ footer b{color:var(--gold)}
 
   bindNotes();
   renderAll();
+  initRouteMap();
   initCloud();
 })();
 </script>
