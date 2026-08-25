@@ -154,40 +154,43 @@ h2 em{font-style:italic;color:var(--coral)}
 .bento-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
 .bento-card.dark{background:linear-gradient(150deg,var(--night),var(--night-2));color:#fff;border-color:rgba(255,255,255,.08)}
 .bento-card.accent{background:linear-gradient(150deg,#ffdba0 0%,#ff8b69 100%);border:0;color:#3a231e}
-.bento-card.route-card{grid-row:span 2;padding:0;min-height:500px;background:var(--night);transform:none!important}
+.bento-card.route-card{grid-row:span 2;padding:0;min-height:620px;background:var(--night);transform:none!important}
 .bento-card.map-secondary{display:none}
 .card-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:var(--muted)}
 .dark .card-label{color:rgba(255,255,255,.48)}
 .card-big{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.03;margin-top:10px;letter-spacing:-.03em}
 .card-note{font-size:12px;color:var(--muted);margin-top:10px}
 .dark .card-note{color:rgba(255,255,255,.58)}
-.route-map-shell{height:350px;position:relative;overflow:hidden;background:#dfe9e5}
+.route-map-shell{height:570px;position:relative;overflow:hidden;background:#dfe9e5}
 .real-route-map{position:absolute;inset:0;z-index:1}
 .route-map-head{position:absolute;z-index:500;left:13px;top:13px;right:13px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;pointer-events:none}
 .route-map-title{padding:10px 12px;border:1px solid rgba(255,255,255,.62);border-radius:15px;background:rgba(7,31,36,.88);color:#fff;box-shadow:0 14px 30px -18px rgba(0,0,0,.65);backdrop-filter:blur(12px)}
 .route-map-title .card-label{color:rgba(255,255,255,.58)}
 .route-map-title strong{display:block;margin-top:4px;font-size:12px}
+.route-map-title small{display:block;margin-top:3px;color:rgba(255,255,255,.62);font-size:8px;font-weight:700}
 .route-map-state{padding:9px 11px;border-radius:999px;background:rgba(255,253,249,.92);color:var(--sea);font-size:9px;font-weight:900;box-shadow:var(--shadow-sm);white-space:nowrap}
 .route-map-loading{position:absolute;z-index:450;inset:auto 13px 13px;display:flex;align-items:center;gap:8px;width:max-content;max-width:calc(100% - 26px);padding:8px 10px;border-radius:11px;background:rgba(255,253,249,.9);color:var(--muted);font-size:9px;font-weight:800;box-shadow:var(--shadow-sm)}
 .route-map-loading::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(242,195,104,.18)}
 .route-map-loading.ready::before{background:#31a66a;box-shadow:0 0 0 3px rgba(49,166,106,.14)}
-.route-checkpoints{padding:12px;background:linear-gradient(160deg,#09272c,#071f24);display:flex;flex-direction:column;gap:7px}
-.route-stop-button{width:100%;display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:9px;padding:8px 10px;border:1px solid rgba(255,255,255,.09);border-radius:13px;background:rgba(255,255,255,.04);color:#fff;text-align:left;transition:.2s}
-.route-stop-button:not(:disabled):hover{background:rgba(255,255,255,.09);transform:translateX(2px)}
-.route-stop-button:disabled{cursor:default}.route-stop-button.locked{opacity:.42}
-.route-stop-check{width:24px;height:24px;border:2px solid rgba(255,255,255,.32);border-radius:8px;display:grid;place-items:center;font-size:11px;color:transparent}
-.route-stop-button.reached .route-stop-check{color:var(--night);border-color:var(--mint);background:var(--mint);box-shadow:0 0 18px rgba(140,229,211,.42)}
-.route-stop-copy strong{display:block;font-size:10px}.route-stop-copy small{display:block;margin-top:2px;color:rgba(255,255,255,.46);font-size:8px}
-.route-stop-order{font-family:'Fraunces',serif;color:rgba(255,255,255,.36);font-size:17px}
 .route-map-footer{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px 12px;color:rgba(255,255,255,.52);font-size:8px}
 .route-google-link{display:inline-flex;align-items:center;gap:6px;padding:7px 9px;border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font-weight:800;white-space:nowrap}
 .route-google-link:hover{background:rgba(255,255,255,.14)}
-.route-marker-wrap{background:transparent;border:0}.route-marker{position:relative;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#fff;border:3px solid rgba(7,31,36,.72);box-shadow:0 6px 18px rgba(7,31,36,.35);color:var(--night);font-size:9px;font-weight:900;transition:.25s}
-.route-marker::after{content:"";position:absolute;inset:-6px;border:2px solid rgba(7,31,36,.18);border-radius:50%}
-.route-marker.reached{background:var(--coral);border-color:#fff;color:#fff;box-shadow:0 0 0 5px rgba(255,104,71,.22),0 10px 24px rgba(7,31,36,.4)}
-.route-marker.reached::after{border-color:rgba(255,104,71,.42)}
-.route-marker-label{background:rgba(7,31,36,.9);border:0;color:#fff;border-radius:8px;box-shadow:none;font-family:'Be Vietnam Pro',sans-serif;font-size:9px;font-weight:800;padding:5px 7px}
-.route-marker-label::before{border-top-color:rgba(7,31,36,.9)}
+.route-pin-layer{position:absolute;inset:0;z-index:550;pointer-events:none;overflow:hidden}
+.route-pin-screen{position:absolute;width:44px;height:55px;transform:translate(-22px,-50px);pointer-events:auto}
+.route-pin{position:relative;width:44px;height:55px;padding:0;border:0;background:transparent;text-align:left;cursor:pointer;filter:drop-shadow(0 8px 8px rgba(7,31,36,.32));transition:filter .2s,transform .2s}
+.route-pin:hover{filter:drop-shadow(0 10px 11px rgba(7,31,36,.42));transform:translateY(-2px)}
+.route-pin-head{position:absolute;left:3px;top:0;width:38px;height:38px;border-radius:50% 50% 50% 8px;transform:rotate(-45deg);display:grid;place-items:center;background:#fff;border:3px solid var(--night);transition:.25s}
+.route-pin-value{transform:rotate(45deg);font-family:'Be Vietnam Pro',sans-serif;font-size:11px;font-weight:900;color:var(--night)}
+.route-pin-label{position:absolute;left:48px;top:3px;min-width:max-content;max-width:145px;padding:7px 9px;border:1px solid rgba(7,31,36,.16);border-radius:10px;background:rgba(255,253,249,.94);color:var(--night);box-shadow:0 8px 22px -14px rgba(7,31,36,.55);font-family:'Be Vietnam Pro',sans-serif;line-height:1.18;pointer-events:none}
+.route-pin-label strong{display:block;font-size:10px}.route-pin-label small{display:block;margin-top:3px;color:var(--muted);font-size:7px;font-weight:700}
+.route-pin.label-left .route-pin-label{left:auto;right:48px;text-align:right}
+.route-pin.locked{cursor:not-allowed;filter:grayscale(.7) opacity(.62)}
+.route-pin.available .route-pin-head{border-color:var(--coral);box-shadow:0 0 0 7px rgba(255,104,71,.18);animation:routePulse 1.8s ease-in-out infinite}
+.route-pin.reached .route-pin-head{background:var(--coral);border-color:#fff;box-shadow:0 0 0 7px rgba(255,104,71,.24)}
+.route-pin.reached .route-pin-value{color:#fff;font-size:15px}
+.route-pin.finish{transform:translate(25px,50px)}
+.route-pin.finish:hover{transform:translate(25px,48px)}
+@keyframes routePulse{50%{box-shadow:0 0 0 12px rgba(255,104,71,0)}}
 .route-card .leaflet-control-attribution{font-size:7px;background:rgba(255,255,255,.76)}
 .route-card .leaflet-control-zoom a{color:var(--night);border:0}
 .mini-stats{display:flex;align-items:flex-end;gap:8px;height:62px;margin-top:16px}
@@ -348,7 +351,7 @@ footer b{color:var(--gold)}
   .hero-cta{justify-content:flex-start}
   .hero-orb{right:-6vw;top:18vh;width:52vw;opacity:.55}
   .bento{grid-template-columns:1fr 1fr}
-  .bento-card.route-card{grid-column:1/-1;grid-row:span 1;min-height:500px}
+  .bento-card.route-card{grid-column:1/-1;grid-row:span 1;min-height:620px}
   .notes-grid{grid-template-columns:1fr}
   .planner-console{grid-template-columns:1fr;align-items:start}
   .view-mode-note{max-width:none}
@@ -374,7 +377,7 @@ footer b{color:var(--gold)}
   .planner-summary{order:-2;flex:1;min-width:170px}
   .cloud-status{order:-1}
   .bento{grid-template-columns:1fr}
-  .bento-card.route-card{grid-column:auto;min-height:500px}
+  .bento-card.route-card{grid-column:auto;min-height:620px}
   .day-head{grid-template-columns:auto 1fr auto;gap:10px;padding:13px 12px 12px 17px}
   .day-actions{justify-content:flex-end}
   .day-index{width:46px;height:46px;border-radius:15px}
@@ -400,7 +403,9 @@ footer b{color:var(--gold)}
   .planner-toolbar .planner-summary,.planner-toolbar .cloud-status{grid-column:1/-1;width:100%}
   .planner-toolbar .btn,.planner-toolbar label.btn{width:100%;justify-content:center;text-align:center}
   .bento-card{padding:19px;border-radius:22px}
-  .route-map-shell{height:330px}.route-map-head{left:9px;top:9px;right:9px}.route-map-state{font-size:8px;padding:8px 9px}
+  .route-map-shell{height:530px}.route-map-head{left:9px;top:9px;right:9px;gap:6px}.route-map-title{padding:8px 9px}.route-map-title strong{font-size:10px}.route-map-title small{font-size:7px}.route-map-state{font-size:8px;padding:8px 9px}
+  .route-pin-label{min-width:78px;max-width:105px;padding:6px 7px}.route-pin-label strong{font-size:8px}.route-pin-label small{display:none}
+  .route-map-footer{align-items:flex-start;flex-direction:column}.route-google-link{align-self:stretch;justify-content:center}
   .day-title-wrap h3{font-size:1.25rem}
   .form-grid{grid-template-columns:1fr}
   .form-field:nth-child(2),.form-field.place-field{grid-column:auto}
@@ -484,15 +489,15 @@ footer b{color:var(--gold)}
         <article class="bento-card route-card">
           <div class="route-map-shell">
             <div class="real-route-map" id="routeMap" aria-label="Bản đồ cung đường xe máy"></div>
+            <div class="route-pin-layer" id="routePinLayer" aria-label="Các điểm dừng trên bản đồ"></div>
             <div class="route-map-head">
-              <div class="route-map-title"><div class="card-label">Cung đường xe máy thật</div><strong>Ven biển · mở dần theo checkpoint</strong></div>
+              <div class="route-map-title"><div class="card-label">Cung đường xe máy thật</div><strong>Tick trực tiếp vào pin trên bản đồ</strong><small>Đường đi sẽ sáng dần tới nơi bạn đã đến.</small></div>
               <div class="route-map-state" id="routeMapState">1/5 điểm đã đến</div>
             </div>
             <div class="route-map-loading" id="routeMapLoading">Đang lấy đường thực tế…</div>
           </div>
-          <div class="route-checkpoints" id="routeCheckpoints"></div>
           <div class="route-map-footer">
-            <span>Route hiển thị theo dữ liệu đường OSM · kiểm tra biển báo thực tế.</span>
+            <span>Pin cam đang nhấp nháy là điểm tiếp theo · dữ liệu đường OSM.</span>
             <a class="route-google-link" id="routeGoogleLink" target="_blank" rel="noopener">↗ Google Maps xe máy</a>
           </div>
         </article>
@@ -691,7 +696,7 @@ footer b{color:var(--gold)}
 
   const ROUTE_STOPS = [
     {id:'route_checkpoint_start',name:'Sài Gòn',detail:'Xuất phát · trung tâm thành phố',lat:10.7723,lng:106.6980},
-    {id:'route_checkpoint_lotus',name:'Lotus Mũi Né',detail:'Phú Hài · Phan Thiết',lat:10.93638,lng:108.172455},
+    {id:'route_checkpoint_lotus',name:'Phan Thiết',detail:'Lotus Mũi Né · Phú Hài',lat:10.93638,lng:108.172455},
     {id:'route_checkpoint_lagi',name:'La Gi',detail:'Cung biển Kê Gà',lat:10.6599,lng:107.7722},
     {id:'route_checkpoint_deo',name:'Đèo Nước Ngọt',detail:'ĐT44A · Phước Hải',lat:10.3822803,lng:107.2573996},
     {id:'route_checkpoint_finish',name:'Sài Gòn',detail:'Về đích',lat:10.7949,lng:106.7218}
@@ -725,7 +730,6 @@ footer b{color:var(--gold)}
   let cloudChannel = null;
   let progressChannel = null;
   let routeMap = null;
-  let routeMarkers = [];
   let routeLayers = [];
   let routeLegGeometries = [];
   let routeProgress = {};
@@ -1085,44 +1089,42 @@ footer b{color:var(--gold)}
     return index === 0 || Boolean(routeProgress[ROUTE_STOPS[index].id]);
   }
 
-  function routeIcon(index){
+  function routePinMarkup(index){
     const reached = routeStopReached(index);
-    return L.divIcon({
-      className:'route-marker-wrap',
-      html:`<div class="route-marker${reached ? ' reached' : ''}">${reached ? '✓' : index+1}</div>`,
-      iconSize:[28,28],
-      iconAnchor:[14,14]
-    });
+    const locked = index > 1 && !routeStopReached(index-1);
+    const available = index > 0 && !reached && !locked;
+    const stop = ROUTE_STOPS[index];
+    return `<button type="button" class="route-pin${reached ? ' reached' : ''}${available ? ' available' : ''}${locked ? ' locked' : ''}${index === 1 || index === 2 ? ' label-left' : ''}${index === ROUTE_STOPS.length-1 ? ' finish' : ''}" data-route-pin="${index}" aria-label="${reached ? 'Bỏ tick' : 'Tick'} điểm ${index+1}: ${escapeHTML(stop.name)}" aria-disabled="${index === 0 || locked}">
+      <span class="route-pin-head"><b class="route-pin-value">${reached ? '✓' : index+1}</b></span>
+      <span class="route-pin-label"><strong>${escapeHTML(stop.name)}</strong><small>${escapeHTML(stop.detail)}</small></span>
+    </button>`;
   }
 
-  function renderRouteCheckpoints(){
-    const wrap = qs('#routeCheckpoints');
-    if(!wrap) return;
-    wrap.innerHTML = ROUTE_STOPS.map((stop,index) => {
-      const reached = routeStopReached(index);
-      const locked = index > 1 && !routeStopReached(index-1);
-      return `<button class="route-stop-button${reached ? ' reached' : ''}${locked ? ' locked' : ''}" data-route-stop="${index}" ${index === 0 || locked ? 'disabled' : ''}>
-        <span class="route-stop-check">✓</span>
-        <span class="route-stop-copy"><strong>${escapeHTML(stop.name)}</strong><small>${escapeHTML(stop.detail)}</small></span>
-        <span class="route-stop-order">${String(index+1).padStart(2,'0')}</span>
-      </button>`;
+  function renderRoutePins(){
+    const layer = qs('#routePinLayer');
+    if(!layer || !routeMap) return;
+    layer.innerHTML = ROUTE_STOPS.map((stop,index) => {
+      const point = routeMap.latLngToContainerPoint([stop.lat,stop.lng]);
+      return `<div class="route-pin-screen" style="left:${point.x}px;top:${point.y}px">${routePinMarkup(index)}</div>`;
     }).join('');
-    qsa('[data-route-stop]').forEach(button => button.addEventListener('click',() => toggleRouteCheckpoint(Number(button.dataset.routeStop))));
+    layer.querySelectorAll('[data-route-pin]').forEach(pin => pin.addEventListener('click',event => {
+      event.stopPropagation();
+      toggleRouteCheckpoint(Number(pin.dataset.routePin));
+    }));
   }
 
   function updateRouteMap(){
-    renderRouteCheckpoints();
     const reachedCount = ROUTE_STOPS.filter((_,index) => routeStopReached(index)).length;
     const stateEl = qs('#routeMapState');
     if(stateEl) stateEl.textContent = `${reachedCount}/${ROUTE_STOPS.length} điểm đã đến`;
     if(!routeMap || !window.L) return;
-    routeMarkers.forEach((marker,index) => marker.setIcon(routeIcon(index)));
+    renderRoutePins();
     routeLayers.forEach(layer => routeMap.removeLayer(layer));
     routeLayers = [];
     routeLegGeometries.forEach((geometry,index) => {
       if(!geometry?.length || !routeStopReached(index+1)) return;
-      const outline = L.polyline(geometry,{color:'#071f24',weight:8,opacity:.5,lineCap:'round',lineJoin:'round'}).addTo(routeMap);
-      const path = L.polyline(geometry,{color:index % 2 ? '#f2c368' : '#ff6847',weight:4,opacity:.96,lineCap:'round',lineJoin:'round'}).addTo(routeMap);
+      const outline = L.polyline(geometry,{color:'#fffdf9',weight:11,opacity:.94,lineCap:'round',lineJoin:'round'}).addTo(routeMap);
+      const path = L.polyline(geometry,{color:'#ff6847',weight:6,opacity:1,lineCap:'round',lineJoin:'round'}).addTo(routeMap);
       routeLayers.push(outline,path);
     });
   }
@@ -1191,7 +1193,6 @@ footer b{color:var(--gold)}
   }
 
   function initRouteMap(){
-    renderRouteCheckpoints();
     const mapElement = qs('#routeMap');
     if(!mapElement || !window.L) return;
     routeMap = L.map(mapElement,{zoomControl:false,scrollWheelZoom:false,attributionControl:true});
@@ -1201,13 +1202,8 @@ footer b{color:var(--gold)}
         attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
       }).addTo(routeMap);
     L.control.zoom({position:'bottomright'}).addTo(routeMap);
-    routeMarkers = ROUTE_STOPS.map((stop,index) => {
-      const marker = L.marker([stop.lat,stop.lng],{icon:routeIcon(index),title:stop.name}).addTo(routeMap);
-      marker.bindTooltip(stop.name,{direction:'top',className:'route-marker-label',offset:[0,-10]});
-      if(index > 0) marker.on('click',() => toggleRouteCheckpoint(index));
-      return marker;
-    });
     routeMap.fitBounds(L.latLngBounds(ROUTE_STOPS.map(stop => [stop.lat,stop.lng])),{padding:[30,30]});
+    routeMap.on('move zoom resize',renderRoutePins);
     const link = qs('#routeGoogleLink');
     if(link){
       const origin = `${ROUTE_STOPS[0].lat},${ROUTE_STOPS[0].lng}`;
