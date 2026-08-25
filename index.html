@@ -240,10 +240,15 @@ body:not(.edit-mode) .note-area,body:not(.edit-mode) .quick-field input{cursor:d
 .task-form{margin:18px 0 3px;background:linear-gradient(145deg,#f7efe2,#fff);border:1px solid rgba(18,44,44,.09);border-radius:20px;padding:16px;display:none}
 .task-form.show{display:block;animation:pop .22s ease}
 @keyframes pop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-.form-grid{display:grid;grid-template-columns:120px 1.1fr .9fr;gap:9px}
+.form-grid{display:grid;grid-template-columns:240px 1.1fr .9fr;gap:9px}
 .form-field{display:flex;flex-direction:column;gap:6px}
 .form-field.full{grid-column:1/-1}
 .form-field label{font-size:9px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.time-range{display:grid;grid-template-columns:1fr auto 1fr;gap:7px;align-items:center}
+.time-range-separator{color:var(--coral);font-weight:900;font-size:14px}
+.time-input-wrap{position:relative}
+.time-input-wrap small{position:absolute;left:10px;top:5px;z-index:1;color:var(--muted);font-size:7px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;pointer-events:none}
+.time-input-wrap .field{padding:16px 7px 6px 9px;font-weight:800;font-variant-numeric:tabular-nums;min-height:44px}
 .field,input.field,textarea.field,select.field{width:100%;border:1px solid var(--line);background:#fff;border-radius:13px;padding:11px 12px;color:var(--night);outline:none;transition:.2s;font-size:12px}
 .field:focus{border-color:rgba(10,116,122,.55);box-shadow:0 0 0 4px rgba(10,116,122,.08)}
 textarea.field{min-height:78px;resize:vertical}
@@ -251,14 +256,14 @@ textarea.field{min-height:78px;resize:vertical}
 
 /* task list */
 .task-list{display:flex;flex-direction:column;gap:7px;padding-top:12px}
-.task{display:grid;grid-template-columns:auto 62px 1fr auto;gap:10px;align-items:center;padding:10px 11px;border:1px solid var(--line);border-radius:15px;background:#fff;transition:.2s}
+.task{display:grid;grid-template-columns:auto minmax(102px,max-content) 1fr auto;gap:10px;align-items:center;padding:10px 11px;border:1px solid var(--line);border-radius:15px;background:#fff;transition:.2s}
 .task:hover{border-color:rgba(10,116,122,.24);box-shadow:var(--shadow-sm)}
 .task.done{background:rgba(244,234,216,.52);opacity:.72}
 .task-check{width:27px;height:27px;border-radius:9px;border:2px solid rgba(10,116,122,.32);display:grid;place-items:center;background:#fff;color:#fff;transition:.2s;margin-top:1px}
 .task-check svg{width:15px;height:15px;stroke:currentColor;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;transform:scale(.4);opacity:0;transition:.2s}
 .task.done .task-check{background:linear-gradient(145deg,var(--sea),var(--sea-2));border-color:transparent}
 .task.done .task-check svg{transform:none;opacity:1}
-.task-time{font-size:11px;font-weight:800;color:var(--sea);padding:6px 7px;border-radius:9px;background:rgba(10,116,122,.07);text-align:center;white-space:nowrap}
+.task-time{font-size:11px;font-weight:800;color:var(--sea);padding:7px 9px;border-radius:9px;background:rgba(10,116,122,.07);text-align:center;white-space:nowrap;min-width:max-content;font-variant-numeric:tabular-nums}
 .task-main{min-width:0}
 .task-title{font-size:13px;font-weight:800;color:var(--night);line-height:1.35;overflow-wrap:anywhere}
 .task-title-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
@@ -358,7 +363,7 @@ footer b{color:var(--gold)}
   .form-grid{grid-template-columns:1fr 1fr}
   .form-field:nth-child(2){grid-column:span 1}
   .form-field.place-field{grid-column:1/-1}
-  .task{grid-template-columns:auto 55px 1fr;gap:8px;padding:10px}
+  .task{grid-template-columns:auto minmax(102px,max-content) 1fr;gap:8px;padding:10px}
   .task-actions{grid-column:3;justify-content:flex-end}
   .task-notes{font-size:10px}
   body.edit-mode .fab{display:grid}
@@ -1020,6 +1025,40 @@ footer b{color:var(--gold)}
     return ({move:'Di chuyển',eat:'Ăn uống',stay:'Nghỉ',photo:'Check-in',play:'Đi chơi',other:'Khác'})[type] || 'Khác';
   }
 
+  function normalizeClockValue(value=''){
+    const match = String(value).trim().match(/^(\d{1,2}):(\d{2})$/);
+    if(!match) return '';
+    const hour = Number(match[1]);
+    const minute = Number(match[2]);
+    if(hour > 23 || minute > 59) return '';
+    return `${String(hour).padStart(2,'0')}:${String(minute).padStart(2,'0')}`;
+  }
+
+  function getTaskTimes(item={}){
+    const storedStart = normalizeClockValue(item.startTime);
+    const storedEnd = normalizeClockValue(item.endTime);
+    if(storedStart || storedEnd) return {start:storedStart,end:storedEnd};
+    const legacy = String(item.time || '').trim().match(/(\d{1,2}:\d{2})(?:\s*(?:-|–|—|→|đến|to)\s*(\d{1,2}:\d{2}))?/i);
+    return {
+      start:normalizeClockValue(legacy?.[1]),
+      end:normalizeClockValue(legacy?.[2])
+    };
+  }
+
+  function formatTimeRange(start='',end=''){
+    const from = normalizeClockValue(start);
+    const to = normalizeClockValue(end);
+    if(from && to) return `${from} → ${to}`;
+    if(from) return from;
+    if(to) return `Đến ${to}`;
+    return '';
+  }
+
+  function formatTaskTime(item){
+    const times = getTaskTimes(item);
+    return formatTimeRange(times.start,times.end) || item.time || '—';
+  }
+
   function renderDays(){
     const wrap = qs('#days');
     wrap.innerHTML = '';
@@ -1051,7 +1090,13 @@ footer b{color:var(--gold)}
         <div class="day-body">
           <div class="task-form" id="form_${day.id}">
             <div class="form-grid">
-              <div class="form-field"><label>Thời gian</label><input class="field f-time" placeholder="08:30–09:30"></div>
+              <div class="form-field time-field"><label>Thời gian</label>
+                <div class="time-range">
+                  <div class="time-input-wrap"><small>Từ</small><input type="time" step="300" class="field f-time-start" aria-label="Giờ bắt đầu"></div>
+                  <span class="time-range-separator">→</span>
+                  <div class="time-input-wrap"><small>Đến</small><input type="time" step="300" class="field f-time-end" aria-label="Giờ kết thúc"></div>
+                </div>
+              </div>
               <div class="form-field"><label>Plan / hoạt động</label><input class="field f-title" placeholder="Nhập hoạt động..."></div>
               <div class="form-field place-field"><label>Địa điểm</label><input class="field f-place" placeholder="Tên quán / địa điểm..."></div>
               <div class="form-field"><label>Loại plan</label>
@@ -1090,7 +1135,7 @@ footer b{color:var(--gold)}
     const author = item.createdBy?.name || item.createdBy?.email || 'Dữ liệu cũ';
     return `<div class="task ${item.done ? 'done':''}" data-task-id="${item.id}">
       <button class="task-check" ${canEdit() ? 'data-action="toggle-task"' : 'disabled'} aria-label="${canEdit() ? 'Đánh dấu hoàn thành' : 'Trạng thái hoàn thành'}"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></button>
-      <div class="task-time">${escapeHTML(item.time || '—')}</div>
+      <div class="task-time">${escapeHTML(formatTaskTime(item))}</div>
       <div class="task-main">
         <div class="task-title-row">
           <div class="task-title">${escapeHTML(item.title || 'Plan chưa đặt tên')}</div>
@@ -1169,7 +1214,9 @@ footer b{color:var(--gold)}
     if(!form) return;
     const day = state.days.find(d => d.id === dayId);
     const item = taskId ? day.items.find(i => i.id === taskId) : null;
-    form.querySelector('.f-time').value = item?.time || '';
+    const times = getTaskTimes(item);
+    form.querySelector('.f-time-start').value = times.start;
+    form.querySelector('.f-time-end').value = times.end;
     form.querySelector('.f-title').value = item?.title || '';
     form.querySelector('.f-place').value = item?.place || '';
     form.querySelector('.f-type').value = item?.type || 'move';
@@ -1193,7 +1240,9 @@ footer b{color:var(--gold)}
     const title = form.querySelector('.f-title').value.trim();
     if(!title){ form.querySelector('.f-title').focus(); toast('Nhập tên plan trước nha'); return; }
     const payload = {
-      time:form.querySelector('.f-time').value.trim(),
+      startTime:form.querySelector('.f-time-start').value,
+      endTime:form.querySelector('.f-time-end').value,
+      time:formatTimeRange(form.querySelector('.f-time-start').value, form.querySelector('.f-time-end').value),
       title,
       place:form.querySelector('.f-place').value.trim(),
       type:form.querySelector('.f-type').value,
