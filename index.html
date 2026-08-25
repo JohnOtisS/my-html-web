@@ -1035,6 +1035,7 @@ footer b{color:var(--gold)}
   }
 
   function getTaskTimes(item={}){
+    item = item || {};
     const storedStart = normalizeClockValue(item.startTime);
     const storedEnd = normalizeClockValue(item.endTime);
     if(storedStart || storedEnd) return {start:storedStart,end:storedEnd};
