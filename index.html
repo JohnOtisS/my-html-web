@@ -521,7 +521,7 @@ footer b{color:var(--gold)}
           <h2>Tự build từng ngày, <em>tick từng plan.</em></h2>
           <p class="section-desc">Hai người cùng sửa một lịch trình. Mỗi thay đổi được lưu trên thiết bị, đồng bộ lên cloud và ghi lại người cập nhật.</p>
         </div>
-        <div class="view-mode-note" id="viewModeNote">Chế độ xem · đăng nhập bằng biểu tượng góc phải để chỉnh sửa plan.</div>
+        <div class="view-mode-note" id="viewModeNote">Chế độ xem · vẫn có thể tick tiến độ trên thiết bị này. Đăng nhập để chỉnh sửa plan.</div>
       </div>
 
       <div class="days" id="days"></div>
@@ -687,6 +687,7 @@ footer b{color:var(--gold)}
   let cloudReady = false;
   let cloudSaveTimer = null;
   let cloudChannel = null;
+  let progressChannel = null;
   let cloudLoadedUserId = null;
   let applyingCloudState = false;
   const collapsedDays = new Set();
@@ -830,6 +831,7 @@ footer b{color:var(--gold)}
       applyingCloudState = true;
       state = normalizeState(data.state);
       try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){}
+      await loadSharedProgress();
       renderAll();
       applyingCloudState = false;
       toast('Đã tải plan từ Supabase');
@@ -838,6 +840,56 @@ footer b{color:var(--gold)}
     if(cloudUser && (!data?.state || !Array.isArray(data.state.days))) await saveCloudNow();
     renderAll();
     updateCloudAuthUI();
+    subscribeToProgress();
+  }
+
+  function findTaskById(taskId){
+    for(const day of state.days){
+      const task = day.items.find(item => item.id === taskId);
+      if(task) return task;
+    }
+    return null;
+  }
+
+  async function loadSharedProgress(){
+    if(!cloudClient) return;
+    const { data, error } = await cloudClient.from('planner_task_progress')
+      .select('task_id,done')
+      .eq('workspace_id',workspaceId);
+    if(error){ console.error('Progress load failed',error); return; }
+    (data || []).forEach(row => {
+      const task = findTaskById(row.task_id);
+      if(task) task.done = Boolean(row.done);
+    });
+  }
+
+  async function saveSharedProgress(taskId,done){
+    if(!cloudClient) return {error:new Error('Cloud chưa được cấu hình')};
+    return cloudClient.from('planner_task_progress').upsert({
+      workspace_id:workspaceId,
+      task_id:taskId,
+      done:Boolean(done),
+      updated_by:cloudUser?.id || null,
+      updated_at:new Date().toISOString()
+    },{onConflict:'workspace_id,task_id'});
+  }
+
+  function subscribeToProgress(){
+    if(!cloudClient) return;
+    if(progressChannel) cloudClient.removeChannel(progressChannel);
+    progressChannel = cloudClient.channel(`planner-progress-${workspaceId}`)
+      .on('postgres_changes',{
+        event:'*',schema:'public',table:'planner_task_progress',filter:`workspace_id=eq.${workspaceId}`
+      },payload => {
+        const row = payload.new;
+        if(!row?.task_id) return;
+        const task = findTaskById(row.task_id);
+        if(!task || task.done === Boolean(row.done)) return;
+        task.done = Boolean(row.done);
+        renderAll();
+        toast('Tiến độ vừa được cập nhật');
+      })
+      .subscribe();
   }
 
   async function loadCloudMembership(){
@@ -1135,7 +1187,7 @@ footer b{color:var(--gold)}
   function taskHTML(item){
     const author = item.createdBy?.name || item.createdBy?.email || 'Dữ liệu cũ';
     return `<div class="task ${item.done ? 'done':''}" data-task-id="${item.id}">
-      <button class="task-check" ${canEdit() ? 'data-action="toggle-task"' : 'disabled'} aria-label="${canEdit() ? 'Đánh dấu hoàn thành' : 'Trạng thái hoàn thành'}"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></button>
+      <button class="task-check" data-action="toggle-task" aria-label="Đánh dấu hoàn thành"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></button>
       <div class="task-time">${escapeHTML(formatTaskTime(item))}</div>
       <div class="task-main">
         <div class="task-title-row">
@@ -1261,15 +1313,22 @@ footer b{color:var(--gold)}
     saveState(); renderAll(); toast('Plan đã được lưu');
   }
 
-  function toggleTask(dayId,taskId){
-    if(!requireEdit()) return;
+  async function toggleTask(dayId,taskId){
     const day = state.days.find(d => d.id === dayId);
     const task = day?.items.find(i => i.id === taskId);
     if(!task) return;
+    const previous = Boolean(task.done);
     task.done = !task.done;
-    task.updatedBy = currentActor();
-    task.updatedAt = new Date().toISOString();
-    saveState(); renderAll();
+    renderAll();
+    const { error } = await saveSharedProgress(task.id,task.done);
+    if(error){
+      task.done = previous;
+      renderAll();
+      toast('Không thể lưu tiến độ lên cloud');
+      console.error('Progress save failed',error);
+      return;
+    }
+    toast('Đã lưu tiến độ chung');
   }
 
   function deleteTask(dayId,taskId){

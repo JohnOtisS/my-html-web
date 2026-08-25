@@ -15,18 +15,46 @@ create table if not exists public.planner_members (
   primary key (workspace_id, user_id)
 );
 
+create table if not exists public.planner_task_progress (
+  workspace_id uuid not null references public.planner_workspaces(id) on delete cascade,
+  task_id text not null,
+  done boolean not null default false,
+  updated_by uuid references auth.users(id) on delete set null,
+  updated_at timestamptz not null default now(),
+  primary key (workspace_id, task_id)
+);
+
 insert into public.planner_workspaces (id, name)
 values ('3daad221-5788-44e5-b911-58a6a8627592', 'Otis Couple Roadtrip')
 on conflict (id) do nothing;
 
 alter table public.planner_workspaces enable row level security;
 alter table public.planner_members enable row level security;
+alter table public.planner_task_progress enable row level security;
 
 revoke all on table public.planner_workspaces from anon, authenticated;
 revoke all on table public.planner_members from anon, authenticated;
+revoke all on table public.planner_task_progress from anon, authenticated;
 grant select, update on table public.planner_workspaces to authenticated;
 grant select on table public.planner_workspaces to anon;
 grant select on table public.planner_members to authenticated;
+grant select, insert, update on table public.planner_task_progress to anon, authenticated;
+
+drop policy if exists "Everyone can read task progress" on public.planner_task_progress;
+create policy "Everyone can read task progress"
+on public.planner_task_progress for select to anon, authenticated
+using (workspace_id = '3daad221-5788-44e5-b911-58a6a8627592');
+
+drop policy if exists "Everyone can create task progress" on public.planner_task_progress;
+create policy "Everyone can create task progress"
+on public.planner_task_progress for insert to anon, authenticated
+with check (workspace_id = '3daad221-5788-44e5-b911-58a6a8627592');
+
+drop policy if exists "Everyone can update task progress" on public.planner_task_progress;
+create policy "Everyone can update task progress"
+on public.planner_task_progress for update to anon, authenticated
+using (workspace_id = '3daad221-5788-44e5-b911-58a6a8627592')
+with check (workspace_id = '3daad221-5788-44e5-b911-58a6a8627592');
 
 drop policy if exists "Members can read their membership" on public.planner_members;
 create policy "Members can read their membership"
@@ -70,6 +98,13 @@ with check (
 do $$
 begin
   alter publication supabase_realtime add table public.planner_workspaces;
+exception
+  when duplicate_object then null;
+end $$;
+
+do $$
+begin
+  alter publication supabase_realtime add table public.planner_task_progress;
 exception
   when duplicate_object then null;
 end $$;
