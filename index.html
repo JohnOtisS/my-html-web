@@ -304,6 +304,9 @@ textarea.field{min-height:78px;resize:vertical}
 .task.done .task-title{text-decoration:line-through;text-decoration-thickness:1px}
 .task-meta{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
 .task-meta span{font-size:9px;font-weight:700;padding:4px 7px;border-radius:999px;background:var(--sand);color:var(--muted)}
+.task-meta .task-place-link{display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border-radius:999px;background:rgba(10,116,122,.10);color:var(--sea);font-size:9px;font-weight:800;transition:.2s}
+.task-meta .task-place-link:hover{background:var(--sea);color:#fff;transform:translateY(-1px);box-shadow:0 7px 16px -11px rgba(7,31,36,.65)}
+.task-meta .task-place-link b{font-size:10px;line-height:1}
 .task-notes{font-size:11px;color:var(--muted);margin-top:7px;white-space:pre-wrap;overflow-wrap:anywhere}
 .task-actions{display:flex;gap:4px}
 .task-actions .icon-btn{width:31px;height:31px;border-radius:10px;font-size:11px}
@@ -1229,6 +1232,30 @@ footer b{color:var(--gold)}
     return String(str).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
   }
 
+  function safePlaceUrl(value=''){
+    const raw = String(value).trim();
+    if(!/^https?:\/\//i.test(raw)) return '';
+    try{
+      const parsed = new URL(raw);
+      return ['http:','https:'].includes(parsed.protocol) ? parsed.href : '';
+    }catch{
+      return '';
+    }
+  }
+
+  function taskPlaceHTML(place=''){
+    const raw = String(place).trim();
+    if(!raw) return '';
+    const url = safePlaceUrl(raw);
+    if(!url) return `<span>📍 ${escapeHTML(raw)}</span>`;
+    let label = 'Mở địa điểm';
+    try{
+      const host = new URL(url).hostname.toLowerCase();
+      if(host.includes('google.') || host === 'maps.app.goo.gl' || host.endsWith('.goo.gl')) label = 'Mở Google Maps';
+    }catch{}
+    return `<a class="task-place-link" href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer" title="${escapeHTML(raw)}" aria-label="${escapeHTML(label)} ở tab mới">📍 ${escapeHTML(label)} <b>↗</b></a>`;
+  }
+
   function formatDate(dateStr){
     if(!dateStr) return '';
     const d = new Date(dateStr + 'T00:00:00');
@@ -1370,7 +1397,7 @@ footer b{color:var(--gold)}
                 </div>
               </div>
               <div class="form-field"><label>Plan / hoạt động</label><input class="field f-title" placeholder="Nhập hoạt động..."></div>
-              <div class="form-field place-field"><label>Địa điểm</label><input class="field f-place" placeholder="Tên quán / địa điểm..."></div>
+              <div class="form-field place-field"><label>Địa điểm</label><input class="field f-place" placeholder="Tên địa điểm hoặc link Google Maps..."></div>
               <div class="form-field"><label>Loại plan</label>
                 <select class="field f-type">
                   <option value="move">Di chuyển</option><option value="eat">Ăn uống</option><option value="stay">Nghỉ</option><option value="photo">Check-in</option><option value="play">Đi chơi</option><option value="other">Khác</option>
@@ -1415,7 +1442,7 @@ footer b{color:var(--gold)}
         </div>
         <div class="task-meta">
           <span>${escapeHTML(taskTypeLabel(item.type))}</span>
-          ${item.place ? `<span>📍 ${escapeHTML(item.place)}</span>` : ''}
+          ${taskPlaceHTML(item.place)}
         </div>
         ${item.notes ? `<div class="task-notes">${escapeHTML(item.notes)}</div>` : ''}
       </div>
