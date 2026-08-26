@@ -1243,17 +1243,13 @@ footer b{color:var(--gold)}
     }
   }
 
-  function taskPlaceHTML(place=''){
+  function taskPlaceHTML(place='',taskTitle=''){
     const raw = String(place).trim();
     if(!raw) return '';
     const url = safePlaceUrl(raw);
     if(!url) return `<span>📍 ${escapeHTML(raw)}</span>`;
-    let label = 'Mở địa điểm';
-    try{
-      const host = new URL(url).hostname.toLowerCase();
-      if(host.includes('google.') || host === 'maps.app.goo.gl' || host.endsWith('.goo.gl')) label = 'Mở Google Maps';
-    }catch{}
-    return `<a class="task-place-link" href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer" title="${escapeHTML(raw)}" aria-label="${escapeHTML(label)} ở tab mới">📍 ${escapeHTML(label)} <b>↗</b></a>`;
+    const label = String(taskTitle).trim() || 'Địa điểm';
+    return `<a class="task-place-link" href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer" title="Mở ${escapeHTML(label)} trên Google Maps" aria-label="Mở ${escapeHTML(label)} trên Google Maps ở tab mới">📍 ${escapeHTML(label)} <b>↗</b></a>`;
   }
 
   function formatDate(dateStr){
@@ -1442,7 +1438,7 @@ footer b{color:var(--gold)}
         </div>
         <div class="task-meta">
           <span>${escapeHTML(taskTypeLabel(item.type))}</span>
-          ${taskPlaceHTML(item.place)}
+          ${taskPlaceHTML(item.place,item.title)}
         </div>
         ${item.notes ? `<div class="task-notes">${escapeHTML(item.notes)}</div>` : ''}
       </div>
